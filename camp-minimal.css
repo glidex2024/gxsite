@@ -1,0 +1,160 @@
+body {
+  margin: 0;
+  font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', Arial, sans-serif;
+  background: #f9fbfd;
+  color: #222;
+}
+.camp-minimal-hero {
+  position: relative;
+  height: 38vh;
+  min-height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(120deg, #f9fbfd 60%, #e3f0ff 100%);
+  border-bottom: 1.5px solid #e3e8ee;
+}
+.camp-minimal-hero-bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, #e3f0ff 0%, #fffbe3 100%);
+  opacity: 0.35;
+  z-index: 1;
+}
+.camp-minimal-hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+.camp-minimal-hero-content h1 {
+  font-size: 2.6rem;
+  font-weight: 900;
+  color: #222;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.3em;
+}
+.camp-minimal-hero-content p {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #666;
+  margin-top: 0.5em;
+}
+.camp-minimal-main {
+  padding: 0 0 2em 0;
+}
+.camp-minimal-section {
+  display: flex;
+  gap: 2.5vw;
+  justify-content: center;
+  margin-top: -40px;
+  z-index: 2;
+  position: relative;
+  flex-wrap: wrap;
+}
+.camp-minimal-card {
+  background: #fff;
+  border-radius: 1.2em;
+  box-shadow: 0 2px 16px #e3f0ff66;
+  padding: 2em 1.2em 1.2em 1.2em;
+  width: 300px;
+  max-width: 90vw;
+  text-align: center;
+  margin-bottom: 2em;
+  border: 1.5px solid #e3e8ee;
+  transition: transform 0.18s, box-shadow 0.18s;
+  position: relative;
+}
+.camp-minimal-card:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 8px 32px #e3f0ff99;
+  z-index: 3;
+}
+.camp-minimal-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.2em;
+  margin: 0 auto 1em auto;
+  box-shadow: 0 2px 8px #e3f0ff44;
+  border: 1.5px solid #e3e8ee;
+}
+.camp-minimal-card h2 {
+  font-size: 1.18rem;
+  font-weight: 800;
+  color: #222;
+  margin-bottom: 0.5em;
+  letter-spacing: 0.04em;
+}
+.camp-minimal-card p {
+  font-size: 1.01rem;
+  color: #444;
+  opacity: 0.93;
+}
+.camp-minimal-highlight {
+  background: #fffbe3;
+  color: #222;
+  border-radius: 1em;
+  box-shadow: 0 2px 16px #e3f0ff33;
+  padding: 2em 1.2em 1.2em 1.2em;
+  max-width: 700px;
+  margin: 0 auto 2em auto;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+  border: 1.5px solid #e3e8ee;
+}
+.camp-minimal-highlight h3 {
+  font-size: 1.08rem;
+  font-weight: 900;
+  margin-bottom: 1em;
+  letter-spacing: 0.06em;
+}
+.camp-minimal-highlight ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+  max-width: 400px;
+}
+.camp-minimal-highlight li {
+  font-size: 0.99rem;
+  margin-bottom: 0.7em;
+  font-weight: 600;
+  text-align: left;
+  position: relative;
+  padding-left: 1.5em;
+  color: #444;
+}
+.camp-minimal-highlight li:before {
+  content: '';
+  display: inline-block;
+  width: 0.7em;
+  height: 0.7em;
+  background: #e3f0ff;
+  border-radius: 50%;
+  position: absolute;
+  left: 0.2em;
+  top: 0.5em;
+  box-shadow: 0 0 0 2px #fffbe3;
+}
+.camp-footer {
+  text-align: center;
+  padding: 2em 0 1em 0;
+  color: #888;
+  font-size: 1em;
+  background: none;
+  opacity: 0.8;
+}
+@media (max-width: 900px) {
+  .camp-minimal-section {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5em;
+  }
+  .camp-minimal-card {
+    width: 95vw;
+    max-width: 98vw;
+  }
+} 

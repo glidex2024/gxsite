@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>精彩瞬间 - Glide.X滑雪学校</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .gallery-hero {text-align:center;padding:4em 0 2em 0;}
+    .gallery-hero h1 {font-size:2.2rem;color:var(--main-blue);font-weight:800;margin-bottom:0.5em;}
+    .gallery-hero p {color:#555;font-size:1.1rem;letter-spacing:0.08em;}
+    .masonry-gallery {column-count: 4; column-gap: 1.5em; margin: 2em auto; max-width: 1200px;}
+    .masonry-gallery img {width:100%;margin-bottom:1.5em;border-radius:18px;box-shadow:0 4px 24px rgba(0,0,0,0.13);display:block;transition:transform 0.4s cubic-bezier(.4,2,.6,1),box-shadow 0.3s;break-inside:avoid;cursor:pointer;}
+    .masonry-gallery img:hover {transform:scale(1.08) rotate(-2deg) translateY(-8px);box-shadow:0 12px 36px rgba(255,102,0,0.18);z-index:2;}
+    @media (max-width: 1000px) {.masonry-gallery{column-count:2;}}
+    @media (max-width: 600px) {.masonry-gallery{column-count:1;}}
+  </style>
+</head>
+<body>
+  <nav id="navbar" class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="logo">Glide.X</a>
+      <ul class="nav-links">
+        <li><a href="index.html#home">首页</a></li>
+        <li class="dropdown"><a href="courses.html">特色课程</a>
+          <ul class="dropdown-menu">
+            <li><a href="#">课程子项1</a></li>
+            <li><a href="#">课程子项2</a></li>
+            <li><a href="#">课程子项3</a></li>
+            <li><a href="#">课程子项4</a></li>
+            <li><a href="#">课程子项5</a></li>
+          </ul>
+        </li>
+        <li class="dropdown"><a href="camp.html">训练营</a>
+          <ul class="dropdown-menu">
+            <li><a href="#">训练营子项1</a></li>
+            <li><a href="#">训练营子项2</a></li>
+            <li><a href="#">训练营子项3</a></li>
+            <li><a href="#">训练营子项4</a></li>
+            <li><a href="#">训练营子项5</a></li>
+          </ul>
+        </li>
+        <li class="dropdown"><a href="exam.html">单板考级</a>
+          <ul class="dropdown-menu">
+            <li><a href="#">考级子项1</a></li>
+            <li><a href="#">考级子项2</a></li>
+            <li><a href="#">考级子项3</a></li>
+            <li><a href="#">考级子项4</a></li>
+            <li><a href="#">考级子项5</a></li>
+          </ul>
+        </li>
+        <li><a href="news.html">最新消息</a></li>
+        <li class="dropdown"><a href="about.html">关于学校</a>
+          <ul class="dropdown-menu">
+            <li><a href="gallery.html">精彩瞬间</a></li>
+          </ul>
+        </li>
+        <li><a href="contact.html">联系我们</a></li>
+        <li><a href="coaches.html">教练团队</a></li>
+      </ul>
+    </div>
+  </nav>
+  <main>
+    <section class="gallery-hero">
+      <h1>精彩瞬间</h1>
+      <p>记录Glide.X滑雪学校学员与教练的高光时刻</p>
+    </section>
+    <div class="masonry-gallery" id="masonry-gallery"></div>
+  </main>
+  <footer class="footer">
+    <div class="container">
+      <p>© 2024 Glide.X滑雪学校. 保留所有权利.</p>
+    </div>
+  </footer>
+  <script>
+    // 动态生成图片、视频、动图墙
+    const imgs = [
+      // 图片
+      'https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=600&q=80',
+      'https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=600&q=80',
+      'https://images.unsplash.com/photo-1515524738708-327f6b0037a7?auto=format&fit=crop&w=600&q=80',
+      'https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=600&q=80',
+      'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80',
+      'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=600&q=80',
+      // 动图
+      'https://media.giphy.com/media/3o6Zt481isNVuQI1l6/giphy.gif',
+      'https://media.giphy.com/media/26ufdipQqU2lhNA4g/giphy.gif',
+      'https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif',
+      // 视频（YouTube缩略图+播放按钮，点击弹窗播放）
+      {type:'video',thumb:'https://img.youtube.com/vi/1w8Z0UOXVaY/hqdefault.jpg',src:'https://www.youtube.com/embed/1w8Z0UOXVaY'},
+      {type:'video',thumb:'https://img.youtube.com/vi/2Vv-BfVoq4g/hqdefault.jpg',src:'https://www.youtube.com/embed/2Vv-BfVoq4g'},
+      {type:'video',thumb:'https://img.youtube.com/vi/3AtDnEC4zak/hqdefault.jpg',src:'https://www.youtube.com/embed/3AtDnEC4zak'},
+    ];
+    // 填充到60个
+    while(imgs.length<60){
+      const base = imgs.length%6;
+      if(base<3){
+        imgs.push(imgs[base]); //图片
+      }else if(base===3||base===4){
+        imgs.push('https://media.giphy.com/media/3o6Zt481isNVuQI1l6/giphy.gif'); //动图
+      }else{
+        imgs.push({type:'video',thumb:'https://img.youtube.com/vi/1w8Z0UOXVaY/hqdefault.jpg',src:'https://www.youtube.com/embed/1w8Z0UOXVaY'});
+      }
+    }
+    const gallery = document.getElementById('masonry-gallery');
+    imgs.forEach((item, i) => {
+      if(typeof item==='string'){
+        // 普通图片或gif
+        const img = document.createElement('img');
+        img.src = item;
+        img.alt = '精彩瞬间'+(i+1);
+        img.setAttribute('data-aos','zoom-in-up');
+        img.setAttribute('data-aos-delay', 100 + (i%6)*60);
+        gallery.appendChild(img);
+      }else if(item.type==='video'){
+        // 视频缩略图
+        const wrap = document.createElement('div');
+        wrap.style.position='relative';wrap.style.display='block';wrap.style.marginBottom='1.5em';wrap.style.borderRadius='18px';wrap.style.overflow='hidden';wrap.style.boxShadow='0 4px 24px rgba(0,0,0,0.13)';
+        wrap.setAttribute('data-aos','zoom-in-up');
+        wrap.setAttribute('data-aos-delay', 100 + (i%6)*60);
+        const img = document.createElement('img');
+        img.src = item.thumb;
+        img.alt = '精彩瞬间视频'+(i+1);
+        img.style.width='100%';img.style.display='block';
+        const play = document.createElement('div');
+        play.innerHTML = '&#9658;';
+        play.style.position='absolute';play.style.left='50%';play.style.top='50%';play.style.transform='translate(-50%,-50%)';play.style.fontSize='3em';play.style.color='#fff';play.style.textShadow='0 2px 8px #000';play.style.pointerEvents='none';
+        wrap.appendChild(img);wrap.appendChild(play);
+        wrap.style.cursor='pointer';
+        wrap.onclick = function(){
+          const modal = document.createElement('div');
+          modal.style.position='fixed';modal.style.left=0;modal.style.top=0;modal.style.width='100vw';modal.style.height='100vh';modal.style.background='rgba(0,0,0,0.85)';modal.style.zIndex=99999;modal.style.display='flex';modal.style.alignItems='center';modal.style.justifyContent='center';
+          modal.innerHTML = `<iframe src='${item.src}' frameborder='0' allowfullscreen style='width:80vw;max-width:700px;height:45vw;max-height:400px;border-radius:18px;background:#000;'></iframe>`;
+          modal.onclick = ()=>document.body.removeChild(modal);
+          document.body.appendChild(modal);
+        };
+        gallery.appendChild(wrap);
+      }
+    });
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>AOS.init({ duration: 900, once: true });</script>
+</body>
+</html> 

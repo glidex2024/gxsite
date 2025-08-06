@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>教练团队 - Glide.X滑雪学校</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav id="navbar" class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="logo">Glide.X</a>
+      <ul class="nav-links">
+        <li><a href="index.html#home">首页</a></li>
+        <li class="dropdown"><a href="courses.html">特色课程</a>
+          <ul class="dropdown-menu">
+            <li><a href="#">课程子项1</a></li>
+            <li><a href="#">课程子项2</a></li>
+            <li><a href="#">课程子项3</a></li>
+            <li><a href="#">课程子项4</a></li>
+            <li><a href="#">课程子项5</a></li>
+          </ul>
+        </li>
+        <li class="dropdown"><a href="camp.html">训练营</a>
+          <ul class="dropdown-menu">
+            <li><a href="#">训练营子项1</a></li>
+            <li><a href="#">训练营子项2</a></li>
+            <li><a href="#">训练营子项3</a></li>
+            <li><a href="#">训练营子项4</a></li>
+            <li><a href="#">训练营子项5</a></li>
+          </ul>
+        </li>
+        <li class="dropdown"><a href="exam.html">单板考级</a>
+          <ul class="dropdown-menu">
+            <li><a href="#">考级子项1</a></li>
+            <li><a href="#">考级子项2</a></li>
+            <li><a href="#">考级子项3</a></li>
+            <li><a href="#">考级子项4</a></li>
+            <li><a href="#">考级子项5</a></li>
+          </ul>
+        </li>
+        <li><a href="news.html">最新消息</a></li>
+        <li class="dropdown"><a href="about.html">关于学校</a>
+          <ul class="dropdown-menu">
+            <li><a href="gallery.html">精彩瞬间</a></li>
+          </ul>
+        </li>
+        <li><a href="contact.html">联系我们</a></li>
+        <li><a href="coaches.html">教练团队</a></li>
+      </ul>
+    </div>
+  </nav>
+  <main>
+    <section class="coaches-hero">
+      <h1>教练团队</h1>
+      <p>国际化专业教练团队，助力每一位学员安全进步、享受滑雪乐趣</p>
+    </section>
+    <section class="coaches-filter-section container" style="margin-bottom:2em;">
+      <form id="coach-filter-form" style="display:flex;gap:1.5em;flex-wrap:wrap;align-items:center;justify-content:center;">
+        <label>性别
+          <select id="filter-gender" class="form-input" style="min-width:90px;">
+            <option value="">不限</option>
+            <option value="男">男</option>
+            <option value="女">女</option>
+          </select>
+        </label>
+        <label>体系
+          <select id="filter-system" class="form-input" style="min-width:90px;">
+            <option value="">不限</option>
+            <option value="jsba">JSBA</option>
+            <option value="saj">SAJ</option>
+            <option value="casi">CASI</option>
+          </select>
+        </label>
+        <label>风格
+          <select id="filter-style" class="form-input" style="min-width:90px;">
+            <option value="">不限</option>
+            <option value="平花">平花</option>
+            <option value="刻滑">刻滑</option>
+            <option value="自由式">自由式</option>
+            <option value="跳台">跳台</option>
+          </select>
+        </label>
+      </form>
+    </section>
+    <section class="coaches-list-section container">
+      <div class="coaches-list">
+        <!-- 自动生成20位教练卡片 -->
+        <script>
+          // 教练数据（体系/风格多选）
+          const coachData = [
+            {name:'王磊（Leo Wang）',gender:'男',system:['jsba','saj'],style:['刻滑','自由式'],title:'国家高级滑雪教练',avatar:'https://randomuser.me/api/portraits/men/32.jpg',desc:'10年教学经验，擅长单板/双板滑雪，注重安全与乐趣结合。'},
+            {name:'林美（Mei Lin）',gender:'女',system:['casi'],style:['平花','自由式'],title:'国际认证单板教练',avatar:'https://randomuser.me/api/portraits/women/44.jpg',desc:'旅日多年，精通日中英三语，擅长青少年滑雪启蒙与考级辅导。'},
+            {name:'佐藤健（Ken Sato）',gender:'男',system:['jsba'],style:['刻滑'],title:'JSBA认证考级官',avatar:'https://randomuser.me/api/portraits/men/65.jpg',desc:'日本本地资深教练，专注单板考级与进阶动作教学。'},
+            {name:'李娜（Na Li）',gender:'女',system:['saj','casi'],style:['自由式','平花'],title:'国家滑雪指导员',avatar:'https://randomuser.me/api/portraits/women/68.jpg',desc:'多年滑雪教学经验，擅长女性与儿童滑雪启蒙。'},
+            {name:'张伟（Wei Zhang）',gender:'男',system:['jsba'],style:['跳台','自由式'],title:'单板滑雪教练',avatar:'https://randomuser.me/api/portraits/men/23.jpg',desc:'注重实战与安全，带队多次滑雪营。'},
+            {name:'高桥翔（Sho Takahashi）',gender:'男',system:['saj'],style:['刻滑'],title:'日籍双板教练',avatar:'https://randomuser.me/api/portraits/men/77.jpg',desc:'日本本地双板专家，教学风格严谨。'},
+            {name:'陈晨（Chen Chen）',gender:'男',system:['casi'],style:['平花','自由式'],title:'青少年滑雪教练',avatar:'https://randomuser.me/api/portraits/men/12.jpg',desc:'擅长青少年滑雪兴趣培养，活泼亲和。'},
+            {name:'小林优（Yu Kobayashi）',gender:'男',system:['jsba'],style:['刻滑','平花'],title:'单板考级辅导',avatar:'https://randomuser.me/api/portraits/men/41.jpg',desc:'考级通过率高，注重动作细节。'},
+            {name:'赵婷（Ting Zhao）',gender:'女',system:['casi'],style:['自由式'],title:'滑雪体验课导师',avatar:'https://randomuser.me/api/portraits/women/55.jpg',desc:'专注滑雪体验课，善于激发初学者兴趣。'},
+            {name:'松本健一（Kenichi Matsumoto）',gender:'男',system:['saj'],style:['刻滑','自由式'],title:'高级滑雪教练',avatar:'https://randomuser.me/api/portraits/men/80.jpg',desc:'多年滑雪教学，注重因材施教。'},
+            {name:'王强（Qiang Wang）',gender:'男',system:['jsba'],style:['平花'],title:'滑雪营地教练',avatar:'https://randomuser.me/api/portraits/men/34.jpg',desc:'丰富营地教学经验，团队协作能力强。'},
+            {name:'刘洋（Yang Liu）',gender:'男',system:['jsba'],style:['自由式'],title:'滑雪基础教练',avatar:'https://randomuser.me/api/portraits/men/50.jpg',desc:'基础动作教学专家，耐心细致。'},
+            {name:'伊藤美咲（Misaki Ito）',gender:'女',system:['saj'],style:['平花','自由式'],title:'日籍女教练',avatar:'https://randomuser.me/api/portraits/women/60.jpg',desc:'女性滑雪教学专家，亲和力强。'},
+            {name:'孙浩（Hao Sun）',gender:'男',system:['jsba'],style:['刻滑','自由式'],title:'滑雪进阶教练',avatar:'https://randomuser.me/api/portraits/men/71.jpg',desc:'擅长进阶动作与实战训练。'},
+            {name:'李雪（Xue Li）',gender:'女',system:['casi'],style:['自由式','平花'],title:'滑雪启蒙导师',avatar:'https://randomuser.me/api/portraits/women/22.jpg',desc:'儿童滑雪启蒙，寓教于乐。'},
+            {name:'山本大辅（Daisuke Yamamoto）',gender:'男',system:['jsba'],style:['跳台'],title:'日籍考级官',avatar:'https://randomuser.me/api/portraits/men/90.jpg',desc:'JSBA考级官，考级辅导经验丰富。'},
+            {name:'周敏（Min Zhou）',gender:'女',system:['saj'],style:['平花'],title:'滑雪安全教练',avatar:'https://randomuser.me/api/portraits/women/33.jpg',desc:'注重安全知识普及，教学严谨。'},
+            {name:'佐佐木诚（Makoto Sasaki）',gender:'男',system:['jsba'],style:['刻滑','自由式'],title:'单板进阶教练',avatar:'https://randomuser.me/api/portraits/men/17.jpg',desc:'进阶动作教学，善于激发潜力。'},
+            {name:'王蕾（Lei Wang）',gender:'女',system:['casi'],style:['平花','自由式'],title:'滑雪兴趣导师',avatar:'https://randomuser.me/api/portraits/women/12.jpg',desc:'激发学员兴趣，注重互动体验。'},
+            {name:'田中翔（Sho Tanaka）',gender:'男',system:['saj'],style:['自由式','跳台'],title:'日籍滑雪教练',avatar:'https://randomuser.me/api/portraits/men/28.jpg',desc:'日本本地滑雪专家，经验丰富。'}
+          ];
+          function renderCoaches() {
+            const list = document.querySelector('.coaches-list');
+            list.innerHTML = '';
+            const gender = document.getElementById('filter-gender').value;
+            const system = document.getElementById('filter-system').value;
+            const style = document.getElementById('filter-style').value;
+            coachData.forEach((c,i)=>{
+              if ((gender && c.gender!==gender)
+                || (system && !c.system.includes(system))
+                || (style && !c.style.includes(style))) return;
+              list.innerHTML += `<div class='coach-card' data-coach='${i}'>
+                <a href='coach-detail.html?id=${i}' style='text-decoration:none;color:inherit;'>
+                  <img class='coach-avatar' src='${c.avatar}' alt='${c.name}'>
+                  <h3>${c.name}</h3>
+                  <div class='coach-title'>${c.title}</div>
+                  <p>${c.desc}</p>
+                </a>
+                <button class='btn coach-book-btn'>预约课程</button>
+              </div>`;
+            });
+          }
+          document.getElementById('coach-filter-form').onchange = renderCoaches;
+          renderCoaches();
+        </script>
+      </div>
+    </section>
+    <div id="coach-booking-modal" class="booking-modal" style="display:none;">
+      <div class="booking-steps"></div>
+    </div>
+  </main>
+  <footer class="footer">
+    <div class="container">
+      <p>© 2024 Glide.X滑雪学校. 保留所有权利.</p>
+    </div>
+  </footer>
+  <script src="coach-booking.js"></script>
+</body>
+</html> 

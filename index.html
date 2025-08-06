@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Glide.X滑雪学校</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- AOS 动画库 -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <!-- Swiper 轮播库 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+</head>
+<body>
+  <!-- 顶部导航栏 -->
+  <nav id="navbar" class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="logo">Glide.X</a>
+      <ul class="nav-links">
+        <li><a href="index.html#home">首页</a></li>
+        <li class="dropdown"><a href="courses.html">特色课程</a>
+          <ul class="dropdown-menu">
+            <li><a href="#">课程子项1</a></li>
+            <li><a href="#">课程子项2</a></li>
+            <li><a href="#">课程子项3</a></li>
+            <li><a href="#">课程子项4</a></li>
+            <li><a href="#">课程子项5</a></li>
+          </ul>
+        </li>
+        <li class="dropdown"><a href="camp.html">训练营</a>
+          <ul class="dropdown-menu">
+            <li><a href="#">训练营子项1</a></li>
+            <li><a href="#">训练营子项2</a></li>
+            <li><a href="#">训练营子项3</a></li>
+            <li><a href="#">训练营子项4</a></li>
+            <li><a href="#">训练营子项5</a></li>
+          </ul>
+        </li>
+        <li class="dropdown"><a href="exam.html">单板考级</a>
+          <ul class="dropdown-menu">
+            <li><a href="#">考级子项1</a></li>
+            <li><a href="#">考级子项2</a></li>
+            <li><a href="#">考级子项3</a></li>
+            <li><a href="#">考级子项4</a></li>
+            <li><a href="#">考级子项5</a></li>
+          </ul>
+        </li>
+        <li><a href="news.html">最新消息</a></li>
+        <li class="dropdown"><a href="about.html">关于学校</a>
+          <ul class="dropdown-menu">
+            <li><a href="gallery.html">精彩瞬间</a></li>
+          </ul>
+        </li>
+        <li><a href="contact.html">联系我们</a></li>
+        <li><a href="coaches.html">教练团队</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- 全屏主视觉区域（轮播） -->
+  <header class="hero" id="home">
+    <div class="swiper heroSwiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <div class="hero-bg" style="background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1600&q=80');"></div>
+          <div class="hero-content" data-aos="fade-up">
+            <h1>Glide.X滑雪学校</h1>
+            <p>“GLIDE” 代表滑行，“X” 代表挑战。GX希望以滑行的方式，与大家一起挑战自我极限，发现更多户外乐趣。</p>
+            <a href="courses.html" class="btn">预约课程</a>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="hero-bg" style="background-image: url('https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=1600&q=80');"></div>
+          <div class="hero-content" data-aos="fade-up">
+            <h1>GX专注横板运动</h1>
+            <p>单板、滑板、冲浪，助力爱好者挑战极限，享受户外乐趣。</p>
+            <a href="#about" class="btn">了解更多</a>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="hero-bg" style="background-image: url('https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=1600&q=80');"></div>
+          <div class="hero-content" data-aos="fade-up">
+            <h1>滑雪培训与活动</h1>
+            <p>GX提供专业滑雪培训与丰富横板活动，欢迎加入我们的大家庭！</p>
+            <a href="courses.html" class="btn">预约课程</a>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="hero-bg" style="background:#000;display:flex;align-items:center;justify-content:center;">
+            <img src="https://media.giphy.com/media/3o6Zt481isNVuQI1l6/giphy.gif" alt="滑雪动图" style="max-width:100%;max-height:80vh;border-radius:18px;box-shadow:0 4px 24px rgba(0,51,102,0.10);">
+          </div>
+          <div class="hero-content" data-aos="fade-up" style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;background:none;">
+            <div style="margin-top:1.2em;color:#fff;font-size:1.15em;font-weight:600;letter-spacing:0.08em;">Glide.X 精彩滑雪动图</div>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="hero-bg" style="background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=80');"></div>
+          <div class="hero-content" data-aos="fade-up">
+            <h1>冲浪激情</h1>
+            <p>GX带你体验海浪上的速度与激情，专业教练带队，安全又刺激！</p>
+            <a href="#surf" class="btn">了解冲浪</a>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="hero-bg" style="background-image: url('https://images.unsplash.com/photo-1519864600265-abb23847ef2c?auto=format&fit=crop&w=1600&q=80');"></div>
+          <div class="hero-content" data-aos="fade-up">
+            <h1>滑板酷玩</h1>
+            <p>GX滑板俱乐部，城市街头与极限公园的自由驰骋，等你来挑战！</p>
+            <a href="#skate" class="btn">了解滑板</a>
+          </div>
+        </div>
+      </div>
+      <div class="swiper-pagination"></div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+    </div>
+  </header>
+
+  <!-- 卡片式内容分块 -->
+  <section class="cards-section container" id="about">
+    <div class="card" data-aos="fade-up" data-aos-delay="100">
+      <a href="about.html" style="text-decoration:none;color:inherit;">
+        <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=600&q=80" alt="关于我们">
+        <h3>关于我们</h3>
+        <p>Glide.X滑雪学校，专注国际化滑雪教学与横板运动。</p>
+      </a>
+    </div>
+    <div class="card" data-aos="fade-up" data-aos-delay="200">
+      <img src="https://images.unsplash.com/photo-1515524738708-327f6b0037a7?auto=format&fit=crop&w=600&q=80" alt="我们是谁">
+      <h3>我们是谁？</h3>
+      <p>我们是一群长期旅居日本的伙伴，因为共同热爱横板运动而走到一起，建立了深厚的友谊。我们热烈欢迎更多小伙伴加入我们，无论您身在日本、中国，还是世界各地，只要您热爱横板运动，我们都期待与您相遇！</p>
+    </div>
+    <div class="card" data-aos="fade-up" data-aos-delay="300">
+      <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=600&q=80" alt="我们的计划">
+      <h3>接下来我们要做什么？</h3>
+      <p>我们会每月不定期举办各种横板活动，欢迎大家踊跃参加！24-25雪季也将提供单双板滑雪教学服务，具体教学地点和课程内容会很快发布，敬请期待！</p>
+    </div>
+  </section>
+
+  <!-- 最新消息模块 -->
+  <section class="news-section container" id="news">
+    <h2 data-aos="fade-right">最新消息</h2>
+    <div class="news-list" id="news-list"></div>
+    <div style="text-align:center;margin-top:2rem;">
+      <a href="news.html" class="btn">查看全部消息</a>
+    </div>
+  </section>
+
+  <!-- 页脚 -->
+  <footer class="footer">
+    <div class="container">
+      <p>© 2024 Glide.X滑雪学校. 保留所有权利.</p>
+    </div>
+  </footer>
+
+  <!-- 微信客服悬浮按钮 -->
+  <div id="wechat-float" style="position:fixed;right:2vw;bottom:3vh;z-index:9999;">
+    <button id="wechat-btn" style="background:#fff;border-radius:50%;box-shadow:0 2px 12px rgba(0,51,102,0.13);border:none;width:60px;height:60px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:box-shadow 0.2s;">
+      <img src="https://img.icons8.com/color/48/000000/weixing.png" alt="微信客服" style="width:36px;height:36px;">
+    </button>
+    <div id="wechat-qr" style="display:none;position:absolute;right:70px;bottom:0;background:#fff;border-radius:12px;box-shadow:0 2px 16px rgba(0,51,102,0.13);padding:1em 1em 0.5em 1em;text-align:center;">
+      <div style="font-size:1.05em;color:#222;font-weight:600;margin-bottom:0.5em;">微信客服</div>
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=weixin://wxid_xxxxx" alt="微信二维码" style="width:120px;height:120px;">
+      <div style="font-size:0.98em;color:#888;margin-top:0.5em;">扫码添加客服</div>
+    </div>
+  </div>
+
+  <!-- AI对话客服悬浮按钮 -->
+  <div id="ai-float" style="position:fixed;right:2vw;bottom:90px;z-index:9999;">
+    <button id="ai-btn" style="background:#003366;color:#fff;border-radius:50px;box-shadow:0 2px 12px rgba(0,51,102,0.13);border:none;width:60px;height:60px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1.3em;font-weight:700;gap:0.5em;transition:box-shadow 0.2s;">
+      <img src="https://img.icons8.com/fluency/48/robot-2.png" alt="AI客服" style="width:32px;height:32px;">AI
+    </button>
+    <div id="ai-chat" style="display:none;position:absolute;right:70px;bottom:0;width:320px;max-width:90vw;background:#fff;border-radius:16px;box-shadow:0 2px 24px rgba(0,51,102,0.18);padding:0.5em 0.5em 0.7em 0.5em;">
+      <div style="font-weight:700;color:var(--main-blue);font-size:1.1em;margin-bottom:0.5em;display:flex;align-items:center;gap:0.5em;">
+        <img src="https://img.icons8.com/fluency/32/robot-2.png" style="width:24px;height:24px;">AI客服
+        <span id="ai-close" style="margin-left:auto;cursor:pointer;font-size:1.3em;color:#bbb;">×</span>
+      </div>
+      <div id="ai-quick" style="display:flex;gap:0.5em;margin-bottom:0.7em;">
+        <button class="ai-quick-btn" data-q="我想预约滑雪课程" style="background:#e6f7ff;color:#003366;border:none;border-radius:8px;padding:0.3em 1em;cursor:pointer;font-size:0.98em;">预约滑雪课程</button>
+        <button class="ai-quick-btn" data-q="我想预约单板考级" style="background:#e6f7ff;color:#003366;border:none;border-radius:8px;padding:0.3em 1em;cursor:pointer;font-size:0.98em;">预约单板考级</button>
+        <button class="ai-quick-btn" data-q="转人工服务" style="background:#f5f5f5;color:#e60012;border:none;border-radius:8px;padding:0.3em 1em;cursor:pointer;font-size:0.98em;">转人工服务</button>
+      </div>
+      <div id="ai-chat-history" style="height:180px;overflow-y:auto;background:#f8fafd;border-radius:8px;padding:0.7em 0.5em 0.5em 0.5em;font-size:0.98em;margin-bottom:0.7em;"></div>
+      <form id="ai-chat-form" style="display:flex;gap:0.5em;">
+        <input id="ai-input" type="text" placeholder="请输入您的问题..." style="flex:1;padding:0.6em 1em;border-radius:8px;border:1px solid #e0e0e0;font-size:1em;">
+        <button type="submit" style="background:var(--main-orange);color:#fff;border:none;border-radius:8px;padding:0 1.2em;font-size:1em;cursor:pointer;">发送</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- JS 脚本 -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="main.js"></script>
+  <script src="index-news.js"></script>
+  <script>
+    const wechatBtn = document.getElementById('wechat-btn');
+    const wechatQr = document.getElementById('wechat-qr');
+    wechatBtn.onclick = function(e) {
+      e.stopPropagation();
+      wechatQr.style.display = wechatQr.style.display==='block' ? 'none' : 'block';
+    };
+    document.body.onclick = function() { wechatQr.style.display = 'none'; };
+    wechatQr.onclick = function(e) { e.stopPropagation(); };
+
+    // AI客服弹窗逻辑
+    const aiBtn = document.getElementById('ai-btn');
+    const aiChat = document.getElementById('ai-chat');
+    const aiClose = document.getElementById('ai-close');
+    const aiForm = document.getElementById('ai-chat-form');
+    const aiInput = document.getElementById('ai-input');
+    const aiHistory = document.getElementById('ai-chat-history');
+    aiBtn.onclick = function(e) {
+      e.stopPropagation();
+      aiChat.style.display = aiChat.style.display==='block' ? 'none' : 'block';
+      if(aiChat.style.display==='block') aiInput.focus();
+    };
+    aiClose.onclick = function(e) {
+      aiChat.style.display = 'none';
+    };
+    document.body.onclick = function() { aiChat.style.display = 'none'; wechatQr && (wechatQr.style.display = 'none'); };
+    aiChat.onclick = function(e) { e.stopPropagation(); };
+    aiForm.onsubmit = function(e) {
+      e.preventDefault();
+      const q = aiInput.value.trim();
+      if(!q) return;
+      aiHistory.innerHTML += `<div style='margin-bottom:0.4em;text-align:right;'><span style='background:#e6f7ff;color:#003366;padding:0.3em 0.8em;border-radius:12px 12px 2px 12px;display:inline-block;'>${q}</span></div>`;
+      aiInput.value = '';
+      setTimeout(()=>{
+        aiHistory.innerHTML += `<div style='margin-bottom:0.4em;text-align:left;'><span style='background:#f5f5f5;color:#222;padding:0.3em 0.8em;border-radius:12px 12px 12px 2px;display:inline-block;'>您好，这里是AI客服，您的问题已收到，我们会尽快回复！</span></div>`;
+        aiHistory.scrollTop = aiHistory.scrollHeight;
+      }, 600);
+      aiHistory.scrollTop = aiHistory.scrollHeight;
+    };
+
+    // AI客服快捷选项
+    const aiQuickBtns = document.querySelectorAll('.ai-quick-btn');
+    aiQuickBtns.forEach(btn => {
+      btn.onclick = function(e) {
+        e.stopPropagation();
+        const q = btn.getAttribute('data-q');
+        aiHistory.innerHTML += `<div style='margin-bottom:0.4em;text-align:right;'><span style='background:#e6f7ff;color:#003366;padding:0.3em 0.8em;border-radius:12px 12px 2px 12px;display:inline-block;'>${q}</span></div>`;
+        let reply = '您好，这里是AI客服，您的问题已收到，我们会尽快回复！';
+        if(q.includes('滑雪课程')) reply = '请前往“特色课程”页面选择您感兴趣的滑雪课程并预约。如需人工协助，请回复“转人工服务”。';
+        if(q.includes('单板考级')) reply = '单板考级预约请前往“单板考级”页面，或直接留言您的需求，我们会有专人联系您。';
+        if(q.includes('人工')) reply = '已为您转接人工客服，请稍候...';
+        setTimeout(()=>{
+          aiHistory.innerHTML += `<div style='margin-bottom:0.4em;text-align:left;'><span style='background:#f5f5f5;color:#222;padding:0.3em 0.8em;border-radius:12px 12px 12px 2px;display:inline-block;'>${reply}</span></div>`;
+          aiHistory.scrollTop = aiHistory.scrollHeight;
+        }, 600);
+        aiHistory.scrollTop = aiHistory.scrollHeight;
+      };
+    });
+  </script>
+</body>
+</html> 

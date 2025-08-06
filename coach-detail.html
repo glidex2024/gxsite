@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>教练详情 - Glide.X滑雪学校</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .coach-detail-hero {text-align:center;padding:4em 0 2em 0;}
+    .coach-detail-hero h1 {font-size:2.1rem;color:var(--main-blue);font-weight:800;margin-bottom:0.5em;}
+    .coach-detail-hero p {color:#555;font-size:1.1rem;letter-spacing:0.08em;}
+    .coach-detail-main {max-width:900px;margin:0 auto 3em auto;display:flex;flex-wrap:wrap;gap:2.5em;align-items:flex-start;}
+    .coach-detail-avatar {width:160px;height:160px;border-radius:50%;object-fit:cover;border:4px solid #fff7f0;box-shadow:0 2px 12px rgba(0,51,102,0.10);margin-bottom:1.2em;}
+    .coach-detail-info {flex:1;min-width:260px;}
+    .coach-detail-title {color:var(--main-orange);font-size:1.1rem;font-weight:600;margin-bottom:0.7em;}
+    .coach-detail-bio {color:#333;font-size:1.05rem;margin-bottom:1.2em;line-height:1.8;}
+    .coach-detail-gallery {display:flex;gap:1.2em;flex-wrap:wrap;margin:1.5em 0;}
+    .coach-detail-gallery img {width:160px;height:110px;object-fit:cover;border-radius:12px;box-shadow:0 2px 12px rgba(0,51,102,0.10);transition:transform 0.25s;cursor:pointer;}
+    .coach-detail-gallery img:hover {transform:scale(1.08) rotate(-2deg);z-index:2;}
+    .coach-detail-video {width:320px;height:180px;border-radius:12px;box-shadow:0 2px 12px rgba(0,51,102,0.10);margin-bottom:1.2em;}
+    @media (max-width:900px){.coach-detail-main{flex-direction:column;align-items:center;}}
+    @media (max-width:600px){.coach-detail-avatar{width:100px;height:100px;}.coach-detail-video{width:100%;height:180px;}}
+  </style>
+</head>
+<body>
+  <nav id="navbar" class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="logo">Glide.X</a>
+      <ul class="nav-links">
+        <li><a href="index.html#home">首页</a></li>
+        <li class="dropdown"><a href="courses.html">特色课程</a>
+          <ul class="dropdown-menu">
+            <li><a href="#">课程子项1</a></li>
+            <li><a href="#">课程子项2</a></li>
+            <li><a href="#">课程子项3</a></li>
+            <li><a href="#">课程子项4</a></li>
+            <li><a href="#">课程子项5</a></li>
+          </ul>
+        </li>
+        <li class="dropdown"><a href="camp.html">训练营</a>
+          <ul class="dropdown-menu">
+            <li><a href="#">训练营子项1</a></li>
+            <li><a href="#">训练营子项2</a></li>
+            <li><a href="#">训练营子项3</a></li>
+            <li><a href="#">训练营子项4</a></li>
+            <li><a href="#">训练营子项5</a></li>
+          </ul>
+        </li>
+        <li class="dropdown"><a href="exam.html">单板考级</a>
+          <ul class="dropdown-menu">
+            <li><a href="#">考级子项1</a></li>
+            <li><a href="#">考级子项2</a></li>
+            <li><a href="#">考级子项3</a></li>
+            <li><a href="#">考级子项4</a></li>
+            <li><a href="#">考级子项5</a></li>
+          </ul>
+        </li>
+        <li><a href="news.html">最新消息</a></li>
+        <li class="dropdown"><a href="about.html">关于学校</a>
+          <ul class="dropdown-menu">
+            <li><a href="gallery.html">精彩瞬间</a></li>
+          </ul>
+        </li>
+        <li><a href="contact.html">联系我们</a></li>
+        <li><a href="coaches.html">教练团队</a></li>
+      </ul>
+    </div>
+  </nav>
+  <main>
+    <section class="coach-detail-hero">
+      <h1 id="coach-name">教练详情</h1>
+      <p id="coach-title"></p>
+    </section>
+    <div class="coach-detail-main">
+      <div>
+        <img id="coach-avatar" class="coach-detail-avatar" src="" alt="教练头像">
+        <div id="coach-video"></div>
+      </div>
+      <div class="coach-detail-info">
+        <div class="coach-detail-title" id="coach-title2"></div>
+        <div class="coach-detail-bio" id="coach-bio"></div>
+        <div class="coach-detail-gallery" id="coach-gallery"></div>
+      </div>
+    </div>
+  </main>
+  <footer class="footer">
+    <div class="container">
+      <p>© 2024 Glide.X滑雪学校. 保留所有权利.</p>
+    </div>
+  </footer>
+  <script>
+    // 示例教练数据
+    const coachDetails = [
+      {
+        name: '王磊（Leo Wang）',
+        title: '国家高级滑雪教练',
+        avatar: 'https://randomuser.me/api/portraits/men/32.jpg',
+        bio: '10年教学经验，擅长单板/双板滑雪，注重安全与乐趣结合，带领学员多次获得考级认证。\n\n教学风格：耐心细致，善于因材施教，注重安全与实战结合。\n\n个人履历：\n- 2014-2024：Glide.X滑雪学校主教练\n- 2018年获国家高级滑雪教练证书\n- 培养学员通过JSBA考级100+人',
+        video: '<iframe class="coach-detail-video" src="https://www.youtube.com/embed/1w8Z0UOXVaY" frameborder="0" allowfullscreen></iframe>',
+        gallery: [
+          'https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=600&q=80',
+          'https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=600&q=80',
+          'https://images.unsplash.com/photo-1515524738708-327f6b0037a7?auto=format&fit=crop&w=600&q=80'
+        ]
+      },
+      {
+        name: '林美（Mei Lin）',
+        title: '国际认证单板教练',
+        avatar: 'https://randomuser.me/api/portraits/women/44.jpg',
+        bio: '旅日多年，精通日中英三语，擅长青少年滑雪启蒙与考级辅导，深受学员喜爱。\n\n教学风格：活泼亲和，善于激发学员兴趣，注重基础动作规范。\n\n个人履历：\n- 2016-2024：Glide.X滑雪学校单板教练\n- 2019年获国际单板教练认证\n- 组织青少年滑雪营20+期',
+        video: '<iframe class="coach-detail-video" src="https://www.youtube.com/embed/2Vv-BfVoq4g" frameborder="0" allowfullscreen></iframe>',
+        gallery: [
+          'https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=600&q=80',
+          'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80',
+          'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=600&q=80'
+        ]
+      },
+      {
+        name: '佐藤健（Ken Sato）',
+        title: 'JSBA认证考级官',
+        avatar: 'https://randomuser.me/api/portraits/men/65.jpg',
+        bio: '日本本地资深教练，专注单板考级与进阶动作教学，教学风格严谨细致。\n\n教学风格：注重动作细节，善于激发学员潜力，考级通过率高。\n\n个人履历：\n- 2012-2024：Glide.X滑雪学校考级官\n- 2015年获JSBA考级官认证\n- 指导学员通过JSBA高级考级50+人',
+        video: '<iframe class="coach-detail-video" src="https://www.youtube.com/embed/3AtDnEC4zak" frameborder="0" allowfullscreen></iframe>',
+        gallery: [
+          'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=600&q=80',
+          'https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=600&q=80',
+          'https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=600&q=80'
+        ]
+      }
+    ];
+    function getQueryParam(name) {
+      const url = new URL(window.location.href);
+      return url.searchParams.get(name);
+    }
+    const id = parseInt(getQueryParam('id'), 10);
+    const data = coachDetails[id] || coachDetails[0];
+    document.getElementById('coach-name').textContent = data.name;
+    document.getElementById('coach-title').textContent = data.title;
+    document.getElementById('coach-title2').textContent = data.title;
+    document.getElementById('coach-avatar').src = data.avatar;
+    document.getElementById('coach-avatar').alt = data.name;
+    document.getElementById('coach-bio').innerHTML = data.bio.replace(/\n/g,'<br>');
+    document.getElementById('coach-video').innerHTML = data.video;
+    const gallery = document.getElementById('coach-gallery');
+    data.gallery.forEach(src => {
+      const img = document.createElement('img');
+      img.src = src;
+      img.alt = data.name+'照片';
+      gallery.appendChild(img);
+    });
+  </script>
+</body>
+</html> 

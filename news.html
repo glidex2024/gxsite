@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>最新消息 - Glide.X滑雪学校</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+</head>
+<body>
+  <!-- 顶部导航栏 -->
+  <nav id="navbar" class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="logo">Glide.X</a>
+      <ul class="nav-links">
+        <li><a href="index.html#home">首页</a></li>
+        <li class="dropdown"><a href="courses.html">特色课程</a>
+          <ul class="dropdown-menu">
+            <li><a href="#">课程子项1</a></li>
+            <li><a href="#">课程子项2</a></li>
+            <li><a href="#">课程子项3</a></li>
+            <li><a href="#">课程子项4</a></li>
+            <li><a href="#">课程子项5</a></li>
+          </ul>
+        </li>
+        <li class="dropdown"><a href="camp.html">训练营</a>
+          <ul class="dropdown-menu">
+            <li><a href="#">训练营子项1</a></li>
+            <li><a href="#">训练营子项2</a></li>
+            <li><a href="#">训练营子项3</a></li>
+            <li><a href="#">训练营子项4</a></li>
+            <li><a href="#">训练营子项5</a></li>
+          </ul>
+        </li>
+        <li class="dropdown"><a href="exam.html">单板考级</a>
+          <ul class="dropdown-menu">
+            <li><a href="#">考级子项1</a></li>
+            <li><a href="#">考级子项2</a></li>
+            <li><a href="#">考级子项3</a></li>
+            <li><a href="#">考级子项4</a></li>
+            <li><a href="#">考级子项5</a></li>
+          </ul>
+        </li>
+        <li><a href="news.html">最新消息</a></li>
+        <li class="dropdown"><a href="about.html">关于学校</a>
+          <ul class="dropdown-menu">
+            <li><a href="gallery.html">精彩瞬间</a></li>
+          </ul>
+        </li>
+        <li><a href="contact.html">联系我们</a></li>
+        <li><a href="coaches.html">教练团队</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- 主视觉区域 -->
+  <header class="" style="height: 40vh; min-height: 120px; >
+    <div class="" style="background: linear-gradient(rgba(17,17,17,0.7), rgba(17,17,17,0.7)), url('https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;"></div>
+    <div class="hero-content" data-aos="fade-up">
+      <h1 style="font-size:2.8rem;font-weight:900;background:linear-gradient(90deg,#003366,#ff6600 80%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:2px;">最新消息</h1>
+      <p style="color:#888;font-size:1.15rem;letter-spacing:0.12em;margin-top:0.7em;font-weight:500;">关注GX户外俱乐部的最新活动与动态</p>
+    </div>
+  </header>
+
+  <!-- 全部消息列表 -->
+  <section class="news-section container" style="padding-top:40px;">
+    <div class="news-list" id="news-list">
+      <!-- 消息条目由JS动态插入 -->
+    </div>
+    <div class="pagination" id="pagination" style="text-align:center;margin-top:2rem;"></div>
+  </section>
+
+  <!-- 页脚 -->
+  <footer class="footer">
+    <div class="container">
+      <p>© 2024 Glide.X滑雪学校. 保留所有权利.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 800, once: true });
+    // 滚动变色
+    window.addEventListener('scroll', function() {
+      const navbar = document.getElementById('navbar');
+      if (window.scrollY > 60) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+
+    // 静态json分页渲染
+    fetch('news.json')
+      .then(res => res.json())
+      .then(newsData => {
+        // 按日期倒序排序
+        newsData.sort((a, b) => {
+          // 假设日期格式为yyyy/mm/dd
+          return b.date.replace(/\D/g,'') - a.date.replace(/\D/g,'');
+        });
+        const pageSize = 10;
+        let currentPage = 1;
+        const totalPages = Math.ceil(newsData.length / pageSize);
+        // Unsplash图片池
+        const unsplashImgs = [
+          'https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=800&q=80',
+          'https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=800&q=80',
+          'https://images.unsplash.com/photo-1515524738708-327f6b0037a7?auto=format&fit=crop&w=800&q=80',
+          'https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=800&q=80',
+          'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80',
+          'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=800&q=80'
+        ];
+        function renderNews(page) {
+          const list = document.getElementById('news-list');
+          list.innerHTML = '';
+          const start = (page - 1) * pageSize;
+          const end = Math.min(start + pageSize, newsData.length);
+          for (let i = start; i < end; i++) {
+            const n = newsData[i];
+            let imgUrl = n.img;
+            if (imgUrl && imgUrl.startsWith('/image/news')) {
+              const idx = (parseInt(n.id, 10) - 1) % unsplashImgs.length;
+              imgUrl = unsplashImgs[idx];
+            }
+            const item = document.createElement('div');
+            item.className = 'news-item';
+            item.setAttribute('data-aos', 'fade-up');
+            item.setAttribute('data-aos-delay', 100 + (i - start) * 100);
+            item.innerHTML = `
+              <a href="news-detail.html?id=${n.id}" style="display:flex;text-decoration:none;color:inherit;">
+                <img src="${imgUrl}" alt="${n.title}">
+                <div class="news-content">
+                  <div class="news-date">${n.date}</div>
+                  <h3>${n.title}</h3>
+                  <p>${n.summary}</p>
+                </div>
+              </a>
+            `;
+            list.appendChild(item);
+          }
+        }
+        function renderPagination() {
+          const pagination = document.getElementById('pagination');
+          pagination.innerHTML = '';
+          const prevButton = document.createElement('button');
+          prevButton.innerHTML = '&laquo;';
+          prevButton.title = '上一页';
+          prevButton.disabled = currentPage === 1;
+          prevButton.className = 'page-nav';
+          prevButton.onclick = () => {
+            if (currentPage > 1) {
+              currentPage--;
+              renderNews(currentPage);
+              renderPagination();
+            }
+          };
+          pagination.appendChild(prevButton);
+          for (let i = 1; i <= totalPages; i++) {
+            const pageButton = document.createElement('button');
+            pageButton.textContent = i;
+            if (i === currentPage) pageButton.className = 'active';
+            pageButton.onclick = () => {
+              currentPage = i;
+              renderNews(currentPage);
+              renderPagination();
+            };
+            pagination.appendChild(pageButton);
+          }
+          const nextButton = document.createElement('button');
+          nextButton.innerHTML = '&raquo;';
+          nextButton.title = '下一页';
+          nextButton.disabled = currentPage === totalPages;
+          nextButton.className = 'page-nav';
+          nextButton.onclick = () => {
+            if (currentPage < totalPages) {
+              currentPage++;
+              renderNews(currentPage);
+              renderPagination();
+            }
+          };
+          pagination.appendChild(nextButton);
+        }
+        renderNews(currentPage);
+        renderPagination();
+      });
+  </script>
+</body>
+</html>
