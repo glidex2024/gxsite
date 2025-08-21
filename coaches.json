@@ -1,0 +1,204 @@
+{
+  "coaches": [
+    {
+      "id": 0,
+      "name": "王磊（Leo Wang）",
+      "gender": "男",
+      "system": ["jsba", "saj"],
+      "style": ["刻滑", "自由式"],
+      "title": "国家高级滑雪教练",
+      "avatar": "https://randomuser.me/api/portraits/men/32.jpg",
+      "desc": "10年教学经验，擅长单板/双板滑雪，注重安全与乐趣结合。"
+    },
+    {
+      "id": 1,
+      "name": "林美（Mei Lin）",
+      "gender": "女",
+      "system": ["casi"],
+      "style": ["平花", "自由式"],
+      "title": "国际认证单板教练",
+      "avatar": "https://randomuser.me/api/portraits/women/44.jpg",
+      "desc": "旅日多年，精通日中英三语，擅长青少年滑雪启蒙与考级辅导。"
+    },
+    {
+      "id": 2,
+      "name": "佐藤健（Ken Sato）",
+      "gender": "男",
+      "system": ["jsba"],
+      "style": ["刻滑"],
+      "title": "JSBA认证考级官",
+      "avatar": "https://randomuser.me/api/portraits/men/65.jpg",
+      "desc": "日本本地资深教练，专注单板考级与进阶动作教学。"
+    },
+    {
+      "id": 3,
+      "name": "李娜（Na Li）",
+      "gender": "女",
+      "system": ["saj", "casi"],
+      "style": ["自由式", "平花"],
+      "title": "国家滑雪指导员",
+      "avatar": "https://randomuser.me/api/portraits/women/68.jpg",
+      "desc": "多年滑雪教学经验，擅长女性与儿童滑雪启蒙。"
+    },
+    {
+      "id": 4,
+      "name": "张伟（Wei Zhang）",
+      "gender": "男",
+      "system": ["jsba"],
+      "style": ["跳台", "自由式"],
+      "title": "单板滑雪教练",
+      "avatar": "https://randomuser.me/api/portraits/men/23.jpg",
+      "desc": "注重实战与安全，带队多次滑雪营。"
+    },
+    {
+      "id": 5,
+      "name": "高桥翔（Sho Takahashi）",
+      "gender": "男",
+      "system": ["saj"],
+      "style": ["刻滑"],
+      "title": "日籍双板教练",
+      "avatar": "https://randomuser.me/api/portraits/men/77.jpg",
+      "desc": "日本本地双板专家，教学风格严谨。"
+    },
+    {
+      "id": 6,
+      "name": "陈晨（Chen Chen）",
+      "gender": "男",
+      "system": ["casi"],
+      "style": ["平花", "自由式"],
+      "title": "青少年滑雪教练",
+      "avatar": "https://randomuser.me/api/portraits/men/12.jpg",
+      "desc": "擅长青少年滑雪兴趣培养，活泼亲和。"
+    },
+    {
+      "id": 7,
+      "name": "小林优（Yu Kobayashi）",
+      "gender": "男",
+      "system": ["jsba"],
+      "style": ["刻滑", "平花"],
+      "title": "单板考级辅导",
+      "avatar": "https://randomuser.me/api/portraits/men/41.jpg",
+      "desc": "考级通过率高，注重动作细节。"
+    },
+    {
+      "id": 8,
+      "name": "赵婷（Ting Zhao）",
+      "gender": "女",
+      "system": ["casi"],
+      "style": ["自由式"],
+      "title": "滑雪体验课导师",
+      "avatar": "https://randomuser.me/api/portraits/women/55.jpg",
+      "desc": "专注滑雪体验课，善于激发初学者兴趣。"
+    },
+    {
+      "id": 9,
+      "name": "松本健一（Kenichi Matsumoto）",
+      "gender": "男",
+      "system": ["saj"],
+      "style": ["刻滑", "自由式"],
+      "title": "高级滑雪教练",
+      "avatar": "https://randomuser.me/api/portraits/men/80.jpg",
+      "desc": "多年滑雪教学，注重因材施教。"
+    },
+    {
+      "id": 10,
+      "name": "王强（Qiang Wang）",
+      "gender": "男",
+      "system": ["jsba"],
+      "style": ["平花"],
+      "title": "滑雪营地教练",
+      "avatar": "https://randomuser.me/api/portraits/men/34.jpg",
+      "desc": "丰富营地教学经验，团队协作能力强。"
+    },
+    {
+      "id": 11,
+      "name": "刘洋（Yang Liu）",
+      "gender": "男",
+      "system": ["jsba"],
+      "style": ["自由式"],
+      "title": "滑雪基础教练",
+      "avatar": "https://randomuser.me/api/portraits/men/50.jpg",
+      "desc": "基础动作教学专家，耐心细致。"
+    },
+    {
+      "id": 12,
+      "name": "伊藤美咲（Misaki Ito）",
+      "gender": "女",
+      "system": ["saj"],
+      "style": ["平花", "自由式"],
+      "title": "日籍女教练",
+      "avatar": "https://randomuser.me/api/portraits/women/60.jpg",
+      "desc": "女性滑雪教学专家，亲和力强。"
+    },
+    {
+      "id": 13,
+      "name": "孙浩（Hao Sun）",
+      "gender": "男",
+      "system": ["jsba"],
+      "style": ["刻滑", "自由式"],
+      "title": "滑雪进阶教练",
+      "avatar": "https://randomuser.me/api/portraits/men/71.jpg",
+      "desc": "擅长进阶动作与实战训练。"
+    },
+    {
+      "id": 14,
+      "name": "李雪（Xue Li）",
+      "gender": "女",
+      "system": ["casi"],
+      "style": ["自由式", "平花"],
+      "title": "滑雪启蒙导师",
+      "avatar": "https://randomuser.me/api/portraits/women/22.jpg",
+      "desc": "儿童滑雪启蒙，寓教于乐。"
+    },
+    {
+      "id": 15,
+      "name": "山本大辅（Daisuke Yamamoto）",
+      "gender": "男",
+      "system": ["jsba"],
+      "style": ["跳台"],
+      "title": "日籍考级官",
+      "avatar": "https://randomuser.me/api/portraits/men/90.jpg",
+      "desc": "JSBA考级官，考级辅导经验丰富。"
+    },
+    {
+      "id": 16,
+      "name": "周敏（Min Zhou）",
+      "gender": "女",
+      "system": ["saj"],
+      "style": ["平花"],
+      "title": "滑雪安全教练",
+      "avatar": "https://randomuser.me/api/portraits/women/33.jpg",
+      "desc": "注重安全知识普及，教学严谨。"
+    },
+    {
+      "id": 17,
+      "name": "佐佐木诚（Makoto Sasaki）",
+      "gender": "男",
+      "system": ["jsba"],
+      "style": ["刻滑", "自由式"],
+      "title": "单板进阶教练",
+      "avatar": "https://randomuser.me/api/portraits/men/17.jpg",
+      "desc": "进阶动作教学，善于激发潜力。"
+    },
+    {
+      "id": 18,
+      "name": "王蕾（Lei Wang）",
+      "gender": "女",
+      "system": ["casi"],
+      "style": ["平花", "自由式"],
+      "title": "滑雪兴趣导师",
+      "avatar": "https://randomuser.me/api/portraits/women/12.jpg",
+      "desc": "激发学员兴趣，注重互动体验。"
+    },
+    {
+      "id": 19,
+      "name": "田中翔（Sho Tanaka）",
+      "gender": "男",
+      "system": ["saj"],
+      "style": ["自由式", "跳台"],
+      "title": "日籍滑雪教练",
+      "avatar": "https://randomuser.me/api/portraits/men/28.jpg",
+      "desc": "日本本地滑雪专家，经验丰富。"
+    }
+  ]
+} 

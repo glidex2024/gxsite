@@ -21,20 +21,14 @@ const swiper = new Swiper('.mySwiper', {
   },
 });
 
-// 首页主视觉区全屏轮播
-const heroSwiper = new Swiper('.heroSwiper', {
+// 首页背景轮播 - 无分页器和导航按钮
+const heroBackgroundSwiper = new Swiper('.heroBackgroundSwiper', {
   loop: true,
   effect: 'fade',
   autoplay: {
-    delay: 4000,
+    delay: 5000,
     disableOnInteraction: false,
   },
-  pagination: {
-    el: '.heroSwiper .swiper-pagination',
-    clickable: true,
-  },
-  navigation: {
-    nextEl: '.heroSwiper .swiper-button-next',
-    prevEl: '.heroSwiper .swiper-button-prev',
-  },
+  speed: 1000,
+  allowTouchMove: false, // 禁用触摸滑动
 }); 
