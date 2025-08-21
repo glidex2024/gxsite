@@ -918,7 +918,7 @@
     
     .testimonials-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 2.5rem;
       margin-top: 3rem;
     }
@@ -931,6 +931,8 @@
       position: relative;
       border: 2px solid transparent;
       transition: all 0.3s ease;
+      box-sizing: border-box;
+      overflow: hidden;
     }
     
     .testimonial-card:hover {
@@ -957,12 +959,22 @@
       line-height: 1.7;
       color: var(--dark-gray);
       font-size: 1.1rem;
+      word-break: break-word;
+      overflow-wrap: anywhere;
+      white-space: normal;
     }
     
     .testimonial-author {
       font-weight: 700;
       color: var(--primary-blue);
       font-size: 1.1rem;
+    }
+
+    /* 强力兜底，防止远端文字溢出 */
+    .testimonial-card * {
+      word-break: break-word !important;
+      overflow-wrap: anywhere !important;
+      white-space: normal !important;
     }
     
     /* 最新消息区域样式 - 和coaches.html完全一样 */
