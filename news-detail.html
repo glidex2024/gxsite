@@ -29,6 +29,19 @@
       position: relative !important;
       overflow: visible !important;
     }
+
+    /* 文本换行与防溢出 */
+    #news-title, #news-content {
+      word-break: break-word;
+      overflow-wrap: anywhere;
+      white-space: normal;
+    }
+    #news-content {
+      white-space: pre-line; /* 保留换行 */
+      font-size: 1rem;
+      line-height: 1.8;
+    }
+    .container { box-sizing: border-box; }
   </style>
 </head>
 <body>
@@ -42,7 +55,6 @@
         <li><a href="coaches.html">教练团队</a></li>
         <li><a href="#faq">常见问题</a></li>
         <li><a href="news.html">最新消息</a></li>
-        <li><a href="#offseason">雪季外动态</a></li>
         <li><a href="contact.html">联系我们</a></li>
       </ul>
       <a href="courses.html" class="btn btn-reservation">预约</a>
@@ -152,7 +164,10 @@
           document.getElementById('news-img').alt = data.title;
           document.getElementById('news-img').style.display = 'block';
           document.getElementById('news-hero-bg').style.background = `linear-gradient(rgba(17,17,17,0.7), rgba(17,17,17,0.7)), url('${imgUrl}') center/cover no-repeat`;
-          document.getElementById('news-content').textContent = data.content;
+          // 使用文本+保留换行
+          document.getElementById('news-content').textContent = '';
+          const contentEl = document.getElementById('news-content');
+          contentEl.textContent = data.content;
         }
       });
   </script>
