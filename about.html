@@ -6,50 +6,76 @@
   <title>关于我们 - Glide.X滑雪学校</title>
   <link rel="stylesheet" href="style.css">
   <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <style>
+    /* 确保about.html页面可以正常滚动 */
+    html, body {
+      overflow-x: auto !important;
+      overflow-y: auto !important;
+      height: auto !important;
+      position: relative !important;
+    }
+    
+    /* 确保所有section元素都可以正常显示和滚动 */
+    section {
+      position: relative !important;
+      overflow: visible !important;
+    }
+    
+    /* 确保header不会阻止滚动 */
+    header {
+      overflow: visible !important;
+      position: relative !important;
+      height: auto !important;
+      min-height: 120px !important;
+    }
+    
+    /* 确保内容区域可以正常滚动 */
+    .container {
+      overflow: visible !important;
+    }
+    
+    /* 确保导航栏不会阻止滚动 */
+    .navbar {
+      position: fixed !important;
+      overflow: visible !important;
+    }
+    
+    /* 确保hero-content不会阻止滚动 */
+    .hero-content {
+      position: relative !important;
+      overflow: visible !important;
+    }
+    
+    /* 强制启用滚动 */
+    body {
+      overflow: auto !important;
+      height: auto !important;
+      min-height: 100vh !important;
+    }
+    
+    /* 确保footer不会阻止滚动 */
+    footer {
+      position: relative !important;
+      overflow: visible !important;
+    }
+  </style>
 </head>
 <body>
   <!-- 顶部导航栏 -->
   <nav id="navbar" class="navbar">
     <div class="container nav-container">
-      <a href="index.html" class="logo">Glide.X</a>
+      <a href="index.html" class="logo">GX 中文国际滑雪学校</a>
       <ul class="nav-links">
-        <li><a href="index.html#home">首页</a></li>
-        <li class="dropdown"><a href="courses.html">特色课程</a>
-          <ul class="dropdown-menu">
-            <li><a href="#">课程子项1</a></li>
-            <li><a href="#">课程子项2</a></li>
-            <li><a href="#">课程子项3</a></li>
-            <li><a href="#">课程子项4</a></li>
-            <li><a href="#">课程子项5</a></li>
-          </ul>
-        </li>
-        <li class="dropdown"><a href="camp.html">训练营</a>
-          <ul class="dropdown-menu">
-            <li><a href="#">训练营子项1</a></li>
-            <li><a href="#">训练营子项2</a></li>
-            <li><a href="#">训练营子项3</a></li>
-            <li><a href="#">训练营子项4</a></li>
-            <li><a href="#">训练营子项5</a></li>
-          </ul>
-        </li>
-        <li class="dropdown"><a href="exam.html">单板考级</a>
-          <ul class="dropdown-menu">
-            <li><a href="#">考级子项1</a></li>
-            <li><a href="#">考级子项2</a></li>
-            <li><a href="#">考级子项3</a></li>
-            <li><a href="#">考级子项4</a></li>
-            <li><a href="#">考级子项5</a></li>
-          </ul>
-        </li>
-        <li><a href="news.html">最新消息</a></li>
-        <li class="dropdown"><a href="about.html">关于学校</a>
-          <ul class="dropdown-menu">
-            <li><a href="gallery.html">精彩瞬间</a></li>
-          </ul>
-        </li>
-        <li><a href="contact.html">联系我们</a></li>
+        <li><a href="index.html">首页</a></li>
+        <li><a href="about.html">关于GX</a></li>
+        <li><a href="courses.html">课程介绍</a></li>
         <li><a href="coaches.html">教练团队</a></li>
+        <li><a href="#faq">常见问题</a></li>
+        <li><a href="news.html">最新消息</a></li>
+        <li><a href="#offseason">雪季外动态</a></li>
+        <li><a href="contact.html">联系我们</a></li>
       </ul>
+      <a href="courses.html" class="btn btn-reservation">预约</a>
     </div>
   </nav>
 
@@ -103,6 +129,78 @@
         navbar.classList.remove('scrolled');
       }
     });
+    
+    // 确保页面可以正常滚动
+    function enableScrolling() {
+      document.body.style.overflow = 'auto';
+      document.body.style.height = 'auto';
+      document.documentElement.style.overflow = 'auto';
+      document.documentElement.style.height = 'auto';
+      
+      // 确保所有元素都不会阻止滚动
+      const allElements = document.querySelectorAll('*');
+      allElements.forEach(element => {
+        if (element.style.overflow === 'hidden') {
+          element.style.overflow = 'visible';
+        }
+      });
+    }
+    
+    // 添加键盘滚动支持
+    function addKeyboardScrolling() {
+      document.addEventListener('keydown', function(e) {
+        switch(e.key) {
+          case 'ArrowDown':
+          case 'PageDown':
+            e.preventDefault();
+            window.scrollBy(0, 100);
+            break;
+          case 'ArrowUp':
+          case 'PageUp':
+            e.preventDefault();
+            window.scrollBy(0, -100);
+            break;
+        }
+      });
+    }
+    
+    // 添加触摸滚动支持
+    function addTouchScrolling() {
+      let startY = 0;
+      let startScrollTop = 0;
+      
+      document.addEventListener('touchstart', function(e) {
+        startY = e.touches[0].clientY;
+        startScrollTop = window.pageYOffset;
+      });
+      
+      document.addEventListener('touchmove', function(e) {
+        if (e.touches.length === 1) {
+          const deltaY = startY - e.touches[0].clientY;
+          window.scrollTo(0, startScrollTop + deltaY);
+        }
+      });
+    }
+    
+    // 页面加载完成后启用滚动
+    document.addEventListener('DOMContentLoaded', function() {
+      enableScrolling();
+      addKeyboardScrolling();
+      addTouchScrolling();
+      console.log('About页面滚动功能已启用');
+    });
+    
+    // 页面完全加载后再次确保滚动
+    window.addEventListener('load', function() {
+      enableScrolling();
+      console.log('About页面完全加载，滚动功能已确认启用');
+    });
+    
+    // 添加wheel事件监听器
+    window.addEventListener('wheel', function(e) {
+      // 确保wheel事件可以正常触发滚动
+      e.stopPropagation();
+    }, { passive: false });
   </script>
 </body>
 </html> 

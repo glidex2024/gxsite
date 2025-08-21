@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>统一菜单测试 - Glide.X滑雪学校</title>
+  <style>
+    :root {
+      --primary-blue: #1e3a8a;
+      --accent-orange: #ea580c;
+      --snow-white: #ffffff;
+      --light-gray: #f8fafc;
+      --warm-gray: #64748b;
+      --border-gray: #e2e8f0;
+    }
+    
+    body {
+      font-family: 'Helvetica Neue', Arial, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: var(--light-gray);
+    }
+    
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 0;
+    }
+    
+    .test-header {
+      text-align: center;
+      margin-bottom: 3rem;
+      padding: 2rem;
+      background: var(--snow-white);
+      border-radius: 20px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+    
+    .test-header h1 {
+      color: var(--primary-blue);
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .test-header p {
+      color: var(--warm-gray);
+      font-size: 1.2rem;
+      margin: 0;
+    }
+    
+    /* 导航栏样式 */
+    .navbar {
+      background: var(--snow-white);
+      box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: var(--primary-blue);
+      text-decoration: none;
+    }
+    
+    .nav-links {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      gap: 2rem;
+    }
+    
+    .nav-links li a {
+      color: var(--warm-gray);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+    }
+    
+    .nav-links li a:hover {
+      color: var(--accent-orange);
+      background: var(--light-gray);
+    }
+    
+    .nav-links li a.active {
+      color: var(--accent-orange);
+      background: var(--light-gray);
+    }
+    
+    /* 响应式设计 */
+    @media (max-width: 768px) {
+      .nav-container {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      
+      .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+      }
+      
+      .nav-links li a {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.9rem;
+      }
+    }
+    
+    .info-panel {
+      background: var(--snow-white);
+      padding: 2rem;
+      border-radius: 20px;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+    
+    .info-panel h3 {
+      color: var(--primary-blue);
+      margin-bottom: 1rem;
+    }
+    
+    .info-panel ul {
+      color: var(--warm-gray);
+      line-height: 1.8;
+    }
+    
+    .menu-structure {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    
+    .menu-item {
+      background: var(--light-gray);
+      padding: 1.5rem;
+      border-radius: 12px;
+      text-align: center;
+      border: 2px solid transparent;
+      transition: all 0.3s ease;
+    }
+    
+    .menu-item:hover {
+      border-color: var(--accent-orange);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    }
+    
+    .menu-item-icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    
+    .menu-item h4 {
+      color: var(--primary-blue);
+      margin-bottom: 0.5rem;
+    }
+    
+    .menu-item p {
+      color: var(--warm-gray);
+      font-size: 0.9rem;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+  <!-- 导航栏 -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo">GX 中文国际滑雪学校</a>
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">首页</a></li>
+        <li><a href="about.html">关于GX</a></li>
+        <li><a href="courses.html">课程介绍</a></li>
+        <li><a href="coaches.html">教练团队</a></li>
+        <li><a href="#faq">常见问题</a></li>
+        <li><a href="news.html">最新消息</a></li>
+        <li><a href="#offseason">雪季外动态</a></li>
+        <li><a href="contact.html">联系我们</a></li>
+      </ul>
+    </div>
+  </nav>
+  
+  <div class="container">
+    <div class="test-header">
+      <h1>统一菜单结构测试</h1>
+      <p>测试所有页面的统一导航菜单</p>
+    </div>
+    
+    <div class="info-panel">
+      <h3>新的统一菜单结构：</h3>
+      <ul>
+        <li><strong>首页</strong> - 网站主页</li>
+        <li><strong>关于GX</strong> - 学校介绍和团队信息</li>
+        <li><strong>课程介绍</strong> - 滑雪课程详情</li>
+        <li><strong>教练团队</strong> - 专业教练介绍</li>
+        <li><strong>常见问题</strong> - FAQ和帮助信息</li>
+        <li><strong>最新消息</strong> - 学校新闻和动态</li>
+        <li><strong>雪季外动态</strong> - 非雪季活动信息</li>
+        <li><strong>联系我们</strong> - 联系方式和咨询</li>
+      </ul>
+    </div>
+    
+    <div class="menu-structure">
+      <div class="menu-item">
+        <div class="menu-item-icon">🏠</div>
+        <h4>首页</h4>
+        <p>网站主页，展示学校概况</p>
+      </div>
+      
+      <div class="menu-item">
+        <div class="menu-item-icon">ℹ️</div>
+        <h4>关于GX</h4>
+        <p>学校介绍和团队信息</p>
+      </div>
+      
+      <div class="menu-item">
+        <div class="menu-item-icon">📚</div>
+        <h4>课程介绍</h4>
+        <p>滑雪课程详情和选择</p>
+      </div>
+      
+      <div class="menu-item">
+        <div class="menu-item-icon">👥</div>
+        <h4>教练团队</h4>
+        <p>专业教练介绍和预约</p>
+      </div>
+      
+      <div class="menu-item">
+        <div class="menu-item-icon">❓</div>
+        <h4>常见问题</h4>
+        <p>FAQ和帮助信息</p>
+      </div>
+      
+      <div class="menu-item">
+        <div class="menu-item-icon">📰</div>
+        <h4>最新消息</h4>
+        <p>学校新闻和动态</p>
+      </div>
+      
+      <div class="menu-item">
+        <div class="menu-item-icon">🌞</div>
+        <h4>雪季外动态</h4>
+        <p>非雪季活动信息</p>
+      </div>
+      
+      <div class="menu-item">
+        <div class="menu-item-icon">📞</div>
+        <h4>联系我们</h4>
+        <p>联系方式和咨询</p>
+      </div>
+    </div>
+    
+    <div class="info-panel">
+      <h3>已更新的页面：</h3>
+      <ul>
+        <li><strong>index.html</strong> - 首页导航和页脚</li>
+        <li><strong>about.html</strong> - 关于GX页面</li>
+        <li><strong>courses.html</strong> - 课程介绍页面</li>
+        <li><strong>coaches.html</strong> - 教练团队页面</li>
+        <li><strong>news.html</strong> - 最新消息页面</li>
+        <li><strong>contact.html</strong> - 联系我们页面</li>
+        <li><strong>gallery.html</strong> - 图片展示页面</li>
+        <li><strong>camp.html</strong> - 滑雪营地页面</li>
+        <li><strong>news-detail.html</strong> - 新闻详情页面</li>
+        <li><strong>coach-detail.html</strong> - 教练详情页面</li>
+      </ul>
+    </div>
+  </div>
+</body>
+</html> 

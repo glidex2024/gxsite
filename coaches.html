@@ -5,56 +5,245 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>教练团队 - Glide.X滑雪学校</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    /* 强制修复滚动问题 - 使用最高优先级 */
+    html, body {
+      overflow-x: auto !important;
+      overflow-y: auto !important;
+      height: auto !important;
+      position: relative !important;
+      min-height: 100vh !important;
+    }
+    
+    /* 确保所有section元素都可以正常显示和滚动 */
+    section {
+      position: relative !important;
+      overflow: visible !important;
+      height: auto !important;
+      min-height: auto !important;
+    }
+    
+    /* 确保导航栏不会阻止滚动 */
+    .navbar {
+      position: fixed !important;
+      overflow: visible !important;
+      z-index: 1000 !important;
+    }
+    
+    /* 强制启用滚动 - 覆盖所有可能的限制 */
+    body {
+      overflow: auto !important;
+      height: auto !important;
+      min-height: 100vh !important;
+      position: relative !important;
+      transform: none !important;
+      -webkit-transform: none !important;
+    }
+    
+    /* 确保footer不会阻止滚动 */
+    footer {
+      position: relative !important;
+      overflow: visible !important;
+      height: auto !important;
+    }
+    
+    /* 确保main元素不会阻止滚动 */
+    main {
+      position: relative !important;
+      overflow: visible !important;
+      height: auto !important;
+      min-height: auto !important;
+    }
+    
+    /* 强制所有容器元素可滚动 */
+    .container {
+      position: relative !important;
+      overflow: visible !important;
+      height: auto !important;
+    }
+    
+    /* 确保页面内容可以正常滚动 */
+    * {
+      overflow: visible !important;
+    }
+    
+    /* 特别处理可能阻止滚动的元素 */
+    .coaches-hero,
+    .coaches-filter-section,
+    .coaches-list-section {
+      position: relative !important;
+      overflow: visible !important;
+      height: auto !important;
+      min-height: auto !important;
+    }
+    
+    /* 教练页面特定样式 */
+    .coaches-hero {
+      padding: 120px 0 60px 0;
+      background: linear-gradient(rgba(17,17,17,0.8), rgba(17,17,17,0.8)), 
+                  url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+      text-align: center;
+      color: white;
+      margin-top: 64px;
+    }
+    
+    .coaches-hero h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      color: var(--main-orange);
+    }
+    
+    .coaches-hero p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    .coaches-filter-section {
+      background: var(--main-white);
+      padding: 2rem 0;
+      border-bottom: 1px solid #e0e0e0;
+    }
+    
+    .form-input {
+      padding: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 1rem;
+    }
+    
+    .coaches-list-section {
+      padding: 3rem 0;
+      background: var(--main-white);
+      min-height: 60vh;
+    }
+    
+    .coaches-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
+      padding: 0;
+    }
+    
+    .coach-card {
+      background: white;
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform 0.2s, box-shadow 0.2s;
+      border: 1px solid #e0e0e0;
+    }
+    
+    .coach-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    }
+    
+    .coach-avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 0 auto 1rem;
+      display: block;
+      border: 3px solid var(--main-blue);
+    }
+    
+    .coach-card h3 {
+      color: var(--main-blue);
+      margin-bottom: 0.5rem;
+      text-align: center;
+      font-size: 1.2rem;
+    }
+    
+    .coach-title {
+      color: var(--main-orange);
+      font-weight: 600;
+      text-align: center;
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
+    }
+    
+    .coach-card p {
+      color: #666;
+      line-height: 1.5;
+      margin-bottom: 1.5rem;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+    
+    .coach-book-btn {
+      width: 100%;
+      background: var(--main-blue);
+      color: white;
+      border: none;
+      padding: 0.8rem;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background 0.2s;
+    }
+    
+    .coach-book-btn:hover {
+      background: var(--main-orange);
+    }
+    
+    /* 响应式设计 */
+    @media (max-width: 768px) {
+      .coaches-hero {
+        padding: 100px 0 40px 0;
+        margin-top: 64px;
+      }
+      
+      .coaches-hero h1 {
+        font-size: 2.5rem;
+      }
+      
+      .coaches-hero p {
+        font-size: 1.1rem;
+      }
+      
+      .coaches-list {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 0 1rem;
+      }
+      
+      .coaches-filter-section {
+        padding: 1.5rem 0;
+      }
+      
+      #coach-filter-form {
+        flex-direction: column;
+        gap: 1rem;
+      }
+    }
+  </style>
 </head>
 <body>
   <nav id="navbar" class="navbar">
     <div class="container nav-container">
-      <a href="index.html" class="logo">Glide.X</a>
+      <a href="index.html" class="logo">GX 中文国际滑雪学校</a>
       <ul class="nav-links">
-        <li><a href="index.html#home">首页</a></li>
-        <li class="dropdown"><a href="courses.html">特色课程</a>
-          <ul class="dropdown-menu">
-            <li><a href="#">课程子项1</a></li>
-            <li><a href="#">课程子项2</a></li>
-            <li><a href="#">课程子项3</a></li>
-            <li><a href="#">课程子项4</a></li>
-            <li><a href="#">课程子项5</a></li>
-          </ul>
-        </li>
-        <li class="dropdown"><a href="camp.html">训练营</a>
-          <ul class="dropdown-menu">
-            <li><a href="#">训练营子项1</a></li>
-            <li><a href="#">训练营子项2</a></li>
-            <li><a href="#">训练营子项3</a></li>
-            <li><a href="#">训练营子项4</a></li>
-            <li><a href="#">训练营子项5</a></li>
-          </ul>
-        </li>
-        <li class="dropdown"><a href="exam.html">单板考级</a>
-          <ul class="dropdown-menu">
-            <li><a href="#">考级子项1</a></li>
-            <li><a href="#">考级子项2</a></li>
-            <li><a href="#">考级子项3</a></li>
-            <li><a href="#">考级子项4</a></li>
-            <li><a href="#">考级子项5</a></li>
-          </ul>
-        </li>
-        <li><a href="news.html">最新消息</a></li>
-        <li class="dropdown"><a href="about.html">关于学校</a>
-          <ul class="dropdown-menu">
-            <li><a href="gallery.html">精彩瞬间</a></li>
-          </ul>
-        </li>
-        <li><a href="contact.html">联系我们</a></li>
+        <li><a href="index.html">首页</a></li>
+        <li><a href="about.html">关于GX</a></li>
+        <li><a href="courses.html">课程介绍</a></li>
         <li><a href="coaches.html">教练团队</a></li>
+        <li><a href="#faq">常见问题</a></li>
+        <li><a href="news.html">最新消息</a></li>
+        <li><a href="#offseason">雪季外动态</a></li>
+        <li><a href="contact.html">联系我们</a></li>
       </ul>
+      <a href="courses.html" class="btn btn-reservation">预约</a>
     </div>
   </nav>
+  
   <main>
     <section class="coaches-hero">
       <h1>教练团队</h1>
       <p>国际化专业教练团队，助力每一位学员安全进步、享受滑雪乐趣</p>
     </section>
+    
     <section class="coaches-filter-section container" style="margin-bottom:2em;">
       <form id="coach-filter-form" style="display:flex;gap:1.5em;flex-wrap:wrap;align-items:center;justify-content:center;">
         <label>性别
@@ -83,68 +272,210 @@
         </label>
       </form>
     </section>
+    
     <section class="coaches-list-section container">
-      <div class="coaches-list">
-        <!-- 自动生成20位教练卡片 -->
-        <script>
-          // 教练数据（体系/风格多选）
-          const coachData = [
-            {name:'王磊（Leo Wang）',gender:'男',system:['jsba','saj'],style:['刻滑','自由式'],title:'国家高级滑雪教练',avatar:'https://randomuser.me/api/portraits/men/32.jpg',desc:'10年教学经验，擅长单板/双板滑雪，注重安全与乐趣结合。'},
-            {name:'林美（Mei Lin）',gender:'女',system:['casi'],style:['平花','自由式'],title:'国际认证单板教练',avatar:'https://randomuser.me/api/portraits/women/44.jpg',desc:'旅日多年，精通日中英三语，擅长青少年滑雪启蒙与考级辅导。'},
-            {name:'佐藤健（Ken Sato）',gender:'男',system:['jsba'],style:['刻滑'],title:'JSBA认证考级官',avatar:'https://randomuser.me/api/portraits/men/65.jpg',desc:'日本本地资深教练，专注单板考级与进阶动作教学。'},
-            {name:'李娜（Na Li）',gender:'女',system:['saj','casi'],style:['自由式','平花'],title:'国家滑雪指导员',avatar:'https://randomuser.me/api/portraits/women/68.jpg',desc:'多年滑雪教学经验，擅长女性与儿童滑雪启蒙。'},
-            {name:'张伟（Wei Zhang）',gender:'男',system:['jsba'],style:['跳台','自由式'],title:'单板滑雪教练',avatar:'https://randomuser.me/api/portraits/men/23.jpg',desc:'注重实战与安全，带队多次滑雪营。'},
-            {name:'高桥翔（Sho Takahashi）',gender:'男',system:['saj'],style:['刻滑'],title:'日籍双板教练',avatar:'https://randomuser.me/api/portraits/men/77.jpg',desc:'日本本地双板专家，教学风格严谨。'},
-            {name:'陈晨（Chen Chen）',gender:'男',system:['casi'],style:['平花','自由式'],title:'青少年滑雪教练',avatar:'https://randomuser.me/api/portraits/men/12.jpg',desc:'擅长青少年滑雪兴趣培养，活泼亲和。'},
-            {name:'小林优（Yu Kobayashi）',gender:'男',system:['jsba'],style:['刻滑','平花'],title:'单板考级辅导',avatar:'https://randomuser.me/api/portraits/men/41.jpg',desc:'考级通过率高，注重动作细节。'},
-            {name:'赵婷（Ting Zhao）',gender:'女',system:['casi'],style:['自由式'],title:'滑雪体验课导师',avatar:'https://randomuser.me/api/portraits/women/55.jpg',desc:'专注滑雪体验课，善于激发初学者兴趣。'},
-            {name:'松本健一（Kenichi Matsumoto）',gender:'男',system:['saj'],style:['刻滑','自由式'],title:'高级滑雪教练',avatar:'https://randomuser.me/api/portraits/men/80.jpg',desc:'多年滑雪教学，注重因材施教。'},
-            {name:'王强（Qiang Wang）',gender:'男',system:['jsba'],style:['平花'],title:'滑雪营地教练',avatar:'https://randomuser.me/api/portraits/men/34.jpg',desc:'丰富营地教学经验，团队协作能力强。'},
-            {name:'刘洋（Yang Liu）',gender:'男',system:['jsba'],style:['自由式'],title:'滑雪基础教练',avatar:'https://randomuser.me/api/portraits/men/50.jpg',desc:'基础动作教学专家，耐心细致。'},
-            {name:'伊藤美咲（Misaki Ito）',gender:'女',system:['saj'],style:['平花','自由式'],title:'日籍女教练',avatar:'https://randomuser.me/api/portraits/women/60.jpg',desc:'女性滑雪教学专家，亲和力强。'},
-            {name:'孙浩（Hao Sun）',gender:'男',system:['jsba'],style:['刻滑','自由式'],title:'滑雪进阶教练',avatar:'https://randomuser.me/api/portraits/men/71.jpg',desc:'擅长进阶动作与实战训练。'},
-            {name:'李雪（Xue Li）',gender:'女',system:['casi'],style:['自由式','平花'],title:'滑雪启蒙导师',avatar:'https://randomuser.me/api/portraits/women/22.jpg',desc:'儿童滑雪启蒙，寓教于乐。'},
-            {name:'山本大辅（Daisuke Yamamoto）',gender:'男',system:['jsba'],style:['跳台'],title:'日籍考级官',avatar:'https://randomuser.me/api/portraits/men/90.jpg',desc:'JSBA考级官，考级辅导经验丰富。'},
-            {name:'周敏（Min Zhou）',gender:'女',system:['saj'],style:['平花'],title:'滑雪安全教练',avatar:'https://randomuser.me/api/portraits/women/33.jpg',desc:'注重安全知识普及，教学严谨。'},
-            {name:'佐佐木诚（Makoto Sasaki）',gender:'男',system:['jsba'],style:['刻滑','自由式'],title:'单板进阶教练',avatar:'https://randomuser.me/api/portraits/men/17.jpg',desc:'进阶动作教学，善于激发潜力。'},
-            {name:'王蕾（Lei Wang）',gender:'女',system:['casi'],style:['平花','自由式'],title:'滑雪兴趣导师',avatar:'https://randomuser.me/api/portraits/women/12.jpg',desc:'激发学员兴趣，注重互动体验。'},
-            {name:'田中翔（Sho Tanaka）',gender:'男',system:['saj'],style:['自由式','跳台'],title:'日籍滑雪教练',avatar:'https://randomuser.me/api/portraits/men/28.jpg',desc:'日本本地滑雪专家，经验丰富。'}
-          ];
-          function renderCoaches() {
-            const list = document.querySelector('.coaches-list');
-            list.innerHTML = '';
-            const gender = document.getElementById('filter-gender').value;
-            const system = document.getElementById('filter-system').value;
-            const style = document.getElementById('filter-style').value;
-            coachData.forEach((c,i)=>{
-              if ((gender && c.gender!==gender)
-                || (system && !c.system.includes(system))
-                || (style && !c.style.includes(style))) return;
-              list.innerHTML += `<div class='coach-card' data-coach='${i}'>
-                <a href='coach-detail.html?id=${i}' style='text-decoration:none;color:inherit;'>
-                  <img class='coach-avatar' src='${c.avatar}' alt='${c.name}'>
-                  <h3>${c.name}</h3>
-                  <div class='coach-title'>${c.title}</div>
-                  <p>${c.desc}</p>
-                </a>
-                <button class='btn coach-book-btn'>预约课程</button>
-              </div>`;
-            });
-          }
-          document.getElementById('coach-filter-form').onchange = renderCoaches;
-          renderCoaches();
-        </script>
+      <div class="coaches-list" id="coachesList">
+        <!-- 教练卡片将通过JavaScript动态生成 -->
+        <div style="text-align: center; padding: 2rem; color: #666;">
+          正在加载教练信息...
+        </div>
       </div>
     </section>
+    
     <div id="coach-booking-modal" class="booking-modal" style="display:none;">
       <div class="booking-steps"></div>
     </div>
   </main>
+  
   <footer class="footer">
     <div class="container">
       <p>© 2024 Glide.X滑雪学校. 保留所有权利.</p>
     </div>
   </footer>
+  
+  <script>
+    // 强制修复滚动问题
+    function enableScrolling() {
+      // 强制设置HTML和body的滚动属性
+      document.documentElement.style.cssText = 'overflow: auto !important; height: auto !important; position: relative !important;';
+      document.body.style.cssText = 'overflow: auto !important; height: auto !important; position: relative !important; min-height: 100vh !important;';
+      
+      // 强制设置所有可能阻止滚动的元素
+      const criticalElements = ['html', 'body', 'main', 'section', '.container', '.coaches-hero', '.coaches-filter-section', '.coaches-list-section'];
+      criticalElements.forEach(selector => {
+        const elements = document.querySelectorAll(selector);
+        elements.forEach(element => {
+          element.style.cssText = 'overflow: visible !important; position: relative !important; height: auto !important; min-height: auto !important;';
+        });
+      });
+      
+      // 确保所有元素都不会阻止滚动
+      const allElements = document.querySelectorAll('*');
+      allElements.forEach(element => {
+        if (element.style.overflow === 'hidden') {
+          element.style.overflow = 'visible';
+        }
+        if (element.style.position === 'fixed' && !element.classList.contains('navbar')) {
+          element.style.position = 'relative';
+        }
+      });
+      
+      // 强制启用滚动
+      document.body.style.overflow = 'auto';
+      document.body.style.height = 'auto';
+      document.documentElement.style.overflow = 'auto';
+      document.documentElement.style.height = 'auto';
+      
+      console.log('滚动功能强制启用完成');
+    }
+    
+    // 添加键盘滚动支持
+    function addKeyboardScrolling() {
+      document.addEventListener('keydown', function(e) {
+        switch(e.key) {
+          case 'ArrowDown':
+          case 'PageDown':
+            e.preventDefault();
+            window.scrollBy(0, 100);
+            break;
+          case 'ArrowUp':
+          case 'PageUp':
+            e.preventDefault();
+            window.scrollBy(0, -100);
+            break;
+        }
+      });
+    }
+    
+    // 添加触摸滚动支持
+    function addTouchScrolling() {
+      let startY = 0;
+      let startScrollTop = 0;
+      
+      document.addEventListener('touchstart', function(e) {
+        startY = e.touches[0].clientY;
+        startScrollTop = window.pageYOffset;
+      });
+      
+      document.addEventListener('touchmove', function(e) {
+        if (e.touches.length === 1) {
+          const deltaY = startY - e.touches[0].clientY;
+          window.scrollTo(0, startScrollTop + deltaY);
+        }
+      });
+    }
+    
+    // 从JSON文件加载教练数据
+    let coachData = [];
+    
+    async function loadCoachesData() {
+      try {
+        const response = await fetch('coaches.json');
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        coachData = data.coaches;
+        renderCoaches();
+        console.log('教练数据加载成功:', coachData.length, '位教练');
+      } catch (error) {
+        console.error('加载教练数据失败:', error);
+        document.getElementById('coachesList').innerHTML = 
+          '<div style="text-align: center; padding: 2rem; color: #e60012;">加载教练数据失败，请刷新页面重试</div>';
+      }
+    }
+    
+    // 渲染教练列表
+    function renderCoaches() {
+      const list = document.getElementById('coachesList');
+      if (!list) return;
+      
+      const gender = document.getElementById('filter-gender').value;
+      const system = document.getElementById('filter-system').value;
+      const style = document.getElementById('filter-style').value;
+      
+      let filteredCoaches = coachData.filter(coach => {
+        if (gender && coach.gender !== gender) return false;
+        if (system && !coach.system.includes(system)) return false;
+        if (style && !coach.style.includes(style)) return false;
+        return true;
+      });
+      
+      if (filteredCoaches.length === 0) {
+        list.innerHTML = '<div style="text-align: center; padding: 2rem; color: #666;">没有找到符合条件的教练</div>';
+        return;
+      }
+      
+      list.innerHTML = filteredCoaches.map(coach => `
+        <div class='coach-card' data-coach='${coach.id}'>
+          <a href='coach-detail.html?id=${coach.id}' style='text-decoration:none;color:inherit;'>
+            <img class='coach-avatar' src='${coach.avatar}' alt='${coach.name}' onerror="this.src='https://via.placeholder.com/80x80/cccccc/666666?text=头像'">
+            <h3>${coach.name}</h3>
+            <div class='coach-title'>${coach.title}</div>
+            <p>${coach.desc}</p>
+          </a>
+          <button class='btn coach-book-btn' onclick="bookCoach(${coach.id})">预约课程</button>
+        </div>
+      `).join('');
+    }
+    
+    // 预约教练功能
+    function bookCoach(coachId) {
+      const coach = coachData.find(c => c.id === coachId);
+      if (coach) {
+        alert(`正在跳转到预约页面...\n教练: ${coach.name}\n请在新页面中完成预约。`);
+        window.open(`coach-detail.html?id=${coachId}`, '_blank');
+      }
+    }
+    
+    // 页面加载完成后初始化
+    document.addEventListener('DOMContentLoaded', function() {
+      // 立即强制启用滚动
+      enableScrolling();
+      
+      // 延迟再次确保滚动
+      setTimeout(enableScrolling, 100);
+      setTimeout(enableScrolling, 500);
+      setTimeout(enableScrolling, 1000);
+      
+      addKeyboardScrolling();
+      addTouchScrolling();
+      
+      // 加载教练数据
+      loadCoachesData();
+      
+      // 绑定筛选器事件
+      const filterForm = document.getElementById('coach-filter-form');
+      if (filterForm) {
+        filterForm.addEventListener('change', renderCoaches);
+      }
+      
+      console.log('教练页面初始化完成');
+    });
+    
+    // 页面完全加载后再次确保滚动
+    window.addEventListener('load', function() {
+      enableScrolling();
+      console.log('教练页面完全加载，滚动功能已确认启用');
+    });
+    
+    // 添加wheel事件监听器
+    window.addEventListener('wheel', function(e) {
+      // 确保wheel事件可以正常触发滚动
+      e.stopPropagation();
+    }, { passive: false });
+    
+    // 滚动变色
+    window.addEventListener('scroll', function() {
+      const navbar = document.getElementById('navbar');
+      if (window.scrollY > 60) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+  </script>
+  
   <script src="coach-booking.js"></script>
 </body>
 </html> 

@@ -22,19 +22,38 @@ fetch('news.json')
         imgUrl = unsplashImgs[idx];
       }
       const item = document.createElement('div');
-      item.className = 'news-item';
+      item.className = 'news-card';
       item.setAttribute('data-aos', 'fade-up');
       item.setAttribute('data-aos-delay', 100 + i * 100);
+      item.style.cssText = `
+        background: #fff;
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        cursor: pointer;
+      `;
       item.innerHTML = `
-        <a href="news-detail.html?id=${n.id}" style="display:flex;text-decoration:none;color:inherit;">
-          <img src="${imgUrl}" alt="${n.title}">
-          <div class="news-content">
-            <div class="news-date">${n.date}</div>
-            <h3>${n.title}</h3>
-            <p>${n.summary}</p>
+        <a href="news-detail.html?id=${n.id}" style="text-decoration:none;color:inherit;display:block;">
+          <img src="${imgUrl}" alt="${n.title}" style="width:100%;height:180px;object-fit:cover;">
+          <div style="padding:1.5rem;">
+            <div style="color:#666;font-size:0.9rem;margin-bottom:0.5rem;">${n.date}</div>
+            <h3 style="color:#333;font-size:1.1rem;margin-bottom:1rem;line-height:1.4;">${n.title}</h3>
+            <p style="color:#666;font-size:0.95rem;line-height:1.6;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;">${n.summary}</p>
           </div>
         </a>
       `;
+      
+      // 添加悬停效果
+      item.onmouseenter = function() {
+        this.style.transform = 'translateY(-5px)';
+        this.style.boxShadow = '0 8px 30px rgba(0,0,0,0.15)';
+      };
+      item.onmouseleave = function() {
+        this.style.transform = 'translateY(0)';
+        this.style.boxShadow = '0 4px 20px rgba(0,0,0,0.1)';
+      };
+      
       list.appendChild(item);
     }
   }); 
