@@ -4,6 +4,33 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+/* 全局文字换行控制 - 确保文字尽量一行显示，但不影响页面滚动 */
+body, div, p, h1, h2, h3, h4, h5, h6, span, a, li, td, th, label, input, textarea, button {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/* 确保页面可以正常滚动 */
+html, body {
+  overflow-x: auto;
+  overflow-y: auto;
+  height: auto;
+}
+
+/* 对于需要换行的长文本，允许换行但优先一行显示 */
+p, .description, .content-text {
+  white-space: normal;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  word-break: keep-all;
+}
+
+/* 标题和导航文字强制一行显示 */
+h1, h2, h3, h4, h5, h6, .nav-links a, .logo, .hero-content h1, .hero-content p {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
 :root {
   --main-blue: #003366;
   --main-orange: #ff6600;
@@ -227,6 +254,23 @@ body {
   background: var(--main-blue);
   transform: translateY(-2px) scale(1.04);
   box-shadow: 0 6px 24px rgba(0,51,102,0.15);
+}
+
+/* 预约按钮样式 */
+.btn-reservation {
+  background: #FFE4C4;
+  color: #000;
+  padding: 0.6em 1.5em;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  margin-left: 2rem;
+}
+.btn-reservation:hover {
+  background: #FFDAB9;
+  color: #000;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(255, 228, 196, 0.3);
 }
 
 /* 卡片式内容分块 */

@@ -3,253 +3,3705 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Glide.X滑雪学校</title>
+  <title>GX 中文国际滑雪学校</title>
   <link rel="stylesheet" href="style.css">
   <!-- AOS 动画库 -->
   <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
   <!-- Swiper 轮播库 -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <style>
+    :root {
+      --primary-blue: #1e3a8a;      /* 深蓝 - 专业滑雪主色 */
+      --secondary-blue: #3b82f6;    /* 亮蓝 - 辅助色 */
+      --accent-orange: #ea580c;     /* 暖橙 - 强调色 */
+      --snow-white: #ffffff;        /* 纯白 - 背景色 */
+      --deep-green: #166534;        /* 深绿 - 户外自然色 */
+      --warm-gray: #6b7280;         /* 暖灰 - 文字色 */
+      --dark-gray: #374151;         /* 深灰 - 深色文字 */
+      --ice-blue: #f1f5f9;          /* 冰蓝 - 浅色背景 */
+      --powder-blue: #e0e7ff;       /* 粉蓝 - 卡片背景 */
+      --mountain-gray: #1f2937;     /* 山灰 - 页脚背景 */
+      --success-green: #059669;     /* 成功绿 - 按钮色 */
+      --warning-amber: #d97706;     /* 警告琥珀 - 提示色 */
+      --light-gray: #f9fafb;        /* 浅灰 - 分隔背景 */
+      --border-gray: #e5e7eb;       /* 边框灰 - 分割线 */
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.6;
+      color: var(--dark-gray);
+      background-color: var(--snow-white);
+      overflow-x: hidden;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+    
+    /* 顶部导航栏 - 完全按照Pinnacle设计 */
+    .navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: rgba(30, 58, 138, 0.95);
+      backdrop-filter: blur(20px);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .navbar.scrolled {
+      background: rgba(30, 58, 138, 0.98);
+      box-shadow: 0 4px 20px rgba(30, 58, 138, 0.3);
+    }
+    
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: var(--accent-orange);
+      text-decoration: none;
+      letter-spacing: -0.5px;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+    
+    .logo-gx {
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: var(--snow-white);
+      background: var(--primary-blue);
+      padding: 0.5rem 0.8rem;
+      border-radius: 8px;
+      letter-spacing: -0.02em;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 60px;
+      height: 50px;
+      box-shadow: 0 4px 15px rgba(30, 58, 138, 0.3);
+    }
+    
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+    
+    .logo-chinese {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--snow-white);
+      line-height: 1.2;
+      white-space: nowrap;
+    }
+    
+    .logo-english {
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--snow-white);
+      line-height: 1.2;
+      white-space: nowrap;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+    
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      flex-wrap: nowrap;
+      justify-content: center;
+      flex: 1;
+    }
+    
+    .nav-links a {
+      color: var(--snow-white);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      position: relative;
+      transition: all 0.3s ease;
+      padding: 0.5rem 0;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent-orange);
+      transition: width 0.3s ease;
+    }
+    
+    .nav-links a:hover::after,
+    .nav-links a.active::after {
+      width: 100%;
+    }
+    
+    .nav-links a:hover {
+      color: var(--accent-orange);
+    }
+    
+    .btn-reservation {
+      background: var(--accent-orange);
+      color: var(--snow-white);
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(234, 88, 12, 0.3);
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      text-transform: none;
+      letter-spacing: 0.2px;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      flex-shrink: 0;
+      white-space: nowrap;
+    }
+    
+    .btn-reservation:hover {
+      background: #dc2626;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(234, 88, 12, 0.4);
+      color: var(--snow-white);
+      text-decoration: none;
+    }
+    
+    /* 英雄区域样式 - 完全按照Pinnacle设计 */
+    .hero-section {
+      position: relative;
+      height: auto; /* 改为自适应高度，去掉100vh固定高度 */
+      min-height: 60vh; /* 设置最小高度，确保有足够空间 */
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      overflow: hidden;
+      padding: 120px 0 60px 0; /* 添加上下内边距，确保内容有足够空间 */
+    }
+    
+    /* 背景轮播样式 */
+    .hero-background-slider {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+    
+    .heroBackgroundSwiper {
+      width: 100%;
+      height: 100%;
+    }
+    
+    .background-slide {
+      width: 100%;
+      height: 100%;
+      position: relative;
+    }
+    
+    .background-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+    
+    /* 背景遮罩 */
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.5) 100%);
+      z-index: 2;
+    }
+    
+    .hero-content {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      width: 100%;
+      padding: 0 6rem 0 4rem;
+      position: relative;
+      z-index: 4;
+      text-align: left;
+      margin-left: 0;
+      left: 0;
+      margin-top: 0; /* 去掉margin-top，因为外层已经有padding */
+      min-height: auto; /* 去掉固定高度，让内容自适应 */
+    }
+    
+    .hero-left {
+      flex: 1;
+      text-align: left;
+      max-width: 600px;
+      margin-left: 10%;
+      padding-left: 0;
+      left: 0;
+      position: relative;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      padding-top: 2rem; /* 减少顶部内边距 */
+    }
+    
+    .hero-right {
+      flex: 0 0 auto;
+    }
+    
+    .hero-content h1 {
+      font-size: 2.2rem; /* 稍微增大标题字体 */
+      font-weight: 700;
+      margin-bottom: 1.5rem; /* 增加标题下方间距 */
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
+      line-height: 1.3; /* 增加行高 */
+      letter-spacing: -0.01em;
+      color: var(--accent-orange);
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      max-width: 100%;
+    }
+    
+    .hero-content .subtitle {
+      font-size: 1.2rem; /* 增大副标题字体 */
+      font-weight: 700;
+      margin-bottom: 1rem; /* 增加副标题下方间距 */
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
+      color: var(--accent-orange);
+      line-height: 1.4; /* 增加行高 */
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      max-width: 100%;
+    }
+    
+    .hero-content .description {
+      font-size: 1rem; /* 增大描述文字字体 */
+      margin-bottom: 1.5rem; /* 增加描述下方间距 */
+      max-width: 100%;
+      line-height: 1.6; /* 增加行高 */
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
+      color: var(--snow-white);
+      opacity: 0.95;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+    }
+    
+    .hero-content .description strong {
+      color: var(--accent-orange);
+      font-weight: 700;
+      font-size: 1.1rem; /* 增大强调文字字体 */
+      display: block;
+      margin-top: 1rem; /* 增加强调文字上方间距 */
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+    }
+    
+    .mission-section {
+      margin: 1.5rem 0; /* 增加使命区域上下间距 */
+      padding: 1.5rem; /* 增加使命区域内边距 */
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+      max-width: 100%;
+      overflow: hidden;
+      margin-right: 2rem;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+    }
+    
+    .mission-section h3 {
+      color: var(--accent-orange);
+      font-size: 1.2rem; /* 增大使命标题字体 */
+      font-weight: 700;
+      margin-bottom: 1rem; /* 增加使命标题下方间距 */
+      text-align: left;
+      line-height: 1.3; /* 增加行高 */
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+    }
+    
+    .mission-text {
+      color: var(--snow-white);
+      font-size: 0.9rem;
+      line-height: 1.4;
+      margin-bottom: 0.6rem;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      max-width: 100%;
+    }
+    
+    .mission-text:last-child {
+      margin-bottom: 0;
+    }
+    
+    .hero-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      justify-content: flex-start;
+      margin-top: 1.2rem;
+      align-items: flex-start;
+      max-width: 100%;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+    }
+    
+    .hero-link {
+      color: var(--snow-white);
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      padding: 0.4rem 0;
+      position: relative;
+      display: inline-block;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      max-width: 100%;
+      line-height: 1.2;
+    }
+    
+    .hero-link:hover {
+      color: var(--accent-orange);
+      transform: translateX(5px);
+    }
+    
+    .hero-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent-orange);
+      transition: width 0.3s ease;
+    }
+    
+    .hero-link:hover::after {
+      width: 100%;
+    }
+    
+    .btn-primary {
+      background: var(--accent-orange);
+      color: var(--snow-white);
+      border-color: var(--accent-orange);
+      box-shadow: 0 4px 20px rgba(234, 88, 12, 0.4);
+    }
+    
+    .btn-secondary {
+      background: transparent;
+      color: var(--snow-white);
+      border-color: var(--snow-white);
+      backdrop-filter: blur(10px);
+    }
+    
+    .btn-primary:hover {
+      background: #dc2626;
+      border-color: #dc2626;
+      box-shadow: 0 8px 30px rgba(234, 88, 12, 0.5);
+      transform: translateY(-3px);
+    }
+    
+    .btn-secondary:hover {
+      background: var(--snow-white);
+      color: var(--primary-blue);
+      border-color: var(--snow-white);
+      box-shadow: 0 8px 30px rgba(255,255,255,0.3);
+      transform: translateY(-3px);
+    }
+    
+    .hero-highlight {
+      background: rgba(255, 255, 255, 0.98);
+      border-radius: 20px;
+      padding: 2.5rem;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      max-width: 400px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero-highlight::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary-blue), var(--accent-orange));
+      border-radius: 20px 20px 0 0;
+    }
+    
+    .hero-highlight h3 {
+      color: var(--primary-blue);
+      font-size: 1.5rem;
+      font-weight: 800;
+      margin-bottom: 1.5rem;
+      line-height: 1.3;
+    }
+    
+    .highlight-features {
+      margin-top: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+    
+    .highlight-feature {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      padding: 0.8rem 1rem;
+      background: rgba(59, 130, 246, 0.08);
+      border-radius: 12px;
+      border: 1px solid rgba(59, 130, 246, 0.15);
+      transition: all 0.3s ease;
+    }
+    
+    .highlight-feature:hover {
+      background: rgba(59, 130, 246, 0.12);
+      transform: translateX(5px);
+      box-shadow: 0 4px 15px rgba(59, 130, 246, 0.15);
+    }
+    
+    .feature-icon {
+      width: 24px;
+      height: 24px;
+      background: linear-gradient(135deg, var(--accent-orange), var(--success-green));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      color: white;
+      font-weight: bold;
+    }
+    
+    .feature-text {
+      color: var(--dark-gray);
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+    
+    .booking-badge {
+      position: absolute;
+      top: -15px;
+      right: 30px;
+      background: linear-gradient(135deg, var(--accent-orange), #dc2626);
+      color: white;
+      padding: 0.6rem 1.5rem;
+      border-radius: 25px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      box-shadow: 0 4px 20px rgba(234, 88, 12, 0.4);
+      animation: pulse 2s ease-in-out infinite;
+    }
+    
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+    
+    /* 雪花效果 */
+    .snowflakes {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 3;
+    }
+    
+    .snowflake {
+      position: absolute;
+      color: var(--snow-white);
+      font-size: 1.5rem;
+      animation: fall 10s linear infinite;
+      opacity: 0.8;
+    }
+    
+    .snowflake:nth-child(1) { left: 10%; animation-duration: 10s; animation-delay: 0s; }
+    .snowflake:nth-child(2) { left: 20%; animation-duration: 12s; animation-delay: 1s; }
+    .snowflake:nth-child(3) { left: 30%; animation-duration: 8s; animation-delay: 2s; }
+    .snowflake:nth-child(4) { left: 40%; animation-duration: 15s; animation-delay: 3s; }
+    .snowflake:nth-child(5) { left: 50%; animation-duration: 11s; animation-delay: 4s; }
+    .snowflake:nth-child(6) { left: 60%; animation-duration: 9s; animation-delay: 5s; }
+    .snowflake:nth-child(7) { left: 70%; animation-duration: 13s; animation-delay: 6s; }
+    .snowflake:nth-child(8) { left: 80%; animation-duration: 7s; animation-delay: 7s; }
+    .snowflake:nth-child(9) { left: 90%; animation-duration: 14s; animation-delay: 8s; }
+    .snowflake:nth-child(10) { left: 95%; animation-duration: 10s; animation-delay: 9s; }
+    
+    @keyframes fall {
+      0% {
+        transform: translateY(-100vh) rotate(0deg);
+        opacity: 0;
+      }
+      10% {
+        opacity: 0.8;
+      }
+      90% {
+        opacity: 0.8;
+      }
+      100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+    
+    .hero-content {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      width: 100%;
+      padding: 0 6rem 0 4rem;
+      position: relative;
+      z-index: 4;
+      text-align: left;
+      margin-left: 0;
+      left: 0;
+    }
+    
+    /* 学校介绍区域样式 - 完全按照Pinnacle设计 */
+    .school-intro-section {
+      padding: 100px 0;
+      background: var(--snow-white);
+      position: relative;
+    }
+    
+    .school-intro-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary-blue), var(--accent-orange), var(--deep-green));
+    }
+    
+    .school-intro-content {
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+      padding: 0 2rem;
+    }
+    
+    .school-intro-content h2 {
+      font-size: 3rem;
+      font-weight: 900;
+      color: var(--primary-blue);
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+    }
+    
+    .school-intro-content h3 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--accent-orange);
+      margin-bottom: 2.5rem;
+      line-height: 1.3;
+    }
+    
+    .school-intro-content p {
+      font-size: 1.3rem;
+      line-height: 1.8;
+      color: var(--warm-gray);
+      margin: 0;
+      text-align: left;
+      background: rgba(59, 130, 246, 0.05);
+      padding: 3rem;
+      border-radius: 20px;
+      border: 2px solid rgba(59, 130, 246, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .school-intro-content p::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary-blue), var(--accent-orange));
+    }
+    
+    /* 单双板滑行技术展示区域样式 */
+    .ski-snowboard-section {
+      padding: 100px 0;
+      background: var(--snow-white);
+      position: relative;
+    }
+    
+    .ski-snowboard-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary-blue), var(--accent-orange));
+    }
+    
+    .ski-snowboard-content {
+      display: flex;
+      gap: 4rem;
+      align-items: flex-start;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+    
+    .content-left {
+      flex: 1;
+      max-width: 600px;
+    }
+    
+    .content-right {
+      flex: 1;
+      position: relative;
+    }
+    
+    .trust-badge {
+      background: var(--warm-gray);
+      padding: 1rem 1.5rem;
+      border-radius: 8px;
+      margin-bottom: 1.5rem;
+    }
+    
+    .trust-badge h3 {
+      color: var(--snow-white);
+      font-size: 1.1rem;
+      margin: 0;
+      text-align: center;
+    }
+    
+    .school-title {
+      background: var(--warm-gray);
+      padding: 1.5rem 2rem;
+      border-radius: 8px;
+      margin-bottom: 2rem;
+    }
+    
+    .school-title h2 {
+      color: var(--snow-white);
+      font-size: 1.8rem;
+      margin: 0;
+      text-align: center;
+    }
+    
+    .school-description {
+      margin-bottom: 2rem;
+    }
+    
+    .school-description p {
+      color: var(--dark-gray);
+      font-size: 1rem;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+    
+    .philosophy {
+      background: var(--warm-gray);
+      padding: 1rem 1.5rem;
+      border-radius: 8px;
+      margin-bottom: 1.5rem;
+    }
+    
+    .philosophy h3 {
+      color: var(--snow-white);
+      font-size: 1.1rem;
+      margin: 0;
+      text-align: center;
+    }
+    
+    .content-placeholder {
+      background: var(--warm-gray);
+      padding: 1rem 1.5rem;
+      border-radius: 8px;
+      margin-bottom: 2rem;
+      min-height: 60px;
+    }
+    
+    .content-placeholder p {
+      color: var(--snow-white);
+      font-size: 1rem;
+      margin: 0;
+      text-align: center;
+    }
+    
+    .action-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    
+    .about-btn, .coach-btn {
+      background: var(--primary-blue);
+      color: var(--snow-white);
+      padding: 0.8rem 1.5rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      flex: 1;
+      min-width: 120px;
+      text-align: center;
+    }
+    
+    .about-btn:hover, .coach-btn:hover {
+      background: var(--accent-orange);
+      transform: translateY(-2px);
+    }
+    
+    .image-display {
+      position: relative;
+      width: 100%;
+      height: 400px;
+      background: var(--snow-white);
+      border: 2px solid var(--primary-blue);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    
+    .image-section {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
+    
+    .top-left {
+      top: 0;
+      left: 0;
+      clip-path: polygon(0 0, 100% 0, 0 100%);
+    }
+    
+    .bottom-right {
+      bottom: 0;
+      right: 0;
+      clip-path: polygon(100% 0, 100% 100%, 0 100%);
+    }
+    
+    .image-label {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      color: var(--accent-orange);
+      font-size: 0.9rem;
+      font-weight: 600;
+      z-index: 10;
+    }
+    
+    .single-board-photo, .double-board-photo {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    
+    .single-board-photo img, .double-board-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+    
+    .gx-logo {
+      position: absolute;
+      bottom: 15px;
+      right: 15px;
+      width: 60px;
+      height: 60px;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+      z-index: 10;
+    }
+    
+    .gx-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+    }
+    
+    .learn-more-btn {
+      display: inline-block;
+      background: var(--accent-orange);
+      color: var(--snow-white);
+      padding: 1.2rem 3rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 1.1rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 20px rgba(234, 88, 12, 0.3);
+    }
+    
+    .learn-more-btn:hover {
+      background: #dc2626;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 30px rgba(234, 88, 12, 0.4);
+    }
+    
+
+    
+
+    
+
+    
+
+    
+    /* 客户评价区域 */
+    .testimonials-section {
+      padding: 100px 0;
+      background: var(--snow-white);
+    }
+    
+    .testimonials-section h2 {
+      text-align: center;
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      color: var(--primary-blue);
+      font-weight: 900;
+      letter-spacing: -0.02em;
+    }
+    
+    .testimonials-section p {
+      text-align: center;
+      font-size: 1.3rem;
+      color: var(--warm-gray);
+      margin-bottom: 3rem;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.7;
+    }
+    
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2.5rem;
+      margin-top: 3rem;
+    }
+    
+    .testimonial-card {
+      background: var(--light-gray);
+      border-radius: 20px;
+      padding: 3rem;
+      text-align: center;
+      position: relative;
+      border: 2px solid transparent;
+      transition: all 0.3s ease;
+    }
+    
+    .testimonial-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(30, 58, 138, 0.1);
+      border-color: var(--accent-orange);
+      background: var(--snow-white);
+    }
+    
+    .testimonial-card::before {
+      content: '"';
+      font-size: 4rem;
+      color: var(--accent-orange);
+      position: absolute;
+      top: -15px;
+      left: 25px;
+      font-family: serif;
+      opacity: 0.3;
+    }
+    
+    .testimonial-text {
+      font-style: italic;
+      margin-bottom: 2rem;
+      line-height: 1.7;
+      color: var(--dark-gray);
+      font-size: 1.1rem;
+    }
+    
+    .testimonial-author {
+      font-weight: 700;
+      color: var(--primary-blue);
+      font-size: 1.1rem;
+    }
+    
+    /* 最新消息区域样式 - 和coaches.html完全一样 */
+    .news-section {
+      padding: 80px 0;
+      background: var(--snow-white);
+      position: relative;
+    }
+    
+    .news-section .container {
+      position: relative;
+      z-index: 2;
+    }
+    
+    /* 新闻标题区域 */
+    .news-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    
+    .news-title-section h2 {
+      font-size: 2.2rem;
+      font-weight: 600;
+      color: var(--primary-blue);
+      margin-bottom: 0.8rem;
+    }
+    
+    .news-title-section p {
+      font-size: 1.1rem;
+      color: var(--warm-gray);
+      margin-bottom: 1.5rem;
+      font-weight: 400;
+    }
+    
+    /* 新闻网格 - 极简紧凑 */
+    .news-grid-modern {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+      padding: 0;
+    }
+    
+    /* 新闻卡片 - 极简显示，确保文字完全显示 */
+    .news-card-modern {
+      background: white;
+      border-radius: 8px;
+      padding: 0.8rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+      transition: transform 0.2s, box-shadow 0.2s;
+      border: 1px solid #e0e0e0;
+      text-align: center;
+      min-height: auto;
+      height: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .news-card-modern:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    }
+    
+    /* 新闻图片容器 - 小头像显示 */
+    .news-image-container {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      margin: 0 auto 0.4rem;
+      display: block;
+      border: 1.5px solid var(--primary-blue);
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    
+    .news-image-modern {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    
+    /* 新闻标题 - 极简显示，确保完全显示 */
+    .news-title-modern {
+      color: var(--primary-blue);
+      margin-bottom: 0.5rem;
+      text-align: center;
+      font-size: 0.95rem;
+      font-weight: 600;
+      line-height: 1.3;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      white-space: normal;
+      height: auto;
+      min-height: auto;
+      max-width: 100%;
+      width: 100%;
+    }
+    
+    /* 新闻摘要 - 极简显示，确保完全显示 */
+    .news-summary-modern {
+      color: #666;
+      line-height: 1.4;
+      margin-bottom: 0.8rem;
+      text-align: center;
+      font-size: 0.8rem;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      white-space: normal;
+      height: auto;
+      min-height: auto;
+      max-width: 100%;
+      width: 100%;
+    }
+    
+    /* 新闻按钮 - 极简样式 */
+    .news-btn-modern {
+      width: 100%;
+      background: var(--primary-blue);
+      color: white;
+      border: none;
+      padding: 0.5rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      transition: background 0.2s;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: auto;
+    }
+    
+    .news-btn-modern:hover {
+      background: var(--accent-orange);
+    }
+    
+    /* 显示更多 */
+    .news-more {
+      text-align: center;
+      margin-top: 2rem;
+    }
+    
+    .news-more-link {
+      color: var(--primary-blue);
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 1.1rem;
+    }
+    
+    .news-more-link:hover {
+      color: var(--accent-orange);
+      text-decoration: underline;
+    }
+    
+    /* 响应式设计 - 和coaches.html完全一样 */
+    @media (max-width: 768px) {
+      .news-grid-modern {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 0 1rem;
+      }
+    }
+    .news-loading-modern {
+      text-align: center;
+      padding: 3rem 2rem;
+      color: var(--warm-gray);
+    }
+    
+    .loading-spinner {
+      display: inline-block;
+      position: relative;
+      width: 60px;
+      height: 60px;
+      margin-bottom: 1.5rem;
+    }
+    
+    .spinner-ring {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border: 3px solid transparent;
+      border-top: 3px solid var(--primary-blue);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    
+    .spinner-ring:nth-child(2) {
+      animation-delay: -0.3s;
+      border-top-color: var(--accent-orange);
+    }
+    
+    .spinner-ring:nth-child(3) {
+      animation-delay: -0.6s;
+      border-top-color: var(--primary-blue);
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    .loading-text h3 {
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+      color: var(--primary-blue);
+    }
+    
+    .loading-text p {
+      font-size: 0.9rem;
+      color: var(--warm-gray);
+    }
+    
+    /* 极简错误状态 */
+    .news-error-modern {
+      text-align: center;
+      padding: 3rem 2rem;
+      color: #e60012;
+    }
+    
+    .error-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .news-error-modern h3 {
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    /* 动画 */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    /* 响应式设计 */
+    @media (max-width: 1200px) {
+      .news-grid-modern {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.2rem;
+      }
+    }
+    
+    @media (max-width: 900px) {
+      .news-grid-modern {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+        padding: 0 1rem;
+      }
+      
+      .news-categories-modern {
+        gap: 0.8rem;
+        margin-bottom: 2.5rem;
+      }
+      
+      .category-btn-modern {
+        padding: 0.7rem 1rem;
+        min-width: 90px;
+      }
+      
+      .news-title-section h2 {
+        font-size: 2rem;
+      }
+      
+      .news-title-section p {
+        font-size: 1rem;
+      }
+    }
+    
+    @media (max-width: 600px) {
+      .news-section {
+        padding: 60px 0;
+      }
+      
+      .news-categories-modern {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .category-btn-modern {
+        width: 100%;
+        max-width: 180px;
+      }
+      
+      .news-content-modern {
+        padding: 1.2rem;
+      }
+      
+      .news-actions {
+        flex-direction: column;
+        gap: 0.8rem;
+        align-items: stretch;
+      }
+      
+      .news-btn-modern {
+        justify-content: center;
+      }
+      
+      .news-title-section h2 {
+        font-size: 1.8rem;
+      }
+      
+      .news-title-section p {
+        font-size: 0.95rem;
+      }
+    }
+    
+    /* 联系我们区域样式 - 完全按照Pinnacle设计 */
+    .contact-section {
+      padding: 100px 0;
+      background: var(--snow-white);
+    }
+    
+    .contact-header h2 {
+      font-size: 3rem;
+      color: var(--primary-blue);
+      margin-bottom: 1rem;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      text-align: center;
+    }
+    
+    .contact-header p {
+      font-size: 1.3rem;
+      color: var(--warm-gray);
+      max-width: 700px;
+      margin: 0 auto 3rem;
+      line-height: 1.7;
+      text-align: center;
+    }
+    
+    .contact-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      margin-top: 3rem;
+    }
+    
+    .contact-info-card {
+      background: var(--light-gray);
+      border-radius: 20px;
+      padding: 3rem;
+      box-shadow: 0 8px 30px rgba(30, 58, 138, 0.1);
+      border: 2px solid var(--primary-blue);
+      transition: all 0.3s ease;
+    }
+    
+    .contact-info-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(30, 58, 138, 0.15);
+      border-color: var(--accent-orange);
+    }
+    
+    .contact-info-card h3 {
+      color: var(--primary-blue);
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      font-weight: 800;
+      text-align: center;
+    }
+    
+    .contact-methods {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    
+    .contact-method {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1.5rem;
+      background: var(--snow-white);
+      border-radius: 12px;
+      border: 1px solid var(--border-gray);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    
+    .contact-method:hover {
+      background: var(--powder-blue);
+      transform: translateX(5px);
+      box-shadow: 0 4px 15px rgba(59, 130, 246, 0.1);
+    }
+    
+    .method-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      color: var(--snow-white);
+      font-weight: bold;
+    }
+    
+    .method-icon.wechat {
+      background: #07C160;
+    }
+    
+    .method-icon.line {
+      background: #00B900;
+    }
+    
+    .method-icon.whatsapp {
+      background: #25D366;
+    }
+    
+    .method-icon.email {
+      background: var(--primary-blue);
+    }
+    
+    .method-info h4 {
+      color: var(--primary-blue);
+      font-size: 1.1rem;
+      margin-bottom: 0.3rem;
+      font-weight: 700;
+    }
+    
+    .method-info p {
+      color: var(--warm-gray);
+      font-size: 0.95rem;
+      margin: 0;
+    }
+    
+    .contact-promo-card {
+      background: var(--light-gray);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 8px 30px rgba(30, 58, 138, 0.1);
+      border: 2px solid var(--accent-orange);
+      transition: all 0.3s ease;
+    }
+    
+    .contact-promo-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(30, 58, 138, 0.15);
+    }
+    
+    .promo-image {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    
+    .promo-content {
+      padding: 2.5rem;
+    }
+    
+    .promo-content h3 {
+      color: var(--primary-blue);
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      font-weight: 800;
+    }
+    
+    .promo-content p {
+      color: var(--warm-gray);
+      font-size: 1rem;
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+    
+    .promo-features {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    
+    .feature {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      padding: 1rem;
+      background: var(--snow-white);
+      border-radius: 10px;
+      border: 1px solid var(--border-gray);
+      transition: background 0.3s ease;
+    }
+    
+    .feature:hover {
+      background: var(--powder-blue);
+    }
+    
+    .feature-icon {
+      width: 24px;
+      height: 24px;
+      background: linear-gradient(135deg, var(--accent-orange), var(--success-green));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      color: white;
+      font-weight: bold;
+    }
+    
+    .feature span:last-child {
+      color: var(--primary-blue);
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+    
+    /* 页脚样式 - 完全按照Pinnacle设计 */
+    .footer {
+      background: var(--mountain-gray);
+      color: var(--snow-white);
+      padding: 4rem 0 2rem 0;
+    }
+    
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+    
+    .footer-content h3 {
+      color: var(--accent-orange);
+      margin-bottom: 1.5rem;
+      font-size: 1.3rem;
+      font-weight: 700;
+    }
+    
+    .footer-content p {
+      color: #bdc3c7;
+      line-height: 1.8;
+      margin-bottom: 0;
+      font-size: 0.95rem;
+    }
+    
+    .footer-content ul {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .footer-content ul li a {
+      color: #bdc3c7;
+      text-decoration: none;
+      line-height: 2;
+      transition: color 0.3s ease;
+      display: inline-block;
+      font-size: 0.95rem;
+    }
+    
+    .footer-content ul li a:hover {
+      color: var(--accent-orange);
+      transform: translateX(5px);
+    }
+    
+    .footer-content ul li {
+      color: #bdc3c7;
+      line-height: 2;
+      font-size: 0.95rem;
+    }
+    
+    .footer-bottom {
+      text-align: center;
+      padding-top: 2rem;
+      border-top: 1px solid #374151;
+      color: #9ca3af;
+      font-size: 0.9rem;
+    }
+    
+    /* 右下角固定联系按钮 - 完全按照Pinnacle设计 */
+    .contact-float {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      z-index: 1000;
+    }
+    
+    .contact-main-btn {
+      width: 80px;
+      height: 80px;
+      background: var(--accent-orange);
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 4px 20px rgba(234, 88, 12, 0.3);
+      transition: all 0.3s ease;
+      color: var(--snow-white);
+      font-weight: bold;
+    }
+    
+    .contact-main-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 8px 30px rgba(234, 88, 12, 0.4);
+    }
+    
+    .contact-icon {
+      font-size: 1.8rem;
+      margin-bottom: 2px;
+      display: block;
+    }
+    
+    .contact-text {
+      font-size: 0.7rem;
+      line-height: 1;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+    
+    .contact-options {
+      position: absolute;
+      bottom: 90px;
+      right: 0;
+      display: none;
+      flex-direction: column;
+      gap: 15px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.3s ease;
+      z-index: 1001; /* 确保在联系按钮之上 */
+      pointer-events: auto; /* 确保可以点击 */
+    }
+    
+    .contact-options.show {
+      display: flex !important; /* 强制显示 */
+      opacity: 1 !important; /* 强制不透明 */
+      transform: translateY(0) !important; /* 强制位置 */
+      visibility: visible !important; /* 强制可见 */
+    }
+    
+    .contact-option {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      color: var(--snow-white);
+      font-weight: bold;
+      position: relative;
+    }
+    
+    .contact-option.wechat {
+      background: #07C160;
+      box-shadow: 0 4px 15px rgba(7, 193, 96, 0.3);
+    }
+    
+    .contact-option.line {
+      background: #00B900;
+      box-shadow: 0 4px 15px rgba(0, 185, 0, 0.3);
+    }
+    
+    .contact-option.whatsapp {
+      background: #25D366;
+      box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+    }
+    
+    .contact-option:hover {
+      transform: scale(1.1);
+    }
+    
+    .contact-option.wechat:hover {
+      box-shadow: 0 8px 25px rgba(7, 193, 96, 0.4);
+    }
+    
+    .contact-option.line:hover {
+      box-shadow: 0 8px 25px rgba(0, 185, 0, 0.4);
+    }
+    
+    .contact-option.whatsapp:hover {
+      box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+    }
+    
+    .option-icon {
+      font-size: 1.5rem;
+      margin-bottom: 2px;
+      display: block;
+    }
+    
+    .option-text {
+      font-size: 0.6rem;
+      line-height: 1;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+    }
+    
+    .contact-option::after {
+      content: attr(data-tooltip);
+      position: absolute;
+      right: 80px;
+      background: var(--dark-gray);
+      color: var(--snow-white);
+      padding: 8px 12px;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      white-space: nowrap;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      font-weight: normal;
+    }
+    
+    .contact-option:hover::after {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    /* 响应式设计 - 完全按照Pinnacle设计 */
+    @media (max-width: 1024px) {
+      .container {
+        padding: 0 1.5rem;
+      }
+      
+      .hero-content {
+        gap: 3rem;
+      }
+      
+      .hero-content h1 {
+        font-size: 3rem;
+      }
+      
+      .hero-content .subtitle {
+        font-size: 1.8rem;
+      }
+      
+      .hero-content .description {
+        font-size: 1.2rem;
+      }
+      
+      .school-intro-content h2,
+      .private-lesson-content h2,
+      .testimonials-section h2,
+      .news-section h2,
+      .contact-header h2 {
+        font-size: 2.5rem;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .hero-section {
+        min-height: 50vh; /* 移动端减少最小高度 */
+        padding: 80px 0 40px 0; /* 移动端减少内边距 */
+      }
+      
+      .nav-container {
+        padding: 1rem;
+      }
+      
+      .logo {
+        gap: 0.6rem;
+      }
+      
+      .logo-gx {
+        font-size: 1.8rem;
+        min-width: 50px;
+        height: 40px;
+        padding: 0.4rem 0.6rem;
+      }
+      
+      .logo-chinese {
+        font-size: 1rem;
+      }
+      
+      .logo-english {
+        font-size: 0.65rem;
+      }
+      
+      .hero-content {
+        flex-direction: column;
+        text-align: left;
+        padding: 0 2rem 0 2rem;
+        gap: 1.5rem; /* 增加移动端间距 */
+        justify-content: flex-start;
+        align-items: flex-start;
+        margin-top: 0; /* 去掉margin-top，因为外层已经有padding */
+        min-height: auto; /* 移动端自适应高度 */
+      }
+      
+      .hero-left {
+        flex: 1;
+        text-align: left;
+        max-width: 100%;
+        margin-left: 0;
+        padding-left: 0;
+        left: 0;
+        position: relative;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        padding-top: 1.5rem; /* 减少移动端顶部内边距 */
+      }
+      
+      .hero-content h1 {
+        font-size: 1.8rem;
+        margin-bottom: 1.2rem; /* 增加移动端标题下方间距 */
+        line-height: 1.3; /* 增加移动端行高 */
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+      }
+      
+      .hero-content .subtitle {
+        font-size: 1.1rem;
+        margin-bottom: 0.8rem; /* 增加移动端副标题下方间距 */
+        line-height: 1.4; /* 增加移动端行高 */
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+      }
+      
+      .hero-content .description {
+        font-size: 0.9rem;
+        margin-bottom: 1.2rem; /* 增加移动端描述下方间距 */
+        line-height: 1.5; /* 增加移动端行高 */
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+      }
+      
+      .mission-section {
+        margin: 1.2rem 0; /* 增加移动端使命区域间距 */
+        padding: 1.2rem; /* 增加移动端使命区域内边距 */
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 15px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(10px);
+        max-width: 100%;
+        overflow: hidden;
+        margin-right: 1rem;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+      }
+      
+      .mission-section h3 {
+        color: var(--accent-orange);
+        font-size: 1rem;
+        font-weight: 700;
+        margin-bottom: 0.6rem;
+        text-align: left;
+        line-height: 1.2;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+      }
+      
+      .mission-text {
+        color: var(--snow-white);
+        font-size: 0.85rem;
+        line-height: 1.4;
+        margin-bottom: 0.5rem;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        max-width: 100%;
+      }
+      
+      .hero-buttons {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.6rem;
+        margin-top: 1rem;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+      }
+      
+      .hero-link {
+        font-size: 0.9rem;
+        padding: 0.3rem 0;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        max-width: 100%;
+      }
+      
+      /* 课程图片展示区域响应式调整 - 768px */
+      .course-images-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+        padding: 0 1rem;
+      }
+      
+      .course-image-card {
+        border-radius: 12px;
+      }
+      
+      .image-background {
+        height: 200px;
+      }
+      
+      .image-content {
+        padding: 1.2rem;
+      }
+      
+      .image-content h3 {
+        font-size: 1.2rem;
+        margin-bottom: 0.6rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      
+      .image-content p {
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+      }
+      
+      .learn-more-btn {
+        padding: 0.7rem 1.2rem;
+        font-size: 0.85rem;
+      }
+      
+      .hero-right {
+        margin-left: 0;
+        margin-top: 0;
+      }
+      
+      .hero-highlight {
+        padding: 1.8rem 1.5rem;
+      }
+      
+      .hero-highlight h3 {
+        font-size: 1.2rem;
+      }
+      
+      .highlight-features {
+        gap: 0.6rem;
+      }
+      
+      .highlight-feature {
+        padding: 0.6rem 0.7rem;
+      }
+      
+      .feature-text {
+        font-size: 0.8rem;
+      }
+      
+      .booking-badge {
+        font-size: 0.8rem;
+        padding: 0.4rem 1.2rem;
+        right: 20px;
+      }
+      
+      /* 单双板滑行技术展示区域响应式 */
+      .ski-snowboard-content {
+        flex-direction: column;
+        gap: 2rem;
+        text-align: center;
+      }
+      
+      .content-left, .content-right {
+        max-width: 100%;
+      }
+      
+      .image-display {
+        height: 300px;
+      }
+      
+      .single-board-photo, .double-board-photo {
+        width: 100%;
+        height: 100%;
+      }
+      
+      .gx-logo {
+        width: 50px;
+        height: 50px;
+        bottom: 10px;
+        right: 10px;
+      }
+      
+      .school-intro-section,
+      .ski-snowboard-section,
+      .testimonials-section,
+      .news-section,
+      .contact-section {
+        padding: 80px 0;
+      }
+      
+      .school-intro-content h2,
+      .ski-snowboard-section h2,
+      .advanced-camp-content h2,
+      .courses-section h2,
+      .resorts-section h2,
+      .testimonials-section h2,
+      .news-section h2,
+      .contact-header h2 {
+        font-size: 2.2rem;
+      }
+      
+      .school-intro-content h3,
+      .ski-snowboard-section h3,
+      .advanced-camp-content h3 {
+        font-size: 1.5rem;
+      }
+      
+      .school-intro-content p,
+      .ski-snowboard-section p,
+      .testimonials-section p,
+      .news-section p,
+      .contact-header p {
+        font-size: 1.1rem;
+      }
+      
+      .contact-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      
+      .testimonials-grid,
+      .news-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      
+
+    }
+    
+    @media (max-width: 480px) {
+      .hero-section {
+        min-height: 40vh; /* 超小屏幕减少最小高度 */
+        padding: 60px 0 30px 0; /* 超小屏幕减少内边距 */
+      }
+      
+      .nav-container {
+        padding: 0.6rem 0.8rem;
+      }
+      
+      .logo {
+        font-size: 1.3rem;
+      }
+      
+      .btn-reservation {
+        padding: 0.5rem 1rem;
+        font-size: 0.8rem;
+      }
+      
+      .nav-links {
+        gap: 0.8rem;
+        flex-wrap: wrap;
+      }
+      
+      .nav-links a {
+        font-size: 0.8rem;
+      }
+      
+      /* Hero区域响应式调整 - 480px */
+      .hero-content {
+        padding: 0 1rem 0 1rem;
+        gap: 1rem;
+        margin-top: 0; /* 去掉margin-top，因为外层已经有padding */
+        padding-top: 1rem; /* 减少超小屏幕顶部内边距 */
+      }
+      
+      .hero-left {
+        max-width: 100%;
+        margin-left: 0;
+        padding-top: 0.5rem; /* 减少超小屏幕顶部内边距 */
+      }
+      
+      .hero-content h1 {
+        font-size: 1.5rem;
+        margin-bottom: 0.8rem;
+        line-height: 1.2;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+      }
+      
+      .hero-content .subtitle {
+        font-size: 1rem;
+        margin-bottom: 0.6rem;
+        line-height: 1.3;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+      }
+      
+      .hero-content .description {
+        font-size: 0.85rem;
+        margin-bottom: 0.8rem;
+        line-height: 1.4;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+      }
+      
+      .mission-section {
+        margin: 0.8rem 0;
+        padding: 0.8rem;
+        margin-right: 0.5rem;
+      }
+      
+      .mission-section h3 {
+        font-size: 0.9rem;
+        margin-bottom: 0.5rem;
+      }
+      
+      .mission-text {
+        font-size: 0.8rem;
+        line-height: 1.3;
+        margin-bottom: 0.4rem;
+      }
+      
+      .hero-buttons {
+        gap: 0.5rem;
+        margin-top: 0.8rem;
+      }
+      
+      .hero-link {
+        font-size: 0.85rem;
+        padding: 0.25rem 0;
+      }
+    }
+    
+    /* 下拉菜单样式 - 完全按照Pinnacle设计 */
+    .nav-links .dropdown {
+      position: relative;
+    }
+    
+    .nav-links .dropdown-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: rgba(30, 58, 138, 0.98);
+      backdrop-filter: blur(20px);
+      border-radius: 12px;
+      padding: 1rem 0;
+      min-width: 220px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      z-index: 1001;
+    }
+    
+    .nav-links .dropdown:hover .dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    
+    .nav-links .dropdown-menu li {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .nav-links .dropdown-menu li:last-child {
+      border-bottom: none;
+    }
+    
+    .nav-links .dropdown-menu li a {
+      display: block;
+      padding: 0.8rem 1.5rem;
+      color: var(--snow-white);
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      border-left: 3px solid transparent;
+    }
+    
+    .nav-links .dropdown-menu li a:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--accent-orange);
+      border-left-color: var(--accent-orange);
+      transform: translateX(5px);
+    }
+    
+    /* 响应式下拉菜单 */
+    @media (max-width: 768px) {
+      .nav-links .dropdown-menu {
+        position: static;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 8px;
+        margin-top: 0.5rem;
+        padding: 0.5rem 0;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        box-shadow: none;
+        border: none;
+      }
+      
+      .nav-links .dropdown-menu li a {
+        padding: 0.6rem 1rem;
+        font-size: 0.9rem;
+        border-left: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      
+      .nav-links .dropdown-menu li a:hover {
+        transform: none;
+        background: rgba(255, 255, 255, 0.1);
+      }
+      
+      /* 移动端导航栏样式 */
+      .nav-container {
+        padding: 0.8rem 1rem;
+      }
+      
+      .logo {
+        font-size: 1.5rem;
+      }
+      
+      .btn-reservation {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.85rem;
+      }
+      
+      /* 移动端菜单换行 */
+      .nav-links {
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+      }
+      
+      .nav-links a {
+        font-size: 0.85rem;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .nav-container {
+        padding: 0.6rem 0.8rem;
+      }
+      
+      .logo {
+        font-size: 1.3rem;
+      }
+      
+      .btn-reservation {
+        padding: 0.5rem 1rem;
+        font-size: 0.8rem;
+      }
+      
+      .nav-links {
+        gap: 0.8rem;
+        flex-wrap: wrap;
+      }
+      
+      .nav-links a {
+        font-size: 0.8rem;
+      }
+    }
+    
+    .hero-content[data-aos] {
+      margin-left: 0 !important;
+      left: 0 !important;
+      transform: none !important;
+    }
+    
+    .hero-content.aos-init,
+    .hero-content.aos-animate {
+      margin-left: 0 !important;
+      left: 0 !important;
+      transform: none !important;
+    }
+    
+    /* 课程图片展示区域样式 */
+    .course-images-section {
+      padding: 80px 0;
+      background: var(--snow-white);
+    }
+    
+    .course-images-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .course-image-card {
+      position: relative;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      background: var(--snow-white);
+    }
+    
+    .course-image-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    }
+    
+    .image-background {
+      position: relative;
+      width: 100%;
+      height: 250px;
+      overflow: hidden;
+    }
+    
+    .image-background img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      transition: transform 0.3s ease;
+    }
+    
+    .course-image-card:hover .image-background img {
+      transform: scale(1.1);
+    }
+    
+    .image-content {
+      padding: 1.5rem;
+      text-align: center;
+    }
+    
+    .image-content h3 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--primary-blue);
+      margin-bottom: 0.8rem;
+      line-height: 1.3;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    
+    .image-content p {
+      font-size: 0.95rem;
+      color: var(--warm-gray);
+      margin-bottom: 1.2rem;
+      line-height: 1.5;
+    }
+    
+    .learn-more-btn {
+      display: inline-block;
+      padding: 0.8rem 1.5rem;
+      background: var(--accent-orange);
+      color: var(--snow-white);
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+      border: 2px solid var(--accent-orange);
+    }
+    
+    .learn-more-btn:hover {
+      background: transparent;
+      color: var(--accent-orange);
+      transform: translateY(-2px);
+    }
+    
+    /* 轮播展示区域样式 */
+
+    /* 确保页面主体可见和可滚动 */
+    body {
+      visibility: visible !important;
+      opacity: 1 !important;
+      overflow-x: auto !important;
+      overflow-y: auto !important;
+      height: auto !important;
+    }
+    
+    /* 确保html元素可滚动 */
+    html {
+      overflow-x: auto !important;
+      overflow-y: auto !important;
+      height: auto !important;
+    }
+    
+    /* 教学地点区域样式 - 极简版本 */
+    .teaching-locations-section {
+      padding: 60px 0;
+      background: var(--snow-white);
+      position: relative;
+    }
+    
+    .teaching-locations-section .container {
+      position: relative;
+      z-index: 2;
+    }
+    
+    .teaching-locations-section h2 {
+      text-align: center;
+      font-size: 2.2rem;
+      margin-bottom: 0.8rem;
+      color: var(--primary-blue);
+      font-weight: 600;
+    }
+    
+    .teaching-locations-section p {
+      text-align: center;
+      font-size: 1.1rem;
+      color: var(--warm-gray);
+      margin-bottom: 2.5rem;
+      font-weight: 400;
+    }
+    
+    /* 极简网格布局 */
+    .locations-grid-modern {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.2rem;
+      margin-top: 1.5rem;
+    }
+    
+    /* 极简卡片样式 */
+    .location-card-modern {
+      background: var(--snow-white);
+      border-radius: 12px;
+      padding: 1.2rem;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      transition: all 0.2s ease;
+      border: 1px solid var(--border-gray);
+      position: relative;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .location-card-modern:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+      border-color: var(--primary-blue);
+    }
+    
+    /* 极简卡片头部 */
+    .location-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.8rem;
+    }
+    
+    .location-number {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--primary-blue);
+      opacity: 0.7;
+    }
+    
+    .location-icon-modern {
+      font-size: 1.8rem;
+      transition: transform 0.2s ease;
+    }
+    
+    .location-card-modern:hover .location-icon-modern {
+      transform: scale(1.05);
+    }
+    
+    /* 极简卡片内容 */
+    .location-content h3 {
+      color: var(--primary-blue);
+      font-size: 1.1rem;
+      margin-bottom: 0.6rem;
+      font-weight: 600;
+      line-height: 1.3;
+    }
+    
+    .location-desc-modern {
+      color: var(--warm-gray);
+      line-height: 1.4;
+      margin-bottom: 1.2rem;
+      font-size: 0.9rem;
+      flex: 1;
+    }
+    
+    /* 极简统计信息 */
+    .location-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.6rem;
+      margin-bottom: 1.2rem;
+    }
+    
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 0.5rem;
+      background: var(--light-gray);
+      border-radius: 6px;
+      border: 1px solid var(--border-gray);
+    }
+    
+    .stat-label {
+      font-size: 0.65rem;
+      color: var(--warm-gray);
+      font-weight: 500;
+      text-transform: uppercase;
+      margin-bottom: 0.2rem;
+    }
+    
+    .stat-value {
+      font-size: 0.75rem;
+      color: var(--primary-blue);
+      font-weight: 600;
+    }
+    
+    /* 极简特色标签 */
+    .location-features-modern {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 1.2rem;
+      justify-content: center;
+    }
+    
+    .feature-tag-modern {
+      background: var(--accent-orange);
+      color: var(--snow-white);
+      padding: 0.25rem 0.6rem;
+      border-radius: 12px;
+      font-size: 0.65rem;
+      font-weight: 500;
+      text-transform: uppercase;
+    }
+    
+    .feature-tag-modern:hover {
+      opacity: 0.9;
+    }
+    
+    /* 极简按钮 */
+    .location-btn-modern {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      background: var(--primary-blue);
+      color: var(--snow-white);
+      padding: 0.6rem 1rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: all 0.2s ease;
+      border: 1px solid transparent;
+      margin-top: auto;
+    }
+    
+    .location-btn-modern:hover {
+      background: var(--accent-orange);
+      transform: translateY(-1px);
+    }
+    
+    .arrow-icon {
+      width: 14px;
+      height: 14px;
+      transition: transform 0.2s ease;
+    }
+    
+    .location-btn-modern:hover .arrow-icon {
+      transform: translateX(2px);
+    }
+    
+    /* 响应式设计 */
+    @media (max-width: 1200px) {
+      .locations-grid-modern {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+      }
+    }
+    
+    @media (max-width: 900px) {
+      .locations-grid-modern {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+      }
+      
+      .location-card-modern {
+        padding: 1rem;
+      }
+      
+      .location-content h3 {
+        font-size: 1rem;
+      }
+      
+      .location-desc-modern {
+        font-size: 0.85rem;
+      }
+    }
+    
+    @media (max-width: 600px) {
+      .locations-grid-modern {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        padding: 0 0.8rem;
+      }
+      
+      .teaching-locations-section {
+        padding: 50px 0;
+      }
+      
+      .teaching-locations-section h2 {
+        font-size: 1.8rem;
+      }
+      
+      .teaching-locations-section p {
+        font-size: 1rem;
+      }
+      
+      .location-stats {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+      }
+      
+      .location-features-modern {
+        justify-content: center;
+      }
+    }
+
+    /* 极简追加覆盖 - 教学地点进一步简化 */
+    .teaching-locations-section .location-header,
+    .teaching-locations-section .location-stats,
+    .teaching-locations-section .location-features-modern,
+    .teaching-locations-section .location-btn-modern { display: none !important; }
+    .teaching-locations-section .location-card-modern { box-shadow: none; border: 1px solid var(--border-gray); padding: 1rem; }
+    .teaching-locations-section .location-content h3 { margin-bottom: 0.4rem; }
+    .teaching-locations-section .location-desc-modern { margin-bottom: 0; }
+
+
+  </style>
 </head>
 <body>
   <!-- 顶部导航栏 -->
   <nav id="navbar" class="navbar">
     <div class="container nav-container">
-      <a href="index.html" class="logo">Glide.X</a>
+      <a href="index.html" class="logo">
+        <span class="logo-gx">GX</span>
+        <div class="logo-text">
+          <span class="logo-chinese">中文国际滑雪学校</span>
+          <span class="logo-english">GLIDEX SNOWSPORTS SCHOOL</span>
+        </div>
+      </a>
       <ul class="nav-links">
-        <li><a href="index.html#home">首页</a></li>
-        <li class="dropdown"><a href="courses.html">特色课程</a>
-          <ul class="dropdown-menu">
-            <li><a href="#">课程子项1</a></li>
-            <li><a href="#">课程子项2</a></li>
-            <li><a href="#">课程子项3</a></li>
-            <li><a href="#">课程子项4</a></li>
-            <li><a href="#">课程子项5</a></li>
-          </ul>
-        </li>
-        <li class="dropdown"><a href="camp.html">训练营</a>
-          <ul class="dropdown-menu">
-            <li><a href="#">训练营子项1</a></li>
-            <li><a href="#">训练营子项2</a></li>
-            <li><a href="#">训练营子项3</a></li>
-            <li><a href="#">训练营子项4</a></li>
-            <li><a href="#">训练营子项5</a></li>
-          </ul>
-        </li>
-        <li class="dropdown"><a href="exam.html">单板考级</a>
-          <ul class="dropdown-menu">
-            <li><a href="#">考级子项1</a></li>
-            <li><a href="#">考级子项2</a></li>
-            <li><a href="#">考级子项3</a></li>
-            <li><a href="#">考级子项4</a></li>
-            <li><a href="#">考级子项5</a></li>
-          </ul>
-        </li>
-        <li><a href="news.html">最新消息</a></li>
-        <li class="dropdown"><a href="about.html">关于学校</a>
-          <ul class="dropdown-menu">
-            <li><a href="gallery.html">精彩瞬间</a></li>
-          </ul>
-        </li>
-        <li><a href="contact.html">联系我们</a></li>
+        <li><a href="index.html">首页</a></li>
+        <li><a href="about.html">关于GX</a></li>
+        <li><a href="courses.html">课程介绍</a></li>
         <li><a href="coaches.html">教练团队</a></li>
+        <li><a href="#faq">常见问题</a></li>
+        <li><a href="news.html">最新消息</a></li>
+        <li><a href="#offseason">雪季外动态</a></li>
+        <li><a href="contact.html">联系我们</a></li>
       </ul>
+      <a href="courses.html" class="btn btn-reservation">预约</a>
     </div>
   </nav>
 
-  <!-- 全屏主视觉区域（轮播） -->
-  <header class="hero" id="home">
-    <div class="swiper heroSwiper">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide">
-          <div class="hero-bg" style="background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1600&q=80');"></div>
-          <div class="hero-content" data-aos="fade-up">
-            <h1>Glide.X滑雪学校</h1>
-            <p>“GLIDE” 代表滑行，“X” 代表挑战。GX希望以滑行的方式，与大家一起挑战自我极限，发现更多户外乐趣。</p>
-            <a href="courses.html" class="btn">预约课程</a>
+  <!-- 英雄区域 -->
+  <section class="hero-section" id="home">
+    <!-- 背景轮播 -->
+    <div class="hero-background-slider">
+      <div class="swiper heroBackgroundSwiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <div class="background-slide">
+              <img src="image/hero/hero-slide-01-snowboard-team.jpg" alt="滑雪团队合影" />
+            </div>
           </div>
-        </div>
-        <div class="swiper-slide">
-          <div class="hero-bg" style="background-image: url('https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=1600&q=80');"></div>
-          <div class="hero-content" data-aos="fade-up">
-            <h1>GX专注横板运动</h1>
-            <p>单板、滑板、冲浪，助力爱好者挑战极限，享受户外乐趣。</p>
-            <a href="#about" class="btn">了解更多</a>
+          <div class="swiper-slide">
+            <div class="background-slide">
+              <img src="image/hero/hero-slide-02-ski-mountain.jpg" alt="雪山美景" />
+            </div>
           </div>
-        </div>
-        <div class="swiper-slide">
-          <div class="hero-bg" style="background-image: url('https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=1600&q=80');"></div>
-          <div class="hero-content" data-aos="fade-up">
-            <h1>滑雪培训与活动</h1>
-            <p>GX提供专业滑雪培训与丰富横板活动，欢迎加入我们的大家庭！</p>
-            <a href="courses.html" class="btn">预约课程</a>
+          <div class="swiper-slide">
+            <div class="background-slide">
+              <img src="image/hero/hero-slide-03-ski-lesson.jpg" alt="滑雪教学" />
+            </div>
           </div>
-        </div>
-        <div class="swiper-slide">
-          <div class="hero-bg" style="background:#000;display:flex;align-items:center;justify-content:center;">
-            <img src="https://media.giphy.com/media/3o6Zt481isNVuQI1l6/giphy.gif" alt="滑雪动图" style="max-width:100%;max-height:80vh;border-radius:18px;box-shadow:0 4px 24px rgba(0,51,102,0.10);">
-          </div>
-          <div class="hero-content" data-aos="fade-up" style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;background:none;">
-            <div style="margin-top:1.2em;color:#fff;font-size:1.15em;font-weight:600;letter-spacing:0.08em;">Glide.X 精彩滑雪动图</div>
-          </div>
-        </div>
-        <div class="swiper-slide">
-          <div class="hero-bg" style="background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=80');"></div>
-          <div class="hero-content" data-aos="fade-up">
-            <h1>冲浪激情</h1>
-            <p>GX带你体验海浪上的速度与激情，专业教练带队，安全又刺激！</p>
-            <a href="#surf" class="btn">了解冲浪</a>
-          </div>
-        </div>
-        <div class="swiper-slide">
-          <div class="hero-bg" style="background-image: url('https://images.unsplash.com/photo-1519864600265-abb23847ef2c?auto=format&fit=crop&w=1600&q=80');"></div>
-          <div class="hero-content" data-aos="fade-up">
-            <h1>滑板酷玩</h1>
-            <p>GX滑板俱乐部，城市街头与极限公园的自由驰骋，等你来挑战！</p>
-            <a href="#skate" class="btn">了解滑板</a>
+          <div class="swiper-slide">
+            <div class="background-slide">
+              <img src="image/hero/hero-slide-04-snow-resort.jpg" alt="滑雪度假村" />
+            </div>
           </div>
         </div>
       </div>
-      <div class="swiper-pagination"></div>
-      <div class="swiper-button-prev"></div>
-      <div class="swiper-button-next"></div>
     </div>
-  </header>
+    
+    <!-- 雪花效果 -->
+    <div class="snowflakes" aria-hidden="true">
+      <div class="snowflake">❄</div>
+      <div class="snowflake">❅</div>
+      <div class="snowflake">❆</div>
+      <div class="snowflake">❄</div>
+      <div class="snowflake">❅</div>
+      <div class="snowflake">❆</div>
+      <div class="snowflake">❄</div>
+      <div class="snowflake">❅</div>
+      <div class="snowflake">❆</div>
+      <div class="snowflake">❄</div>
+    </div>
+    
+    <!-- 内容区域 -->
+    <div class="hero-content" data-aos="fade-up">
+      <div class="hero-left">
+        <h1>日本JSBA体系官方认证滑雪学校</h1>
+        <p class="subtitle">日本雪场教学私人定制,小班团体课程,考证训练营</p>
+        <p class="subtitle">中文 | 英文 | 粤语 | 日语多语言选择</p>
+        <div class="mission-section">
+          <h3>我们的宗旨</h3>
+          <p class="mission-text">第一,助力学员安全滑雪,效率提高学员滑雪技能。让更多人爱上滑雪,拥有美好体验。</p>
+          <p class="mission-text">其次,努力持续培养具备专业素养与教学热情的滑雪教练团队,并不断提升整体教学质量与服务水平。</p>
+        </div>
+        <p class="description"><strong>2025-2026 滑雪课程火爆预约中</strong></p>
+        <div class="hero-buttons">
+          <a href="about.html" class="hero-link">→关于我们</a>
 
-  <!-- 卡片式内容分块 -->
-  <section class="cards-section container" id="about">
-    <div class="card" data-aos="fade-up" data-aos-delay="100">
-      <a href="about.html" style="text-decoration:none;color:inherit;">
-        <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=600&q=80" alt="关于我们">
-        <h3>关于我们</h3>
-        <p>Glide.X滑雪学校，专注国际化滑雪教学与横板运动。</p>
-      </a>
-    </div>
-    <div class="card" data-aos="fade-up" data-aos-delay="200">
-      <img src="https://images.unsplash.com/photo-1515524738708-327f6b0037a7?auto=format&fit=crop&w=600&q=80" alt="我们是谁">
-      <h3>我们是谁？</h3>
-      <p>我们是一群长期旅居日本的伙伴，因为共同热爱横板运动而走到一起，建立了深厚的友谊。我们热烈欢迎更多小伙伴加入我们，无论您身在日本、中国，还是世界各地，只要您热爱横板运动，我们都期待与您相遇！</p>
-    </div>
-    <div class="card" data-aos="fade-up" data-aos-delay="300">
-      <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=600&q=80" alt="我们的计划">
-      <h3>接下来我们要做什么？</h3>
-      <p>我们会每月不定期举办各种横板活动，欢迎大家踊跃参加！24-25雪季也将提供单双板滑雪教学服务，具体教学地点和课程内容会很快发布，敬请期待！</p>
+          <a href="contact.html" class="hero-link">→联系我们</a>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- 最新消息模块 -->
-  <section class="news-section container" id="news">
-    <h2 data-aos="fade-right">最新消息</h2>
-    <div class="news-list" id="news-list"></div>
-    <div style="text-align:center;margin-top:2rem;">
-      <a href="news.html" class="btn">查看全部消息</a>
+
+
+  <!-- 课程图片展示区域 -->
+  <section class="course-images-section">
+    <div class="container">
+      <div class="course-images-grid" data-aos="fade-up">
+        <div class="course-image-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="image-background">
+            <img src="image/other/图A.jpg" alt="私教课程" />
+          </div>
+          <div class="image-content">
+            <h3>私教课程</h3>
+            <p>内容说明</p>
+            <a href="courses.html" class="learn-more-btn">了解更多</a>
+          </div>
+        </div>
+        
+        <div class="course-image-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="image-background">
+            <img src="image/other/图B.jpg" alt="小班团体课程" />
+          </div>
+          <div class="image-content">
+            <h3>小班团体课程</h3>
+            <p>内容说明</p>
+            <a href="courses.html" class="learn-more-btn">了解更多</a>
+          </div>
+        </div>
+        
+        <div class="course-image-card" data-aos="fade-up" data-aos-delay="300">
+          <div class="image-background">
+            <img src="image/other/图C.JPG" alt="JSBA单板考证课程" />
+          </div>
+          <div class="image-content">
+            <h3>JSBA单板考证课程</h3>
+            <p>内容说明</p>
+            <a href="courses.html" class="learn-more-btn">了解更多</a>
+          </div>
+        </div>
+        
+        <div class="course-image-card" data-aos="fade-up" data-aos-delay="400">
+          <div class="image-background">
+            <img src="image/other/图D.jpg" alt="平花·刻滑入门~进阶课程" />
+          </div>
+          <div class="image-content">
+            <h3>平花·刻滑入门~进阶课程</h3>
+            <p>内容说明</p>
+            <a href="courses.html" class="learn-more-btn">了解更多</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 单双板滑行技术展示区域 -->
+  <section class="ski-snowboard-section">
+    <div class="container">
+      <div class="ski-snowboard-content" data-aos="fade-up">
+        <div class="content-left">
+          <div class="trust-badge">
+            <h3>值得信赖的在日华人教练团队</h3>
+          </div>
+          <div class="school-title">
+            <h2>GlideX中文国际滑雪学校</h2>
+          </div>
+          <div class="school-description">
+            <p>我们团队是由一群狂热滑雪爱好者组成，致力于分享滑雪的魅力，让更多人体验滑行带来的快乐与自由。</p>
+            <p>在教学之外，我们也不断精进自己的滑行技术与教学能力，持续成长，只为带给学员更高质量的课程体验。</p>
+            <p>在每一堂课中，我们不仅重视安全保障，更希望成为学员在雪场上的可靠伙伴，让大家安心、放心地与我们一起享受滑雪的乐趣。</p>
+          </div>
+          <div class="philosophy">
+            <h3>换位思考，成长互助</h3>
+          </div>
+          <div class="content-placeholder">
+            <p>内容说明</p>
+          </div>
+          <div class="action-buttons">
+            <a href="about.html" class="about-btn">关于我们</a>
+            <a href="coaches.html" class="coach-btn">滑雪教练介绍</a>
+          </div>
+        </div>
+        <div class="content-right">
+          <div class="image-display">
+            <div class="image-section top-left">
+              <div class="single-board-photo">
+                <img src="image/skisnowboard/snowboard.jpg" alt="单板滑行照片" />
+              </div>
+            </div>
+            <div class="image-section bottom-right">
+              <div class="double-board-photo">
+                <img src="image/skisnowboard/ski.JPG" alt="双板滑行照片" />
+              </div>
+              <div class="gx-logo">
+                <img src="image/skisnowboard/logo1.PNG" alt="GX Logo" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+
+
+
+
+
+
+  <!-- 教学地点区域 -->
+  <section class="teaching-locations-section" id="teaching-locations">
+    <div class="container">
+      <h2 data-aos="fade-up" style="text-align: center; font-size: 2.5rem; margin-bottom: 1rem; color: var(--primary-blue);">教学地点</h2>
+      <p data-aos="fade-up" style="text-align: center; font-size: 1.2rem; color: var(--warm-gray); margin-bottom: 3rem;">遍布日本各大滑雪胜地，为您提供专业教学服务</p>
+      
+      <div class="locations-grid-modern">
+        <div class="location-card-modern" data-aos="fade-up" data-aos-delay="100">
+          <div class="location-header">
+            <div class="location-number">01</div>
+            <div class="location-icon-modern">🏔️</div>
+          </div>
+          <div class="location-content">
+            <h3>北海道</h3>
+            <p class="location-desc-modern">二世谷、留寿都、富良野等世界级滑雪胜地</p>
+            <div class="location-stats">
+              <div class="stat-item">
+                <span class="stat-label">雪质</span>
+                <span class="stat-value">粉雪天堂</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-label">难度</span>
+                <span class="stat-value">初级-专家</span>
+              </div>
+            </div>
+            <div class="location-features-modern">
+              <span class="feature-tag-modern">世界级</span>
+              <span class="feature-tag-modern">粉雪</span>
+              <span class="feature-tag-modern">温泉</span>
+            </div>
+            <a href="courses.html" class="location-btn-modern">
+              <span>探索课程</span>
+              <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+        
+        <div class="location-card-modern" data-aos="fade-up" data-aos-delay="200">
+          <div class="location-header">
+            <div class="location-number">02</div>
+            <div class="location-icon-modern">❄️</div>
+          </div>
+          <div class="location-content">
+            <h3>东北地区</h3>
+            <p class="location-desc-modern">藏王、安比高原、八甲田等特色滑雪场</p>
+            <div class="location-stats">
+              <div class="stat-item">
+                <span class="stat-label">特色</span>
+                <span class="stat-value">树冰奇观</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-label">体验</span>
+                <span class="stat-value">温泉胜地</span>
+              </div>
+            </div>
+            <div class="location-features-modern">
+              <span class="feature-tag-modern">树冰</span>
+              <span class="feature-tag-modern">温泉</span>
+              <span class="feature-tag-modern">自然</span>
+            </div>
+            <a href="courses.html" class="location-btn-modern">
+              <span>探索课程</span>
+              <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+        
+        <div class="location-card-modern" data-aos="fade-up" data-aos-delay="300">
+          <div class="location-header">
+            <div class="location-number">03</div>
+            <div class="location-icon-modern">⛷️</div>
+          </div>
+          <div class="location-content">
+            <h3>长野县</h3>
+            <p class="location-desc-modern">白马、志贺高原、野泽温泉等奥运场地</p>
+            <div class="location-stats">
+              <div class="stat-item">
+                <span class="stat-label">历史</span>
+                <span class="stat-value">奥运场地</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-label">雪质</span>
+                <span class="stat-value">稳定优质</span>
+              </div>
+            </div>
+            <div class="location-features-modern">
+              <span class="feature-tag-modern">奥运</span>
+              <span class="feature-tag-modern">专业</span>
+              <span class="feature-tag-modern">稳定</span>
+            </div>
+            <a href="courses.html" class="location-btn-modern">
+              <span>探索课程</span>
+              <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+        
+        <div class="location-card-modern" data-aos="fade-up" data-aos-delay="400">
+          <div class="location-header">
+            <div class="location-number">04</div>
+            <div class="location-icon-modern">🎿</div>
+          </div>
+          <div class="location-content">
+            <h3>新潟县</h3>
+            <p class="location-desc-modern">苗场、神乐、汤泽等密集滑雪场群</p>
+            <div class="location-stats">
+              <div class="stat-item">
+                <span class="stat-label">密度</span>
+                <span class="stat-value">雪场密集</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-label">交通</span>
+                <span class="stat-value">便利快捷</span>
+              </div>
+            </div>
+            <div class="location-features-modern">
+              <span class="feature-tag-modern">密集</span>
+              <span class="feature-tag-modern">便利</span>
+              <span class="feature-tag-modern">多样</span>
+            </div>
+            <a href="courses.html" class="location-btn-modern">
+              <span>探索课程</span>
+              <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+        
+        <div class="location-card-modern" data-aos="fade-up" data-aos-delay="500">
+          <div class="location-header">
+            <div class="location-number">05</div>
+            <div class="location-icon-modern">🌨️</div>
+          </div>
+          <div class="location-content">
+            <h3>群馬</h3>
+            <p class="location-desc-modern">川場、万座温泉、水上等关东近郊雪场</p>
+            <div class="location-stats">
+              <div class="stat-item">
+                <span class="stat-label">位置</span>
+                <span class="stat-value">关东近郊</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-label">特色</span>
+                <span class="stat-value">温泉丰富</span>
+              </div>
+            </div>
+            <div class="location-features-modern">
+              <span class="feature-tag-modern">近郊</span>
+              <span class="feature-tag-modern">温泉</span>
+              <span class="feature-tag-modern">便利</span>
+            </div>
+            <a href="courses.html" class="location-btn-modern">
+              <span>探索课程</span>
+              <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+        
+        <div class="location-card-modern" data-aos="fade-up" data-aos-delay="600">
+          <div class="location-header">
+            <div class="location-number">06</div>
+            <div class="location-icon-modern">🏂</div>
+          </div>
+          <div class="location-content">
+            <h3>神奈川</h3>
+            <p class="location-desc-modern">SNOVA新横浜、箱根等都市近郊雪场</p>
+            <div class="location-stats">
+              <div class="stat-item">
+                <span class="stat-label">类型</span>
+                <span class="stat-value">室内雪场</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-label">距离</span>
+                <span class="stat-value">都市近郊</span>
+              </div>
+            </div>
+            <div class="location-features-modern">
+              <span class="feature-tag-modern">室内</span>
+              <span class="feature-tag-modern">近郊</span>
+              <span class="feature-tag-modern">全年</span>
+            </div>
+            <a href="courses.html" class="location-btn-modern">
+              <span>探索课程</span>
+              <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+        
+        <div class="location-card-modern" data-aos="fade-up" data-aos-delay="700">
+          <div class="location-header">
+            <div class="location-number">07</div>
+            <div class="location-icon-modern">🎯</div>
+          </div>
+          <div class="location-content">
+            <h3>関西</h3>
+            <p class="location-desc-modern">高鷲、琵琶湖、六甲山等关西地区雪场</p>
+            <div class="location-stats">
+              <div class="stat-item">
+                <span class="stat-label">地区</span>
+                <span class="stat-value">关西地区</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-label">环境</span>
+                <span class="stat-value">风景优美</span>
+              </div>
+            </div>
+            <div class="location-features-modern">
+              <span class="feature-tag-modern">关西</span>
+              <span class="feature-tag-modern">风景</span>
+              <span class="feature-tag-modern">文化</span>
+            </div>
+            <a href="courses.html" class="location-btn-modern">
+              <span>探索课程</span>
+              <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+        
+        <div class="location-card-modern" data-aos="fade-up" data-aos-delay="800">
+          <div class="location-header">
+            <div class="location-number">08</div>
+            <div class="location-icon-modern">🌟</div>
+          </div>
+          <div class="location-content">
+            <h3>其他地区</h3>
+            <p class="location-desc-modern">咨询客服获取更多滑雪地点选择</p>
+            <div class="location-stats">
+              <div class="stat-item">
+                <span class="stat-label">服务</span>
+                <span class="stat-value">定制服务</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-label">选择</span>
+                <span class="stat-value">更多选择</span>
+              </div>
+            </div>
+            <div class="location-features-modern">
+              <span class="feature-tag-modern">定制</span>
+              <span class="feature-tag-modern">灵活</span>
+              <span class="feature-tag-modern">专业</span>
+            </div>
+            <a href="contact.html" class="location-btn-modern">
+              <span>联系我们</span>
+              <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 客户评价区域 -->
+  <section class="testimonials-section" id="testimonials">
+    <div class="container">
+              <h2 data-aos="fade-up" style="text-align: center; font-size: 2.5rem; margin-bottom: 1rem; color: var(--primary-blue);">学员评价</h2>
+        <p data-aos="fade-up" style="text-align: center; font-size: 1.2rem; color: var(--warm-gray); margin-bottom: 2rem;">基于真实学员反馈</p>
+        
+        <div class="testimonials-grid">
+          <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="testimonial-text">
+              教练小喵非常有耐心，一遍又一遍地讲解，直到我完全理解。教练也非常细心，会注意到我每一个细微的动作，并给出专业的指导。
+            </div>
+            <div class="testimonial-author">- 培滴范</div>
+          </div>
+          
+          <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="testimonial-text">
+              第二次滑雪，很幸运遇到Steve，非常专业，第一天下半天就可以在初学道滑S了！真的好感动，教练很有耐心。
+            </div>
+            <div class="testimonial-author">- Yun</div>
+          </div>
+          
+          <div class="testimonial-card" data-aos="fade-up" data-aos-delay="300">
+            <div class="testimonial-text">
+              小花教练教学非常有耐心，让我顺利学会s turn与下缆车。还会帮忙拍影片指导动作，非常用心，赞赞赞。
+            </div>
+            <div class="testimonial-author">- Evis Ma</div>
+          </div>
+        </div>
+    </div>
+  </section>
+
+  <!-- 最新消息区域 -->
+  <section class="news-section" id="news">
+    <div class="container">
+      <div class="news-header" data-aos="fade-up">
+        <div class="news-title-section">
+          <h2>最新消息</h2>
+          <p>关注GX户外俱乐部的最新活动与动态</p>
+        </div>
+      </div>
+      
+      <div class="news-grid-modern" id="newsGrid">
+        <!-- 新闻内容将通过JavaScript动态加载 -->
+        <div class="news-loading-modern">
+          <div class="loading-spinner">
+            <div class="spinner-ring"></div>
+            <div class="spinner-ring"></div>
+            <div class="spinner-ring"></div>
+          </div>
+          <div class="loading-text">
+            <h3>正在加载最新消息</h3>
+            <p>请稍候，精彩内容马上呈现...</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 联系我们区域 -->
+  <section class="contact-section" id="contact">
+    <div class="container">
+      <div class="contact-header" data-aos="fade-up">
+        <h2>专业教学，轻松滑雪</h2>
+        <p>如对滑雪课程或是教学内容、滑雪教练的选择与雪场相关问题，可通过以下方式与我们联系</p>
+      </div>
+      
+      <div class="contact-content">
+        <div class="contact-left" data-aos="fade-right">
+          <div class="contact-info-card">
+            <h3>Contact us</h3>
+            <div class="contact-methods">
+              <div class="contact-method">
+                <div class="method-icon wechat-icon">💚</div>
+                <div class="method-info">
+                  <h4>GX SNOWSPORTS WECHAT</h4>
+                  <p>GX_SKI_SCHOOL</p>
+                </div>
+              </div>
+              
+              <div class="contact-method">
+                <div class="method-icon line-icon">📱</div>
+                <div class="method-info">
+                  <h4>GX SNOWSPORTS LINE</h4>
+                  <p>@gxskischool</p>
+                </div>
+              </div>
+              
+              <div class="contact-method">
+                <div class="method-icon whatsapp-icon">📞</div>
+                <div class="method-info">
+                  <h4>GX SNOWSPORTS WHATSAPP</h4>
+                  <p>+81-XXX-XXXX-XXXX</p>
+                </div>
+              </div>
+              
+              <div class="contact-method">
+                <div class="method-icon email-icon">📧</div>
+                <div class="method-info">
+                  <h4>GX SNOWSPORTS EMAIL</h4>
+                  <p>info@gxskischool.com</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="contact-right" data-aos="fade-left">
+          <div class="contact-promo-card">
+            <div class="promo-image">
+              <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=600&q=80" alt="GX滑雪学校" />
+            </div>
+            <div class="promo-content">
+              <h3>GX中文国际滑雪学校欢迎您</h3>
+              <p>专业教学团队，国际化教学标准</p>
+              <div class="promo-features">
+                <div class="feature">
+                  <span class="feature-icon">⛷️</span>
+                  <span>专业教练团队</span>
+                </div>
+                <div class="feature">
+                  <span class="feature-icon">🏂</span>
+                  <span>个性化教学</span>
+                </div>
+                <div class="feature">
+                  <span class="feature-icon">🌲</span>
+                  <span>优质雪场资源</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- 页脚 -->
   <footer class="footer">
     <div class="container">
-      <p>© 2024 Glide.X滑雪学校. 保留所有权利.</p>
+      <div class="footer-content">
+        <div>
+          <h3>GX 中文国际滑雪学校</h3>
+          <p>我们热爱滑雪并希望通过滑雪的热情积极影响他人。我们创办滑雪学校的初衷是，为喜爱滑雪的朋友定制最专业，最适合的滑雪教学服务。</p>
+        </div>
+        
+        <div>
+          <h3>快速链接</h3>
+          <ul>
+            <li><a href="index.html">首页</a></li>
+            <li><a href="about.html">关于GX</a></li>
+            <li><a href="courses.html">课程介绍</a></li>
+            <li><a href="coaches.html">教练团队</a></li>
+            <li><a href="#faq">常见问题</a></li>
+            <li><a href="news.html">最新消息</a></li>
+            <li><a href="#offseason">雪季外动态</a></li>
+            <li><a href="contact.html">联系我们</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3>我们的课程</h3>
+          <ul>
+            <li>滑雪私教课程</li>
+            <li>高表现力滑雪课程</li>
+            <li>粉雪/树林/雪包滑雪营</li>
+            <li>滑雪教练认证培训</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>© 2024 GX 中文国际滑雪学校. 保留所有权利.</p>
+      </div>
     </div>
   </footer>
 
-  <!-- 微信客服悬浮按钮 -->
-  <div id="wechat-float" style="position:fixed;right:2vw;bottom:3vh;z-index:9999;">
-    <button id="wechat-btn" style="background:#fff;border-radius:50%;box-shadow:0 2px 12px rgba(0,51,102,0.13);border:none;width:60px;height:60px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:box-shadow 0.2s;">
-      <img src="https://img.icons8.com/color/48/000000/weixing.png" alt="微信客服" style="width:36px;height:36px;">
-    </button>
-    <div id="wechat-qr" style="display:none;position:absolute;right:70px;bottom:0;background:#fff;border-radius:12px;box-shadow:0 2px 16px rgba(0,51,102,0.13);padding:1em 1em 0.5em 1em;text-align:center;">
-      <div style="font-size:1.05em;color:#222;font-weight:600;margin-bottom:0.5em;">微信客服</div>
-      <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=weixin://wxid_xxxxx" alt="微信二维码" style="width:120px;height:120px;">
-      <div style="font-size:0.98em;color:#888;margin-top:0.5em;">扫码添加客服</div>
+  <!-- 右下角固定联系按钮 -->
+  <div class="contact-float">
+    <!-- 主按钮 -->
+    <div class="contact-main-btn" id="contactMainBtn">
+      <span class="contact-icon">💬</span>
+      <span class="contact-text">Contact</span>
+    </div>
+    
+    <!-- 联系选项 -->
+    <div class="contact-options" id="contactOptions">
+      <div class="contact-option wechat" data-tooltip="微信联系" onclick="openWeChat()">
+        <span class="option-icon">💚</span>
+        <span class="option-text">WeChat</span>
+      </div>
+      <div class="contact-option line" data-tooltip="Line联系" onclick="openLine()">
+        <span class="option-icon">📱</span>
+        <span class="option-text">Line</span>
+      </div>
+      <div class="contact-option whatsapp" data-tooltip="WhatsApp联系" onclick="openWhatsApp()">
+        <span class="option-icon">💬</span>
+        <span class="option-text">WhatsApp</span>
+      </div>
     </div>
   </div>
 
-  <!-- AI对话客服悬浮按钮 -->
-  <div id="ai-float" style="position:fixed;right:2vw;bottom:90px;z-index:9999;">
-    <button id="ai-btn" style="background:#003366;color:#fff;border-radius:50px;box-shadow:0 2px 12px rgba(0,51,102,0.13);border:none;width:60px;height:60px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1.3em;font-weight:700;gap:0.5em;transition:box-shadow 0.2s;">
-      <img src="https://img.icons8.com/fluency/48/robot-2.png" alt="AI客服" style="width:32px;height:32px;">AI
-    </button>
-    <div id="ai-chat" style="display:none;position:absolute;right:70px;bottom:0;width:320px;max-width:90vw;background:#fff;border-radius:16px;box-shadow:0 2px 24px rgba(0,51,102,0.18);padding:0.5em 0.5em 0.7em 0.5em;">
-      <div style="font-weight:700;color:var(--main-blue);font-size:1.1em;margin-bottom:0.5em;display:flex;align-items:center;gap:0.5em;">
-        <img src="https://img.icons8.com/fluency/32/robot-2.png" style="width:24px;height:24px;">AI客服
-        <span id="ai-close" style="margin-left:auto;cursor:pointer;font-size:1.3em;color:#bbb;">×</span>
-      </div>
-      <div id="ai-quick" style="display:flex;gap:0.5em;margin-bottom:0.7em;">
-        <button class="ai-quick-btn" data-q="我想预约滑雪课程" style="background:#e6f7ff;color:#003366;border:none;border-radius:8px;padding:0.3em 1em;cursor:pointer;font-size:0.98em;">预约滑雪课程</button>
-        <button class="ai-quick-btn" data-q="我想预约单板考级" style="background:#e6f7ff;color:#003366;border:none;border-radius:8px;padding:0.3em 1em;cursor:pointer;font-size:0.98em;">预约单板考级</button>
-        <button class="ai-quick-btn" data-q="转人工服务" style="background:#f5f5f5;color:#e60012;border:none;border-radius:8px;padding:0.3em 1em;cursor:pointer;font-size:0.98em;">转人工服务</button>
-      </div>
-      <div id="ai-chat-history" style="height:180px;overflow-y:auto;background:#f8fafd;border-radius:8px;padding:0.7em 0.5em 0.5em 0.5em;font-size:0.98em;margin-bottom:0.7em;"></div>
-      <form id="ai-chat-form" style="display:flex;gap:0.5em;">
-        <input id="ai-input" type="text" placeholder="请输入您的问题..." style="flex:1;padding:0.6em 1em;border-radius:8px;border:1px solid #e0e0e0;font-size:1em;">
-        <button type="submit" style="background:var(--main-orange);color:#fff;border:none;border-radius:8px;padding:0 1.2em;font-size:1em;cursor:pointer;">发送</button>
-      </form>
-    </div>
-  </div>
 
-  <!-- JS 脚本 -->
+
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-  <script src="main.js"></script>
-  <script src="index-news.js"></script>
+  
   <script>
-    const wechatBtn = document.getElementById('wechat-btn');
-    const wechatQr = document.getElementById('wechat-qr');
-    wechatBtn.onclick = function(e) {
-      e.stopPropagation();
-      wechatQr.style.display = wechatQr.style.display==='block' ? 'none' : 'block';
-    };
-    document.body.onclick = function() { wechatQr.style.display = 'none'; };
-    wechatQr.onclick = function(e) { e.stopPropagation(); };
-
-    // AI客服弹窗逻辑
-    const aiBtn = document.getElementById('ai-btn');
-    const aiChat = document.getElementById('ai-chat');
-    const aiClose = document.getElementById('ai-close');
-    const aiForm = document.getElementById('ai-chat-form');
-    const aiInput = document.getElementById('ai-input');
-    const aiHistory = document.getElementById('ai-chat-history');
-    aiBtn.onclick = function(e) {
-      e.stopPropagation();
-      aiChat.style.display = aiChat.style.display==='block' ? 'none' : 'block';
-      if(aiChat.style.display==='block') aiInput.focus();
-    };
-    aiClose.onclick = function(e) {
-      aiChat.style.display = 'none';
-    };
-    document.body.onclick = function() { aiChat.style.display = 'none'; wechatQr && (wechatQr.style.display = 'none'); };
-    aiChat.onclick = function(e) { e.stopPropagation(); };
-    aiForm.onsubmit = function(e) {
-      e.preventDefault();
-      const q = aiInput.value.trim();
-      if(!q) return;
-      aiHistory.innerHTML += `<div style='margin-bottom:0.4em;text-align:right;'><span style='background:#e6f7ff;color:#003366;padding:0.3em 0.8em;border-radius:12px 12px 2px 12px;display:inline-block;'>${q}</span></div>`;
-      aiInput.value = '';
-      setTimeout(()=>{
-        aiHistory.innerHTML += `<div style='margin-bottom:0.4em;text-align:left;'><span style='background:#f5f5f5;color:#222;padding:0.3em 0.8em;border-radius:12px 12px 12px 2px;display:inline-block;'>您好，这里是AI客服，您的问题已收到，我们会尽快回复！</span></div>`;
-        aiHistory.scrollTop = aiHistory.scrollHeight;
-      }, 600);
-      aiHistory.scrollTop = aiHistory.scrollHeight;
-    };
-
-    // AI客服快捷选项
-    const aiQuickBtns = document.querySelectorAll('.ai-quick-btn');
-    aiQuickBtns.forEach(btn => {
-      btn.onclick = function(e) {
-        e.stopPropagation();
-        const q = btn.getAttribute('data-q');
-        aiHistory.innerHTML += `<div style='margin-bottom:0.4em;text-align:right;'><span style='background:#e6f7ff;color:#003366;padding:0.3em 0.8em;border-radius:12px 12px 2px 12px;display:inline-block;'>${q}</span></div>`;
-        let reply = '您好，这里是AI客服，您的问题已收到，我们会尽快回复！';
-        if(q.includes('滑雪课程')) reply = '请前往“特色课程”页面选择您感兴趣的滑雪课程并预约。如需人工协助，请回复“转人工服务”。';
-        if(q.includes('单板考级')) reply = '单板考级预约请前往“单板考级”页面，或直接留言您的需求，我们会有专人联系您。';
-        if(q.includes('人工')) reply = '已为您转接人工客服，请稍候...';
-        setTimeout(()=>{
-          aiHistory.innerHTML += `<div style='margin-bottom:0.4em;text-align:left;'><span style='background:#f5f5f5;color:#222;padding:0.3em 0.8em;border-radius:12px 12px 12px 2px;display:inline-block;'>${reply}</span></div>`;
-          aiHistory.scrollTop = aiHistory.scrollHeight;
-        }, 600);
-        aiHistory.scrollTop = aiHistory.scrollHeight;
-      };
+    // 等待页面完全加载后再初始化
+    document.addEventListener('DOMContentLoaded', function() {
+      // 初始化AOS动画
+      if (typeof AOS !== 'undefined') {
+        AOS.init({
+          duration: 1000,
+          once: true,
+          offset: 100,
+          disable: 'mobile' // 在移动端禁用动画以提高性能
+        });
+        console.log('AOS动画库初始化成功');
+      } else {
+        console.error('AOS库未加载');
+      }
+      
+      // 初始化背景轮播
+      if (typeof Swiper !== 'undefined') {
+        const heroBackgroundSwiper = new Swiper('.heroBackgroundSwiper', {
+          loop: true,
+          effect: 'fade',
+          autoplay: {
+            delay: 5000,
+            disableOnInteraction: false,
+          },
+          speed: 1000,
+          allowTouchMove: false, // 禁用触摸滑动
+        });
+        
+        console.log('背景轮播初始化成功');
+      } else {
+        console.error('Swiper库未加载');
+      }
+      
+      // 确保所有AOS元素都能正常显示
+      setTimeout(() => {
+        const aosElements = document.querySelectorAll('[data-aos]');
+        aosElements.forEach(element => {
+          if (element.classList.contains('aos-init')) {
+            element.style.opacity = '1';
+            element.style.transform = 'none';
+          }
+        });
+      }, 2000);
     });
+    
+    // 导航栏滚动效果
+    window.addEventListener('scroll', function() {
+      const navbar = document.getElementById('navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+    
+    // 下拉菜单交互
+    document.addEventListener('DOMContentLoaded', function() {
+      const dropdowns = document.querySelectorAll('.dropdown');
+      
+      dropdowns.forEach(dropdown => {
+        const link = dropdown.querySelector('a');
+        const menu = dropdown.querySelector('.dropdown-menu');
+        
+        // 桌面端悬停显示
+        if (window.innerWidth > 768) {
+          dropdown.addEventListener('mouseenter', function() {
+            menu.style.opacity = '1';
+            menu.style.visibility = 'visible';
+            menu.style.transform = 'translateY(0)';
+          });
+          
+          dropdown.addEventListener('mouseleave', function() {
+            menu.style.opacity = '0';
+            menu.style.visibility = 'hidden';
+            menu.style.transform = 'translateY(-10px)';
+          });
+        }
+        
+        // 移动端点击显示
+        if (window.innerWidth <= 768) {
+          link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const isOpen = menu.style.display === 'block';
+            
+            // 关闭其他打开的下拉菜单
+            dropdowns.forEach(other => {
+              if (other !== dropdown) {
+                other.querySelector('.dropdown-menu').style.display = 'none';
+              }
+            });
+            
+            menu.style.display = isOpen ? 'none' : 'block';
+          });
+        }
+      });
+      
+      // 窗口大小改变时重新初始化
+      window.addEventListener('resize', function() {
+        if (window.innerWidth > 768) {
+          dropdowns.forEach(dropdown => {
+            const menu = dropdown.querySelector('.dropdown-menu');
+            menu.style.display = '';
+          });
+        }
+      });
+    });
+    
+    // 雪花动画
+    function createSnowflake() {
+      const snowflake = document.createElement('div');
+      snowflake.classList.add('snowflake');
+      snowflake.innerHTML = '❄';
+      snowflake.style.left = Math.random() * 100 + '%';
+      snowflake.style.animationDuration = Math.random() * 3 + 2 + 's';
+      snowflake.style.opacity = Math.random();
+      
+      const snowflakesContainer = document.querySelector('.snowflakes');
+      if (snowflakesContainer) {
+        snowflakesContainer.appendChild(snowflake);
+        
+        setTimeout(() => {
+          if (snowflake.parentNode) {
+            snowflake.remove();
+          }
+        }, 5000);
+      }
+    }
+    
+    // 启动雪花动画
+    setInterval(createSnowflake, 300);
+    
+    // 联系按钮交互
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log('正在初始化联系按钮...');
+      
+      const contactMainBtn = document.querySelector('.contact-main-btn');
+      const contactOptions = document.querySelector('.contact-options');
+      
+      console.log('找到的联系按钮元素:', { contactMainBtn, contactOptions });
+      
+      if (contactMainBtn && contactOptions) {
+        // 移除可能存在的旧事件监听器
+        contactMainBtn.removeEventListener('click', contactMainBtn.clickHandler);
+        
+        // 添加新的点击事件监听器
+        contactMainBtn.clickHandler = function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          
+          const isVisible = contactOptions.classList.contains('show');
+          if (isVisible) {
+            contactOptions.classList.remove('show');
+            console.log('隐藏联系选项');
+          } else {
+            contactOptions.classList.add('show');
+            console.log('显示联系选项');
+          }
+        };
+        
+        contactMainBtn.addEventListener('click', contactMainBtn.clickHandler);
+        
+        // 点击外部关闭
+        document.addEventListener('click', function(e) {
+          if (!e.target.closest('.contact-float')) {
+            contactOptions.classList.remove('show');
+            console.log('点击外部，关闭联系选项');
+          }
+        });
+        
+        console.log('联系按钮事件监听器已添加');
+      } else {
+        console.error('联系按钮元素未找到:', { contactMainBtn, contactOptions });
+      }
+    });
+    
+    // 联系方式打开函数
+    function openWeChat() {
+      console.log('打开微信联系');
+      // 这里可以添加微信二维码显示或其他微信联系方式
+      alert('微信联系功能 - 请扫描二维码或添加微信号');
+    }
+    
+    function openLine() {
+      console.log('打开Line联系');
+      // 这里可以添加Line联系方式
+      alert('Line联系功能 - 请添加Line ID');
+    }
+    
+    function openWhatsApp() {
+      console.log('打开WhatsApp联系');
+      // 这里可以添加WhatsApp联系方式
+      alert('WhatsApp联系功能 - 请添加WhatsApp号码');
+    }
+    
+    // 错误处理
+    window.addEventListener('error', function(e) {
+      console.error('页面错误:', e.error);
+    });
+    
+    // 确保页面内容可见
+    window.addEventListener('load', function() {
+      console.log('页面完全加载完成');
+      // 强制显示所有内容
+      document.body.style.visibility = 'visible';
+      document.body.style.opacity = '1';
+      
+      // 强制显示所有section元素
+      const sections = document.querySelectorAll('section');
+      sections.forEach(section => {
+        section.style.display = 'block';
+        section.style.visibility = 'visible';
+        section.style.opacity = '1';
+        section.style.transform = 'none';
+      });
+      
+      // 强制显示所有AOS元素
+      const aosElements = document.querySelectorAll('[data-aos]');
+      aosElements.forEach(element => {
+        element.style.opacity = '1';
+        element.style.visibility = 'visible';
+        element.style.transform = 'none';
+        element.classList.remove('aos-animate');
+        element.classList.add('aos-animate');
+      });
+      
+      console.log('已强制显示所有内容元素');
+      console.log('找到的section数量:', sections.length);
+      console.log('找到的AOS元素数量:', aosElements.length);
+    });
+    
+    // 添加调试信息
+    console.log('首页JavaScript加载完成');
+    console.log('AOS库状态:', typeof AOS !== 'undefined' ? '已加载' : '未加载');
+    console.log('Swiper库状态:', typeof Swiper !== 'undefined' ? '已加载' : '未加载');
+  </script>
+  
+  <!-- 调试样式 - 确保所有内容可见 -->
+  <style>
+    /* 强制显示所有内容 - 但不影响滚动 */
+    section {
+      display: block !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+    }
+    
+    /* 强制显示所有AOS元素 - 但不影响滚动 */
+    [data-aos] {
+      opacity: 1 !important;
+      visibility: visible !important;
+    }
+    
+    /* 确保页面主体可见和可滚动 */
+    body {
+      visibility: visible !important;
+      opacity: 1 !important;
+      overflow-x: auto !important;
+      overflow-y: auto !important;
+      height: auto !important;
+    }
+    
+    /* 确保html元素可滚动 */
+    html {
+      overflow-x: auto !important;
+      overflow-y: auto !important;
+      height: auto !important;
+    }
+  </style>
+  
+  <script>
+    // 确保页面可以正常滚动
+    function enableScrolling() {
+      // 移除可能阻止滚动的样式
+      document.body.style.overflow = 'auto';
+      document.body.style.height = 'auto';
+      document.documentElement.style.overflow = 'auto';
+      document.documentElement.style.height = 'auto';
+      
+      // 确保所有section元素不会阻止滚动
+      const sections = document.querySelectorAll('section');
+      sections.forEach(section => {
+        section.style.position = 'relative';
+        section.style.overflow = 'visible';
+      });
+      
+      console.log('页面滚动功能已启用');
+    }
+    
+    // 页面加载完成后启用滚动
+    document.addEventListener('DOMContentLoaded', enableScrolling);
+    window.addEventListener('load', enableScrolling);
+    
+    // 如果页面仍然无法滚动，强制启用
+    setTimeout(enableScrolling, 1000);
+    
+    // 添加键盘滚动支持
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'ArrowDown' || e.key === 'PageDown') {
+        e.preventDefault();
+        window.scrollBy(0, 100);
+      } else if (e.key === 'ArrowUp' || e.key === 'PageUp') {
+        e.preventDefault();
+        window.scrollBy(0, -100);
+      }
+    });
+    
+    // 添加鼠标滚轮事件监听
+    document.addEventListener('wheel', function(e) {
+      // 确保滚轮事件正常工作
+      e.stopPropagation();
+    }, { passive: false });
+  </script>
+  
+  <script>
+    // 新闻分类筛选功能
+    function initNewsFilter() {
+      const categoryBtns = document.querySelectorAll('.category-btn-modern');
+      const newsCards = document.querySelectorAll('.news-card-modern');
+      
+      categoryBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+          // 移除所有按钮的active状态
+          categoryBtns.forEach(b => b.classList.remove('active'));
+          // 添加当前按钮的active状态
+          this.classList.add('active');
+          
+          const category = this.getAttribute('data-category');
+          
+          // 筛选新闻卡片
+          newsCards.forEach(card => {
+            if (category === 'all' || card.getAttribute('data-category') === category) {
+              card.style.display = 'block';
+              card.style.animation = 'fadeInUp 0.6s ease-out';
+            } else {
+              card.style.display = 'none';
+            }
+          });
+        });
+      });
+    }
+    
+    // 从JSON文件加载最新新闻
+    async function loadLatestNews() {
+      try {
+        const response = await fetch('news.json');
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const newsData = await response.json();
+        
+        // 获取最新的三条新闻（按日期排序）
+        const sortedNews = newsData.sort((a, b) => new Date(b.date) - new Date(a.date));
+        const latestNews = sortedNews.slice(0, 3);
+        
+        // 渲染新闻卡片
+        renderNewsCards(latestNews);
+        
+        console.log('最新新闻加载成功:', latestNews.length, '条');
+      } catch (error) {
+        console.error('加载新闻数据失败:', error);
+        document.getElementById('newsGrid').innerHTML = 
+          '<div class="news-error-modern"><div class="error-icon">⚠️</div><h3>加载失败</h3><p>请刷新页面重试</p></div>';
+      }
+    }
+    
+    // 渲染新闻卡片 - 和coaches.html完全一样的风格
+    function renderNewsCards(newsArray) {
+      const newsGrid = document.getElementById('newsGrid');
+      if (!newsGrid) return;
+      
+      const newsHTML = newsArray.map((news, index) => {
+        // 处理图片路径
+        const imgSrc = news.img.startsWith('/') ? news.img.substring(1) : news.img;
+        const fallbackImg = 'https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=600&q=80';
+        
+        return `
+          <div class="news-card-modern" data-aos="fade-up" data-aos-delay="${(index + 1) * 150}">
+            <div class="news-image-container">
+              <img src="${imgSrc}" alt="${news.title}" class="news-image-modern" onerror="this.src='${fallbackImg}'">
+            </div>
+            <h3 class="news-title-modern">${news.title}</h3>
+            <p class="news-summary-modern">${news.summary}</p>
+            <a href="news-detail.html?id=${news.id}" class="news-btn-modern">阅读全文</a>
+          </div>
+        `;
+      }).join('');
+      
+      newsGrid.innerHTML = newsHTML + `
+        <div class="news-more">
+          <a class="news-more-link" href="news.html">显示更多 »</a>
+        </div>
+      `;
+    }
+    
+    // 获取分类名称
+    function getCategoryName(category) {
+      const categoryNames = {
+        'gx': 'GX相关',
+        'resort': '雪场消息',
+        'beginner': '新手必看'
+      };
+      return categoryNames[category] || 'GX相关';
+    }
+    
+    // 格式化日期
+    function formatDate(dateStr) {
+      const date = new Date(dateStr);
+      return date.toLocaleDateString('zh-CN', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      });
+    }
+    
+    // 获取时间差
+    function getTimeAgo(dateStr) {
+      const date = new Date(dateStr);
+      const now = new Date();
+      const diffTime = Math.abs(now - date);
+      const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+      
+      if (diffDays === 1) return '昨天';
+      if (diffDays <= 7) return `${diffDays}天前`;
+      if (diffDays <= 30) return `${Math.floor(diffDays / 7)}周前`;
+      if (diffDays <= 365) return `${Math.floor(diffDays / 30)}个月前`;
+      return `${Math.floor(diffDays / 365)}年前`;
+    }
+    
+    // 分享新闻
+    function shareNews(title, summary) {
+      if (navigator.share) {
+        navigator.share({
+          title: title,
+          text: summary,
+          url: window.location.href
+        });
+      } else {
+        // 复制到剪贴板
+        const text = `${title}\n\n${summary}\n\n${window.location.href}`;
+        navigator.clipboard.writeText(text).then(() => {
+          alert('内容已复制到剪贴板！');
+        });
+      }
+    }
+  </script>
+  
+  <!-- 页面加载完成后初始化 -->
+  <script>
+    // 加载最新新闻
+    loadLatestNews();
+    console.log('页面加载完成，开始加载新闻数据');
   </script>
 </body>
 </html> 
