@@ -959,9 +959,9 @@
       line-height: 1.7;
       color: var(--dark-gray);
       font-size: 1.1rem;
-      word-break: break-word;
       overflow-wrap: anywhere;
-      white-space: normal;
+      white-space: pre-line;  /* 支持 \n 换行 */
+      word-wrap: break-word;  /* 自动长单词换行 */
     }
     
     .testimonial-author {
