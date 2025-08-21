@@ -360,8 +360,17 @@
       line-height: 1.4;
       margin-bottom: 0.6rem;
       word-wrap: break-word;
-      overflow-wrap: break-word;
+      overflow-wrap: anywhere;
+      white-space: normal;
       max-width: 100%;
+    }
+
+    /* 强力兜底，防止首页宗旨文案出框 */
+    .mission-section, .mission-section * {
+      white-space: normal !important;
+      word-break: break-word !important;
+      overflow-wrap: anywhere !important;
+      box-sizing: border-box;
     }
     
     .mission-text:last-child {
