@@ -1523,8 +1523,8 @@
     }
     
     .contact-main-btn {
-      width: 80px;
-      height: 80px;
+      width: 70px;
+      height: 70px;
       background: var(--accent-orange);
       border-radius: 50%;
       display: flex;
@@ -1539,30 +1539,35 @@
     }
     
     .contact-main-btn:hover {
-      transform: scale(1.1);
-      box-shadow: 0 8px 30px rgba(234, 88, 12, 0.4);
+      transform: scale(1.05);
+      box-shadow: 0 6px 25px rgba(234, 88, 12, 0.4);
     }
     
     .contact-icon {
-      font-size: 1.8rem;
+      font-size: 1.5rem;
       margin-bottom: 2px;
       display: block;
     }
     
     .contact-text {
-      font-size: 0.7rem;
-      line-height: 1;
+      font-size: 0.6rem;
+      line-height: 3;
       font-weight: 600;
-      letter-spacing: 0.5px;
+      letter-spacing: 0.2px;
+      text-align: center;
+      width: 100%;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
     }
     
     .contact-options {
       position: absolute;
-      bottom: 90px;
+      bottom: 80px;
       right: 0;
       display: none;
       flex-direction: column;
-      gap: 15px;
+      gap: 12px;
       opacity: 0;
       transform: translateY(20px);
       transition: all 0.3s ease;
@@ -1578,8 +1583,8 @@
     }
     
     .contact-option {
-      width: 70px;
-      height: 70px;
+      width: 60px;
+      height: 60px;
       border-radius: 50%;
       display: flex;
       flex-direction: column;
@@ -1590,6 +1595,7 @@
       color: var(--snow-white);
       font-weight: bold;
       position: relative;
+      overflow: hidden;
     }
     
     .contact-option.wechat {
@@ -1605,6 +1611,26 @@
     .contact-option.whatsapp {
       background: #25D366;
       box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+    }
+    
+    /* 小圆圈中的文字样式 */
+    .contact-option .contact-icon {
+      font-size: 1.2rem;
+      margin-bottom: 2px;
+      display: block;
+    }
+    
+    .contact-option .contact-text {
+      font-size: 0.5rem;
+      line-height: 1;
+      font-weight: 600;
+      letter-spacing: 0.1px;
+      text-align: center;
+      width: 100%;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      padding: 0 2px;
     }
     
     /* 二维码弹窗样式 */
@@ -2400,6 +2426,82 @@
       .qr-modal-header h3 {
         font-size: 1.3rem;
       }
+      
+      /* 移动端contact按钮样式调整 */
+      .contact-float {
+        bottom: 20px;
+        right: 20px;
+      }
+      
+      .contact-main-btn {
+        width: 60px;
+        height: 60px;
+      }
+      
+      .contact-icon {
+        font-size: 1.3rem;
+      }
+      
+      .contact-text {
+        font-size: 0.5rem;
+      }
+      
+      .contact-options {
+        bottom: 70px;
+        gap: 10px;
+      }
+      
+      .contact-option {
+        width: 50px;
+        height: 50px;
+      }
+      
+      /* 小圆圈中的文字响应式样式 */
+      .contact-option .contact-icon {
+        font-size: 1.1rem;
+      }
+      
+      .contact-option .contact-text {
+        font-size: 0.45rem;
+      }
+      
+      /* 超小屏幕contact按钮样式调整 */
+      .contact-float {
+        bottom: 15px;
+        right: 15px;
+      }
+      
+      .contact-main-btn {
+        width: 55px;
+        height: 55px;
+      }
+      
+      .contact-icon {
+        font-size: 1.2rem;
+      }
+      
+      .contact-text {
+        font-size: 0.45rem;
+      }
+      
+      .contact-options {
+        bottom: 65px;
+        gap: 8px;
+      }
+      
+      .contact-option {
+        width: 45px;
+        height: 45px;
+      }
+      
+      /* 超小屏幕小圆圈中的文字样式 */
+      .contact-option .contact-icon {
+        font-size: 1rem;
+      }
+      
+      .contact-option .contact-text {
+        font-size: 0.4rem;
+      }
     }
     
     .hero-content[data-aos] {
@@ -2797,7 +2899,7 @@
         <li><a href="news.html">最新消息</a></li>
         <li><a href="contact.html">联系我们</a></li>
       </ul>
-      <a href="courses.html" class="btn btn-reservation">预约</a>
+      <button class="btn btn-reservation" onclick="showWeChatQR()">预约</button>
     </div>
   </nav>
 
@@ -3614,6 +3716,11 @@
     function openWhatsApp() {
       console.log('打开WhatsApp联系');
       showQRCode('image/qrcode/3.PNG', 'WhatsApp', 'WhatsApp联系');
+    }
+    
+    // 显示预约微信二维码弹窗
+    function showWeChatQR() {
+      showQRCode('image/qrcode/1.PNG', '微信预约', '请扫描二维码添加微信进行课程预约');
     }
     
     // 显示二维码弹窗
