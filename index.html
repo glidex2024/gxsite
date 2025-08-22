@@ -97,6 +97,29 @@
       font-size: 1.1em;
     }
     
+    /* Windows Chrome layout fixes */
+    .windows-chrome .hero-section {
+      min-height: 75vh !important; /* Windows Chrome需要更大的最小高度 */
+      padding: 120px 0 100px 0 !important; /* 增加底部内边距 */
+      margin-bottom: 30px !important; /* 增加底部外边距 */
+    }
+    
+    .windows-chrome .hero-section::before {
+      width: 100% !important;
+      height: 100% !important;
+      position: absolute !important;
+      top: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
+      bottom: 0 !important;
+    }
+    
+    .windows-chrome .course-images-section {
+      margin-top: 40px !important; /* Windows Chrome需要更大的顶部间距 */
+      padding: 120px 0 !important; /* 增加内边距 */
+      z-index: 10 !important; /* 确保在hero section之上 */
+    }
+    
     .windows-chrome .contact-main-btn {
       width: 75px !important;
       height: 75px !important;
@@ -300,12 +323,13 @@
     .hero-section {
       position: relative;
       height: auto; /* 改为自适应高度，去掉100vh固定高度 */
-      min-height: 60vh; /* 设置最小高度，确保有足够空间 */
+      min-height: 70vh; /* 增加最小高度，确保有足够空间，特别是Windows Chrome */
       display: flex;
       align-items: center;
       justify-content: flex-start;
       overflow: hidden;
-      padding: 120px 0 60px 0; /* 添加上下内边距，确保内容有足够空间 */
+      padding: 120px 0 80px 0; /* 增加底部内边距，确保与下一模块有足够间距 */
+      margin-bottom: 20px; /* 添加底部外边距，防止模块挤压 */
     }
     
     /* 背景轮播样式 */
@@ -336,7 +360,7 @@
       object-position: center;
     }
     
-    /* 背景遮罩 */
+    /* 背景遮罩 - 确保完全覆盖 */
     .hero-section::before {
       content: '';
       position: absolute;
@@ -344,6 +368,8 @@
       left: 0;
       right: 0;
       bottom: 0;
+      width: 100%; /* 明确设置宽度 */
+      height: 100%; /* 明确设置高度 */
       background: linear-gradient(135deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.5) 100%);
       z-index: 2;
     }
@@ -1930,7 +1956,8 @@
     @media (max-width: 768px) {
       .hero-section {
         min-height: 50vh; /* 移动端减少最小高度 */
-        padding: 80px 0 40px 0; /* 移动端减少内边距 */
+        padding: 80px 0 60px 0; /* 移动端增加底部内边距，确保间距 */
+        margin-bottom: 15px; /* 移动端也添加底部外边距 */
       }
       
       .nav-container {
@@ -2250,7 +2277,8 @@
     @media (max-width: 480px) {
       .hero-section {
         min-height: 40vh; /* 超小屏幕减少最小高度 */
-        padding: 60px 0 30px 0; /* 超小屏幕减少内边距 */
+        padding: 60px 0 50px 0; /* 超小屏幕保持足够的底部内边距 */
+        margin-bottom: 10px; /* 超小屏幕也添加底部外边距 */
       }
       
       .nav-container {
@@ -2631,8 +2659,11 @@
     
     /* 课程图片展示区域样式 */
     .course-images-section {
-      padding: 80px 0;
+      padding: 100px 0; /* 增加上下内边距，确保与上一模块有足够间距 */
+      margin-top: 20px; /* 添加顶部外边距，防止与hero section重叠 */
       background: var(--snow-white);
+      position: relative; /* 确保正确的层叠上下文 */
+      z-index: 5; /* 确保在hero section之上 */
     }
     
     .course-images-grid {
@@ -2716,6 +2747,59 @@
       background: transparent;
       color: var(--accent-orange);
       transform: translateY(-2px);
+    }
+    
+    /* 课程图片展示区域响应式设计 */
+    @media (max-width: 1200px) {
+      .course-images-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+      }
+      
+      .course-images-section {
+        padding: 80px 0;
+        margin-top: 15px;
+      }
+    }
+    
+    @media (max-width: 900px) {
+      .course-images-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+      }
+      
+      .course-images-section {
+        padding: 70px 0;
+        margin-top: 15px;
+      }
+      
+      .course-image-card {
+        margin-bottom: 1rem;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .course-images-section {
+        padding: 60px 0;
+        margin-top: 20px; /* 移动端增加顶部间距 */
+      }
+    }
+    
+    @media (max-width: 600px) {
+      .course-images-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 0 1rem;
+      }
+      
+      .course-images-section {
+        padding: 50px 0;
+        margin-top: 15px;
+      }
+      
+      .image-content h3 {
+        white-space: normal; /* 小屏幕允许标题换行 */
+      }
     }
     
     /* 轮播展示区域样式 */
@@ -3063,12 +3147,12 @@
     <div class="hero-content" data-aos="fade-up">
       <div class="hero-left">
         <h1>日本JSBA体系官方认证滑雪学校</h1>
-        <p class="subtitle">日本雪场教学私人定制,小班团体课程,考证训练营</p>
+        <p class="subtitle">日本雪场教学私人定制，小班团体课程，考证训练营</p>
         <p class="subtitle">中文 | 英文 | 粤语 | 日语多语言选择</p>
         <div class="mission-section">
           <h3>我们的宗旨</h3>
-          <div class="mission-text">第一,助力学员安全滑雪,效率提高学员滑雪技能。让更多人爱上滑雪,拥有美好体验。</div>
-          <div class="mission-text">其次,努力持续培养具备专业素养与教学热情的滑雪教练团队,并不断提升整体教学质量与服务水平。</div>
+          <div class="mission-text">第一，助力学员安全滑雪，效率提高学员滑雪技能。让更多人爱上滑雪，拥有美好体验。</div>
+          <div class="mission-text">其次，努力持续培养具备专业素养与教学热情的滑雪教练团队，并不断提升整体教学质量与服务水平。</div>
         </div>
         <p class="description"><strong>2025-2026 滑雪课程火爆预约中</strong></p>
         <div class="hero-buttons">
@@ -3092,7 +3176,7 @@
           </div>
           <div class="image-content">
             <h3>私教课程</h3>
-            <p>内容说明</p>
+            <p>有单双板课程。专业教练100%量身定制教学，兼顾安全与进步。无论零基础还是进阶提升，都能高效掌握技巧，畅享日本雪场。</p>
             <a href="courses.html" class="learn-more-btn">了解更多</a>
           </div>
         </div>
@@ -3103,7 +3187,7 @@
           </div>
           <div class="image-content">
             <h3>小班团体课程</h3>
-            <p>内容说明</p>
+            <p>有单双板课程。每班最多 4 人，按水平分班（入门至进阶），在专业教练指导下高效提升，同时结识新伙伴，共享日本雪场乐趣。</p>
             <a href="courses.html" class="learn-more-btn">了解更多</a>
           </div>
         </div>
@@ -3114,18 +3198,18 @@
           </div>
           <div class="image-content">
             <h3>JSBA单板考证课程</h3>
-            <p>内容说明</p>
+            <p>JSBA（日本单板滑雪协会）是日本最早建立单板滑雪体系的专业组织，其考级体系从5级至1级逐步递进。对于已经积累了一定经验与练习的学员而言，参加认证不仅是对自身实力的肯定，也是迈向更高阶段的重要一步。</p>
             <a href="courses.html" class="learn-more-btn">了解更多</a>
           </div>
         </div>
         
         <div class="course-image-card" data-aos="fade-up" data-aos-delay="400">
           <div class="image-background">
-            <img src="image/other/图D.jpg" alt="平花·刻滑入门~进阶课程" />
+            <img src="image/other/图D.jpg" alt="进阶课程" />
           </div>
           <div class="image-content">
-            <h3>平花·刻滑入门~进阶课程</h3>
-            <p>内容说明</p>
+            <h3>进阶课程</h3>
+            <p>平花 & 刻滑入门 为重点，帮助学员在稳定滑行基础上，进一步掌握技巧与发力方法。Nollie 180、360、540 等基础旋转技巧。一顺刻滑、八字刻滑，提升转弯流畅度与控板能力。</p>
             <a href="courses.html" class="learn-more-btn">了解更多</a>
           </div>
         </div>
@@ -3142,7 +3226,7 @@
             <h3>值得信赖的在日华人教练团队</h3>
           </div>
           <div class="school-title">
-            <h2>GlideX中文国际滑雪学校</h2>
+            <h2>GlideX中文国際滑雪学校</h2>
           </div>
           <div class="school-description">
             <p>我们团队是由一群狂热滑雪爱好者组成，致力于分享滑雪的魅力，让更多人体验滑行带来的快乐与自由。</p>
@@ -3152,8 +3236,9 @@
           <div class="philosophy">
             <h3>换位思考，成长互助</h3>
           </div>
-          <div class="content-placeholder">
-            <p>内容说明</p>
+          <div class="school-description">
+            <p>在理解中学习，在陪伴中成长。【换位思考 ， 成长互助】是我们始终坚持的价值观。我们相信，学习不仅是技巧的提升，更是相互理解与支持的过程。通过换位思考，我们能够更好地理解学员的需求与感受；通过成长互助，我们能够在交流与陪伴中共同进步。这里不仅是一间滑雪课堂，更是一段携手前行的成长旅程。
+            </p>
           </div>
           <div class="action-buttons">
             <a href="about.html" class="about-btn">关于我们</a>
@@ -3202,8 +3287,8 @@
             <div class="location-icon-modern">🏔️</div>
           </div>
           <div class="location-content">
-            <h3>北海道</h3>
-            <p class="location-desc-modern">二世谷、留寿都、富良野等世界级滑雪胜地</p>
+            <h3>北海道地区</h3>
+            <p class="location-desc-modern">二世谷，留寿都，喜乐乐等世界级滑雪胜地</p>
             <div class="location-stats">
               <div class="stat-item">
                 <span class="stat-label">雪质</span>
@@ -3235,7 +3320,7 @@
           </div>
           <div class="location-content">
             <h3>东北地区</h3>
-            <p class="location-desc-modern">藏王、安比高原、八甲田等特色滑雪场</p>
+            <p class="location-desc-modern">闻名世界的蔵王等滑雪场</p>
             <div class="location-stats">
               <div class="stat-item">
                 <span class="stat-label">特色</span>
@@ -3266,8 +3351,8 @@
             <div class="location-icon-modern">⛷️</div>
           </div>
           <div class="location-content">
-            <h3>长野县</h3>
-            <p class="location-desc-modern">白马、志贺高原、野泽温泉等奥运场地</p>
+            <h3>长野地区</h3>
+            <p class="location-desc-modern">白马，軽井沢，yabuhara等知名雪场            </p>
             <div class="location-stats">
               <div class="stat-item">
                 <span class="stat-label">历史</span>
@@ -3298,8 +3383,8 @@
             <div class="location-icon-modern">🎿</div>
           </div>
           <div class="location-content">
-            <h3>新潟县</h3>
-            <p class="location-desc-modern">苗场、神乐、汤泽等密集滑雪场群</p>
+            <h3>汤泽地区</h3>
+            <p class="location-desc-modern">岩原，汤泽中里，苗场，神乐田代等人气雪场</p>
             <div class="location-stats">
               <div class="stat-item">
                 <span class="stat-label">密度</span>
@@ -3330,8 +3415,8 @@
             <div class="location-icon-modern">🌨️</div>
           </div>
           <div class="location-content">
-            <h3>群馬</h3>
-            <p class="location-desc-modern">川場、万座温泉、水上等关东近郊雪场</p>
+            <h3>群马地区</h3>
+            <p class="location-desc-modern">川场等都市近郊雪场</p>
             <div class="location-stats">
               <div class="stat-item">
                 <span class="stat-label">位置</span>
@@ -3362,8 +3447,8 @@
             <div class="location-icon-modern">🏂</div>
           </div>
           <div class="location-content">
-            <h3>神奈川</h3>
-            <p class="location-desc-modern">SNOVA新横浜、箱根等都市近郊雪场</p>
+            <h3>横滨地区</h3>
+            <p class="location-desc-modern">SNOVA新横滨全年营业室内雪场</p>
             <div class="location-stats">
               <div class="stat-item">
                 <span class="stat-label">类型</span>
@@ -3394,8 +3479,8 @@
             <div class="location-icon-modern">🎯</div>
           </div>
           <div class="location-content">
-            <h3>関西</h3>
-            <p class="location-desc-modern">高鷲、琵琶湖、六甲山等关西地区雪场</p>
+            <h3>关西地区</h3>
+            <p class="location-desc-modern">高鷲、琵琶湖等人气滑雪场</p>
             <div class="location-stats">
               <div class="stat-item">
                 <span class="stat-label">地区</span>
@@ -3492,7 +3577,7 @@
       <div class="news-header" data-aos="fade-up">
         <div class="news-title-section">
           <h2>最新消息</h2>
-          <p>关注GX户外俱乐部的最新活动与动态</p>
+          <p>关注GX的最新活动与动态</p>
         </div>
       </div>
       
@@ -3956,8 +4041,29 @@
         // Windows Chrome特殊样式调整
         document.body.classList.add('windows-chrome');
         
-        // 强制调整contact按钮
+        // 强制调整layout和contact按钮
         setTimeout(() => {
+          // 修复hero section和course images section间距
+          const heroSection = document.querySelector('.hero-section');
+          const courseImagesSection = document.querySelector('.course-images-section');
+          
+          if (heroSection) {
+            heroSection.style.marginBottom = '40px';
+            heroSection.style.paddingBottom = '120px';
+            // 确保overlay完全覆盖
+            const heroBefore = window.getComputedStyle(heroSection, '::before');
+            console.log('Hero overlay调整完成');
+          }
+          
+          if (courseImagesSection) {
+            courseImagesSection.style.marginTop = '50px';
+            courseImagesSection.style.paddingTop = '140px';
+            courseImagesSection.style.position = 'relative';
+            courseImagesSection.style.zIndex = '10';
+            console.log('Course images section间距调整完成');
+          }
+          
+          // Contact按钮调整
           const contactBtn = document.querySelector('.contact-main-btn');
           const contactOptions = document.querySelectorAll('.contact-option');
           
@@ -3978,6 +4084,8 @@
             option.style.maxWidth = '70px';
             option.style.maxHeight = '70px';
           });
+          
+          console.log('Windows Chrome布局优化完成');
         }, 200);
         
       } else {
