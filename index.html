@@ -1296,201 +1296,206 @@
       }
     }
     
-    /* 联系我们区域样式 - 完全按照Pinnacle设计 */
+    /* 联系我们区域样式 - 完全按照图片尺寸设计 */
     .contact-section {
-      padding: 100px 0;
+      padding: 80px 0;
       background: var(--snow-white);
-    }
-    
-    .contact-header h2 {
-      font-size: 3rem;
-      color: var(--primary-blue);
-      margin-bottom: 1rem;
-      font-weight: 900;
-      letter-spacing: -0.02em;
-      text-align: center;
-    }
-    
-    .contact-header p {
-      font-size: 1.3rem;
-      color: var(--warm-gray);
-      max-width: 700px;
-      margin: 0 auto 3rem;
-      line-height: 1.7;
-      text-align: center;
     }
     
     .contact-content {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 3rem;
-      margin-top: 3rem;
+      align-items: start;
+      max-width: 1200px;
+      margin: 0 auto;
     }
     
     .contact-info-card {
-      background: var(--light-gray);
-      border-radius: 20px;
-      padding: 3rem;
-      box-shadow: 0 8px 30px rgba(30, 58, 138, 0.1);
-      border: 2px solid var(--primary-blue);
+      background: linear-gradient(135deg, #e0f2fe, #f0f9ff);
+      border-radius: 16px;
+      padding: 2.5rem;
+      box-shadow: 0 6px 20px rgba(30, 58, 138, 0.08);
+      border: 1px solid var(--primary-blue);
       transition: all 0.3s ease;
+      height: fit-content;
     }
     
     .contact-info-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 15px 40px rgba(30, 58, 138, 0.15);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(30, 58, 138, 0.12);
       border-color: var(--accent-orange);
     }
     
-    .contact-info-card h3 {
+    .contact-info-card h2 {
       color: var(--primary-blue);
-      font-size: 2rem;
-      margin-bottom: 2rem;
+      font-size: 2.2rem;
+      margin-bottom: 1.2rem;
       font-weight: 800;
-      text-align: center;
+      letter-spacing: -0.01em;
+      text-align: left;
+      line-height: 1.2;
     }
     
-    .contact-methods {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-    }
-    
-    .contact-method {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      padding: 1.5rem;
-      background: var(--snow-white);
-      border-radius: 12px;
-      border: 1px solid var(--border-gray);
-      transition: all 0.3s ease;
-      cursor: pointer;
-    }
-    
-    .contact-method:hover {
-      background: var(--powder-blue);
-      transform: translateX(5px);
-      box-shadow: 0 4px 15px rgba(59, 130, 246, 0.1);
-    }
-    
-    .method-icon {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.5rem;
-      color: var(--snow-white);
-      font-weight: bold;
-    }
-    
-    .method-icon.wechat {
-      background: #07C160;
-    }
-    
-    .method-icon.line {
-      background: #00B900;
-    }
-    
-    .method-icon.whatsapp {
-      background: #25D366;
-    }
-    
-    .method-icon.email {
-      background: var(--primary-blue);
-    }
-    
-    .method-info h4 {
-      color: var(--primary-blue);
-      font-size: 1.1rem;
-      margin-bottom: 0.3rem;
-      font-weight: 700;
-    }
-    
-    .method-info p {
-      color: var(--warm-gray);
-      font-size: 0.95rem;
-      margin: 0;
-    }
-    
-    .contact-promo-card {
-      background: var(--light-gray);
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 8px 30px rgba(30, 58, 138, 0.1);
-      border: 2px solid var(--accent-orange);
-      transition: all 0.3s ease;
-    }
-    
-    .contact-promo-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 15px 40px rgba(30, 58, 138, 0.15);
-    }
-    
-    .promo-image {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-    }
-    
-    .promo-content {
-      padding: 2.5rem;
-    }
-    
-    .promo-content h3 {
-      color: var(--primary-blue);
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-      font-weight: 800;
-    }
-    
-    .promo-content p {
+    .contact-info-card p {
       color: var(--warm-gray);
       font-size: 1rem;
       margin-bottom: 2rem;
       line-height: 1.6;
+      text-align: left;
     }
     
-    .promo-features {
+    .contact-methods h3 {
+      color: var(--primary-blue);
+      font-size: 1.6rem;
+      margin-bottom: 1.2rem;
+      font-weight: 700;
+      text-align: left;
+    }
+    
+    .contact-icons {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .contact-icon {
       display: flex;
       flex-direction: column;
-      gap: 1rem;
-    }
-    
-    .feature {
-      display: flex;
       align-items: center;
-      gap: 0.8rem;
-      padding: 1rem;
-      background: var(--snow-white);
-      border-radius: 10px;
-      border: 1px solid var(--border-gray);
-      transition: background 0.3s ease;
+      text-align: center;
+      gap: 0.4rem;
     }
     
-    .feature:hover {
-      background: var(--powder-blue);
+    .contact-icon img {
+      width: 90px;
+      height: 90px;
+      border-radius: 8px;
+      border: 1px solid var(--primary-blue);
+      transition: all 0.3s ease;
+      object-fit: cover;
     }
     
-    .feature-icon {
-      width: 24px;
-      height: 24px;
-      background: linear-gradient(135deg, var(--accent-orange), var(--success-green));
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.8rem;
-      color: white;
-      font-weight: bold;
+    .contact-icon:hover img {
+      transform: scale(1.05);
+      border-color: var(--accent-orange);
     }
     
-    .feature span:last-child {
+    .contact-icon span {
       color: var(--primary-blue);
+      font-size: 0.85rem;
       font-weight: 600;
-      font-size: 0.95rem;
+    }
+    
+    .email-info {
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+    
+    .email-info p {
+      color: var(--warm-gray);
+      font-size: 0.9rem;
+      margin: 0;
+      line-height: 1.3;
+      font-weight: 500;
+    }
+    
+    .follow-us {
+      margin-top: 1.5rem;
+    }
+    
+    .follow-us h3 {
+      color: var(--primary-blue);
+      font-size: 1.4rem;
+      margin-bottom: 0.8rem;
+      font-weight: 700;
+      text-align: left;
+    }
+    
+    .social-icon {
+      display: flex;
+      justify-content: center;
+    }
+    
+    .xiaohongshu-icon {
+      background: #ff2442;
+      color: white;
+      padding: 0.6rem 1.2rem;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .xiaohongshu-icon:hover {
+      background: #e01e3a;
+      transform: scale(1.03);
+    }
+    
+    .contact-images {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      height: fit-content;
+    }
+    
+    .image-top,
+    .image-bottom {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+    }
+    
+    .image-top img,
+    .image-bottom img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+    
+    .image-top:hover img,
+    .image-bottom:hover img {
+      transform: scale(1.03);
+    }
+    
+    .banner-overlay {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(255, 255, 255, 0.95);
+      padding: 0.6rem 1.2rem;
+      border-radius: 6px;
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
+    }
+    
+    .banner-overlay span {
+      color: var(--primary-blue);
+      font-size: 0.9rem;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    
+    .logo-overlay {
+      position: absolute;
+      bottom: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(255, 255, 255, 0.95);
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
+    }
+    
+    .logo-overlay span {
+      color: var(--primary-blue);
+      font-size: 0.8rem;
+      font-weight: 600;
+      white-space: nowrap;
     }
     
     /* 页脚样式 - 完全按照Pinnacle设计 */
@@ -1990,6 +1995,44 @@
         gap: 2rem;
       }
       
+      .contact-info-card {
+        padding: 2rem;
+      }
+      
+      .contact-info-card h2 {
+        font-size: 1.8rem;
+        text-align: center;
+      }
+      
+      .contact-info-card p {
+        text-align: center;
+        font-size: 0.95rem;
+      }
+      
+      .contact-methods h3 {
+        text-align: center;
+        font-size: 1.4rem;
+      }
+      
+      .contact-icons {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+      }
+      
+      .contact-icon img {
+        width: 75px;
+        height: 75px;
+      }
+      
+      .email-info p {
+        font-size: 0.85rem;
+      }
+      
+      .image-top img,
+      .image-bottom img {
+        height: 160px;
+      }
+      
       .testimonials-grid,
       .news-grid {
         grid-template-columns: 1fr;
@@ -2224,6 +2267,50 @@
       
       .nav-links a {
         font-size: 0.8rem;
+      }
+      
+      /* 超小屏幕联系模块样式 */
+      .contact-info-card {
+        padding: 1.5rem;
+      }
+      
+      .contact-info-card h2 {
+        font-size: 1.6rem;
+      }
+      
+      .contact-info-card p {
+        font-size: 0.9rem;
+      }
+      
+      .contact-methods h3 {
+        font-size: 1.3rem;
+      }
+      
+      .contact-icons {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+      }
+      
+      .contact-icon img {
+        width: 80px;
+        height: 80px;
+      }
+      
+      .email-info p {
+        font-size: 0.8rem;
+      }
+      
+      .image-top img,
+      .image-bottom img {
+        height: 140px;
+      }
+      
+      .banner-overlay span {
+        font-size: 0.8rem;
+      }
+      
+      .logo-overlay span {
+        font-size: 0.75rem;
       }
     }
     
@@ -3127,45 +3214,41 @@
   <!-- 联系我们区域 -->
   <section class="contact-section" id="contact">
     <div class="container">
-      <div class="contact-header" data-aos="fade-up">
-        <h2>专业教学，轻松滑雪</h2>
-        <p>如对滑雪课程或是教学内容、滑雪教练的选择与雪场相关问题，可通过以下方式与我们联系</p>
-      </div>
-      
       <div class="contact-content">
         <div class="contact-left" data-aos="fade-right">
           <div class="contact-info-card">
-            <h3>Contact us</h3>
+            <h2>专业教学，轻松滑雪</h2>
+            <p>如对滑雪课程或是教学内容、滑雪教练的选择与雪场相关问题，可通过以下方式与我们联系</p>
+            
             <div class="contact-methods">
-              <div class="contact-method">
-                <div class="method-icon wechat-icon">💚</div>
-                <div class="method-info">
-                  <h4>GX SNOWSPORTS WECHAT</h4>
-                  <p>GX_SKI_SCHOOL</p>
+              <h3>Contact us</h3>
+              <div class="contact-icons">
+                <div class="contact-icon">
+                  <img src="image/qrcode/1.PNG" alt="WeChat QR Code" />
+                  <span>PINNACLE</span>
+                </div>
+                <div class="contact-icon">
+                  <img src="image/qrcode/2.PNG" alt="Line QR Code" />
+                  <span>PINNACLE</span>
+                </div>
+                <div class="contact-icon">
+                  <img src="image/qrcode/3.PNG" alt="WhatsApp QR Code" />
+                  <span>PINNACLE</span>
+                </div>
+                <div class="contact-icon">
+                  <img src="image/qrcode/4.PNG" alt="Email" />
+                  <span>PINNACLE</span>
                 </div>
               </div>
               
-              <div class="contact-method">
-                <div class="method-icon line-icon">📱</div>
-                <div class="method-info">
-                  <h4>GX SNOWSPORTS LINE</h4>
-                  <p>@gxskischool</p>
-                </div>
+              <div class="email-info">
+                <p>pinnacleski@gmail.com</p>
               </div>
               
-              <div class="contact-method">
-                <div class="method-icon whatsapp-icon">📞</div>
-                <div class="method-info">
-                  <h4>GX SNOWSPORTS WHATSAPP</h4>
-                  <p>+81-XXX-XXXX-XXXX</p>
-                </div>
-              </div>
-              
-              <div class="contact-method">
-                <div class="method-icon email-icon">📧</div>
-                <div class="method-info">
-                  <h4>GX SNOWSPORTS EMAIL</h4>
-                  <p>info@gxskischool.com</p>
+              <div class="follow-us">
+                <h3>Follow us</h3>
+                <div class="social-icon">
+                  <div class="xiaohongshu-icon">小红书</div>
                 </div>
               </div>
             </div>
@@ -3173,26 +3256,17 @@
         </div>
         
         <div class="contact-right" data-aos="fade-left">
-          <div class="contact-promo-card">
-            <div class="promo-image">
-              <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=600&q=80" alt="GX滑雪学校" />
+          <div class="contact-images">
+            <div class="image-top">
+              <img src="image/hero/hero-slide-01-snowboard-team.jpg" alt="滑雪团队" />
+              <div class="banner-overlay">
+                <span>GlideX中文国際滑雪学校欢迎您</span>
+              </div>
             </div>
-            <div class="promo-content">
-              <h3>GX中文国际滑雪学校欢迎您</h3>
-              <p>专业教学团队，国际化教学标准</p>
-              <div class="promo-features">
-                <div class="feature">
-                  <span class="feature-icon">⛷️</span>
-                  <span>专业教练团队</span>
-                </div>
-                <div class="feature">
-                  <span class="feature-icon">🏂</span>
-                  <span>个性化教学</span>
-                </div>
-                <div class="feature">
-                  <span class="feature-icon">🌲</span>
-                  <span>优质雪场资源</span>
-                </div>
+            <div class="image-bottom">
+              <img src="image/hero/hero-slide-02-ski-mountain.jpg" alt="滑雪场" />
+              <div class="logo-overlay">
+                <span>GlideX GLIDE.X</span>
               </div>
             </div>
           </div>
