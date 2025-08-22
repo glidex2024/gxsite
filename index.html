@@ -2730,6 +2730,64 @@
       transform: translateY(-2px);
     }
     
+    /* 课程图片展示区域响应式设计 */
+    @media (max-width: 1200px) {
+      .course-images-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+      }
+      
+      .course-images-section {
+        padding: 80px 0;
+        margin-top: 15px;
+      }
+    }
+    
+    @media (max-width: 900px) {
+      .course-images-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+      }
+      
+      .course-images-section {
+        padding: 70px 0;
+        margin-top: 15px;
+      }
+      
+      .course-image-card {
+        margin-bottom: 1rem;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .course-images-section {
+        padding: 60px 0;
+        margin-top: 20px;
+      }
+    }
+    
+    @media (max-width: 600px) {
+      .course-images-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 0 1rem;
+      }
+      
+      .course-images-section {
+        padding: 50px 0;
+        margin-top: 15px;
+      }
+      
+      .image-content {
+        padding: 1rem;
+      }
+      
+      .learn-more-btn {
+        padding: 0.7rem 1.2rem;
+        font-size: 0.85rem;
+      }
+    }
+    
     /* 轮播展示区域样式 */
 
     /* 确保页面主体可见和可滚动 */
