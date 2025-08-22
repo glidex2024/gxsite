@@ -125,6 +125,129 @@
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
   <script>
     AOS.init({ duration: 800, once: true });
+    
+    // 显示预约微信二维码弹窗
+    function showWeChatQR() {
+      showQRCode('image/qrcode/1.PNG', '微信预约', '请扫描二维码添加微信进行课程预约');
+    }
+    
+    // 通用二维码弹窗函数
+    function showQRCode(imageSrc, title, subtitle) {
+      // 创建模态框
+      const modal = document.createElement('div');
+      modal.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.8);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 10000;
+        backdrop-filter: blur(10px);
+      `;
+      
+      // 创建弹窗内容
+      const modalContent = document.createElement('div');
+      modalContent.style.cssText = `
+        background: white;
+        padding: 2rem;
+        border-radius: 20px;
+        text-align: center;
+        max-width: 400px;
+        width: 90%;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        position: relative;
+      `;
+      
+      // 关闭按钮
+      const closeBtn = document.createElement('button');
+      closeBtn.innerHTML = '×';
+      closeBtn.style.cssText = `
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        background: none;
+        border: none;
+        font-size: 2rem;
+        cursor: pointer;
+        color: #666;
+        line-height: 1;
+      `;
+      closeBtn.onclick = () => document.body.removeChild(modal);
+      
+      // 标题
+      const titleEl = document.createElement('h3');
+      titleEl.textContent = title;
+      titleEl.style.cssText = `
+        margin: 0 0 1rem 0;
+        color: #1e40af;
+        font-size: 1.5rem;
+        font-weight: 700;
+      `;
+      
+      // 副标题
+      const subtitleEl = document.createElement('p');
+      subtitleEl.textContent = subtitle;
+      subtitleEl.style.cssText = `
+        margin: 0 0 1.5rem 0;
+        color: #6b7280;
+        font-size: 1rem;
+      `;
+      
+      // 二维码图片
+      const qrImage = document.createElement('img');
+      qrImage.src = imageSrc;
+      qrImage.alt = title;
+      qrImage.style.cssText = `
+        width: 200px;
+        height: 200px;
+        margin: 0 auto 1rem auto;
+        display: block;
+        border-radius: 10px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      `;
+      
+      // 错误处理
+      qrImage.onerror = () => {
+        qrImage.style.display = 'none';
+        const errorMsg = document.createElement('p');
+        errorMsg.textContent = '二维码图片加载失败';
+        errorMsg.style.cssText = `
+          color: #dc2626;
+          font-size: 0.9rem;
+          margin: 1rem 0;
+        `;
+        modalContent.appendChild(errorMsg);
+      };
+      
+      // 组装弹窗
+      modalContent.appendChild(closeBtn);
+      modalContent.appendChild(titleEl);
+      modalContent.appendChild(subtitleEl);
+      modalContent.appendChild(qrImage);
+      modal.appendChild(modalContent);
+      
+      // 显示弹窗
+      document.body.appendChild(modal);
+      
+      // 点击背景关闭弹窗
+      modal.onclick = (e) => {
+        if (e.target === modal) {
+          document.body.removeChild(modal);
+        }
+      };
+      
+      // ESC键关闭弹窗
+      document.addEventListener('keydown', function closeOnEsc(e) {
+        if (e.key === 'Escape') {
+          document.body.removeChild(modal);
+          document.removeEventListener('keydown', closeOnEsc);
+        }
+      });
+    }
     // 滚动变色
     window.addEventListener('scroll', function() {
       const navbar = document.getElementById('navbar');

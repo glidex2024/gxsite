@@ -2650,6 +2650,9 @@
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
       transition: all 0.3s ease;
       background: var(--snow-white);
+      display: flex;
+      flex-direction: column;
+      height: 100%;
     }
     
     .course-image-card:hover {
@@ -2678,7 +2681,10 @@
     
     .image-content {
       padding: 1.5rem;
-      text-align: center;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
     }
     
     .image-content h3 {
@@ -2687,9 +2693,9 @@
       color: var(--primary-blue);
       margin-bottom: 0.8rem;
       line-height: 1.3;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+      white-space: normal;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
     }
     
     .image-content p {
@@ -2697,6 +2703,10 @@
       color: var(--warm-gray);
       margin-bottom: 1.2rem;
       line-height: 1.5;
+      flex: 1;
+      white-space: normal;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
     }
     
     .learn-more-btn {
@@ -2710,6 +2720,8 @@
       font-size: 0.9rem;
       transition: all 0.3s ease;
       border: 2px solid var(--accent-orange);
+      margin-top: auto;
+      align-self: flex-start;
     }
     
     .learn-more-btn:hover {
