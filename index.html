@@ -27,10 +27,69 @@
       --border-gray: #e5e7eb;       /* 边框灰 - 分割线 */
     }
     
+    /* 跨平台字体渲染优化 */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+    }
+    
+    /* Windows平台特殊优化 */
+    @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+      * {
+        font-size: 1.05em; /* Windows下稍微放大字体 */
+      }
+      
+      .contact-main-btn {
+        width: 75px;
+        height: 75px;
+      }
+      
+      .contact-option {
+        width: 65px;
+        height: 65px;
+      }
+      
+      .contact-text {
+        font-size: 0.7rem;
+      }
+      
+      .contact-option .contact-text {
+        font-size: 0.55rem;
+      }
+    }
+    
+    /* Windows Chrome特殊优化 */
+    @supports (-webkit-appearance: none) and (not (overflow: -webkit-marquee)) {
+      @media screen and (min-resolution: 1.25dppx) {
+        * {
+          font-size: 1.02em;
+        }
+      }
+    }
+    
+    /* 通用跨平台字体大小调整 */
+    @media screen and (max-width: 1920px) {
+      html {
+        font-size: 16px; /* 标准字体大小 */
+      }
+    }
+    
+    @media screen and (min-width: 1921px) {
+      html {
+        font-size: 18px; /* 高分辨率屏幕字体大小 */
+      }
+    }
+    
+    /* Windows DPI缩放检测 */
+    @media screen and (-webkit-min-device-pixel-ratio: 1.25) {
+      .contact-main-btn,
+      .contact-option {
+        transform: scale(1.05);
+      }
     }
     
     body {
@@ -1520,6 +1579,10 @@
       bottom: 30px;
       right: 30px;
       z-index: 1000;
+      /* 跨平台字体渲染优化 */
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
     }
     
     .contact-main-btn {
@@ -1536,6 +1599,11 @@
       transition: all 0.3s ease;
       color: var(--snow-white);
       font-weight: bold;
+      /* 跨平台尺寸优化 */
+      min-width: 70px;
+      min-height: 70px;
+      max-width: 70px;
+      max-height: 70px;
     }
     
     .contact-main-btn:hover {
@@ -1596,6 +1664,11 @@
       font-weight: bold;
       position: relative;
       overflow: hidden;
+      /* 跨平台尺寸优化 */
+      min-width: 60px;
+      min-height: 60px;
+      max-width: 60px;
+      max-height: 60px;
     }
     
     .contact-option.wechat {
@@ -3800,6 +3873,32 @@
       console.log('找到的section数量:', sections.length);
       console.log('找到的AOS元素数量:', aosElements.length);
     });
+    
+    // 跨平台字体大小自动调整
+    function adjustFontSizeForPlatform() {
+      const userAgent = navigator.userAgent;
+      const isWindows = /Windows/.test(userAgent);
+      const isChrome = /Chrome/.test(userAgent);
+      
+      if (isWindows && isChrome) {
+        // Windows Chrome下自动调整字体大小
+        const dpr = window.devicePixelRatio || 1;
+        if (dpr >= 1.25) {
+          document.documentElement.style.fontSize = '18px';
+          console.log('Windows Chrome高DPI模式，字体大小调整为18px');
+        } else {
+          document.documentElement.style.fontSize = '16px';
+          console.log('Windows Chrome标准DPI模式，字体大小调整为16px');
+        }
+      } else {
+        // macOS和其他平台保持标准大小
+        document.documentElement.style.fontSize = '16px';
+        console.log('macOS/其他平台，字体大小保持16px');
+      }
+    }
+    
+    // 页面加载完成后执行字体调整
+    window.addEventListener('load', adjustFontSizeForPlatform);
     
     // 添加调试信息
     console.log('首页JavaScript加载完成');
