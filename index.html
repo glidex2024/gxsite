@@ -1551,7 +1551,7 @@
       white-space: nowrap;
     }
     
-    /* 页脚样式 - 完全按照Pinnacle设计 */
+    /* 页脚样式 - 完全按照图片设计 */
     .footer {
       background: var(--mountain-gray);
       color: var(--snow-white);
@@ -1560,32 +1560,93 @@
     
     .footer-content {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: 1fr 1fr 1fr;
       gap: 3rem;
       margin-bottom: 3rem;
     }
     
-    .footer-content h3 {
+    /* 左侧公司信息样式 */
+    .footer-company {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 1rem;
+      border-radius: 8px;
+      width: fit-content;
+    }
+    
+    .footer-logo .logo-gx {
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--snow-white);
+      background: var(--primary-blue);
+      padding: 0.5rem 0.8rem;
+      border-radius: 8px;
+      letter-spacing: -0.02em;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 60px;
+      height: 50px;
+      box-shadow: 0 4px 15px rgba(30, 58, 138, 0.3);
+    }
+    
+    .footer-logo .logo-text {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+    
+    .footer-logo .logo-chinese {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--snow-white);
+      line-height: 1.2;
+      white-space: nowrap;
+    }
+    
+    .footer-logo .logo-english {
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--snow-white);
+      line-height: 1.2;
+      white-space: nowrap;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+    
+    .company-info p {
+      color: var(--snow-white);
+      line-height: 1.8;
+      margin-bottom: 0.5rem;
+      font-size: 0.95rem;
+    }
+    
+    /* 中间快速链接样式 */
+    .footer-links h3,
+    .footer-courses h3 {
       color: var(--accent-orange);
       margin-bottom: 1.5rem;
       font-size: 1.3rem;
       font-weight: 700;
     }
     
-    .footer-content p {
-      color: #bdc3c7;
-      line-height: 1.8;
-      margin-bottom: 0;
-      font-size: 0.95rem;
-    }
-    
-    .footer-content ul {
+    .footer-links ul,
+    .footer-courses ul {
       list-style: none;
       padding: 0;
     }
     
-    .footer-content ul li a {
-      color: #bdc3c7;
+    .footer-links ul li a {
+      color: var(--snow-white);
       text-decoration: none;
       line-height: 2;
       transition: color 0.3s ease;
@@ -1593,13 +1654,13 @@
       font-size: 0.95rem;
     }
     
-    .footer-content ul li a:hover {
+    .footer-links ul li a:hover {
       color: var(--accent-orange);
       transform: translateX(5px);
     }
     
-    .footer-content ul li {
-      color: #bdc3c7;
+    .footer-courses ul li {
+      color: var(--snow-white);
       line-height: 2;
       font-size: 0.95rem;
     }
@@ -1610,6 +1671,66 @@
       border-top: 1px solid #374151;
       color: #9ca3af;
       font-size: 0.9rem;
+    }
+    
+    /* 页脚响应式设计 */
+    @media (max-width: 1024px) {
+      .footer-content {
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+      }
+      
+      .footer-company {
+        grid-column: 1 / -1;
+        text-align: center;
+        align-items: center;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .footer-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        text-align: center;
+      }
+      
+      .footer-company {
+        align-items: center;
+      }
+      
+      .footer-logo {
+        justify-content: center;
+      }
+      
+      .footer {
+        padding: 3rem 0 1.5rem 0;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .footer-content {
+        gap: 1.5rem;
+      }
+      
+      .footer-logo {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.5rem;
+      }
+      
+      .footer-logo .logo-gx {
+        font-size: 1.8rem;
+        min-width: 50px;
+        height: 45px;
+      }
+      
+      .footer-logo .logo-chinese {
+        font-size: 1rem;
+      }
+      
+      .footer-logo .logo-english {
+        font-size: 0.6rem;
+      }
     }
     
     /* 右下角固定联系按钮 - 完全按照Pinnacle设计 */
@@ -3133,12 +3254,12 @@
     <div class="hero-content" data-aos="fade-up">
       <div class="hero-left">
         <h1>日本JSBA体系官方认证滑雪学校</h1>
-        <p class="subtitle">日本雪场教学私人定制,小班团体课程,考证训练营</p>
+        <p class="subtitle">日本雪场教学私人定制，小班团体课程，考证训练营</p>
         <p class="subtitle">中文 | 英文 | 粤语 | 日语多语言选择</p>
         <div class="mission-section">
           <h3>我们的宗旨</h3>
-          <div class="mission-text">第一,助力学员安全滑雪,效率提高学员滑雪技能。让更多人爱上滑雪,拥有美好体验。</div>
-          <div class="mission-text">其次,努力持续培养具备专业素养与教学热情的滑雪教练团队,并不断提升整体教学质量与服务水平。</div>
+          <div class="mission-text">第一，助力学员安全滑雪，效率提高学员滑雪技能。让更多人爱上滑雪，拥有美好体验。</div>
+          <div class="mission-text">其次，努力持续培养具备专业素养与教学热情的滑雪教练团队，并不断提升整体教学质量与服务水平。</div>
         </div>
         <p class="description"><strong>2025-2026 滑雪课程火爆预约中</strong></p>
         <div class="hero-buttons">
@@ -3162,7 +3283,7 @@
           </div>
           <div class="image-content">
             <h3>私教课程</h3>
-            <p>内容说明</p>
+            <p>有单双板课程。专业教练100%量身定制教学，兼顾安全与进步。无论零基础还是进阶提升，都能高效掌握技巧，畅享日本雪场。</p>
             <a href="courses.html" class="learn-more-btn">了解更多</a>
           </div>
         </div>
@@ -3173,7 +3294,7 @@
           </div>
           <div class="image-content">
             <h3>小班团体课程</h3>
-            <p>内容说明</p>
+            <p>有单双板课程。每班最多 4 人，按水平分班（入门至进阶），在专业教练指导下高效提升，同时结识新伙伴，共享日本雪场乐趣</p>
             <a href="courses.html" class="learn-more-btn">了解更多</a>
           </div>
         </div>
@@ -3184,7 +3305,7 @@
           </div>
           <div class="image-content">
             <h3>JSBA单板考证课程</h3>
-            <p>内容说明</p>
+            <p>JSBA（日本单板滑雪协会）是日本最早建立单板滑雪体系的专业组织，其考级体系从 5级至1级 逐步递进。对于已经积累了一定经验与练习的学员而言，参加认证不仅是对自身实力的肯定，也是迈向更高阶段的重要一步。</p>
             <a href="courses.html" class="learn-more-btn">了解更多</a>
           </div>
         </div>
@@ -3194,8 +3315,8 @@
             <img src="image/other/图D.jpg" alt="平花·刻滑入门~进阶课程" />
           </div>
           <div class="image-content">
-            <h3>平花·刻滑入门~进阶课程</h3>
-            <p>内容说明</p>
+            <h3>进阶课程</h3>
+            <p>平花 & 刻滑入门 为重点，帮助学员在稳定滑行基础上，进一步掌握技巧与发力方法。Nollie 180、360、540 等基础旋转技巧。一顺刻滑、八字刻滑，提升转弯流畅度与控板能力。</p>
             <a href="courses.html" class="learn-more-btn">了解更多</a>
           </div>
         </div>
@@ -3212,7 +3333,7 @@
             <h3>值得信赖的在日华人教练团队</h3>
           </div>
           <div class="school-title">
-            <h2>GlideX中文国际滑雪学校</h2>
+            <h2>GlideX中文国際滑雪学校</h2>
           </div>
           <div class="school-description">
             <p>我们团队是由一群狂热滑雪爱好者组成，致力于分享滑雪的魅力，让更多人体验滑行带来的快乐与自由。</p>
@@ -3222,8 +3343,8 @@
           <div class="philosophy">
             <h3>换位思考，成长互助</h3>
           </div>
-          <div class="content-placeholder">
-            <p>内容说明</p>
+          <div class="school-description">
+            <p>在理解中学习，在陪伴中成长。【换位思考 ， 成长互助】是我们始终坚持的价值观。我们相信，学习不仅是技巧的提升，更是相互理解与支持的过程。通过换位思考，我们能够更好地理解学员的需求与感受；通过成长互助，我们能够在交流与陪伴中共同进步。这里不仅是一间滑雪课堂，更是一段携手前行的成长旅程。 </p>
           </div>
           <div class="action-buttons">
             <a href="about.html" class="about-btn">关于我们</a>
@@ -3272,8 +3393,8 @@
             <div class="location-icon-modern">🏔️</div>
           </div>
           <div class="location-content">
-            <h3>北海道</h3>
-            <p class="location-desc-modern">二世谷、留寿都、富良野等世界级滑雪胜地</p>
+            <h3>北海道地区</h3>
+            <p class="location-desc-modern">二世谷，留寿都，喜乐乐等世界级滑雪胜地</p>
             <div class="location-stats">
               <div class="stat-item">
                 <span class="stat-label">雪质</span>
@@ -3305,7 +3426,7 @@
           </div>
           <div class="location-content">
             <h3>东北地区</h3>
-            <p class="location-desc-modern">藏王、安比高原、八甲田等特色滑雪场</p>
+            <p class="location-desc-modern">闻名世界的蔵王等滑雪场</p>
             <div class="location-stats">
               <div class="stat-item">
                 <span class="stat-label">特色</span>
@@ -3336,8 +3457,8 @@
             <div class="location-icon-modern">⛷️</div>
           </div>
           <div class="location-content">
-            <h3>长野县</h3>
-            <p class="location-desc-modern">白马、志贺高原、野泽温泉等奥运场地</p>
+            <h3>长野地区</h3>
+            <p class="location-desc-modern">白马，軽井沢，yabuhara等知名雪场</p>
             <div class="location-stats">
               <div class="stat-item">
                 <span class="stat-label">历史</span>
@@ -3368,8 +3489,8 @@
             <div class="location-icon-modern">🎿</div>
           </div>
           <div class="location-content">
-            <h3>新潟县</h3>
-            <p class="location-desc-modern">苗场、神乐、汤泽等密集滑雪场群</p>
+            <h3>汤泽地区</h3>
+            <p class="location-desc-modern">岩原，汤泽中里，苗场，神乐田代等人气雪场</p>
             <div class="location-stats">
               <div class="stat-item">
                 <span class="stat-label">密度</span>
@@ -3400,8 +3521,8 @@
             <div class="location-icon-modern">🌨️</div>
           </div>
           <div class="location-content">
-            <h3>群馬</h3>
-            <p class="location-desc-modern">川場、万座温泉、水上等关东近郊雪场</p>
+            <h3>群马地区</h3>
+            <p class="location-desc-modern">川场等都市近郊雪场</p>
             <div class="location-stats">
               <div class="stat-item">
                 <span class="stat-label">位置</span>
@@ -3432,8 +3553,8 @@
             <div class="location-icon-modern">🏂</div>
           </div>
           <div class="location-content">
-            <h3>神奈川</h3>
-            <p class="location-desc-modern">SNOVA新横浜、箱根等都市近郊雪场</p>
+            <h3>神奈川地区</h3>
+            <p class="location-desc-modern">SNOVA新横滨全年营业室内雪场</p>
             <div class="location-stats">
               <div class="stat-item">
                 <span class="stat-label">类型</span>
@@ -3464,8 +3585,8 @@
             <div class="location-icon-modern">🎯</div>
           </div>
           <div class="location-content">
-            <h3>関西</h3>
-            <p class="location-desc-modern">高鷲、琵琶湖、六甲山等关西地区雪场</p>
+            <h3>关西地区</h3>
+            <p class="location-desc-modern">高鷲、琵琶湖等人气滑雪场</p>
             <div class="location-stats">
               <div class="stat-item">
                 <span class="stat-label">地区</span>
@@ -3534,23 +3655,23 @@
         <div class="testimonials-grid">
           <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100">
             <div class="testimonial-text">
-              教练小喵非常有耐心，一遍又一遍地讲解，直到我完全理解。教练也非常细心，会注意到我每一个细微的动作，并给出专业的指导。
+              今天感谢老师的教学，原本上有一点陡的学道就会害怕，今天在老师的指导下克服了恐惧的心理，用正确的方式学会滑陡坡，因为我以前没有正规学习过，都是自己摸索，所以有一些方法是不对的，老师纠正了我一下错误习惯，虽然错误习惯不是一天两天能改，以后的滑雪中我会慢慢改正，通过今天的学习滑的过程越来越自信[ThumbsUp]，争取做到人板合一？
             </div>
-            <div class="testimonial-author">- 培滴范</div>
+            <div class="testimonial-author"></div>
           </div>
           
           <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200">
             <div class="testimonial-text">
-              第二次滑雪，很幸运遇到Steve，非常专业，第一天下半天就可以在初学道滑S了！真的好感动，教练很有耐心。
+              这次通过贵校结识教练很幸运。教练专业、敬业、有耐心、有趣。两天之内，小荔枝已经可以轻松滑中级雪道；我们两个大人也从犁式进阶到基本可以平行S。大小小孩都尽情享受到滑雪的乐趣！教练的特点是：理论干货简洁明了、善于鼓励、耐心的提供辅助支持，比如雪具租赁、穿戴，买雪票，帮忙赶班车等等。能感受到教练也在认真的生活和工作。我们从教练身上学到的好像不仅是滑雪😄我们都希望下次还有机会再见！🌹
             </div>
-            <div class="testimonial-author">- Yun</div>
+            <div class="testimonial-author"></div>
           </div>
           
           <div class="testimonial-card" data-aos="fade-up" data-aos-delay="300">
             <div class="testimonial-text">
-              小花教练教学非常有耐心，让我顺利学会s turn与下缆车。还会帮忙拍影片指导动作，非常用心，赞赞赞。
+              想学的都学到了，教练讲的很细而且鼓励式教育体验特别好，途中摔了以后也会及时和我们说是哪里用错力了然后带我们纠正。还讲了以后自己练的时候要注意什么之类的建议。真的体验感特别好 下次有机会还会找教练
             </div>
-            <div class="testimonial-author">- Evis Ma</div>
+            <div class="testimonial-author"></div>
           </div>
         </div>
     </div>
@@ -3562,7 +3683,7 @@
       <div class="news-header" data-aos="fade-up">
         <div class="news-title-section">
           <h2>最新消息</h2>
-          <p>关注GX户外俱乐部的最新活动与动态</p>
+          <p>关注GX的最新活动与动态</p>
         </div>
       </div>
       
@@ -3643,12 +3764,24 @@
   <footer class="footer">
     <div class="container">
       <div class="footer-content">
-        <div>
-          <h3>GX 中文国际滑雪学校</h3>
-          <p>我们热爱滑雪并希望通过滑雪的热情积极影响他人。我们创办滑雪学校的初衷是，为喜爱滑雪的朋友定制最专业，最适合的滑雪教学服务。</p>
+        <!-- 左侧：公司信息 -->
+        <div class="footer-company">
+          <div class="footer-logo">
+            <span class="logo-gx">GX</span>
+            <div class="logo-text">
+              <span class="logo-chinese">中文国際滑雪学校</span>
+              <span class="logo-english">GLIDEX SNOWSPORTS SCHOOL</span>
+            </div>
+          </div>
+          <div class="company-info">
+            <p>GlideX中文国際滑雪学校</p>
+            <p>GlideX合同会社</p>
+            <p>〒新潟県南魚沼郡湯沢町土樽6303-1</p>
+          </div>
         </div>
         
-        <div>
+        <!-- 中间：快速链接 -->
+        <div class="footer-links">
           <h3>快速链接</h3>
           <ul>
             <li><a href="index.html">首页</a></li>
@@ -3661,13 +3794,14 @@
           </ul>
         </div>
         
-        <div>
+        <!-- 右侧：我们的课程 -->
+        <div class="footer-courses">
           <h3>我们的课程</h3>
           <ul>
-            <li>滑雪私教课程</li>
-            <li>高表现力滑雪课程</li>
-            <li>粉雪/树林/雪包滑雪营</li>
-            <li>滑雪教练认证培训</li>
+            <li>私教课程</li>
+            <li>小班团体课程</li>
+            <li>JSBA单板考证课程</li>
+            <li>进阶课程</li>
           </ul>
         </div>
       </div>
