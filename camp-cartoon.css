@@ -168,3 +168,271 @@ body {
     max-width: 98vw;
   }
 } 
+
+/* 手机和iPad响应式适配 - 新增样式 */
+
+/* 平板设备适配 (768px - 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .camp-section {
+    gap: 1.5em;
+    padding: 0 20px;
+  }
+  
+  .camp-card {
+    width: 100%;
+    max-width: 500px;
+    padding: 2em 1.8em;
+  }
+  
+  .camp-card img {
+    height: 160px;
+  }
+  
+  .camp-card h2 {
+    font-size: 1.4rem;
+  }
+  
+  .camp-card p {
+    font-size: 1rem;
+  }
+  
+  .camp-highlight {
+    max-width: 90%;
+    padding: 2em 1.5em;
+    margin: 0 auto 1.5em auto;
+  }
+  
+  .camp-highlight h3 {
+    font-size: 1.3rem;
+  }
+  
+  .camp-highlight li {
+    font-size: 1rem;
+  }
+}
+
+/* 大手机设备适配 (481px - 767px) */
+@media (min-width: 481px) and (max-width: 767px) {
+  .camp-section {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2em;
+    padding: 0 15px;
+  }
+  
+  .camp-card {
+    width: 100%;
+    max-width: 100%;
+    padding: 1.8em 1.5em;
+    margin-bottom: 1rem;
+  }
+  
+  .camp-card img {
+    height: 150px;
+  }
+  
+  .camp-card h2 {
+    font-size: 1.3rem;
+    margin-bottom: 0.4em;
+  }
+  
+  .camp-card p {
+    font-size: 0.98rem;
+  }
+  
+  .camp-highlight {
+    max-width: 95%;
+    padding: 1.8em 1.2em;
+    margin: 0 auto 1.2em auto;
+    border-radius: 1.2em;
+  }
+  
+  .camp-highlight h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.8em;
+  }
+  
+  .camp-highlight ul {
+    max-width: 100%;
+  }
+  
+  .camp-highlight li {
+    font-size: 0.95rem;
+    margin-bottom: 0.6em;
+    padding-left: 1.2em;
+  }
+  
+  .camp-highlight li:before {
+    width: 0.6em;
+    height: 0.6em;
+    left: 0.1em;
+    top: 0.4em;
+  }
+  
+  .camp-wave {
+    height: 60px;
+  }
+}
+
+/* 小手机设备适配 (320px - 480px) */
+@media (max-width: 480px) {
+  .camp-section {
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+    padding: 0 10px;
+  }
+  
+  .camp-card {
+    width: 100%;
+    max-width: 100%;
+    padding: 1.5em 1.2em;
+    margin-bottom: 0.8rem;
+    border-radius: 1em;
+  }
+  
+  .camp-card img {
+    height: 130px;
+    border-radius: 0.8em 0.3em 0.8em 0.3em;
+  }
+  
+  .camp-card h2 {
+    font-size: 1.2rem;
+    margin-bottom: 0.3em;
+  }
+  
+  .camp-card p {
+    font-size: 0.9rem;
+  }
+  
+  .camp-highlight {
+    max-width: 100%;
+    padding: 1.5em 1em;
+    margin: 0 auto 1em auto;
+    border-radius: 1em;
+  }
+  
+  .camp-highlight h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.6em;
+  }
+  
+  .camp-highlight li {
+    font-size: 0.9rem;
+    margin-bottom: 0.5em;
+    padding-left: 1em;
+  }
+  
+  .camp-highlight li:before {
+    width: 0.5em;
+    height: 0.5em;
+    left: 0;
+    top: 0.3em;
+  }
+  
+  .camp-wave {
+    height: 50px;
+  }
+  
+  .camp-footer {
+    padding: 1.5em 0 1em 0;
+    font-size: 0.9em;
+  }
+}
+
+/* 超小手机设备适配 (320px以下) */
+@media (max-width: 320px) {
+  .camp-section {
+    padding: 0 8px;
+  }
+  
+  .camp-card {
+    padding: 1.2em 1em;
+    margin-bottom: 0.6rem;
+  }
+  
+  .camp-card img {
+    height: 120px;
+  }
+  
+  .camp-card h2 {
+    font-size: 1.1rem;
+  }
+  
+  .camp-card p {
+    font-size: 0.85rem;
+  }
+  
+  .camp-highlight {
+    padding: 1.2em 0.8em;
+  }
+  
+  .camp-highlight h3 {
+    font-size: 1rem;
+  }
+  
+  .camp-highlight li {
+    font-size: 0.85rem;
+  }
+}
+
+/* 横屏手机适配 */
+@media (max-height: 500px) and (orientation: landscape) {
+  .camp-section {
+    gap: 1em;
+    padding: 0 15px;
+  }
+  
+  .camp-card {
+    padding: 1.2em 1.5em;
+  }
+  
+  .camp-card img {
+    height: 100px;
+  }
+  
+  .camp-highlight {
+    padding: 1.2em 1.5em;
+    margin: 0 auto 1em auto;
+  }
+}
+
+/* 触摸设备优化 */
+@media (hover: none) and (pointer: coarse) {
+  .camp-card:hover {
+    transform: none;
+    box-shadow: 0 4px 24px rgba(0,255,174,0.09);
+  }
+  
+  .camp-card {
+    cursor: pointer;
+  }
+}
+
+/* 高分辨率屏幕优化 */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .camp-card img {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+}
+
+/* 深色模式支持 */
+@media (prefers-color-scheme: dark) {
+  .camp-card {
+    background: #2a2a2a;
+    border: 2px solid #00ffae;
+  }
+  
+  .camp-highlight {
+    background: linear-gradient(90deg, #00ffae 10%, #a259ff 90%);
+    color: #111;
+  }
+}
+
+/* 减少动画（用户偏好） */
+@media (prefers-reduced-motion: reduce) {
+  .camp-card:hover {
+    transform: none;
+  }
+} 

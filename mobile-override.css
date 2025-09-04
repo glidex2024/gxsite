@@ -1,0 +1,573 @@
+/* 移动端样式覆盖文件 */
+/* 专门用于覆盖HTML内联样式，确保移动端适配生效 */
+
+/* 强制移动端样式优先级 */
+@media (max-width: 768px) {
+  /* 导航栏移动端优化 */
+  .navbar {
+    background: var(--main-blue) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.15) !important;
+  }
+  
+  .nav-container {
+    height: 60px !important;
+    padding: 0 15px !important;
+    position: relative !important;
+  }
+  
+  .logo {
+    font-size: 1.3rem !important;
+    font-weight: bold !important;
+    letter-spacing: 1px !important;
+    color: var(--main-orange) !important;
+    text-decoration: none !important;
+  }
+  
+  .logo:hover, .logo:active {
+    color: var(--main-orange) !important;
+    text-decoration: none !important;
+  }
+  
+  .nav-links {
+    gap: 0.8rem !important;
+    flex-wrap: wrap !important;
+    justify-content: flex-end !important;
+  }
+  
+  .nav-links a {
+    font-size: 0.9rem !important;
+    font-weight: 600 !important;
+    padding: 10px 14px !important;
+    min-height: 44px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border-radius: 6px !important;
+    transition: all 0.2s ease !important;
+    position: relative !important;
+    white-space: nowrap !important;
+    color: #ffffff !important;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.3) !important;
+    background: rgba(255,255,255,0.1) !important;
+    border: 1px solid rgba(255,255,255,0.2) !important;
+  }
+  
+  .nav-links a:hover,
+  .nav-links a:active {
+    background-color: rgba(255, 102, 0, 0.8) !important;
+    color: #ffffff !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 4px 12px rgba(255, 102, 0, 0.3) !important;
+    border-color: rgba(255, 102, 0, 0.6) !important;
+  }
+  
+  .nav-links a.active {
+    background-color: rgba(255, 102, 0, 0.9) !important;
+    color: #ffffff !important;
+    font-weight: 700 !important;
+    box-shadow: 0 2px 8px rgba(255, 102, 0, 0.4) !important;
+    border-color: rgba(255, 102, 0, 0.8) !important;
+  }
+  
+  /* 下拉菜单移动端优化 */
+  .nav-links .dropdown {
+    position: relative !important;
+  }
+  
+  .nav-links .dropdown-menu {
+    background-color: var(--main-blue) !important;
+    background-image: none !important;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3) !important;
+    border-radius: 12px !important;
+    min-width: 180px !important;
+    max-width: 300px !important;
+    padding: 0.5rem 0 !important;
+    margin-top: 8px !important;
+    border: 1px solid rgba(255,255,255,0.1) !important;
+    position: absolute !important;
+    top: 100% !important;
+    left: 50% !important;
+    transform: translateX(-50%) translateY(-6px) !important;
+    z-index: 1000 !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    transition: all 0.3s ease !important;
+  }
+  
+  /* 支持点击展开：父级添加 open 类时显示 */
+  .nav-links .dropdown.open > .dropdown-menu {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateX(-50%) translateY(0) !important;
+    pointer-events: auto !important;
+  }
+  
+  .nav-links .dropdown-menu li {
+    border-bottom: 1px solid rgba(255,255,255,0.1) !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  
+  .nav-links .dropdown-menu li:last-child {
+    border-bottom: none !important;
+  }
+  
+  .nav-links .dropdown-menu li a {
+    color: #fff !important;
+    padding: 12px 20px !important;
+    font-size: 0.9rem !important;
+    white-space: nowrap !important;
+    transition: all 0.2s ease !important;
+    display: block !important;
+    text-align: left !important;
+    border-radius: 0 !important;
+    min-height: auto !important;
+  }
+  
+  .nav-links .dropdown-menu li a:hover,
+  .nav-links .dropdown-menu li a:active {
+    background-color: var(--main-orange) !important;
+    color: #fff !important;
+    padding-left: 24px !important;
+    transform: none !important;
+  }
+  
+  /* 下拉菜单箭头指示器 */
+  .nav-links .dropdown > a::after {
+    content: '▼' !important;
+    margin-left: 4px !important;
+    font-size: 0.7rem !important;
+    transition: transform 0.2s ease !important;
+  }
+  
+  .nav-links .dropdown.open > a::after {
+    transform: rotate(180deg) !important;
+  }
+  
+  /* 主视觉区域移动端优化 */
+  .hero {
+    min-height: 350px !important;
+    height: 100vh !important;
+    padding: 0 15px !important;
+  }
+  
+  .hero-content h1 {
+    font-size: 1.8rem !important;
+    margin-bottom: 0.6rem !important;
+    letter-spacing: 1px !important;
+  }
+  
+  .hero-content p {
+    font-size: 1rem !important;
+    margin-bottom: 1.2rem !important;
+    line-height: 1.4 !important;
+  }
+  
+  /* 按钮移动端优化 */
+  .btn {
+    padding: 12px 24px !important;
+    font-size: 16px !important;
+    border-radius: 8px !important;
+    min-height: 48px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  
+  .btn-reservation {
+    margin-left: 1rem !important;
+    padding: 10px 20px !important;
+    font-size: 14px !important;
+  }
+  
+  /* 卡片区域移动端优化 */
+  .cards-section {
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 1rem !important;
+    margin: 40px auto !important;
+    padding: 0 15px !important;
+    position: relative !important;
+    z-index: 10 !important;
+  }
+  
+  .card {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    padding: 1.5rem 1.2rem !important;
+    margin-bottom: 1rem !important;
+    border-radius: 16px !important;
+    position: relative !important;
+    z-index: 5 !important;
+  }
+  
+  /* 容器移动端优化 */
+  .container {
+    width: 100% !important;
+    padding: 0 15px !important;
+    box-sizing: border-box !important;
+  }
+  
+  /* 字体大小移动端优化 */
+  h1 { font-size: 1.8rem !important; }
+  h2 { font-size: 1.5rem !important; }
+  h3 { font-size: 1.3rem !important; }
+  h4 { font-size: 1.1rem !important; }
+  h5 { font-size: 1rem !important; }
+  h6 { font-size: 0.9rem !important; }
+  
+  p { font-size: 0.95rem !important; }
+  
+  /* 触摸设备优化 */
+  .card:active,
+  .btn:active,
+  .nav-links a:active {
+    transform: scale(0.98) !important;
+    opacity: 0.8 !important;
+  }
+  
+  /* 移除hover效果（触摸设备） */
+  .card:hover,
+  .btn:hover,
+  .nav-links a:hover {
+    transform: none !important;
+  }
+}
+
+/* 平板设备优化 */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .navbar {
+    background: var(--main-blue) !important;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.1) !important;
+  }
+  
+  .nav-container {
+    height: 70px !important;
+    padding: 0 20px !important;
+  }
+  
+  .logo {
+    font-size: 1.4rem !important;
+  }
+  
+  .nav-links {
+    gap: 1.5rem !important;
+  }
+  
+  .nav-links a {
+    font-size: 0.95rem !important;
+    padding: 10px 14px !important;
+  }
+  
+  /* 平板端下拉菜单优化 */
+  .nav-links .dropdown-menu {
+    background-color: var(--main-blue) !important;
+    background-image: none !important;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.2) !important;
+    border-radius: 10px !important;
+    min-width: 160px !important;
+    max-width: 250px !important;
+    padding: 0.5rem 0 !important;
+    margin-top: 5px !important;
+    border: 1px solid rgba(255,255,255,0.1) !important;
+    left: 0 !important;
+    transform: translateX(0) !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+  }
+  .nav-links .dropdown.open > .dropdown-menu {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateY(0) !important;
+  }
+  
+  .nav-links .dropdown-menu li a {
+    padding: 10px 18px !important;
+    font-size: 0.9rem !important;
+  }
+}
+
+/* 大手机设备优化 */
+@media (min-width: 481px) and (max-width: 768px) {
+  .nav-container {
+    height: 65px !important;
+    padding: 0 18px !important;
+  }
+  
+  .logo {
+    font-size: 1.35rem !important;
+  }
+  
+  .nav-links {
+    gap: 1rem !important;
+  }
+  
+  .nav-links a {
+    font-size: 0.92rem !important;
+    padding: 9px 13px !important;
+  }
+  
+  /* 大手机下拉菜单优化 */
+  .nav-links .dropdown-menu {
+    min-width: 170px !important;
+    max-width: 280px !important;
+    margin-top: 6px !important;
+  }
+  
+  .nav-links .dropdown-menu li a {
+    padding: 11px 18px !important;
+    font-size: 0.88rem !important;
+  }
+}
+
+/* 小手机设备优化 */
+@media (max-width: 480px) {
+  .navbar {
+    padding: 0 10px !important;
+  }
+  
+  .nav-container {
+    height: 56px !important;
+    padding: 0 12px !important;
+  }
+  
+  .logo {
+    font-size: 1.2rem !important;
+  }
+  
+  .nav-links {
+    gap: 0.6rem !important;
+  }
+  
+  .nav-links a {
+    font-size: 0.85rem !important;
+    padding: 7px 10px !important;
+    min-height: 40px !important;
+  }
+  
+  /* 小手机下拉菜单优化 */
+  .nav-links .dropdown-menu {
+    min-width: 160px !important;
+    max-width: 260px !important;
+    margin-top: 5px !important;
+    border-radius: 10px !important;
+  }
+  
+  .nav-links .dropdown-menu li a {
+    padding: 10px 16px !important;
+    font-size: 0.85rem !important;
+  }
+  
+  .hero {
+    padding: 0 10px !important;
+  }
+  
+  .hero-content h1 {
+    font-size: 1.6rem !important;
+  }
+  
+  .hero-content p {
+    font-size: 0.9rem !important;
+  }
+  
+  .btn {
+    padding: 10px 20px !important;
+    font-size: 14px !important;
+  }
+  
+  .cards-section {
+    padding: 0 10px !important;
+    margin: 30px auto !important;
+  }
+  
+  .card {
+    padding: 1.2rem 1rem !important;
+    margin-bottom: 0.8rem !important;
+  }
+  
+  .container {
+    padding: 0 10px !important;
+  }
+}
+
+/* 超小手机设备优化 */
+@media (max-width: 320px) {
+  .navbar {
+    padding: 0 8px !important;
+  }
+  
+  .nav-container {
+    height: 52px !important;
+    padding: 0 10px !important;
+  }
+  
+  .logo {
+    font-size: 1.1rem !important;
+  }
+  
+  .nav-links {
+    gap: 0.5rem !important;
+  }
+  
+  .nav-links a {
+    font-size: 0.8rem !important;
+    padding: 6px 8px !important;
+    min-height: 38px !important;
+  }
+  
+  /* 超小手机下拉菜单优化 */
+  .nav-links .dropdown-menu {
+    min-width: 150px !important;
+    max-width: 240px !important;
+    margin-top: 4px !important;
+  }
+  
+  .nav-links .dropdown-menu li a {
+    padding: 9px 14px !important;
+    font-size: 0.8rem !important;
+  }
+  
+  .hero-content h1 {
+    font-size: 1.4rem !important;
+  }
+  
+  .hero-content p {
+    font-size: 0.8rem !important;
+  }
+  
+  .btn {
+    padding: 8px 16px !important;
+    font-size: 13px !important;
+  }
+  
+  .cards-section {
+    padding: 0 8px !important;
+  }
+  
+  .card {
+    padding: 1rem 0.8rem !important;
+  }
+  
+  .container {
+    padding: 0 8px !important;
+  }
+}
+
+/* 横屏手机优化 */
+@media (max-height: 500px) and (orientation: landscape) {
+  .hero {
+    min-height: 100vh !important;
+    height: 100vh !important;
+    padding: 0 20px !important;
+  }
+  
+  .hero-content h1 {
+    font-size: 1.6rem !important;
+    margin-bottom: 0.4rem !important;
+  }
+  
+  .hero-content p {
+    font-size: 0.9rem !important;
+    margin-bottom: 0.8rem !important;
+  }
+  
+  .navbar {
+    height: 48px !important;
+  }
+  
+  .nav-container {
+    height: 48px !important;
+  }
+  
+  .nav-links a {
+    padding: 6px 10px !important;
+    min-height: 36px !important;
+  }
+}
+
+/* 触摸设备特殊优化 */
+@media (hover: none) and (pointer: coarse) {
+  /* 增加触摸目标大小 */
+  .nav-links a,
+  .btn,
+  .card {
+    min-height: 44px !important;
+    min-width: 44px !important;
+  }
+  
+  /* 触摸反馈 */
+  .nav-links a:active,
+  .btn:active,
+  .card:active {
+    opacity: 0.7 !important;
+    transform: scale(0.98) !important;
+  }
+  
+  /* 触摸设备下拉菜单阴影/边框增强 */
+  .nav-links .dropdown.open > .dropdown-menu {
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4) !important;
+    border: 2px solid rgba(255,255,255,0.2) !important;
+  }
+}
+
+/* 深色模式移动端优化 */
+@media (prefers-color-scheme: dark) and (max-width: 768px) {
+  .navbar {
+    background: rgba(0, 51, 102, 0.95) !important;
+    backdrop-filter: blur(20px) !important;
+    border-bottom: 1px solid rgba(255,255,255,0.1) !important;
+  }
+  
+  .card {
+    background: #2a2a2a !important;
+    border-color: #444 !important;
+    color: #f5f5f5 !important;
+  }
+  
+  .nav-links .dropdown-menu {
+    background: #2a2a2a !important;
+    border: 1px solid #444 !important;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.5) !important;
+  }
+  
+  .nav-links a:hover,
+  .nav-links a:active {
+    background-color: rgba(255, 102, 0, 0.3) !important;
+  }
+}
+
+/* 性能优化 */
+@media (max-width: 768px) {
+  /* 减少动画复杂度 */
+  .hero-bg {
+    transition: none !important;
+  }
+  
+  .swiper-slide:hover .hero-bg {
+    transform: none !important;
+    filter: none !important;
+  }
+  
+  /* 优化阴影 */
+  .card {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+  }
+  
+  /* 硬件加速 */
+  .hero,
+  .cards-section,
+  .card,
+  .navbar {
+    will-change: transform !important;
+    transform: translateZ(0) !important;
+  }
+  
+  /* 平滑过渡 */
+  .nav-links a,
+  .dropdown-menu {
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  }
+}

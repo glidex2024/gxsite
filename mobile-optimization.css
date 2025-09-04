@@ -1,0 +1,341 @@
+/* 移动端优化样式文件 */
+/* 适用于所有页面的移动端优化 */
+
+/* 基础移动端优化 */
+* {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* 允许文本选择 */
+p, h1, h2, h3, h4, h5, h6, span, a, li, td, th, label, input, textarea {
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+}
+
+/* 移动端字体优化 */
+@media (max-width: 768px) {
+  body {
+    font-size: 16px; /* 防止iOS缩放 */
+    line-height: 1.5;
+  }
+  
+  input, textarea, select {
+    font-size: 16px; /* 防止iOS缩放 */
+  }
+}
+
+/* 移动端触摸优化 */
+@media (hover: none) and (pointer: coarse) {
+  /* 增加触摸目标大小 */
+  .nav-links a,
+  .btn,
+  .card,
+  .coach-card,
+  .camp-card {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* 触摸反馈 */
+  .nav-links a:active,
+  .btn:active,
+  .card:active,
+  .coach-card:active,
+  .camp-card:active {
+    opacity: 0.7;
+    transform: scale(0.98);
+  }
+  
+  /* 移除hover效果 */
+  .nav-links a:hover::after,
+  .btn:hover,
+  .card:hover,
+  .coach-card:hover,
+  .camp-card:hover {
+    transform: none;
+    box-shadow: none;
+  }
+}
+
+/* 移动端滚动优化 */
+@media (max-width: 768px) {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* 优化滚动性能 */
+  .hero,
+  .cards-section,
+  .gallery-grid,
+  .coaches-list,
+  .camp-section {
+    will-change: transform;
+    transform: translateZ(0);
+  }
+}
+
+/* 移动端图片优化 */
+@media (max-width: 768px) {
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .hero-bg {
+    background-attachment: scroll; /* 移动端禁用视差效果 */
+  }
+}
+
+/* 移动端表单优化 */
+@media (max-width: 768px) {
+  input, textarea, select {
+    border-radius: 8px;
+    padding: 12px;
+    border: 1px solid #ddd;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  input:focus, textarea:focus, select:focus {
+    outline: none;
+    border-color: var(--main-orange);
+    box-shadow: 0 0 0 2px rgba(255, 102, 0, 0.2);
+  }
+  
+  button {
+    padding: 12px 24px;
+    border-radius: 8px;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+  }
+}
+
+/* 移动端导航优化 */
+@media (max-width: 768px) {
+  .navbar {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+  
+  .nav-links {
+    gap: 0.5rem;
+  }
+  
+  .nav-links a {
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: background-color 0.2s;
+  }
+  
+  .nav-links a:active {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+}
+
+/* 移动端卡片优化 */
+@media (max-width: 768px) {
+  .card,
+  .coach-card,
+  .camp-card {
+    margin-bottom: 1rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card:active,
+  .coach-card:active,
+  .camp-card:active {
+    transform: scale(0.98);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+  }
+}
+
+/* 移动端按钮优化 */
+@media (max-width: 768px) {
+  .btn {
+    border-radius: 8px;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    display: inline-block;
+    min-height: 48px;
+    line-height: 1.2;
+  }
+  
+  .btn:active {
+    transform: scale(0.98);
+  }
+}
+
+/* 移动端间距优化 */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 16px;
+  }
+  
+  .hero {
+    padding: 0 16px;
+  }
+  
+  .cards-section,
+  .gallery-grid,
+  .coaches-list,
+  .camp-section {
+    padding: 0 16px;
+  }
+}
+
+/* 移动端字体大小优化 */
+@media (max-width: 480px) {
+  h1 { font-size: 1.8rem !important; }
+  h2 { font-size: 1.5rem !important; }
+  h3 { font-size: 1.3rem !important; }
+  h4 { font-size: 1.1rem !important; }
+  h5 { font-size: 1rem !important; }
+  h6 { font-size: 0.9rem !important; }
+  
+  p { font-size: 0.95rem !important; }
+  .btn { font-size: 0.95rem !important; }
+}
+
+/* 移动端性能优化 */
+@media (max-width: 768px) {
+  /* 减少动画复杂度 */
+  .hero-bg {
+    transition: none;
+  }
+  
+  .swiper-slide:hover .hero-bg {
+    transform: none;
+    filter: none;
+  }
+  
+  /* 优化阴影 */
+  .card,
+  .coach-card,
+  .camp-card {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+}
+
+/* 移动端无障碍优化 */
+@media (max-width: 768px) {
+  /* 增加焦点指示器 */
+  a:focus,
+  button:focus,
+  input:focus,
+  textarea:focus,
+  select:focus {
+    outline: 2px solid var(--main-orange);
+    outline-offset: 2px;
+  }
+  
+  /* 增加对比度 */
+  .nav-links a {
+    color: #ffffff;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  }
+  
+  .hero-content h1,
+  .hero-content p {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+  }
+}
+
+/* 移动端横屏优化 */
+@media (max-height: 500px) and (orientation: landscape) {
+  .hero {
+    min-height: 100vh;
+    padding: 0 20px;
+  }
+  
+  .hero-content h1 {
+    font-size: 1.6rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .hero-content p {
+    font-size: 0.9rem;
+    margin-bottom: 0.8rem;
+  }
+  
+  .navbar {
+    height: 48px;
+  }
+  
+  .nav-container {
+    height: 48px;
+  }
+}
+
+/* 移动端深色模式优化 */
+@media (prefers-color-scheme: dark) and (max-width: 768px) {
+  .navbar {
+    background: rgba(0, 51, 102, 0.95);
+    backdrop-filter: blur(20px);
+  }
+  
+  .card,
+  .coach-card,
+  .camp-card {
+    background: #2a2a2a;
+    border-color: #444;
+  }
+  
+  input, textarea, select {
+    background: #333;
+    color: #fff;
+    border-color: #555;
+  }
+}
+
+/* 移动端加载优化 */
+@media (max-width: 768px) {
+  /* 预加载关键资源 */
+  .hero-bg {
+    background-size: cover;
+    background-position: center;
+  }
+  
+  /* 优化图片加载 */
+  img {
+    loading: lazy;
+  }
+  
+  /* 关键图片立即加载 */
+  .hero-bg,
+  .logo img {
+    loading: eager;
+  }
+}
+
+/* 移动端错误处理 */
+@media (max-width: 768px) {
+  /* 图片加载失败时的样式 */
+  img:not([src]),
+  img[src=""],
+  img[src*="data:image/svg+xml"] {
+    background: #f0f0f0;
+    border: 1px dashed #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #999;
+    font-size: 12px;
+  }
+  
+  img:not([src])::after,
+  img[src=""]::after,
+  img[src*="data:image/svg+xml"]::after {
+    content: "图片加载失败";
+  }
+}
