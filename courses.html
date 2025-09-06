@@ -9,17 +9,36 @@
 <body>
   <nav id="navbar" class="navbar">
     <div class="container nav-container">
-      <a href="index.html" class="logo">GX 中文国际滑雪学校</a>
+      <a href="index.html" class="logo">
+        <span class="logo-gx">GX</span>
+        <div class="logo-text">
+          <span class="logo-chinese">中文国际滑雪学校</span>
+          <span class="logo-english">GLIDEX SNOWSPORTS SCHOOL</span>
+        </div>
+      </a>
       <ul class="nav-links">
         <li><a href="index.html">首页</a></li>
+        <li class="dropdown">
+          <a href="courses.html">课程介绍</a>
+          <ul class="dropdown-menu">
+            <li><a href="courses.html">滑雪课程</a></li>
+            <li><a href="courses.html">单板课程</a></li>
+            <li><a href="courses.html">儿童课程</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="coaches.html">教练团队</a>
+          <ul class="dropdown-menu">
+            <li><a href="coaches.html">教练介绍</a></li>
+            <li><a href="coaches.html">教练资质</a></li>
+            <li><a href="coaches.html">预约教练</a></li>
+          </ul>
+        </li>
         <li><a href="about.html">关于GX</a></li>
-        <li><a href="courses.html">课程介绍</a></li>
-        <li><a href="coaches.html">教练团队</a></li>
-        <li><a href="#faq">常见问题</a></li>
         <li><a href="news.html">最新消息</a></li>
         <li><a href="contact.html">联系我们</a></li>
       </ul>
-      <a href="courses.html" class="btn btn-reservation">预约</a>
+      <button class="btn btn-reservation" onclick="showWeChatQR()">预约</button>
     </div>
   </nav>
   <main>
@@ -57,10 +76,199 @@
   </main>
   <footer class="footer">
     <div class="container">
-      <p>© 2024 Glide.X滑雪学校. 发现滑行的乐趣，挑战自我极限。</p>
+      <div class="footer-content">
+        <!-- 左侧：公司信息 -->
+        <div class="footer-company">
+          <div class="footer-logo">
+            <span class="logo-gx">GX</span>
+            <div class="logo-text">
+              <span class="logo-chinese">中文国際滑雪学校</span>
+              <span class="logo-english">GLIDEX SNOWSPORTS SCHOOL</span>
+            </div>
+          </div>
+          <div class="company-info">
+            <p>GlideX中文国際滑雪学校</p>
+            <p>GlideX合同会社</p>
+            <p>〒新潟県南魚沼郡湯沢町土樽6303-1</p>
+          </div>
+        </div>
+        
+        <!-- 中间：快速链接 -->
+        <div class="footer-links">
+          <h3>快速链接</h3>
+          <ul>
+            <li><a href="index.html">首页</a></li>
+            <li><a href="about.html">关于GX</a></li>
+            <li><a href="courses.html">课程介绍</a></li>
+            <li><a href="coaches.html">教练团队</a></li>
+            <li><a href="#faq">常见问题</a></li>
+            <li><a href="news.html">最新消息</a></li>
+            <li><a href="contact.html">联系我们</a></li>
+          </ul>
+        </div>
+        
+        <!-- 右侧：我们的课程 -->
+        <div class="footer-courses">
+          <h3>我们的课程</h3>
+          <ul>
+            <li>私教课程</li>
+            <li>小班团体课程</li>
+            <li>JSBA单板考证课程</li>
+            <li>进阶课程</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>© 2024 GlideX中文国際滑雪学校. 保留所有权利.</p>
+      </div>
     </div>
   </footer>
+
+  <!-- 右下角固定联系按钮 -->
+  <div class="contact-float">
+    <!-- 主按钮 -->
+    <div class="contact-main-btn" id="contactMainBtn">
+      <span class="contact-icon">💬</span>
+      <span class="contact-text">Contact</span>
+    </div>
+    
+    <!-- 联系选项 -->
+    <div class="contact-options" id="contactOptions">
+      <div class="contact-option wechat" data-tooltip="微信联系" onclick="openWeChat()">
+        <span class="option-icon">💬</span>
+        <span class="option-text">WeChat</span>
+      </div>
+      <div class="contact-option line" data-tooltip="Line联系" onclick="openLine()">
+        <span class="option-icon">📱</span>
+        <span class="option-text">Line</span>
+      </div>
+      <div class="contact-option whatsapp" data-tooltip="WhatsApp联系" onclick="openWhatsApp()">
+        <span class="option-icon">💬</span>
+        <span class="option-text">WhatsApp</span>
+      </div>
+    </div>
+  </div>
+
   <script src="snow.js"></script>
   <script src="booking-step.js"></script>
+  <script>
+    // 导航栏滚动效果
+    window.addEventListener('scroll', function() {
+      const navbar = document.getElementById('navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+    
+    // 联系按钮交互
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log('正在初始化联系按钮...');
+      
+      const contactMainBtn = document.querySelector('.contact-main-btn');
+      const contactOptions = document.querySelector('.contact-options');
+      
+      console.log('找到的联系按钮元素:', { contactMainBtn, contactOptions });
+      
+      if (contactMainBtn && contactOptions) {
+        // 移除可能存在的旧事件监听器
+        contactMainBtn.removeEventListener('click', contactMainBtn.clickHandler);
+        
+        // 添加新的点击事件监听器
+        contactMainBtn.clickHandler = function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          
+          const isVisible = contactOptions.classList.contains('show');
+          if (isVisible) {
+            contactOptions.classList.remove('show');
+            console.log('隐藏联系选项');
+          } else {
+            contactOptions.classList.add('show');
+            console.log('显示联系选项');
+          }
+        };
+        
+        contactMainBtn.addEventListener('click', contactMainBtn.clickHandler);
+        
+        // 点击外部关闭
+        document.addEventListener('click', function(e) {
+          if (!e.target.closest('.contact-float')) {
+            contactOptions.classList.remove('show');
+            console.log('点击外部，关闭联系选项');
+          }
+        });
+        
+        console.log('联系按钮事件监听器已添加');
+      } else {
+        console.error('联系按钮元素未找到:', { contactMainBtn, contactOptions });
+      }
+    });
+    
+    // 联系方式打开函数
+    function openWeChat() {
+      console.log('打开微信联系');
+      showQRCode('image/qrcode/1.PNG', 'WeChat', '微信联系');
+    }
+    
+    function openLine() {
+      console.log('打开Line联系');
+      showQRCode('image/qrcode/2.PNG', 'Line', 'Line联系');
+    }
+    
+    function openWhatsApp() {
+      console.log('打开WhatsApp联系');
+      showQRCode('image/qrcode/3.PNG', 'WhatsApp', 'WhatsApp联系');
+    }
+    
+    // 显示预约微信二维码弹窗
+    function showWeChatQR() {
+      showQRCode('image/qrcode/1.PNG', '微信预约', '请扫描二维码添加微信进行课程预约');
+    }
+    
+    // 显示二维码弹窗
+    function showQRCode(imageSrc, title, subtitle) {
+      // 创建弹窗容器
+      const modal = document.createElement('div');
+      modal.className = 'qr-modal';
+      modal.innerHTML = `
+        <div class="qr-modal-content">
+          <div class="qr-modal-header">
+            <h3>${title}</h3>
+            <p>${subtitle}</p>
+            <button class="qr-modal-close" onclick="closeQRModal()">&times;</button>
+          </div>
+          <div class="qr-modal-body">
+            <img src="${imageSrc}" alt="${title} QR Code" class="qr-image">
+            <p class="qr-tip">请使用手机扫描二维码</p>
+          </div>
+        </div>
+      `;
+      
+      // 添加到页面
+      document.body.appendChild(modal);
+      
+      // 显示弹窗
+      setTimeout(() => modal.classList.add('show'), 10);
+      
+      // 点击背景关闭
+      modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+          closeQRModal();
+        }
+      });
+    }
+    
+    // 关闭二维码弹窗
+    function closeQRModal() {
+      const modal = document.querySelector('.qr-modal');
+      if (modal) {
+        modal.classList.remove('show');
+        setTimeout(() => modal.remove(), 300);
+      }
+    }
+  </script>
 </body>
 </html> 

@@ -6,214 +6,6 @@
   <title>关于我们 - Glide.X滑雪学校</title>
   <link rel="stylesheet" href="style.css">
   <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
-  <style>
-    /* CSS变量定义 - 确保与首页完全一致 */
-    :root {
-      --primary-blue: #1e3a8a;      /* 深蓝 - 专业滑雪主色 */
-      --secondary-blue: #3b82f6;    /* 亮蓝 - 辅助色 */
-      --accent-orange: #ea580c;     /* 暖橙 - 强调色 */
-      --snow-white: #ffffff;        /* 纯白 - 背景色 */
-      --deep-green: #166534;        /* 深绿 - 户外自然色 */
-      --warm-gray: #6b7280;         /* 暖灰 - 文字色 */
-      --dark-gray: #374151;         /* 深灰 - 深色文字 */
-      --ice-blue: #f1f5f9;          /* 冰蓝 - 浅色背景 */
-      --powder-blue: #e0e7ff;       /* 粉蓝 - 卡片背景 */
-      --mountain-gray: #1f2937;     /* 山灰 - 页脚背景 */
-      --success-green: #059669;     /* 成功绿 - 按钮色 */
-      --warning-amber: #d97706;     /* 警告琥珀 - 提示色 */
-      --light-gray: #f9fafb;        /* 浅灰 - 分隔背景 */
-      --border-gray: #e5e7eb;       /* 边框灰 - 分割线 */
-    }
-    
-    /* 确保about.html页面可以正常滚动 */
-    html, body {
-      overflow-x: auto !important;
-      overflow-y: auto !important;
-      height: auto !important;
-      position: relative !important;
-    }
-    
-    /* 确保所有section元素都可以正常显示和滚动 */
-    section {
-      position: relative !important;
-      overflow: visible !important;
-    }
-    
-    /* 确保header不会阻止滚动 */
-    header {
-      overflow: visible !important;
-      position: relative !important;
-      height: auto !important;
-      min-height: 120px !important;
-    }
-    
-    /* 确保内容区域可以正常滚动 */
-    .container {
-      overflow: visible !important;
-    }
-    
-    /* 确保导航栏不会阻止滚动 */
-    .navbar {
-      position: fixed !important;
-      overflow: visible !important;
-    }
-    
-    /* 确保hero-content不会阻止滚动 */
-    .hero-content {
-      position: relative !important;
-      overflow: visible !important;
-    }
-    
-    /* 强制启用滚动 */
-    body {
-      overflow: auto !important;
-      height: auto !important;
-      min-height: 100vh !important;
-    }
-    
-    /* 确保footer不会阻止滚动 */
-    footer {
-      position: relative !important;
-      overflow: visible !important;
-    }
-    
-    /* 确保logo样式与首页完全一致 */
-    .logo {
-      font-size: 1.8rem;
-      font-weight: 900;
-      color: var(--accent-orange);
-      text-decoration: none;
-      letter-spacing: -0.5px;
-      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      flex-shrink: 0;
-      display: flex;
-      align-items: center;
-      gap: 0.8rem;
-    }
-    
-    .logo-gx {
-      font-size: 2.2rem;
-      font-weight: 900;
-      color: var(--snow-white);
-      background: var(--primary-blue);
-      padding: 0.5rem 0.8rem;
-      border-radius: 8px;
-      letter-spacing: -0.02em;
-      line-height: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-width: 60px;
-      height: 50px;
-      box-shadow: 0 4px 15px rgba(30, 58, 138, 0.3);
-    }
-    
-    .logo-text {
-      display: flex;
-      flex-direction: column;
-      gap: 0.2rem;
-    }
-    
-    .logo-chinese {
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: var(--snow-white);
-      line-height: 1.2;
-      white-space: nowrap;
-    }
-    
-    .logo-english {
-      font-size: 0.7rem;
-      font-weight: 600;
-      color: var(--snow-white);
-      line-height: 1.2;
-      white-space: nowrap;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-    }
-    
-    /* 确保导航栏样式与首页一致 */
-    .nav-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 2rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      flex-wrap: nowrap;
-      justify-content: center;
-      flex: 1;
-    }
-    
-    .nav-links a {
-      color: var(--snow-white);
-      text-decoration: none;
-      font-size: 0.9rem;
-      font-weight: 500;
-      position: relative;
-      transition: all 0.3s ease;
-      padding: 0.5rem 0;
-      white-space: nowrap;
-      flex-shrink: 0;
-    }
-    
-    .nav-links a::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: var(--accent-orange);
-      transition: width 0.3s ease;
-    }
-    
-    .nav-links a:hover::after,
-    .nav-links a.active::after {
-      width: 100%;
-    }
-    
-    .nav-links a:hover {
-      color: var(--accent-orange);
-    }
-    
-    .btn-reservation {
-      background: var(--accent-orange);
-      color: var(--snow-white);
-      padding: 0.75rem 1.5rem;
-      border-radius: 8px;
-      font-weight: 600;
-      font-size: 0.9rem;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 15px rgba(234, 88, 12, 0.3);
-      border: none;
-      cursor: pointer;
-      text-decoration: none;
-      display: inline-block;
-      text-transform: none;
-      letter-spacing: 0.2px;
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      flex-shrink: 0;
-      white-space: nowrap;
-    }
-    
-    .btn-reservation:hover {
-      background: #dc2626;
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(234, 88, 12, 0.4);
-      color: var(--snow-white);
-      text-decoration: none;
-    }
-  </style>
 </head>
 <body>
   <!-- 顶部导航栏 -->
@@ -228,10 +20,23 @@
       </a>
       <ul class="nav-links">
         <li><a href="index.html">首页</a></li>
-        <li><a href="about.html">关于GX</a></li>
-        <li><a href="courses.html">课程介绍</a></li>
-        <li><a href="coaches.html">教练团队</a></li>
-        <li><a href="#faq">常见问题</a></li>
+        <li class="dropdown">
+          <a href="courses.html">课程介绍</a>
+          <ul class="dropdown-menu">
+            <li><a href="courses.html">滑雪课程</a></li>
+            <li><a href="courses.html">单板课程</a></li>
+            <li><a href="courses.html">儿童课程</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="coaches.html">教练团队</a>
+          <ul class="dropdown-menu">
+            <li><a href="coaches.html">教练介绍</a></li>
+            <li><a href="coaches.html">教练资质</a></li>
+            <li><a href="coaches.html">预约教练</a></li>
+          </ul>
+        </li>
+        <li><a href="about.html" class="active">关于GX</a></li>
         <li><a href="news.html">最新消息</a></li>
         <li><a href="contact.html">联系我们</a></li>
       </ul>
@@ -239,195 +44,260 @@
     </div>
   </nav>
 
-  <!-- 主视觉区域 -->
-  <header class="" style="height: 50vh; min-height: 120px;">
-    <div class="" style="background: linear-gradient(rgba(17,17,17,0.7), rgba(17,17,17,0.7)), url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;"></div>
-    <div class="hero-content" data-aos="fade-up">
-      <h1 style="font-size:2.8rem;font-weight:900;background:linear-gradient(90deg,#003366,#ff6600 80%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:2px;">关于我们</h1>
-      <p class="news-subtitle" style="color:#1a2236;font-size:1.18rem;font-weight:600;letter-spacing:0.12em;margin-top:0.7em;margin-bottom:1.2em;text-shadow:0 2px 8px rgba(0,0,0,0.08);">Glide.X滑雪学校，国际化滑雪与横板运动的引领者</p>
-    </div>
-  </header>
-
-  <!-- 详细介绍内容 -->
-  <section class="container" style="padding: 48px 0 64px 0; max-width: 900px;">
-    <div data-aos="fade-up">
-      <h2 style="color:#1e40af; margin-bottom:1.5rem; font-size:1.8rem; font-weight:700;">关于GlideX中文国际滑雪学校</h2>
-      <div style="margin-bottom:2rem;">
-        <p style="margin-bottom:1rem; line-height:1.8; color:#374151;">
-          GlideX中文国际滑雪学校隶属于日本唯一全年活跃的华人横板运动俱乐部—— GlideX (简称GX)，总部位于东京，致力于让更多人喜欢上这项运动。
-        </p>
-        <p style="margin-bottom:1rem; line-height:1.8; color:#374151;">
-          GX专注于三大横板运动项目：单板滑雪、陆地冲浪板、冲浪。"Glide"象征流畅自如的滑行，"X"代表无限挑战与探索精神
-        </p>
-        <p style="margin-bottom:1rem; line-height:1.8; color:#374151;">
-          我们相信，通过不断滑行与突破，人们可以挖掘自身潜能，体验横板运动所带来的自由、热情与乐趣
-        </p>
-        <p style="margin-bottom:1rem; line-height:1.8; color:#374151;">
-          作为俱乐部的重要组成部分，GX中文国际滑雪学校为全球华人提供专业的滑雪教学服务
-        </p>
-        <p style="margin-bottom:1rem; line-height:1.8; color:#374151;">
-          同时，GX俱乐部还定期开展陆地冲浪板教学、冲浪体验课程等多样化项目，帮助大家安全高效地掌握新技能，在自然中释放身体、重新认识自我
-        </p>
+  <!-- 主要内容区域 -->
+  <main style="padding-top: 80px;">
+    <!-- 关于我们英雄区域 -->
+    <section class="hero-section" style="background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%); color: white; padding: 4rem 0; text-align: center;">
+      <div class="container">
+        <h1 style="font-size: 3rem; font-weight: 800; margin-bottom: 1rem;">关于我们</h1>
+        <p style="font-size: 1.2rem; max-width: 600px; margin: 0 auto;">Glide.X滑雪学校致力于为滑雪爱好者提供专业、安全、有趣的滑雪教学服务</p>
       </div>
-      <h2 style="color:#1e40af; margin-bottom:1.5rem; font-size:1.8rem; font-weight:700;">GX教练团队</h2>
-      <p style="margin-bottom:1.5rem;">我们秉承“滑行·挑战·成长”的理念，倡导安全、科学、快乐的运动方式。无论是初学者还是进阶者，都能在GX获得量身定制的课程与成长路径。</p>
-      <h2 style="color:#e60012; margin-bottom:1.2rem;">国际化团队</h2>
-      <p style="margin-bottom:1.5rem;">我们的教练团队由多国认证教练组成，拥有丰富的国际教学经验，能够用中、日、英等多语种授课，帮助学员跨越语言与文化障碍，轻松融入国际滑雪圈。</p>
-      <h2 style="color:#003366; margin-bottom:1.2rem;">特色服务</h2>
-      <ul style="margin-bottom:1.5rem;line-height:2;">
-        <li>单双板滑雪课程（初级-高级）</li>
-        <li>滑板、冲浪体验与进阶训练</li>
-        <li>青少年成长营、亲子营、企业团建</li>
-        <li>国际滑雪考级与赛事辅导</li>
-        <li>装备选购与安全知识讲座</li>
-      </ul>
-      <h2 style="color:#e60012; margin-bottom:1.2rem;">我们的愿景</h2>
-      <p>让更多人爱上滑雪与横板运动，结识全球伙伴，挑战自我极限，享受户外乐趣。欢迎加入Glide.X滑雪学校，与我们一起滑向更广阔的世界！</p>
-    </div>
-  </section>
+    </section>
+
+    <!-- 学校介绍 -->
+    <section style="padding: 4rem 0; background: white;">
+      <div class="container">
+        <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+          <h2 style="color: var(--primary-blue); font-size: 2.5rem; margin-bottom: 2rem;">我们的故事</h2>
+          <p style="font-size: 1.1rem; line-height: 1.8; color: var(--dark-gray); margin-bottom: 2rem;">
+            Glide.X滑雪学校成立于2020年，是一所专业的中文滑雪教学机构。我们位于日本新潟县汤沢町，拥有得天独厚的雪场资源和丰富的教学经验。
+          </p>
+          <p style="font-size: 1.1rem; line-height: 1.8; color: var(--dark-gray); margin-bottom: 2rem;">
+            我们的教练团队均持有国际滑雪教练认证，能够为不同水平的学员提供个性化的教学方案。无论是初学者还是进阶者，都能在这里找到适合自己的课程。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 我们的优势 -->
+    <section style="padding: 4rem 0; background: var(--ice-blue);">
+      <div class="container">
+        <h2 style="text-align: center; color: var(--primary-blue); font-size: 2.5rem; margin-bottom: 3rem;">我们的优势</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+          <div style="background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); text-align: center;">
+            <h3 style="color: var(--accent-orange); font-size: 1.5rem; margin-bottom: 1rem;">专业教练团队</h3>
+            <p style="color: var(--dark-gray); line-height: 1.6;">所有教练均持有国际认证，拥有丰富的教学经验</p>
+          </div>
+          <div style="background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); text-align: center;">
+            <h3 style="color: var(--accent-orange); font-size: 1.5rem; margin-bottom: 1rem;">中文教学</h3>
+            <p style="color: var(--dark-gray); line-height: 1.6;">全程中文教学，沟通无障碍，学习更高效</p>
+          </div>
+          <div style="background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); text-align: center;">
+            <h3 style="color: var(--accent-orange); font-size: 1.5rem; margin-bottom: 1rem;">个性化课程</h3>
+            <p style="color: var(--dark-gray); line-height: 1.6;">根据学员水平定制专属教学方案</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 我们的愿景 -->
+    <section style="padding: 4rem 0; background: white;">
+      <div class="container">
+        <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+          <h2 style="color:#e60012; margin-bottom:1.2rem;">我们的愿景</h2>
+          <p>让更多人爱上滑雪与横板运动，结识全球伙伴，挑战自我极限，享受户外乐趣。欢迎加入Glide.X滑雪学校，与我们一起滑向更广阔的世界！</p>
+        </div>
+      </div>
+    </section>
+  </main>
 
   <!-- 页脚 -->
   <footer class="footer">
     <div class="container">
-      <p>© 2024 Glide.X滑雪学校. 保留所有权利.</p>
+      <div class="footer-content">
+        <!-- 左侧：公司信息 -->
+        <div class="footer-company">
+          <div class="footer-logo">
+            <span class="logo-gx">GX</span>
+            <div class="logo-text">
+              <span class="logo-chinese">中文国際滑雪学校</span>
+              <span class="logo-english">GLIDEX SNOWSPORTS SCHOOL</span>
+            </div>
+          </div>
+          <div class="company-info">
+            <p>GlideX中文国際滑雪学校</p>
+            <p>GlideX合同会社</p>
+            <p>〒新潟県南魚沼郡湯沢町土樽6303-1</p>
+          </div>
+        </div>
+        
+        <!-- 中间：快速链接 -->
+        <div class="footer-links">
+          <h3>快速链接</h3>
+          <ul>
+            <li><a href="index.html">首页</a></li>
+            <li><a href="about.html">关于GX</a></li>
+            <li><a href="courses.html">课程介绍</a></li>
+            <li><a href="coaches.html">教练团队</a></li>
+            <li><a href="#faq">常见问题</a></li>
+            <li><a href="news.html">最新消息</a></li>
+            <li><a href="contact.html">联系我们</a></li>
+          </ul>
+        </div>
+        
+        <!-- 右侧：我们的课程 -->
+        <div class="footer-courses">
+          <h3>我们的课程</h3>
+          <ul>
+            <li>私教课程</li>
+            <li>小班团体课程</li>
+            <li>JSBA单板考证课程</li>
+            <li>进阶课程</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>© 2024 GlideX中文国際滑雪学校. 保留所有权利.</p>
+      </div>
     </div>
   </footer>
+
+  <!-- 右下角固定联系按钮 -->
+  <div class="contact-float">
+    <!-- 主按钮 -->
+    <div class="contact-main-btn" id="contactMainBtn">
+      <span class="contact-icon">💬</span>
+      <span class="contact-text">Contact</span>
+    </div>
+    
+    <!-- 联系选项 -->
+    <div class="contact-options" id="contactOptions">
+      <div class="contact-option wechat" data-tooltip="微信联系" onclick="openWeChat()">
+        <span class="option-icon">💬</span>
+        <span class="option-text">WeChat</span>
+      </div>
+      <div class="contact-option line" data-tooltip="Line联系" onclick="openLine()">
+        <span class="option-icon">📱</span>
+        <span class="option-text">Line</span>
+      </div>
+      <div class="contact-option whatsapp" data-tooltip="WhatsApp联系" onclick="openWhatsApp()">
+        <span class="option-icon">💬</span>
+        <span class="option-text">WhatsApp</span>
+      </div>
+    </div>
+  </div>
 
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
   <script>
     AOS.init({ duration: 800, once: true });
+    
+    // 导航栏滚动效果
+    window.addEventListener('scroll', function() {
+      const navbar = document.getElementById('navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+    
+    // 联系按钮交互
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log('正在初始化联系按钮...');
+      
+      const contactMainBtn = document.querySelector('.contact-main-btn');
+      const contactOptions = document.querySelector('.contact-options');
+      
+      console.log('找到的联系按钮元素:', { contactMainBtn, contactOptions });
+      
+      if (contactMainBtn && contactOptions) {
+        // 移除可能存在的旧事件监听器
+        contactMainBtn.removeEventListener('click', contactMainBtn.clickHandler);
+        
+        // 添加新的点击事件监听器
+        contactMainBtn.clickHandler = function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          
+          const isVisible = contactOptions.classList.contains('show');
+          if (isVisible) {
+            contactOptions.classList.remove('show');
+            console.log('隐藏联系选项');
+          } else {
+            contactOptions.classList.add('show');
+            console.log('显示联系选项');
+          }
+        };
+        
+        contactMainBtn.addEventListener('click', contactMainBtn.clickHandler);
+        
+        // 点击外部关闭
+        document.addEventListener('click', function(e) {
+          if (!e.target.closest('.contact-float')) {
+            contactOptions.classList.remove('show');
+            console.log('点击外部，关闭联系选项');
+          }
+        });
+        
+        console.log('联系按钮事件监听器已添加');
+      } else {
+        console.error('联系按钮元素未找到:', { contactMainBtn, contactOptions });
+      }
+    });
+    
+    // 联系方式打开函数
+    function openWeChat() {
+      console.log('打开微信联系');
+      showQRCode('image/qrcode/1.PNG', 'WeChat', '微信联系');
+    }
+    
+    function openLine() {
+      console.log('打开Line联系');
+      showQRCode('image/qrcode/2.PNG', 'Line', 'Line联系');
+    }
+    
+    function openWhatsApp() {
+      console.log('打开WhatsApp联系');
+      showQRCode('image/qrcode/3.PNG', 'WhatsApp', 'WhatsApp联系');
+    }
     
     // 显示预约微信二维码弹窗
     function showWeChatQR() {
       showQRCode('image/qrcode/1.PNG', '微信预约', '请扫描二维码添加微信进行课程预约');
     }
     
-    // 通用二维码弹窗函数
+    // 显示二维码弹窗
     function showQRCode(imageSrc, title, subtitle) {
-      // 创建模态框
+      // 创建弹窗容器
       const modal = document.createElement('div');
-      modal.style.cssText = `
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.8);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        z-index: 10000;
-        backdrop-filter: blur(10px);
+      modal.className = 'qr-modal';
+      modal.innerHTML = `
+        <div class="qr-modal-content">
+          <div class="qr-modal-header">
+            <h3>${title}</h3>
+            <p>${subtitle}</p>
+            <button class="qr-modal-close" onclick="closeQRModal()">&times;</button>
+          </div>
+          <div class="qr-modal-body">
+            <img src="${imageSrc}" alt="${title} QR Code" class="qr-image">
+            <p class="qr-tip">请使用手机扫描二维码</p>
+          </div>
+        </div>
       `;
       
-      // 创建弹窗内容
-      const modalContent = document.createElement('div');
-      modalContent.style.cssText = `
-        background: white;
-        padding: 2rem;
-        border-radius: 20px;
-        text-align: center;
-        max-width: 400px;
-        width: 90%;
-        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-        position: relative;
-      `;
-      
-      // 关闭按钮
-      const closeBtn = document.createElement('button');
-      closeBtn.innerHTML = '×';
-      closeBtn.style.cssText = `
-        position: absolute;
-        top: 10px;
-        right: 15px;
-        background: none;
-        border: none;
-        font-size: 2rem;
-        cursor: pointer;
-        color: #666;
-        line-height: 1;
-      `;
-      closeBtn.onclick = () => document.body.removeChild(modal);
-      
-      // 标题
-      const titleEl = document.createElement('h3');
-      titleEl.textContent = title;
-      titleEl.style.cssText = `
-        margin: 0 0 1rem 0;
-        color: #1e40af;
-        font-size: 1.5rem;
-        font-weight: 700;
-      `;
-      
-      // 副标题
-      const subtitleEl = document.createElement('p');
-      subtitleEl.textContent = subtitle;
-      subtitleEl.style.cssText = `
-        margin: 0 0 1.5rem 0;
-        color: #6b7280;
-        font-size: 1rem;
-      `;
-      
-      // 二维码图片
-      const qrImage = document.createElement('img');
-      qrImage.src = imageSrc;
-      qrImage.alt = title;
-      qrImage.style.cssText = `
-        width: 200px;
-        height: 200px;
-        margin: 0 auto 1rem auto;
-        display: block;
-        border-radius: 10px;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-      `;
-      
-      // 错误处理
-      qrImage.onerror = () => {
-        qrImage.style.display = 'none';
-        const errorMsg = document.createElement('p');
-        errorMsg.textContent = '二维码图片加载失败';
-        errorMsg.style.cssText = `
-          color: #dc2626;
-          font-size: 0.9rem;
-          margin: 1rem 0;
-        `;
-        modalContent.appendChild(errorMsg);
-      };
-      
-      // 组装弹窗
-      modalContent.appendChild(closeBtn);
-      modalContent.appendChild(titleEl);
-      modalContent.appendChild(subtitleEl);
-      modalContent.appendChild(qrImage);
-      modal.appendChild(modalContent);
-      
-      // 显示弹窗
+      // 添加到页面
       document.body.appendChild(modal);
       
-      // 点击背景关闭弹窗
-      modal.onclick = (e) => {
-        if (e.target === modal) {
-          document.body.removeChild(modal);
-        }
-      };
+      // 显示弹窗
+      setTimeout(() => modal.classList.add('show'), 10);
       
-      // ESC键关闭弹窗
-      document.addEventListener('keydown', function closeOnEsc(e) {
-        if (e.key === 'Escape') {
-          document.body.removeChild(modal);
-          document.removeEventListener('keydown', closeOnEsc);
+      // 点击背景关闭
+      modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+          closeQRModal();
         }
       });
     }
-    // 滚动变色
-    window.addEventListener('scroll', function() {
-      const navbar = document.getElementById('navbar');
-      if (window.scrollY > 60) {
-        navbar.classList.add('scrolled');
-      } else {
-        navbar.classList.remove('scrolled');
+    
+    // 关闭二维码弹窗
+    function closeQRModal() {
+      const modal = document.querySelector('.qr-modal');
+      if (modal) {
+        modal.classList.remove('show');
+        setTimeout(() => modal.remove(), 300);
       }
-    });
+    }
     
     // 确保页面可以正常滚动
     function enableScrolling() {
@@ -435,71 +305,14 @@
       document.body.style.height = 'auto';
       document.documentElement.style.overflow = 'auto';
       document.documentElement.style.height = 'auto';
-      
-      // 确保所有元素都不会阻止滚动
-      const allElements = document.querySelectorAll('*');
-      allElements.forEach(element => {
-        if (element.style.overflow === 'hidden') {
-          element.style.overflow = 'visible';
-        }
-      });
-    }
-    
-    // 添加键盘滚动支持
-    function addKeyboardScrolling() {
-      document.addEventListener('keydown', function(e) {
-        switch(e.key) {
-          case 'ArrowDown':
-          case 'PageDown':
-            e.preventDefault();
-            window.scrollBy(0, 100);
-            break;
-          case 'ArrowUp':
-          case 'PageUp':
-            e.preventDefault();
-            window.scrollBy(0, -100);
-            break;
-        }
-      });
-    }
-    
-    // 添加触摸滚动支持
-    function addTouchScrolling() {
-      let startY = 0;
-      let startScrollTop = 0;
-      
-      document.addEventListener('touchstart', function(e) {
-        startY = e.touches[0].clientY;
-        startScrollTop = window.pageYOffset;
-      });
-      
-      document.addEventListener('touchmove', function(e) {
-        if (e.touches.length === 1) {
-          const deltaY = startY - e.touches[0].clientY;
-          window.scrollTo(0, startScrollTop + deltaY);
-        }
-      });
     }
     
     // 页面加载完成后启用滚动
-    document.addEventListener('DOMContentLoaded', function() {
-      enableScrolling();
-      addKeyboardScrolling();
-      addTouchScrolling();
-      console.log('About页面滚动功能已启用');
-    });
+    window.addEventListener('load', enableScrolling);
+    document.addEventListener('DOMContentLoaded', enableScrolling);
     
-    // 页面完全加载后再次确保滚动
-    window.addEventListener('load', function() {
-      enableScrolling();
-      console.log('About页面完全加载，滚动功能已确认启用');
-    });
-    
-    // 添加wheel事件监听器
-    window.addEventListener('wheel', function(e) {
-      // 确保wheel事件可以正常触发滚动
-      e.stopPropagation();
-    }, { passive: false });
+    // 立即启用滚动
+    enableScrolling();
   </script>
 </body>
-</html> 
+</html>

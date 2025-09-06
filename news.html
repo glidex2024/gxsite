@@ -6,22 +6,108 @@
   <title>最新消息 - Glide.X滑雪学校</title>
   <link rel="stylesheet" href="style.css">
   <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <style>
+    :root {
+      --primary-blue: #1e3a8a;
+      --secondary-blue: #3b82f6;
+      --accent-orange: #ea580c;
+      --snow-white: #ffffff;
+      --deep-green: #166534;
+      --warm-gray: #6b7280;
+      --dark-gray: #374151;
+      --ice-blue: #f1f5f9;
+      --powder-blue: #e0e7ff;
+      --mountain-gray: #1f2937;
+      --success-green: #059669;
+      --warning-amber: #d97706;
+      --light-gray: #f9fafb;
+      --border-gray: #e5e7eb;
+    }
+    
+    /* 跨平台字体渲染优化 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+    }
+    
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.6;
+      color: var(--dark-gray);
+      background-color: var(--snow-white);
+      overflow-x: hidden;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+    
+    /* 顶部导航栏 - 完全按照Pinnacle设计 */
+    .navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: rgba(30, 58, 138, 0.95);
+      backdrop-filter: blur(20px);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .navbar.scrolled {
+      background: rgba(30, 58, 138, 0.98);
+      box-shadow: 0 4px 20px rgba(30, 58, 138, 0.3);
+    }
+    
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+  </style>
 </head>
 <body>
   <!-- 顶部导航栏 -->
   <nav id="navbar" class="navbar">
     <div class="container nav-container">
-      <a href="index.html" class="logo">GX 中文国际滑雪学校</a>
+      <a href="index.html" class="logo">
+        <span class="logo-gx">GX</span>
+        <div class="logo-text">
+          <span class="logo-chinese">中文国际滑雪学校</span>
+          <span class="logo-english">GLIDEX SNOWSPORTS SCHOOL</span>
+        </div>
+      </a>
       <ul class="nav-links">
         <li><a href="index.html">首页</a></li>
+        <li class="dropdown">
+          <a href="courses.html">课程介绍</a>
+          <ul class="dropdown-menu">
+            <li><a href="courses.html">滑雪课程</a></li>
+            <li><a href="courses.html">单板课程</a></li>
+            <li><a href="courses.html">儿童课程</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="coaches.html">教练团队</a>
+          <ul class="dropdown-menu">
+            <li><a href="coaches.html">教练介绍</a></li>
+            <li><a href="coaches.html">教练资质</a></li>
+            <li><a href="coaches.html">预约教练</a></li>
+          </ul>
+        </li>
         <li><a href="about.html">关于GX</a></li>
-        <li><a href="courses.html">课程介绍</a></li>
-        <li><a href="coaches.html">教练团队</a></li>
-        <li><a href="#faq">常见问题</a></li>
-        <li><a href="news.html">最新消息</a></li>
+        <li><a href="news.html" class="active">最新消息</a></li>
         <li><a href="contact.html">联系我们</a></li>
       </ul>
-      <a href="courses.html" class="btn btn-reservation">预约</a>
+      <button class="btn btn-reservation" onclick="showWeChatQR()">预约</button>
     </div>
   </nav>
 
@@ -45,9 +131,79 @@
   <!-- 页脚 -->
   <footer class="footer">
     <div class="container">
-      <p>© 2024 Glide.X滑雪学校. 保留所有权利.</p>
+      <div class="footer-content">
+        <!-- 左侧：公司信息 -->
+        <div class="footer-company">
+          <div class="footer-logo">
+            <span class="logo-gx">GX</span>
+            <div class="logo-text">
+              <span class="logo-chinese">中文国際滑雪学校</span>
+              <span class="logo-english">GLIDEX SNOWSPORTS SCHOOL</span>
+            </div>
+          </div>
+          <div class="company-info">
+            <p>GlideX中文国際滑雪学校</p>
+            <p>GlideX合同会社</p>
+            <p>〒新潟県南魚沼郡湯沢町土樽6303-1</p>
+          </div>
+        </div>
+        
+        <!-- 中间：快速链接 -->
+        <div class="footer-links">
+          <h3>快速链接</h3>
+          <ul>
+            <li><a href="index.html">首页</a></li>
+            <li><a href="about.html">关于GX</a></li>
+            <li><a href="courses.html">课程介绍</a></li>
+            <li><a href="coaches.html">教练团队</a></li>
+            <li><a href="#faq">常见问题</a></li>
+            <li><a href="news.html">最新消息</a></li>
+            <li><a href="contact.html">联系我们</a></li>
+          </ul>
+        </div>
+        
+        <!-- 右侧：我们的课程 -->
+        <div class="footer-courses">
+          <h3>我们的课程</h3>
+          <ul>
+            <li>私教课程</li>
+            <li>小班团体课程</li>
+            <li>JSBA单板考证课程</li>
+            <li>进阶课程</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>© 2024 GlideX中文国際滑雪学校. 保留所有权利.</p>
+      </div>
     </div>
   </footer>
+
+  <!-- 右下角固定联系按钮 -->
+  <div class="contact-float">
+    <!-- 主按钮 -->
+    <div class="contact-main-btn" id="contactMainBtn">
+      <span class="contact-icon">💬</span>
+      <span class="contact-text">Contact</span>
+    </div>
+    
+    <!-- 联系选项 -->
+    <div class="contact-options" id="contactOptions">
+      <div class="contact-option wechat" data-tooltip="微信联系" onclick="openWeChat()">
+        <span class="option-icon">💬</span>
+        <span class="option-text">WeChat</span>
+      </div>
+      <div class="contact-option line" data-tooltip="Line联系" onclick="openLine()">
+        <span class="option-icon">📱</span>
+        <span class="option-text">Line</span>
+      </div>
+      <div class="contact-option whatsapp" data-tooltip="WhatsApp联系" onclick="openWhatsApp()">
+        <span class="option-icon">💬</span>
+        <span class="option-text">WhatsApp</span>
+      </div>
+    </div>
+  </div>
 
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
   <script>
@@ -156,6 +312,101 @@
         renderNews(currentPage);
         renderPagination();
       });
+
+    // 联系按钮交互
+    document.addEventListener('DOMContentLoaded', function() {
+      const contactMainBtn = document.getElementById('contactMainBtn');
+      const contactOptions = document.getElementById('contactOptions');
+      
+      if (contactMainBtn && contactOptions) {
+        contactMainBtn.addEventListener('click', function() {
+          contactOptions.classList.toggle('show');
+        });
+        
+        // 点击外部关闭
+        document.addEventListener('click', function(e) {
+          if (!contactMainBtn.contains(e.target) && !contactOptions.contains(e.target)) {
+            contactOptions.classList.remove('show');
+          }
+        });
+      }
+    });
+
+    // 联系功能
+    function openWeChat() {
+      // 这里可以添加微信联系逻辑
+      alert('请添加微信：glidex_snow');
+    }
+
+    function openLine() {
+      // 这里可以添加Line联系逻辑
+      alert('请添加Line：@glidex');
+    }
+
+    function openWhatsApp() {
+      // 这里可以添加WhatsApp联系逻辑
+      alert('请添加WhatsApp：+81-90-1234-5678');
+    }
+
+    // 微信二维码弹窗
+    function showWeChatQR() {
+      const modal = document.getElementById('wechatModal');
+      if (modal) {
+        modal.style.display = 'flex';
+      }
+    }
+
+    // 二维码弹窗功能
+    function showQRCode(type) {
+      const modal = document.getElementById('qrModal');
+      const qrImage = document.getElementById('qrImage');
+      const qrTitle = document.getElementById('qrTitle');
+      
+      if (modal && qrImage && qrTitle) {
+        // 根据类型设置不同的二维码和标题
+        const qrData = {
+          wechat: {
+            src: 'images/wechat-qr.jpg',
+            title: '微信二维码'
+          },
+          line: {
+            src: 'images/line-qr.jpg', 
+            title: 'Line二维码'
+          },
+          whatsapp: {
+            src: 'images/whatsapp-qr.jpg',
+            title: 'WhatsApp二维码'
+          }
+        };
+        
+        const data = qrData[type] || qrData.wechat;
+        qrImage.src = data.src;
+        qrTitle.textContent = data.title;
+        modal.style.display = 'flex';
+      }
+    }
+
+    function closeQRModal() {
+      const modal = document.getElementById('qrModal');
+      if (modal) {
+        modal.style.display = 'none';
+      }
+    }
+
+    // 错误处理
+    window.addEventListener('error', function(e) {
+      console.log('页面加载错误:', e.message);
+    });
+
+    // 确保内容可见
+    window.addEventListener('load', function() {
+      document.body.style.opacity = '1';
+      // 确保所有内容都可见
+      const hiddenElements = document.querySelectorAll('[style*="opacity: 0"]');
+      hiddenElements.forEach(el => {
+        el.style.opacity = '1';
+      });
+    });
   </script>
 </body>
 </html>
