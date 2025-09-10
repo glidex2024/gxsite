@@ -97,6 +97,18 @@ body {
   align-items: center;
   gap: 0.5rem;
 }
+
+.logo-img {
+  height: 50px;
+  width: auto;
+  max-width: 200px;
+  object-fit: contain;
+  transition: transform 0.2s ease;
+}
+
+.logo-img:hover {
+  transform: scale(1.05);
+}
 .logo:hover, .logo:active, .logo:visited {
   color: var(--main-orange);
   text-decoration: none !important;
@@ -151,7 +163,7 @@ body {
 .nav-links a {
   color: var(--snow-white);
   text-decoration: none;
-  font-size: 0.9rem;
+  font-size: 1.1rem;
   font-weight: 500;
   position: relative;
   transition: all 0.3s ease;
@@ -214,7 +226,7 @@ body {
   color: var(--snow-white);
   padding: 0.7em 1.5em;
   display: block;
-  font-size: 0.9rem;
+  font-size: 1.1rem;
   font-weight: 500;
   white-space: nowrap;
   transition: all 0.3s ease;
@@ -251,7 +263,7 @@ body {
   color: #fff;
   padding: 0.7em 1.5em;
   display: block;
-  font-size: 1rem;
+  font-size: 1.1rem;
   white-space: nowrap;
   transition: background 0.2s, color 0.2s;
 }
@@ -704,6 +716,10 @@ body {
   .logo {
     font-size: 1.1rem;
   }
+  .logo-img {
+    height: 40px;
+    max-width: 150px;
+  }
   .logo-gx {
     font-size: 1.8rem;
     padding: 0.4rem 0.6rem;
@@ -719,7 +735,7 @@ body {
     flex-wrap: wrap;
   }
   .nav-links a {
-    font-size: 0.8rem;
+    font-size: 1rem;
   }
   .btn-reservation {
     padding: 0.5rem 1rem;
@@ -1412,7 +1428,7 @@ main {
   }
   
   .nav-links a {
-    font-size: 0.95rem;
+    font-size: 1.15rem;
   }
   
   .gallery-grid {
@@ -1448,13 +1464,17 @@ main {
   .logo {
     font-size: 1.3rem;
   }
+  .logo-img {
+    height: 45px;
+    max-width: 180px;
+  }
   
   .nav-links {
     gap: 1rem;
   }
   
   .nav-links a {
-    font-size: 0.9rem;
+    font-size: 1.1rem;
   }
   
   .hero-content h1 {
@@ -1541,13 +1561,17 @@ main {
     font-size: 1.2rem;
     letter-spacing: 1px;
   }
+  .logo-img {
+    height: 35px;
+    max-width: 120px;
+  }
   
   .nav-links {
     gap: 0.8rem;
   }
   
   .nav-links a {
-    font-size: 0.85rem;
+    font-size: 1.05rem;
   }
   
   .hero {
@@ -1681,13 +1705,17 @@ main {
   .logo {
     font-size: 1.1rem;
   }
+  .logo-img {
+    height: 30px;
+    max-width: 100px;
+  }
   
   .nav-links {
     gap: 0.6rem;
   }
   
   .nav-links a {
-    font-size: 0.8rem;
+    font-size: 1rem;
   }
   
   .hero-content h1 {
@@ -1922,6 +1950,9 @@ main {
   text-transform: uppercase;
 }
 
+.company-info { 
+  text-align: left;
+}
 .company-info p {
   color: var(--snow-white);
   line-height: 1.8;
@@ -1964,6 +1995,14 @@ main {
   font-size: 0.95rem;
   transition: color 0.3s ease;
   cursor: pointer;
+}
+
+/* 确保“我们的课程”列表首字左对齐 */
+.footer-courses {
+  text-align: left;
+}
+.footer-courses ul {
+  text-align: left;
 }
 
 .footer-courses ul li:hover {
@@ -2016,6 +2055,9 @@ main {
   .footer {
     padding: 3rem 0 1.5rem 0;
   }
+  /* 移动端保持课程列表左对齐 */
+  .footer-courses { text-align: left; }
+  .footer-courses ul { text-align: left; display: inline-block; }
 }
 
 @media (max-width: 480px) {
