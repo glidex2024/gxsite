@@ -72,6 +72,123 @@
       max-width: 1200px;
       margin: 0 auto;
     }
+    
+    /* 二维码弹窗样式 */
+    .qr-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10000;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+    
+    .qr-modal.show {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    .qr-modal-content {
+      background: var(--snow-white);
+      border-radius: 20px;
+      padding: 2rem;
+      max-width: 400px;
+      width: 90%;
+      text-align: center;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      transform: scale(0.8);
+      transition: all 0.3s ease;
+    }
+    
+    .qr-modal.show .qr-modal-content {
+      transform: scale(1);
+    }
+    
+    .qr-modal-header {
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+    
+    .qr-modal-header h3 {
+      color: var(--primary-blue);
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    
+    .qr-modal-header p {
+      color: var(--warm-gray);
+      font-size: 1rem;
+      margin: 0;
+    }
+    
+    .qr-modal-close {
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: var(--accent-orange);
+      color: var(--snow-white);
+      border: none;
+      font-size: 1.2rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+    
+    .qr-modal-close:hover {
+      background: #c2410c;
+      transform: scale(1.1);
+    }
+    
+    .qr-modal-body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+    
+    .qr-image {
+      width: 200px;
+      height: 200px;
+      border-radius: 12px;
+      border: 2px solid var(--primary-blue);
+      object-fit: cover;
+    }
+    
+    .qr-tip {
+      color: var(--warm-gray);
+      font-size: 0.9rem;
+      margin: 0;
+    }
+    
+    /* 移动端二维码弹窗样式 */
+    @media (max-width: 768px) {
+      .qr-modal-content {
+        padding: 1.5rem;
+        max-width: 350px;
+      }
+      
+      .qr-image {
+        width: 180px;
+        height: 180px;
+      }
+      
+      .qr-modal-header h3 {
+        font-size: 1.3rem;
+      }
+    }
   </style>
 </head>
 <body>
@@ -250,6 +367,111 @@
         }
       };
     })();
+    
+    // 联系按钮交互
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log('正在初始化联系按钮...');
+      
+      const contactMainBtn = document.querySelector('.contact-main-btn');
+      const contactOptions = document.querySelector('.contact-options');
+      
+      console.log('找到的联系按钮元素:', { contactMainBtn, contactOptions });
+      
+      if (contactMainBtn && contactOptions) {
+        // 定义点击处理函数
+        contactMainBtn.clickHandler = function(e) {
+          e.stopPropagation();
+          console.log('联系按钮被点击');
+          
+          // 切换显示状态
+          if (contactOptions.classList.contains('show')) {
+            contactOptions.classList.remove('show');
+            console.log('隐藏联系选项');
+          } else {
+            contactOptions.classList.add('show');
+            console.log('显示联系选项');
+          }
+        };
+        
+        // 绑定点击事件
+        contactMainBtn.addEventListener('click', contactMainBtn.clickHandler);
+        
+        // 点击外部关闭
+        document.addEventListener('click', function(e) {
+          if (!e.target.closest('.contact-float')) {
+            contactOptions.classList.remove('show');
+            console.log('点击外部，关闭联系选项');
+          }
+        });
+        
+        console.log('联系按钮初始化完成');
+      } else {
+        console.error('联系按钮元素未找到:', { contactMainBtn, contactOptions });
+      }
+    });
+    
+    // 联系方式打开函数
+    function openWeChat() {
+      console.log('打开微信联系');
+      showQRCode('image/qrcode/1.PNG', 'WeChat', '微信联系');
+    }
+    
+    function openLine() {
+      console.log('打开Line联系');
+      showQRCode('image/qrcode/2.PNG', 'Line', 'Line联系');
+    }
+    
+    function openWhatsApp() {
+      console.log('打开WhatsApp联系');
+      showQRCode('image/qrcode/3.PNG', 'WhatsApp', 'WhatsApp联系');
+    }
+    
+    // 显示预约微信二维码弹窗
+    function showWeChatQR() {
+      showQRCode('image/qrcode/1.PNG', '微信预约', '请扫描二维码添加微信进行课程预约');
+    }
+    
+    // 显示二维码弹窗
+    function showQRCode(imageSrc, title, subtitle) {
+      // 创建弹窗容器
+      const modal = document.createElement('div');
+      modal.className = 'qr-modal';
+      modal.innerHTML = `
+        <div class="qr-modal-content">
+          <div class="qr-modal-header">
+            <h3>${title}</h3>
+            <p>${subtitle}</p>
+            <button class="qr-modal-close" onclick="closeQRModal()">&times;</button>
+          </div>
+          <div class="qr-modal-body">
+            <img src="${imageSrc}" alt="${title} QR Code" class="qr-image">
+            <p class="qr-tip">请使用手机扫描二维码</p>
+          </div>
+        </div>
+      `;
+      
+      // 添加到页面
+      document.body.appendChild(modal);
+      
+      // 显示弹窗
+      setTimeout(() => modal.classList.add('show'), 10);
+      
+      // 点击背景关闭
+      modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+          closeQRModal();
+        }
+      });
+    }
+    
+    // 关闭二维码弹窗
+    function closeQRModal() {
+      const modal = document.querySelector('.qr-modal');
+      if (modal) {
+        modal.classList.remove('show');
+        setTimeout(() => modal.remove(), 300);
+      }
+    }
   </script>
 </body>
 </html> 
