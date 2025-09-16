@@ -349,7 +349,8 @@
           for (let i = start; i < end; i++) {
             const n = newsData[i];
             let imgUrl = n.img;
-            if (imgUrl && imgUrl.startsWith('./image/news')) {
+            // 如果JSON中没有图片或图片路径无效，则使用Unsplash图片作为备用
+            if (!imgUrl || imgUrl === '' || imgUrl === 'undefined') {
               const idx = (parseInt(n.id, 10) - 1) % unsplashImgs.length;
               imgUrl = unsplashImgs[idx];
             }
