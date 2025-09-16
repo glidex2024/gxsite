@@ -349,7 +349,7 @@
           for (let i = start; i < end; i++) {
             const n = newsData[i];
             let imgUrl = n.img;
-            if (imgUrl && imgUrl.startsWith('/image/news')) {
+            if (imgUrl && imgUrl.startsWith('./image/news')) {
               const idx = (parseInt(n.id, 10) - 1) % unsplashImgs.length;
               imgUrl = unsplashImgs[idx];
             }
