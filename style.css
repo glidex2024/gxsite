@@ -1887,9 +1887,10 @@ main {
 
 .footer-content {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   gap: 3rem;
   margin-bottom: 3rem;
+  justify-content: space-between;
 }
 
 /* 左侧公司信息样式 */
@@ -1960,17 +1961,20 @@ main {
   font-size: 0.95rem;
 }
 
-/* 中间快速链接样式 */
-.footer-links h3,
-.footer-courses h3 {
+/* 右侧快速链接样式 */
+.footer-links {
+  text-align: left;
+  margin-left: auto;
+}
+
+.footer-links h3 {
   color: var(--accent-orange);
   margin-bottom: 1.5rem;
   font-size: 1.3rem;
   font-weight: 700;
 }
 
-.footer-links ul,
-.footer-courses ul {
+.footer-links ul {
   list-style: none;
   padding: 0;
 }
@@ -1989,26 +1993,8 @@ main {
   transform: translateX(5px);
 }
 
-.footer-courses ul li {
-  color: var(--snow-white);
-  line-height: 2;
-  font-size: 0.95rem;
-  transition: color 0.3s ease;
-  cursor: pointer;
-}
 
-/* 确保“我们的课程”列表首字左对齐 */
-.footer-courses {
-  text-align: left;
-}
-.footer-courses ul {
-  text-align: left;
-}
 
-.footer-courses ul li:hover {
-  color: var(--accent-orange);
-  transform: translateX(5px);
-}
 
 /* 底部版权信息 */
 .footer-bottom {
@@ -2052,12 +2038,14 @@ main {
     justify-content: center;
   }
   
+  .footer-links {
+    text-align: center;
+    margin-left: 0;
+  }
+  
   .footer {
     padding: 3rem 0 1.5rem 0;
   }
-  /* 移动端保持课程列表左对齐 */
-  .footer-courses { text-align: left; }
-  .footer-courses ul { text-align: left; display: inline-block; }
 }
 
 @media (max-width: 480px) {
