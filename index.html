@@ -2908,7 +2908,7 @@
           </div>
           <div class="action-buttons">
             <a href="about.html" class="about-btn">关于我们</a>
-            <a href="coaches.html" class="coach-btn">滑雪教练介绍</a>
+            <a href="coaches.html" class="coach-btn">课程介绍</a>
           </div>
         </div>
         <div class="content-right">
@@ -3510,11 +3510,13 @@
     
     // 显示预约微信二维码弹窗
     function showWeChatQR() {
+      console.log('showWeChatQR函数被调用');
       showQRCode('image/qrcode/1.PNG', '微信预约', '请扫描二维码添加微信进行课程预约');
     }
     
     // 显示二维码弹窗
     function showQRCode(imageSrc, title, subtitle) {
+      console.log('showQRCode函数被调用:', { imageSrc, title, subtitle });
       // 创建弹窗容器
       const modal = document.createElement('div');
       modal.className = 'qr-modal';
