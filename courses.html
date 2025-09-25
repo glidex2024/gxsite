@@ -130,7 +130,8 @@
       <a href="index.html" class="logo">
         <img src="image/logo/logo2.png" alt="GX 中文国际滑雪学校" class="logo-img">
       </a>
-      <ul class="nav-links">
+      <button class="menu-toggle" aria-controls="primary-nav" aria-expanded="false" aria-label="打开菜单"></button>
+      <ul id="primary-nav" class="nav-links" role="navigation">
         <li><a href="index.html">首页</a></li>
         <li><a href="about.html">关于GX</a></li>
         <li class="dropdown">
@@ -147,6 +148,7 @@
       <button class="btn btn-reservation" onclick="showWeChatQR()">预约</button>
     </div>
   </nav>
+  <div class="nav-backdrop" hidden></div>
   <main>
     <section class="course-booking-section">
       <div class="booking-cards-list">
@@ -245,6 +247,23 @@
 
   <script src="snow.js"></script>
   <script src="booking-step.js"></script>
+  <script src="mobile-menu.js"></script>
+  <script>
+    (function(){
+      var toggle = document.querySelector('.menu-toggle');
+      var nav = document.getElementById('primary-nav');
+      var backdrop = document.querySelector('.nav-backdrop');
+      if (!toggle || !nav || !backdrop) return;
+      function openNav(){ nav.classList.add('show'); toggle.setAttribute('aria-expanded','true'); backdrop.hidden = false; document.body.classList.add('body--nav-open'); }
+      function closeNav(){ nav.classList.remove('show'); toggle.setAttribute('aria-expanded','false'); backdrop.hidden = true; document.body.classList.remove('body--nav-open'); }
+      toggle.addEventListener('click', function(){ var exp = toggle.getAttribute('aria-expanded')==='true'; exp?closeNav():openNav(); });
+      backdrop.addEventListener('click', closeNav);
+      window.addEventListener('keydown', function(e){ if(e.key==='Escape') closeNav(); });
+      var mql = window.matchMedia('(min-width: 992px)');
+      function handle(e){ if(e.matches) closeNav(); }
+      if(mql.addEventListener){ mql.addEventListener('change', handle); } else if(mql.addListener){ mql.addListener(handle); }
+    })();
+  </script>
   <script>
     // 导航栏滚动效果
     window.addEventListener('scroll', function() {

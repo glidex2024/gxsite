@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>GX 中文国际滑雪学校</title>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="mobile-optimization.css">
@@ -181,7 +181,7 @@
       align-items: center;
       justify-content: flex-start;
       overflow: hidden;
-      padding: 120px 0 60px 0; /* 添加上下内边距，确保内容有足够空间 */
+      padding: 120px 0 40px 0; /* 下方留白小一些，避免遮挡后续模块 */
     }
     
     /* 背景轮播样式 */
@@ -222,6 +222,7 @@
       bottom: 0;
       background: linear-gradient(135deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.5) 100%);
       z-index: 2;
+      pointer-events: none;
     }
     
     .hero-content {
@@ -2310,6 +2311,8 @@
     .course-images-section {
       padding: 80px 0;
       background: var(--snow-white);
+      position: relative;
+      z-index: 5; /* 确保不被上方主视觉覆盖 */
     }
     
     .course-images-grid {
@@ -2342,6 +2345,7 @@
       width: 100%;
       height: 250px;
       overflow: hidden;
+      z-index: 1;
     }
     
     .image-background img {
@@ -2455,6 +2459,17 @@
         padding: 50px 0;
         margin-top: 15px;
       }
+      
+      /* 移动端：课程图片不裁切，按宽度自适应高度 */
+      .image-background { height: auto; }
+      .image-background img {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+        transform: none !important;
+      }
+      /* 触屏设备不做悬停放大，避免溢出 */
+      .course-image-card:hover .image-background img { transform: none; }
       
       .image-content {
         padding: 1rem;
@@ -2748,7 +2763,8 @@
       <a href="index.html" class="logo">
         <img src="image/logo/logo2.png" alt="GX 中文国际滑雪学校" class="logo-img">
       </a>
-      <ul class="nav-links">
+      <button class="menu-toggle" aria-controls="primary-nav" aria-expanded="false" aria-label="打开菜单"></button>
+      <ul id="primary-nav" class="nav-links" role="navigation">
         <li><a href="index.html" class="active">首页</a></li>
         <li><a href="about.html">关于GX</a></li>
         <li class="dropdown">
@@ -2765,6 +2781,7 @@
       <button class="btn btn-reservation" onclick="showWeChatQR()">预约</button>
     </div>
   </nav>
+  <div class="nav-backdrop" hidden></div>
 
   <!-- 英雄区域 -->
   <section class="hero-section" id="home">
@@ -3948,5 +3965,38 @@
     console.log('页面加载完成，开始加载新闻数据');
   </script>
   <script src="mobile-menu.js"></script>
+  <script>
+    (function(){
+      var toggle = document.querySelector('.menu-toggle');
+      var nav = document.getElementById('primary-nav');
+      var backdrop = document.querySelector('.nav-backdrop');
+      if (!toggle || !nav || !backdrop) return;
+
+      function openNav(){
+        nav.classList.add('show');
+        toggle.setAttribute('aria-expanded','true');
+        backdrop.hidden = false;
+        document.body.classList.add('body--nav-open');
+      }
+      function closeNav(){
+        nav.classList.remove('show');
+        toggle.setAttribute('aria-expanded','false');
+        backdrop.hidden = true;
+        document.body.classList.remove('body--nav-open');
+      }
+      toggle.addEventListener('click', function(){
+        var expanded = toggle.getAttribute('aria-expanded') === 'true';
+        expanded ? closeNav() : openNav();
+      });
+      backdrop.addEventListener('click', closeNav);
+      window.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeNav(); });
+
+      // 视口变化时，如果变为桌面宽度，确保关闭抽屉
+      var mql = window.matchMedia('(min-width: 992px)');
+      function handleDesktop(e){ if(e.matches) closeNav(); }
+      if (mql.addEventListener) { mql.addEventListener('change', handleDesktop); }
+      else if (mql.addListener) { mql.addListener(handleDesktop); }
+    })();
+  </script>
 </body>
 </html> 
