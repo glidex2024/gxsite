@@ -43,7 +43,7 @@
     @supports (-webkit-appearance: none) and (not (overflow: -webkit-marquee)) {
       @media screen and (min-resolution: 1.25dppx) {
         * {
-          font-size: 1.02em;
+          font-size: 1em;
         }
       }
     }
@@ -65,13 +65,13 @@
     @media screen and (-webkit-min-device-pixel-ratio: 1.25) {
       .contact-main-btn,
       .contact-option {
-        transform: scale(1.05);
+        transform: none;
       }
     }
     
     /* Windows Chrome特殊样式 */
     .windows-chrome {
-      font-size: 1.1em;
+      font-size: 1em;
     }
     
     body {
@@ -3078,7 +3078,6 @@
             <li><a href="about.html">关于GX</a></li>
             <li><a href="courses.html">课程介绍</a></li>
             
-            <li><a href="#faq">常见问题</a></li>
             <li><a href="news.html">最新消息</a></li>
             <li><a href="contact.html">联系我们</a></li>
           </ul>
@@ -3372,20 +3371,17 @@
         console.log('设备信息:', { dpr, screenWidth, screenHeight, deviceWidth, deviceHeight });
         
         if (dpr >= 1.25 || screenWidth > 1920) {
-          document.documentElement.style.fontSize = '22px';
-          document.body.style.transform = 'scale(1.2)';
-          document.body.style.transformOrigin = 'top left';
-          console.log('Windows Chrome高DPI/高分辨率模式，字体大小调整为22px，整体缩放1.2');
-        } else if (dpr >= 1.1) {
-          document.documentElement.style.fontSize = '20px';
-          document.body.style.transform = 'scale(1.15)';
-          document.body.style.transformOrigin = 'top left';
-          console.log('Windows Chrome中DPI模式，字体大小调整为20px，整体缩放1.15');
-        } else {
           document.documentElement.style.fontSize = '18px';
-          document.body.style.transform = 'scale(1.1)';
-          document.body.style.transformOrigin = 'top left';
-          console.log('Windows Chrome标准DPI模式，字体大小调整为18px，整体缩放1.1');
+          document.body.style.transform = 'none';
+          console.log('Windows Chrome高DPI/高分辨率模式，字体大小调整为18px，无缩放');
+        } else if (dpr >= 1.1) {
+          document.documentElement.style.fontSize = '17px';
+          document.body.style.transform = 'none';
+          console.log('Windows Chrome中DPI模式，字体大小调整为17px，无缩放');
+        } else {
+          document.documentElement.style.fontSize = '16px';
+          document.body.style.transform = 'none';
+          console.log('Windows Chrome标准DPI模式，字体大小调整为16px，无缩放');
         }
         
         // Windows Chrome特殊样式调整

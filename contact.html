@@ -132,6 +132,13 @@
       margin: 0;
     }
     
+    .qr-section,.qr-codes-container{
+      padding: 30px;
+    }
+    .qr-section-title{
+      padding: 30px;
+    }
+
     .qr-modal-close {
       position: absolute;
       top: -10px;
@@ -149,7 +156,17 @@
       justify-content: center;
       transition: all 0.3s ease;
     }
-    
+    .hero-bg {
+      margin-top: 0px;padding-top: 0px;
+      height: 300px; /* 或你需要的高度 */
+      background-size: auto 100%;
+      background-position: top center;
+      /* 背景图和渐变 */
+      background-image: 
+        linear-gradient(rgba(17,17,17,0.7), rgba(17,17,17,0.7)),
+        url('./image/gallery/contact.jpeg');
+      background-repeat: no-repeat;
+    }
     .qr-modal-close:hover {
       background: #c2410c;
       transform: scale(1.1);
@@ -230,6 +247,10 @@
       .qr-modal-header h3 {
         font-size: 1.3rem;
       }
+      
+      .hero {
+        margin-top: 50px !important;
+      }
     }
   </style>
 </head>
@@ -254,27 +275,18 @@
   <div class="nav-backdrop" hidden></div>
 
   <!-- 主视觉区域 -->
-  <header class="hero" style="height: 60vh; min-height: 340px;">
-    <div class="hero-bg" style="background: linear-gradient(rgba(17,17,17,0.7), rgba(17,17,17,0.7)), url('./image/gallery/contact.jpg') center/cover no-repeat;"></div>
+  <header class="hero" style="height: 60vh; min-height: 300px;">
+    <div class="hero-bg"></div>
     <div class="hero-content" data-aos="fade-up">
       <h1>联系我们</h1>
       <p>欢迎联系GX — 我们随时为您提供协助与支持！</p>
     </div>
   </header>
 
-  <!-- 联系我们表单 -->
-  <section class="contact-section container" style="padding-top:40px;">
-    <form class="contact-form" data-aos="fade-up">
-      <input type="text" placeholder="姓名" required>
-      <input type="email" placeholder="邮箱" required>
-      <textarea placeholder="留言内容" required></textarea>
-      <button type="submit" class="btn">发送</button>
-    </form>
-  </section>
 
   <!-- 二维码联系区域 -->
   <section class="qr-section container" data-aos="fade-up">
-    <h2>扫码联系我们</h2>
+    <h2 class="qr-section-title">扫码联系我们</h2>
     <div class="qr-codes-container">
       <div class="qr-item">
         <img src="image/qrcode/1.PNG" alt="微信二维码">
@@ -320,7 +332,6 @@
             <li><a href="about.html">关于GX</a></li>
             <li><a href="courses.html">课程介绍</a></li>
             
-            <li><a href="#faq">常见问题</a></li>
             <li><a href="news.html">最新消息</a></li>
             <li><a href="contact.html">联系我们</a></li>
           </ul>
@@ -390,28 +401,6 @@
         navbar.classList.remove('scrolled');
       }
     });
-    // 联系我们表单发送逻辑
-    (function() {
-      emailjs.init('user_5Qw1Qw1Qw1Qw1Qw1Qw1Qw'); // 这里请替换为你的EmailJS userID
-      const form = document.querySelector('.contact-form');
-      form.onsubmit = function(e) {
-        e.preventDefault();
-        if (confirm('确定要发送信息吗？')) {
-          const [name, email, message] = Array.from(form.elements).map(i => i.value);
-          emailjs.send('service_default','template_default', {
-            from_name: name,
-            from_email: email,
-            message: message,
-            to_email: 'yofa0905@gmail.com'
-          }).then(function() {
-            alert('发送成功！我们会尽快联系您。');
-            form.reset();
-          }, function() {
-            alert('发送失败，请稍后再试。');
-          });
-        }
-      };
-    })();
     
     // 联系按钮交互
     document.addEventListener('DOMContentLoaded', function() {
