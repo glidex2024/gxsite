@@ -1,0 +1,58 @@
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .title { font-family: Arial, sans-serif; font-size: 24px; font-weight: bold; fill: white; text-anchor: middle; }
+      .header { font-family: Arial, sans-serif; font-size: 16px; font-weight: bold; fill: white; text-anchor: middle; }
+      .cell { font-family: Arial, sans-serif; font-size: 16px; fill: white; text-anchor: middle; }
+      .price { font-family: Arial, sans-serif; font-size: 16px; font-weight: bold; fill: #f39c12; text-anchor: middle; }
+      .note { font-family: Arial, sans-serif; font-size: 14px; fill: rgba(255,255,255,0.8); text-anchor: middle; }
+    </style>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="400" fill="#34495e" rx="16"/>
+  
+  <!-- Title -->
+  <text x="400" y="40" class="title">&lt;私教课程 价格表 &gt;</text>
+  
+  <!-- Table Background -->
+  <rect x="50" y="80" width="700" height="280" fill="rgba(0,0,0,0.3)" rx="12"/>
+  
+  <!-- Header Row -->
+  <rect x="50" y="80" width="700" height="50" fill="rgba(0,0,0,0.5)"/>
+  <text x="150" y="110" class="header">时间</text>
+  <text x="300" y="110" class="header">单板1~2人</text>
+  <text x="500" y="110" class="header">双板1~2人</text>
+  <text x="650" y="110" class="header">3人价格</text>
+  
+  <!-- Row 1 -->
+  <line x1="50" y1="130" x2="750" y2="130" stroke="rgba(255,255,255,0.1)"/>
+  <text x="150" y="155" class="cell">2小时</text>
+  <text x="300" y="155" class="price">¥29,800</text>
+  <text x="500" y="155" class="price">¥31,800</text>
+  <text x="650" y="155" class="price">+ ¥10,000</text>
+  
+  <!-- Row 2 -->
+  <line x1="50" y1="180" x2="750" y2="180" stroke="rgba(255,255,255,0.1)"/>
+  <text x="150" y="205" class="cell">3小时</text>
+  <text x="300" y="205" class="price">¥39,800</text>
+  <text x="500" y="205" class="price">¥41,800</text>
+  <text x="650" y="205" class="price">+ ¥10,000</text>
+  
+  <!-- Row 3 -->
+  <line x1="50" y1="230" x2="750" y2="230" stroke="rgba(255,255,255,0.1)"/>
+  <text x="150" y="255" class="cell">4小时</text>
+  <text x="300" y="255" class="price">¥49,800</text>
+  <text x="500" y="255" class="price">¥51,800</text>
+  <text x="650" y="255" class="price">+ ¥10,000</text>
+  
+  <!-- Row 4 -->
+  <line x1="50" y1="280" x2="750" y2="280" stroke="rgba(255,255,255,0.1)"/>
+  <text x="150" y="305" class="cell">5小时</text>
+  <text x="300" y="305" class="price">¥59,800</text>
+  <text x="500" y="305" class="price">¥61,800</text>
+  <text x="650" y="305" class="price">+ ¥10,000</text>
+  
+  <!-- Note -->
+  <text x="400" y="380" class="note">4人以上 请咨询客服</text>
+</svg>

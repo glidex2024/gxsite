@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="mobile-optimization.css">
   <link rel="stylesheet" href="mobile-override.css">
+  <link rel="stylesheet" href="qr-modal.css">
   <style>
     :root {
       --primary-blue: #1e3a8a;
@@ -211,18 +212,11 @@
       <ul id="primary-nav" class="nav-links" role="navigation">
         <li><a href="index.html">首页</a></li>
         <li><a href="about.html">关于GX</a></li>
-        <li class="dropdown">
-          <a href="courses.html">课程介绍</a>
-          <ul class="dropdown-menu">
-            <li><a href="courses.html">滑雪课程</a></li>
-            <li><a href="courses.html">单板课程</a></li>
-            <li><a href="courses.html">儿童课程</a></li>
-          </ul>
-        </li>
+                <li><a href="courses.html">课程介绍</a></li>
         <li><a href="news.html">最新消息</a></li>
         <li><a href="contact.html">联系我们</a></li>
       </ul>
-      <button class="btn btn-reservation" onclick="showWeChatQR()">预约</button>
+      <button class="btn btn-reservation" onclick="showAllQR()">预约</button>
     </div>
   </nav>
   <div class="nav-backdrop" hidden></div>
@@ -296,6 +290,7 @@
     </div>
   </div>
   <script src="mobile-menu.js"></script>
+  <script src="qr-functions.js"></script>
   <script>
     (function(){
       var toggle = document.querySelector('.menu-toggle');
