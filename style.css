@@ -63,6 +63,8 @@ body {
   width: 90%;
   max-width: 1200px;
   margin: 0 auto;
+  padding: 0 1rem;
+  box-sizing: border-box;
 }
 
 /* 顶部导航栏 - 与首页完全一致 */
@@ -1250,7 +1252,7 @@ main {
 
   .nav-links {
     position: fixed;
-    top: 0; right: 0; bottom: 0; left: 30%;
+    top: 0; right: 0; bottom: 0; left: 0;
     background: rgba(30,58,138,.98);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
@@ -1580,6 +1582,7 @@ main {
   .container {
     width: 95%;
     max-width: 100%;
+    box-sizing: border-box;
   }
   
   .hero-content h1 {
@@ -1629,6 +1632,7 @@ main {
   .container {
     width: 95%;
     padding: 0 15px;
+    box-sizing: border-box;
   }
   
   .navbar {
@@ -1723,6 +1727,7 @@ main {
   .container {
     width: 100%;
     padding: 0 10px;
+    box-sizing: border-box;
   }
   
   .navbar {
@@ -1870,6 +1875,7 @@ main {
 @media (max-width: 320px) {
   .container {
     padding: 0 8px;
+    box-sizing: border-box;
   }
   
   .navbar {
