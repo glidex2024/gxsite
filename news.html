@@ -66,9 +66,10 @@
       
       .news-item img {
         width: 100%;
-        height: 200px;
+        height: 150px;
         object-fit: cover;
         border-radius: 12px 12px 0 0;
+        max-width: 100%;
       }
       
       .news-content {
@@ -92,6 +93,40 @@
         font-size: 0.8rem;
         color: #999;
         margin-bottom: 0.5rem;
+      }
+    }
+    
+    /* 超小屏幕优化 */
+    @media (max-width: 480px) {
+      .news-item img {
+        height: 120px;
+      }
+      
+      .news-content h3 {
+        font-size: 1.1rem;
+      }
+      
+      .news-content p {
+        font-size: 0.85rem;
+      }
+    }
+    
+    /* 极小屏幕优化 */
+    @media (max-width: 360px) {
+      .news-item img {
+        height: 100px;
+      }
+      
+      .news-content {
+        padding: 0.8rem;
+      }
+      
+      .news-content h3 {
+        font-size: 1rem;
+      }
+      
+      .news-content p {
+        font-size: 0.8rem;
       }
     }
     
