@@ -43,6 +43,8 @@
       color: var(--dark-gray);
       background-color: var(--snow-white);
       overflow-x: hidden;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
     }
     
     .container {
@@ -372,19 +374,7 @@
         }
       });
       
-      // 添加触摸滚动支持
-      let startY = 0;
-      document.addEventListener('touchstart', function(e) {
-        startY = e.touches[0].clientY;
-      });
-      
-      document.addEventListener('touchmove', function(e) {
-        e.preventDefault();
-        const currentY = e.touches[0].clientY;
-        const diff = startY - currentY;
-        window.scrollBy(0, diff);
-        startY = currentY;
-      }, { passive: false });
+      // 移除阻止默认滚动的代码，让浏览器自然处理滚动
     });
     
     AOS.init({ duration: 800, once: true });
