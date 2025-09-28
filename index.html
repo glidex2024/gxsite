@@ -2625,8 +2625,9 @@
             <img src="image/other/图C.JPG" alt="JSBA单板考证课程" />
           </div>
           <div class="image-content">
-            <h3>JSBA单板考证课程</h3>
-            <p>JSBA（日本单板滑雪协会）是日本最早建立单板滑雪体系的专业组织，其考级体系从 5级至1级 逐步递进。对于已经积累了一定经验与练习的学员而言，参加认证不仅是对自身实力的肯定，也是迈向更高阶段的重要一步。</p>
+            <h3>JSBA考证课程
+            </h3>
+            <p>JSBA（日本单板滑雪协会）1982年成立，是日本最早建立单板滑雪体系的专业组织，其考级体系从 5级至1级 逐步递进。</p>
             <a href="courses.html" class="learn-more-btn">了解更多</a>
           </div>
         </div>
@@ -2637,7 +2638,7 @@
           </div>
           <div class="image-content">
             <h3>进阶课程</h3>
-            <p>平花 & 刻滑入门 为重点，帮助学员在稳定滑行基础上，进一步掌握技巧与发力方法。Nollie 180、360、540 等基础旋转技巧。一顺刻滑、八字刻滑，提升转弯流畅度与控板能力。</p>
+            <p>平花&刻滑入门为主，帮助学员进一步掌握进阶技巧与发力方法。Nollie360/540等旋转技巧，一顺/八字刻滑。</p>
             <a href="courses.html" class="learn-more-btn">了解更多</a>
           </div>
         </div>
@@ -3112,15 +3113,15 @@
     
     <!-- 联系选项 -->
     <div class="contact-options" id="contactOptions">
-      <div class="contact-option wechat" data-tooltip="微信联系" onclick="openWeChat()">
+      <div class="contact-option wechat" data-tooltip="微信联系" data-action="wechat">
         <span class="option-icon">💬</span>
         <span class="option-text">WeChat</span>
       </div>
-      <div class="contact-option line" data-tooltip="LINE联系" onclick="openLine()">
+      <div class="contact-option line" data-tooltip="LINE联系" data-action="line">
         <span class="option-icon">📱</span>
         <span class="option-text">LINE</span>
       </div>
-      <div class="contact-option whatsapp" data-tooltip="WhatsApp联系" onclick="openWhatsApp()">
+      <div class="contact-option whatsapp" data-tooltip="WhatsApp联系" data-action="whatsapp">
         <span class="option-icon">💬</span>
         <span class="option-text">WhatsApp</span>
       </div>
@@ -3247,6 +3248,50 @@
         contactMainBtn.addEventListener('touchstart', function(e) {
           e.preventDefault();
           contactMainBtn.clickHandler(e);
+        });
+        
+        // 为联系选项添加事件监听器
+        const contactOptionElements = document.querySelectorAll('.contact-option');
+        contactOptionElements.forEach(option => {
+          const action = option.getAttribute('data-action');
+          
+          // 添加点击事件
+          option.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            console.log('点击联系选项:', action);
+            
+            switch(action) {
+              case 'wechat':
+                openWeChat();
+                break;
+              case 'line':
+                openLine();
+                break;
+              case 'whatsapp':
+                openWhatsApp();
+                break;
+            }
+          });
+          
+          // 添加触摸事件支持
+          option.addEventListener('touchstart', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            console.log('触摸联系选项:', action);
+            
+            switch(action) {
+              case 'wechat':
+                openWeChat();
+                break;
+              case 'line':
+                openLine();
+                break;
+              case 'whatsapp':
+                openWhatsApp();
+                break;
+            }
+          });
         });
         
         // 点击外部关闭

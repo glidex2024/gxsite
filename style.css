@@ -2584,6 +2584,15 @@ main {
   max-height: 70px;
   pointer-events: auto;
   touch-action: manipulation;
+  /* 增强移动端可点击性 */
+  -webkit-tap-highlight-color: transparent;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  /* 确保在所有平台上都可点击 */
+  position: relative;
+  z-index: 10000;
 }
 
 .contact-main-btn:hover {
@@ -2658,6 +2667,14 @@ main {
   max-height: 60px;
   pointer-events: auto;
   touch-action: manipulation;
+  /* 增强移动端可点击性 */
+  -webkit-tap-highlight-color: transparent;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  /* 确保在所有平台上都可点击 */
+  z-index: 10001;
 }
 
 .contact-option:hover {
