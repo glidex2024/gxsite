@@ -12,7 +12,8 @@
   }
   
   .nav-container {
-    height: 60px !important;
+    height: 70px !important;
+    min-height: 70px !important;
     padding: 0 15px !important;
     position: relative !important;
   }
@@ -265,6 +266,7 @@
   
   .nav-container {
     height: 70px !important;
+    min-height: 70px !important;
     padding: 0 20px !important;
   }
   
@@ -312,7 +314,8 @@
 /* 大手机设备优化 */
 @media (min-width: 481px) and (max-width: 768px) {
   .nav-container {
-    height: 65px !important;
+    height: 70px !important;
+    min-height: 70px !important;
     padding: 0 18px !important;
   }
   
@@ -349,7 +352,8 @@
   }
   
   .nav-container {
-    height: 56px !important;
+    height: 70px !important;
+    min-height: 70px !important;
     padding: 0 12px !important;
   }
   
@@ -419,7 +423,8 @@
   }
   
   .nav-container {
-    height: 52px !important;
+    height: 70px !important;
+    min-height: 70px !important;
     padding: 0 10px !important;
   }
   
@@ -494,11 +499,12 @@
   }
   
   .navbar {
-    height: 48px !important;
+    height: 70px !important;
   }
   
   .nav-container {
-    height: 48px !important;
+    height: 70px !important;
+    min-height: 70px !important;
   }
   
   .nav-links a {

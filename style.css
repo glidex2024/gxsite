@@ -137,6 +137,9 @@ body {
   padding: 1rem 2rem;
   max-width: 1200px;
   margin: 0 auto;
+  /* 统一导航栏高度 - 确保跨平台一致性 */
+  min-height: 70px;
+  height: 70px;
 }
 .logo {
   font-size: 1.5rem;
