@@ -75,21 +75,14 @@
       }
       
       .news-content {
-        padding: 1rem;
+        flex: 1;
+        min-width: 0; /* 必须 */
       }
-      
-      .news-content h3 {
-        font-size: 1.2rem;
-        margin-bottom: 0.5rem;
-        color: #333;
-        font-weight: 600;
+      .news-content h3, .news-content p {
+        overflow-wrap: break-word;
+        word-break: break-word;
       }
-      
-      .news-content p {
-        font-size: 0.9rem;
-        color: #666;
-        line-height: 1.5;
-      }
+
       
       .news-date {
         font-size: 0.8rem;
