@@ -3294,11 +3294,19 @@
           });
         });
         
-        // 点击外部关闭
+        // 点击外部关闭 - 改进移动端支持
         document.addEventListener('click', function(e) {
           if (!e.target.closest('.contact-float')) {
             contactOptions.classList.remove('show');
             console.log('点击外部，关闭联系选项');
+          }
+        });
+        
+        // 移动端触摸外部关闭
+        document.addEventListener('touchstart', function(e) {
+          if (!e.target.closest('.contact-float')) {
+            contactOptions.classList.remove('show');
+            console.log('触摸外部，关闭联系选项');
           }
         });
         

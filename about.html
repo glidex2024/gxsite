@@ -406,50 +406,43 @@
       }
     });
     
-    // 联系按钮交互
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
       console.log('正在初始化联系按钮...');
-      
+
       const contactMainBtn = document.querySelector('.contact-main-btn');
       const contactOptions = document.querySelector('.contact-options');
-      
-      console.log('找到的联系按钮元素:', { contactMainBtn, contactOptions });
-      
-      if (contactMainBtn && contactOptions) {
-        // 移除可能存在的旧事件监听器
-        contactMainBtn.removeEventListener('click', contactMainBtn.clickHandler);
-        
-        // 添加新的点击事件监听器
-        contactMainBtn.clickHandler = function(e) {
-          e.preventDefault();
-          e.stopPropagation();
-          
-          const isVisible = contactOptions.classList.contains('show');
-          if (isVisible) {
-            contactOptions.classList.remove('show');
-            console.log('隐藏联系选项');
-          } else {
-            contactOptions.classList.add('show');
-            console.log('显示联系选项');
-          }
-        };
-        
-        contactMainBtn.addEventListener('click', contactMainBtn.clickHandler);
-        
-        // 点击外部关闭
-        document.addEventListener('click', function(e) {
-          if (!e.target.closest('.contact-float')) {
-            contactOptions.classList.remove('show');
-            console.log('点击外部，关闭联系选项');
-          }
-        });
-        
-        console.log('联系按钮事件监听器已添加');
-      } else {
+
+      if (!contactMainBtn || !contactOptions) {
         console.error('联系按钮元素未找到:', { contactMainBtn, contactOptions });
+        return;
       }
+
+      // 打开/关闭菜单
+      function toggleMenu(e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        const isVisible = contactOptions.classList.contains('show');
+        contactOptions.classList.toggle('show', !isVisible);
+        console.log(isVisible ? '隐藏联系选项' : '显示联系选项');
+      }
+
+      // 外部点击关闭
+      function outsideClickHandler(e) {
+        if (!e.target.closest('.contact-float')) {
+          contactOptions.classList.remove('show');
+          console.log('点击外部，关闭联系选项');
+        }
+      }
+
+      // 用 pointerdown 兼容移动端
+      contactMainBtn.addEventListener('pointerdown', toggleMenu);
+      document.addEventListener('pointerdown', outsideClickHandler);
+
+      console.log('联系按钮事件监听器已添加');
     });
-    
+
+
     // 联系方式打开函数
     function openWeChat() {
       console.log('打开微信联系');

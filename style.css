@@ -137,9 +137,6 @@ body {
   padding: 1rem 2rem;
   max-width: 1200px;
   margin: 0 auto;
-  /* 统一导航栏高度 - 确保跨平台一致性 */
-  min-height: 70px;
-  height: 70px;
 }
 .logo {
   font-size: 1.5rem;
@@ -2584,15 +2581,6 @@ main {
   max-height: 70px;
   pointer-events: auto;
   touch-action: manipulation;
-  /* 增强移动端可点击性 */
-  -webkit-tap-highlight-color: transparent;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  /* 确保在所有平台上都可点击 */
-  position: relative;
-  z-index: 10000;
 }
 
 .contact-main-btn:hover {
@@ -2620,51 +2608,60 @@ main {
 
 .contact-options {
   position: absolute;
-  bottom: 80px;
+  bottom: 85px;
   right: 0;
   display: none;
   flex-direction: column;
-  gap: 12px;
+  gap: 8px;
   opacity: 0;
-  transform: translateY(20px);
-  -webkit-transition: all 0.3s ease;
-  -moz-transition: all 0.3s ease;
-  -o-transition: all 0.3s ease;
-  transition: all 0.3s ease;
-  z-index: 10001; /* 确保在联系按钮之上 */
-  pointer-events: auto; /* 确保可以点击 */
+  transform: translateY(15px) scale(0.8);
+  -webkit-transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  -moz-transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  -o-transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 10001;
+  pointer-events: auto;
+  /* 新的现代化样式 */
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 20px;
+  padding: 12px 8px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12), 
+              0 2px 8px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .contact-options.show {
-  display: flex !important; /* 强制显示 */
-  opacity: 1 !important; /* 强制不透明 */
-  transform: translateY(0) !important; /* 强制位置 */
-  visibility: visible !important; /* 强制可见 */
+  display: flex !important;
+  opacity: 1 !important;
+  transform: translateY(0) scale(1) !important;
+  visibility: visible !important;
 }
 
 .contact-option {
-  width: 60px;
-  height: 60px;
-  background: var(--snow-white);
-  border-radius: 50%;
+  width: 56px;
+  height: 56px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 16px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  -webkit-transition: all 0.3s ease;
-  -moz-transition: all 0.3s ease;
-  -o-transition: all 0.3s ease;
-  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  -webkit-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  -moz-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  -o-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   color: var(--mountain-gray);
   font-weight: 600;
   position: relative;
   /* 跨平台尺寸优化 */
-  min-width: 60px;
-  min-height: 60px;
-  max-width: 60px;
-  max-height: 60px;
+  min-width: 56px;
+  min-height: 56px;
+  max-width: 56px;
+  max-height: 56px;
   pointer-events: auto;
   touch-action: manipulation;
   /* 增强移动端可点击性 */
@@ -2675,36 +2672,43 @@ main {
   user-select: none;
   /* 确保在所有平台上都可点击 */
   z-index: 10001;
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .contact-option:hover {
-  transform: scale(1.1);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  transform: scale(1.05);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  background: rgba(255, 255, 255, 1);
+  border-color: rgba(255, 255, 255, 0.5);
 }
 
 .contact-option.wechat:hover {
-  background: #07c160;
-  color: var(--snow-white);
+  background: #07c160 !important;
+  color: var(--snow-white) !important;
+  border-color: #07c160 !important;
 }
 
 .contact-option.line:hover {
-  background: #00c300;
-  color: var(--snow-white);
+  background: #00c300 !important;
+  color: var(--snow-white) !important;
+  border-color: #00c300 !important;
 }
 
 .contact-option.whatsapp:hover {
-  background: #25d366;
-  color: var(--snow-white);
+  background: #25d366 !important;
+  color: var(--snow-white) !important;
+  border-color: #25d366 !important;
 }
 
 .option-icon {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   margin-bottom: 2px;
   display: block;
+  transition: transform 0.2s ease;
 }
 
 .option-text {
-  font-size: 0.5rem;
+  font-size: 0.55rem;
   line-height: 1;
   font-weight: 600;
   letter-spacing: 0.1px;
@@ -2713,6 +2717,71 @@ main {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  transition: all 0.2s ease;
+}
+
+.contact-option:hover .option-icon {
+  transform: scale(1.1);
+}
+
+.contact-option:hover .option-text {
+  font-weight: 700;
+}
+
+/* 移动端优化 */
+@media (max-width: 768px) {
+  .contact-options {
+    bottom: 90px;
+    padding: 10px 6px;
+    gap: 6px;
+    /* 移动端移除backdrop-filter，使用纯色背景 */
+    background: rgba(255, 255, 255, 1) !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    /* 确保在移动端正确显示 */
+    z-index: 10002 !important;
+    /* 强制显示属性 */
+    visibility: visible !important;
+    display: flex !important;
+  }
+  
+  .contact-options.show {
+    display: flex !important;
+    opacity: 1 !important;
+    transform: translateY(0) scale(1) !important;
+    visibility: visible !important;
+    /* 移动端强制显示 */
+    pointer-events: auto !important;
+    position: absolute !important;
+  }
+  
+  .contact-option {
+    width: 52px;
+    height: 52px;
+    min-width: 52px;
+    min-height: 52px;
+    max-width: 52px;
+    max-height: 52px;
+    /* 移动端使用纯色背景 */
+    background: rgba(255, 255, 255, 1) !important;
+  }
+  
+  .option-icon {
+    font-size: 1.2rem;
+  }
+  
+  .option-text {
+    font-size: 0.5rem;
+  }
+  
+  /* 移动端contact按钮强制显示 */
+  .contact-float {
+    z-index: 10003 !important;
+  }
+  
+  .contact-main-btn {
+    z-index: 10004 !important;
+  }
 }
 
 /* 工具提示样式 */
