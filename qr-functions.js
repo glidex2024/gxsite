@@ -22,8 +22,8 @@ modal.innerHTML = `
           <p class="qr-label">微信</p>
         </div>
         <div class="qr-item">
-          <img src="image/qrcode/2.JPG" alt="Line" class="qr-image">
-          <p class="qr-label">Line</p>
+          <img src="image/qrcode/2.JPG" alt="LINE" class="qr-image">
+          <p class="qr-label">LINE</p>
         </div>
         <div class="qr-item">
           <img src="image/qrcode/3.PNG" alt="WhatsApp" class="qr-image">

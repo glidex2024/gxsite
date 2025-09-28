@@ -153,6 +153,25 @@
     padding: 0 15px !important;
   }
   
+  /* 防止移动端背景图单独滑动 */
+  .hero-section {
+    touch-action: pan-y !important; /* 只允许垂直滑动 */
+    overflow: hidden !important;
+  }
+  
+  .hero-background-slider,
+  .heroBackgroundSwiper,
+  .background-slide,
+  .background-slide img {
+    touch-action: none !important;
+    -webkit-user-drag: none !important;
+    -webkit-user-select: none !important;
+    -moz-user-select: none !important;
+    -ms-user-select: none !important;
+    user-select: none !important;
+    pointer-events: none !important;
+  }
+  
   .hero-content h1 {
     font-size: 1.8rem !important;
     margin-bottom: 0.6rem !important;

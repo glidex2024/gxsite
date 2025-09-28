@@ -91,6 +91,26 @@ p, h1, h2, h3, h4, h5, h6, span, a, li, td, th, label, input, textarea {
   .hero-bg {
     background-attachment: scroll; /* 移动端禁用视差效果 */
   }
+  
+  /* 防止移动端背景图单独滑动 */
+  .hero-background-slider,
+  .heroBackgroundSwiper,
+  .background-slide,
+  .background-slide img {
+    touch-action: none !important;
+    -webkit-user-drag: none !important;
+    -webkit-user-select: none !important;
+    -moz-user-select: none !important;
+    -ms-user-select: none !important;
+    user-select: none !important;
+    pointer-events: none !important;
+  }
+  
+  /* 确保整个英雄区域不会产生意外的滑动 */
+  .hero-section {
+    touch-action: pan-y !important; /* 只允许垂直滑动 */
+    overflow: hidden !important;
+  }
 }
 
 /* 移动端表单优化 */
