@@ -60,13 +60,14 @@
       }
       
       .news-item {
-        /* flex-direction: column; */
+        flex-direction: column;
         margin-bottom: 1.5rem;
       }
       
       .news-item img {
         width: 100%;
         height: auto;
+        aspect-ratio: 16 / 9;
         min-height: 80px;
         max-height: 120px;
         object-fit: cover;
@@ -75,6 +76,15 @@
         /* flex-direction: column; */
       }
       
+      .news-content {
+        flex: 1 1 auto;  /* 允许内容伸展 */
+        min-height: auto; /* 不限制最小高度 */
+      }
+      .news-content h3 {
+        font-size: 1rem;  /* 小屏幕适当缩小 */
+        line-height: 1.3; 
+        word-break: break-word; /* 防止长标题溢出 */
+      }
       .news-content {
         padding: 1rem;
       }
