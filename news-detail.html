@@ -115,6 +115,29 @@
       line-height: 1.8;
     }
     .container { box-sizing: border-box; }
+
+    /* 详情页图片响应式约束 */
+    #news-img {
+      width: 100% !important;
+      height: auto !important;
+      max-height: 520px;          /* 桌面端上限，避免过高 */
+      object-fit: cover;          /* 填满容器，保持观感 */
+      object-position: center;
+      border-radius: 16px;
+      display: block;
+    }
+
+    @media (max-width: 992px) {
+      #news-img { max-height: 420px; }
+    }
+
+    @media (max-width: 768px) {
+      #news-img { max-height: 320px; }
+    }
+
+    @media (max-width: 480px) {
+      #news-img { max-height: 220px; }
+    }
     
     /* 二维码弹窗样式 */
     .qr-modal {
