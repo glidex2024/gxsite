@@ -132,11 +132,19 @@
     }
 
     @media (max-width: 768px) {
-      #news-img { max-height: 320px; }
+      /* 手机端整体与页尾下内边距 40px */
+      body { padding-bottom: 40px !important; }
+      section.container { padding-bottom: 40px !important; }
+      footer { padding-bottom: 40px !important; }
+      /* 图片必须完整显示：使用 contain，并基于视口限制高度 */
+      #news-img {
+        object-fit: contain !important;  /* 确保整图显示，不裁切 */
+        max-height: 60vh !important;     /* 随视口缩放 */
+      }
     }
 
     @media (max-width: 480px) {
-      #news-img { max-height: 220px; }
+      #news-img { max-height: 50vh !important; }
     }
     
     /* 二维码弹窗样式 */
