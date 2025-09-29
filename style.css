@@ -2750,9 +2750,6 @@ main {
     opacity: 1 !important;
     transform: translateY(0) scale(1) !important;
     visibility: visible !important;
-    /* 移动端强制显示 */
-    pointer-events: auto !important;
-    position: absolute !important;
   }
   
   .contact-option {
@@ -2781,6 +2778,13 @@ main {
   
   .contact-main-btn {
     z-index: 10004 !important;
+  }
+
+  /* 防止首页/旧内联规则的视觉差异 */
+  .contact-option {
+    background: #590e0e;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,.1);
   }
 }
 
@@ -2818,6 +2822,15 @@ main {
 
 /* 移动端优化 */
 @media (max-width: 768px) {
+
+  @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
+    .contact-options {
+      background: rgba(255, 255, 255, 1);
+      -webkit-backdrop-filter: none;
+      backdrop-filter: none;
+    }
+  }
+  
   .contact-float {
     bottom: 20px;
     right: 20px;
@@ -2844,23 +2857,35 @@ main {
     font-size: 0.5rem;
   }
   
+  
   .contact-options {
-    bottom: 70px;
-    gap: 10px;
+    position: fixed;
+    bottom: 85px;
+    right: 30px;
+    flex-direction: column;
+    gap: 8px;
+    opacity: 0;
+    transform: translateY(15px) scale(0.8);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: 10001;
     pointer-events: auto;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 20px;
+    padding: 12px 8px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .contact-options.show {
+    display: flex !important;
+    opacity: 1 !important;
+    transform: translateY(0) scale(1) !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
   }
   
-  .contact-option {
-    width: 50px;
-    height: 50px;
-    min-width: 50px;
-    min-height: 50px;
-    max-width: 50px;
-    max-height: 50px;
-    pointer-events: auto;
-    touch-action: manipulation;
-  }
   
   .option-icon {
     font-size: 1rem;
