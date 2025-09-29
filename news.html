@@ -431,6 +431,10 @@
         <span class="option-icon">💬</span>
         <span class="option-text">WhatsApp</span>
       </div>
+      <div class="contact-option xhs" data-tooltip="小红书" onclick="openXHS()">
+        <span class="option-icon">📕</span>
+        <span class="option-text">小红书</span>
+      </div>
     </div>
   </div>
 
@@ -572,16 +576,30 @@
       const contactOptions = document.getElementById('contactOptions');
       
       if (contactMainBtn && contactOptions) {
-        contactMainBtn.addEventListener('click', function() {
+        // 统一的切换函数，避免重复代码
+        function toggleContact(e) {
+          if (e) { e.preventDefault(); e.stopPropagation(); }
           contactOptions.classList.toggle('show');
-        });
-        
-        // 点击外部关闭
-        document.addEventListener('click', function(e) {
+        }
+
+        // 防止点击按钮后事件冒泡到文档导致立刻被关闭
+        contactMainBtn.addEventListener('click', toggleContact);
+        contactMainBtn.addEventListener('touchstart', toggleContact, { passive: false });
+        contactMainBtn.addEventListener('pointerdown', toggleContact);
+
+        // 点击选项时也阻止冒泡，确保不会触发外部关闭
+        contactOptions.addEventListener('click', function(e){ e.stopPropagation(); });
+        contactOptions.addEventListener('touchstart', function(e){ e.stopPropagation(); }, { passive: false });
+
+        // 外部点击/触摸关闭
+        function outsideClose(e) {
           if (!contactMainBtn.contains(e.target) && !contactOptions.contains(e.target)) {
             contactOptions.classList.remove('show');
           }
-        });
+        }
+        document.addEventListener('click', outsideClose);
+        document.addEventListener('touchstart', outsideClose, { passive: true });
+        document.addEventListener('pointerdown', outsideClose);
       }
     });
 
@@ -599,6 +617,10 @@
     function openWhatsApp() {
       console.log('打开WhatsApp联系');
       showQRCode('image/qrcode/3.PNG', 'WhatsApp', 'WhatsApp联系');
+    }
+    function openXHS() {
+      console.log('打开小红书');
+      showQRCode('image/qrcode/4.jpeg', '小红书', '小红书账号');
     }
     
     // 显示预约微信二维码弹窗

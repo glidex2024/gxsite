@@ -364,6 +364,10 @@
         <span class="option-icon">💬</span>
         <span class="option-text">WhatsApp</span>
       </div>
+      <div class="contact-option xhs" data-tooltip="小红书" onclick="openXHS()">
+        <span class="option-icon">📕</span>
+        <span class="option-text">小红书</span>
+      </div>
     </div>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
@@ -496,6 +500,10 @@
     function openWhatsApp() {
       console.log('打开WhatsApp联系');
       showQRCode('image/qrcode/3.PNG', 'WhatsApp', 'WhatsApp联系');
+    }
+    function openXHS() {
+      console.log('打开小红书');
+      showQRCode('image/qrcode/4.jpeg', '小红书', '小红书账号');
     }
     
     // 显示预约微信二维码弹窗
