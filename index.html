@@ -2143,7 +2143,7 @@
     .image-content p {
       font-size: 0.95rem;
       color: var(--warm-gray);
-      margin-bottom: 0.2rem;
+      margin-bottom: 0.8rem;
       line-height: 1.5;
       flex: 1;
       white-space: normal;
@@ -2221,12 +2221,13 @@
         margin-top: 15px;
       }
       
-      /* 移动端：课程图片不裁切，按宽度自适应高度 */
+      /* 移动端：统一卡片图片纵横比，保持高度一致 */
       .image-background { height: auto; }
       .image-background img {
         width: 100%;
         height: auto;
-        object-fit: contain;
+        aspect-ratio: 16 / 9; /* 统一比例 */
+        object-fit: cover; /* 填充裁切，保持统一高度 */
         transform: none !important;
       }
       /* 触屏设备不做悬停放大，避免溢出 */
@@ -2234,6 +2235,15 @@
       
       .image-content {
         padding: 1rem;
+      }
+      
+      /* 描述文案限制为两行，避免某张卡片过高 */
+      .image-content p {
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        margin-bottom: 0.6rem; /* 统一间距 */
       }
       
       .course-image-card .learn-more-btn {
