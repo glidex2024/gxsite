@@ -2730,6 +2730,11 @@ main {
 
 /* 移动端优化 */
 @media (max-width: 768px) {
+  /* 暂时隐藏右下角Contact按钮 - 保留代码以便之后恢复 */
+  .contact-float {
+    display: none !important;
+  }
+
   .contact-options {
     bottom: 90px;
     padding: 10px 6px;
