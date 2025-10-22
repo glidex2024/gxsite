@@ -5,10 +5,12 @@
   box-sizing: border-box;
 }
 
-/* 全局文字换行控制 - 确保文字尽量一行显示，但不影响页面滚动 */
-body, div, p, h1, h2, h3, h4, h5, h6, span, a, li, td, th, label, input, textarea, button {
-  white-space: nowrap;
-  text-overflow: ellipsis;
+/* 全局文字换行控制 - 桌面端优先一行显示，移动端允许换行 */
+@media (min-width: 769px) {
+  body, div, p, h1, h2, h3, h4, h5, h6, span, a, li, td, th, label, input, textarea, button {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
 }
 
 /* 确保页面可以正常滚动 */
@@ -26,12 +28,14 @@ p, .description, .content-text {
   word-break: keep-all;
 }
 
-/* 标题和导航文字强制一行显示 */
-h1, h2, h3, h4, h5, h6, .nav-links a, .logo, .hero-content h1, .hero-content p {
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  max-width: 100%;
+/* 标题和导航文字强制一行显示 - 仅限桌面端 */
+@media (min-width: 769px) {
+  h1, h2, h3, h4, h5, h6, .nav-links a, .logo, .hero-content h1, .hero-content p {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-width: 100%;
+  }
 }
 :root {
   --main-blue: #003366;
@@ -2606,6 +2610,17 @@ main {
   text-overflow: ellipsis;
 }
 
+/* 移动端允许文字换行 */
+@media (max-width: 768px) {
+  .contact-text {
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+    word-wrap: break-word !important;
+    line-height: 1.2 !important;
+  }
+}
+
 .contact-options {
   position: absolute;
   bottom: 85px;
@@ -2720,6 +2735,17 @@ main {
   transition: all 0.2s ease;
 }
 
+/* 移动端允许文字换行 */
+@media (max-width: 768px) {
+  .option-text {
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+    word-wrap: break-word !important;
+    line-height: 1.2 !important;
+  }
+}
+
 .contact-option:hover .option-icon {
   transform: scale(1.1);
 }
@@ -2768,7 +2794,12 @@ main {
   }
   
   .option-icon { font-size: 1.2rem; }
-  .option-text { font-size: 0.5rem; }
+  .option-text { 
+    font-size: 0.5rem;
+    white-space: normal !important;
+    text-overflow: clip !important;
+    overflow: visible !important;
+  }
 
   /* 防止首页/旧内联规则的视觉差异 */
   .contact-option {
@@ -2886,5 +2917,22 @@ main {
   
   .option-text {
     font-size: 0.4rem;
+    white-space: normal !important;
+    text-overflow: clip !important;
+    overflow: visible !important;
+    word-wrap: break-word !important;
+  }
+  
+  /* 确保所有文字在移动端完整显示 */
+  body, div, p, h1, h2, h3, h4, h5, h6, span, a, li, td, th, label {
+    white-space: normal !important;
+    text-overflow: clip !important;
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+  }
+  
+  .contact-text {
+    white-space: normal !important;
+    overflow: visible !important;
   }
 } 

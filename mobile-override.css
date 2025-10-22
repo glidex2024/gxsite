@@ -3,6 +3,34 @@
 
 /* 强制移动端样式优先级 */
 @media (max-width: 768px) {
+  /* 移动端文字完整显示 - 移除所有省略号效果 */
+  body, div, p, h1, h2, h3, h4, h5, h6, span, a, li, td, th, label, input, textarea, button {
+    white-space: normal !important;
+    text-overflow: clip !important;
+    overflow: visible !important;
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+  }
+  
+  /* 允许长文本换行 */
+  .nav-links a,
+  .logo,
+  .hero-content h1,
+  .hero-content p,
+  .contact-text,
+  .option-text,
+  .image-content h3,
+  .card h3,
+  .card p,
+  .description,
+  .content-text {
+    white-space: normal !important;
+    text-overflow: clip !important;
+    overflow: visible !important;
+    word-break: break-word !important;
+    max-width: 100% !important;
+  }
+  
   /* 导航栏移动端优化 */
   .navbar {
     background: var(--main-blue) !important;
@@ -48,11 +76,13 @@
     border-radius: 6px !important;
     transition: all 0.2s ease !important;
     position: relative !important;
-    white-space: nowrap !important;
+    white-space: normal !important;
     color: #ffffff !important;
     text-shadow: 0 1px 2px rgba(0,0,0,0.3) !important;
     background: rgba(255,255,255,0.1) !important;
     border: 1px solid rgba(255,255,255,0.2) !important;
+    word-wrap: break-word !important;
+    text-align: center !important;
   }
   
   .nav-links a:hover,
@@ -119,12 +149,13 @@
     color: #fff !important;
     padding: 12px 20px !important;
     font-size: 0.9rem !important;
-    white-space: nowrap !important;
+    white-space: normal !important;
     transition: all 0.2s ease !important;
     display: block !important;
     text-align: left !important;
     border-radius: 0 !important;
     min-height: auto !important;
+    word-wrap: break-word !important;
   }
   
   .nav-links .dropdown-menu li a:hover,
