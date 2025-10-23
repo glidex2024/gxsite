@@ -151,6 +151,48 @@
       object-position: center;
     }
     
+    /* 确保轮播图片不重复填充 */
+    .hero-background-slider {
+      background-repeat: no-repeat !important;
+    }
+    
+    .heroBackgroundSwiper {
+      background-repeat: no-repeat !important;
+    }
+    
+    .background-slide {
+      background-repeat: no-repeat !important;
+    }
+    
+    .background-slide img {
+      background-repeat: no-repeat !important;
+    }
+    
+    /* 电脑端优化 - 图片高度与hero-background-slider保持一致 */
+    @media (min-width: 769px) {
+      .hero-background-slider {
+        height: 100% !important;
+        background-repeat: no-repeat !important;
+      }
+      
+      .heroBackgroundSwiper {
+        height: 100% !important;
+        background-repeat: no-repeat !important;
+      }
+      
+      .background-slide {
+        height: 100% !important;
+        background-repeat: no-repeat !important;
+      }
+      
+      .background-slide img {
+        height: 100% !important;
+        object-fit: cover !important;
+        object-position: center !important;
+        background-repeat: no-repeat !important;
+      }
+    }
+    
     /* 背景遮罩 */
     .hero-section::before {
       content: '';
@@ -469,52 +511,7 @@
       50% { transform: scale(1.05); }
     }
     
-    /* 雪花效果 */
-    .snowflakes {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 3;
-    }
     
-    .snowflake {
-      position: absolute;
-      color: var(--snow-white);
-      font-size: 1.5rem;
-      animation: fall 10s linear infinite;
-      opacity: 0.8;
-    }
-    
-    .snowflake:nth-child(1) { left: 10%; animation-duration: 10s; animation-delay: 0s; }
-    .snowflake:nth-child(2) { left: 20%; animation-duration: 12s; animation-delay: 1s; }
-    .snowflake:nth-child(3) { left: 30%; animation-duration: 8s; animation-delay: 2s; }
-    .snowflake:nth-child(4) { left: 40%; animation-duration: 15s; animation-delay: 3s; }
-    .snowflake:nth-child(5) { left: 50%; animation-duration: 11s; animation-delay: 4s; }
-    .snowflake:nth-child(6) { left: 60%; animation-duration: 9s; animation-delay: 5s; }
-    .snowflake:nth-child(7) { left: 70%; animation-duration: 13s; animation-delay: 6s; }
-    .snowflake:nth-child(8) { left: 80%; animation-duration: 7s; animation-delay: 7s; }
-    .snowflake:nth-child(9) { left: 90%; animation-duration: 14s; animation-delay: 8s; }
-    .snowflake:nth-child(10) { left: 95%; animation-duration: 10s; animation-delay: 9s; }
-    
-    @keyframes fall {
-      0% {
-        transform: translateY(-100vh) rotate(0deg);
-        opacity: 0;
-      }
-      10% {
-        opacity: 0.8;
-      }
-      90% {
-        opacity: 0.8;
-      }
-      100% {
-        transform: translateY(100vh) rotate(360deg);
-        opacity: 0;
-      }
-    }
     
     .hero-content {
       display: flex;
@@ -1644,6 +1641,70 @@
         padding: 80px 0 40px 0; /* 移动端减少内边距 */
       }
       
+      /* 手机端hero-background-slider高度缩小20% */
+      .hero-background-slider {
+        height: 80% !important; /* 缩小20%，即80% */
+        background-repeat: no-repeat !important;
+      }
+      
+      .heroBackgroundSwiper {
+        height: 100% !important;
+        background-repeat: no-repeat !important;
+      }
+      
+      .background-slide {
+        height: 100% !important;
+        background-repeat: no-repeat !important;
+      }
+      
+      .background-slide img {
+        height: 100% !important;
+        object-fit: cover !important;
+        object-position: center !important;
+        background-repeat: no-repeat !important;
+      }
+      
+      /* 手机端轮播文字缩小10% */
+      .hero-content h1 {
+        font-size: 1.98rem !important; /* 2.2rem * 0.9 = 1.98rem */
+      }
+      
+      .hero-content .subtitle {
+        font-size: 1.08rem !important; /* 1.2rem * 0.9 = 1.08rem */
+      }
+      
+      .hero-content .description {
+        font-size: 0.9rem !important; /* 1rem * 0.9 = 0.9rem */
+      }
+      
+      .hero-content .description strong {
+        font-size: 0.99rem !important; /* 1.1rem * 0.9 = 0.99rem */
+      }
+      
+      .mission-section h3 {
+        font-size: 0.9rem !important; /* 1rem * 0.9 = 0.9rem */
+      }
+      
+      .mission-text {
+        font-size: 0.9rem !important; /* 1rem * 0.9 = 0.9rem */
+      }
+      
+      .hero-link {
+        font-size: 0.9rem !important; /* 1rem * 0.9 = 0.9rem */
+      }
+      
+      .hero-highlight h3 {
+        font-size: 1.35rem !important; /* 1.5rem * 0.9 = 1.35rem */
+      }
+      
+      .hero-highlight h4 {
+        font-size: 1.35rem !important; /* 1.5rem * 0.9 = 1.35rem */
+      }
+      
+      .feature-text {
+        font-size: 0.855rem !important; /* 0.95rem * 0.9 = 0.855rem */
+      }
+      
       .nav-container {
         padding: 1rem;
       }
@@ -2561,41 +2622,40 @@
         <div class="swiper-wrapper">
           <div class="swiper-slide">
             <div class="background-slide">
-              <img src="image/hero/hero-slide-01-snowboard-team.jpg" alt="滑雪团队合影" />
+              <picture>
+                <source media="(max-width: 768px)" srcset="image/hero/图aa.JPG">
+                <img src="image/hero/hero-slide-01-snowboard-team.jpg" alt="滑雪团队合影" />
+              </picture>
             </div>
           </div>
           <div class="swiper-slide">
             <div class="background-slide">
-              <img src="image/hero/hero-slide-02-ski-mountain.jpg" alt="雪山美景" />
+              <picture>
+                <source media="(max-width: 768px)" srcset="image/hero/图bb.jpeg">
+                <img src="image/hero/hero-slide-02-ski-mountain.jpg" alt="雪山美景" />
+              </picture>
             </div>
           </div>
           <div class="swiper-slide">
             <div class="background-slide">
-              <img src="image/hero/hero-slide-03-ski-lesson.jpg" alt="滑雪教学" />
+              <picture>
+                <source media="(max-width: 768px)" srcset="image/hero/图cc.jpg">
+                <img src="image/hero/hero-slide-03-ski-lesson.jpg" alt="滑雪教学" />
+              </picture>
             </div>
           </div>
           <div class="swiper-slide">
             <div class="background-slide">
-              <img src="image/hero/hero-slide-04-snow-resort.jpg" alt="滑雪度假村" />
+              <picture>
+                <source media="(max-width: 768px)" srcset="image/hero/图dd.jpeg">
+                <img src="image/hero/hero-slide-04-snow-resort.jpg" alt="滑雪度假村" />
+              </picture>
             </div>
           </div>
         </div>
       </div>
     </div>
     
-    <!-- 雪花效果 -->
-    <div class="snowflakes" aria-hidden="true">
-      <div class="snowflake">❄</div>
-      <div class="snowflake">❅</div>
-      <div class="snowflake">❆</div>
-      <div class="snowflake">❄</div>
-      <div class="snowflake">❅</div>
-      <div class="snowflake">❆</div>
-      <div class="snowflake">❄</div>
-      <div class="snowflake">❅</div>
-      <div class="snowflake">❆</div>
-      <div class="snowflake">❄</div>
-    </div>
     
     <!-- 内容区域 -->
     <div class="hero-content" data-aos="fade-up">
@@ -3220,29 +3280,6 @@
     });
     
     
-    // 雪花动画
-    function createSnowflake() {
-      const snowflake = document.createElement('div');
-      snowflake.classList.add('snowflake');
-      snowflake.innerHTML = '❄';
-      snowflake.style.left = Math.random() * 100 + '%';
-      snowflake.style.animationDuration = Math.random() * 3 + 2 + 's';
-      snowflake.style.opacity = Math.random();
-      
-      const snowflakesContainer = document.querySelector('.snowflakes');
-      if (snowflakesContainer) {
-        snowflakesContainer.appendChild(snowflake);
-        
-        setTimeout(() => {
-          if (snowflake.parentNode) {
-            snowflake.remove();
-          }
-        }, 5000);
-      }
-    }
-    
-    // 启动雪花动画
-    setInterval(createSnowflake, 300);
     
     // 联系按钮交互
     document.addEventListener('DOMContentLoaded', function() {
