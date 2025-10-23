@@ -233,13 +233,22 @@
         padding: 1rem 0.5rem 0.5rem;
       }
       
-      /* 移动端图片优化 - 确保完整显示 */
+      /* 移动端图片优化 - 确保完整显示图片且不超出边界 */
       .course-image {
-        height: 120px; /* 进一步缩小手机端图片高度 */
+        height: 220px; /* 进一步缩小手机端图片高度 */
         background: #f8f9fa;
+        overflow: hidden; /* 防止图片超出边界 */
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
       
       .course-image img {
+        max-width: 100%; /* 确保图片不超出容器宽度 */
+        max-height: 100%; /* 确保图片不超出容器高度 */
+        width: auto; /* 自动宽度 */
+        height: auto; /* 自动高度 */
         object-fit: contain !important; /* 确保完整显示图片 */
         object-position: center center !important; /* 居中显示 */
       }
