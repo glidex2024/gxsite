@@ -241,6 +241,43 @@ p, h1, h2, h3, h4, h5, h6, span, a, li, td, th, label, input, textarea {
   .btn { font-size: 0.95rem !important; }
 }
 
+/* 首页标题专用响应式字体大小 - 只影响首页，不影响其他页面 */
+@media (max-width: 768px) {
+  .hero-content .hero-left h1 {
+    font-size: clamp(2.0rem, 4.0vw, 3.5rem) !important;
+    white-space: nowrap !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+    word-wrap: normal !important;
+    overflow-wrap: normal !important;
+    max-width: none !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-content .hero-left h1 {
+    font-size: clamp(1.8rem, 3.5vw, 3.2rem) !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-content .hero-left h1 {
+    font-size: clamp(1.5rem, 3.0vw, 2.8rem) !important;
+  }
+}
+
+@media (max-width: 360px) {
+  .hero-content .hero-left h1 {
+    font-size: clamp(1.3rem, 2.8vw, 2.6rem) !important;
+  }
+}
+
+@media (max-width: 320px) {
+  .hero-content .hero-left h1 {
+    font-size: clamp(1.0rem, 2.4vw, 2.3rem) !important;
+  }
+}
+
 /* 移动端性能优化 */
 @media (max-width: 768px) {
   /* 减少动画复杂度 */
