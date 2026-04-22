@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://gxsite.pages.dev/sitemap.xml
+
+# Disallow dynamic/backup files
+Disallow: /coaches_backup.html
+Disallow: /google2962267e847827c6.html
