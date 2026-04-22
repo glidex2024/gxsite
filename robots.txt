@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Sitemaps
-Sitemap: https://gxsite.pages.dev/sitemap.xml
+Sitemap: https://glidex.net/sitemap.xml
 
 # Disallow dynamic/backup files
 Disallow: /coaches_backup.html
