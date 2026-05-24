@@ -2936,10 +2936,8 @@ main {
     overflow: visible !important;
   }
 } 
-/* ── 隐藏 footer + 导航 tab 里的预约入口（保留右侧预约按钮）── */
-.footer a[href="booking.html"],
-.footer li:has(> a[href="booking.html"]),
-.nav-links a[href="booking.html"],
-.nav-links li:has(> a[href="booking.html"]) {
+/* ── 全站隐藏所有 booking.html 链接及其 li（保留 .btn-reservation 按钮）── */
+a[href="booking.html"],
+li:has(> a[href="booking.html"]) {
   display: none !important;
 }
