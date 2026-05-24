@@ -626,4 +626,18 @@
   .dropdown-menu {
     transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
   }
+
+  /* 移动端隐藏 booking 导航链接（比 .nav-links a 更高优先级） */
+  .nav-links a[href="booking.html"],
+  .nav-links li:has(> a[href="booking.html"]) {
+    display: none !important;
+  }
+}
+
+/* ── 全站隐藏 booking.html 导航入口（桌面 + 移动端）── */
+.nav-links a[href="booking.html"],
+.nav-links li:has(> a[href="booking.html"]),
+a[href="booking.html"],
+li:has(> a[href="booking.html"]) {
+  display: none !important;
 }
