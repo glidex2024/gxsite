@@ -3302,6 +3302,27 @@
       white-space: normal !important;
     }
     .rv-gico { width: 14px; height: 14px; flex-shrink: 0; opacity: 0.8; }
+    /* 移动端强制 overflow 不被 mobile-override.css 覆盖 */
+    .rv-section { overflow: hidden !important; }
+    .rv-scroll-wrap { position: relative; overflow: hidden !important; }
+    /* 地图浮动标签 */
+    .map-label {
+      position: absolute; top: 16px; left: 50%; transform: translateX(-50%);
+      background: rgba(30,58,138,0.88); backdrop-filter: blur(8px);
+      color: #fff; padding: 8px 20px; border-radius: 40px;
+      font-size: 0.88rem; font-weight: 600; letter-spacing: 0.04em;
+      z-index: 2; box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+      display: flex !important; align-items: center !important; gap: 6px;
+      white-space: nowrap !important; width: max-content !important;
+    }
+    /* 移动端评价卡片缩小 */
+    @media (max-width: 768px) {
+      .rv-card { width: 220px !important; padding: 16px !important; border-radius: 14px !important; }
+      .rv-track { gap: 12px !important; padding: 6px 20px 10px !important; animation-duration: 50s !important; }
+      .rv-text { font-size: 0.78rem !important; -webkit-line-clamp: 4 !important; }
+      .rv-name { font-size: 0.82rem !important; }
+      .rv-avatar { width: 34px !important; height: 34px !important; font-size: 0.88rem !important; }
+    }
   </style>
 
   <!-- hidden SVG symbol -->
@@ -3316,7 +3337,7 @@
     </defs>
   </svg>
 
-  <section style="padding: 64px 0 52px; background: var(--ice-blue);">
+  <section class="rv-section" style="padding: 64px 0 52px; background: var(--ice-blue);">
     <!-- 标题 -->
     <div class="container" style="text-align:center; margin-bottom:48px;">
       <div style="display:inline-flex; align-items:center; gap:8px; margin-bottom:12px;">
@@ -3331,9 +3352,9 @@
     </div>
 
     <!-- 滚动区域 -->
-    <div style="position:relative; overflow: hidden;">
-      <div style="position:absolute;left:0;top:0;bottom:0;width:100px;background:linear-gradient(to right,#f1f5f9,transparent);z-index:2;pointer-events:none;"></div>
-      <div style="position:absolute;right:0;top:0;bottom:0;width:100px;background:linear-gradient(to left,#f1f5f9,transparent);z-index:2;pointer-events:none;"></div>
+    <div class="rv-scroll-wrap" style="position:relative;">
+      <div style="position:absolute;left:0;top:0;bottom:0;width:80px;background:linear-gradient(to right,#f1f5f9,transparent);z-index:2;pointer-events:none;"></div>
+      <div style="position:absolute;right:0;top:0;bottom:0;width:80px;background:linear-gradient(to left,#f1f5f9,transparent);z-index:2;pointer-events:none;"></div>
 
       <div class="rv-track">
 
@@ -3719,18 +3740,11 @@
   <section style="padding: 0; margin: 0; line-height: 0;">
     <div style="position:relative;">
       <!-- 标题浮层 -->
-      <div style="
-        position:absolute; top:20px; left:50%; transform:translateX(-50%);
-        background:rgba(30,58,138,0.88); backdrop-filter:blur(8px);
-        color:#fff; padding:10px 28px; border-radius:40px;
-        font-size:0.95rem; font-weight:600; letter-spacing:0.05em;
-        z-index:2; white-space:nowrap; box-shadow:0 4px 16px rgba(0,0,0,0.2);
-        display:flex; align-items:center; gap:8px;
-      ">
+      <div class="map-label" style="line-height:1.5;">
         <span>📍</span>
-        <span>GlideX 中文国際滑雪学校</span>
+        <span class="map-business-name">GlideX 中文国際滑雪学校</span>
         <a href="https://maps.app.goo.gl/kisyeFMdDnqonN8a6" target="_blank" rel="noopener"
-          style="color:#fbbf24; font-size:0.82rem; margin-left:6px; text-decoration:none; font-weight:500;">
+          style="color:#fbbf24; font-size:0.82rem; margin-left:4px; text-decoration:none; font-weight:500;">
           Google 地图 ↗
         </a>
       </div>

@@ -641,3 +641,36 @@ a[href="booking.html"],
 li:has(> a[href="booking.html"]) {
   display: none !important;
 }
+
+/* ── 地图浮动标签：强制 nowrap + 移动端隐藏长店名 ── */
+.map-label,
+.map-label span,
+.map-label a {
+  white-space: nowrap !important;
+  word-break: normal !important;
+  word-wrap: normal !important;
+  overflow-wrap: normal !important;
+  line-height: 1.5 !important;
+}
+.map-label {
+  display: flex !important;
+  align-items: center !important;
+  flex-wrap: nowrap !important;
+}
+@media (max-width: 768px) {
+  /* 移动端隐藏店名，只留图钉 + 链接 */
+  .map-business-name {
+    display: none !important;
+  }
+  /* 修复 rv-text 的 line-clamp（依赖 overflow:hidden，被 mobile-override 覆盖） */
+  .rv-text {
+    overflow: hidden !important;
+    -webkit-line-clamp: 4 !important;
+    display: -webkit-box !important;
+    -webkit-box-orient: vertical !important;
+  }
+  /* 修复 rv-card 内 p 标签的 overflow */
+  .rv-card p {
+    overflow: hidden !important;
+  }
+}
