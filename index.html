@@ -3244,6 +3244,508 @@
     </div>
   </section>
 
+  <!-- ===== Google 用户评价 ===== -->
+  <style>
+    @keyframes reviews-scroll {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .rv-track {
+      display: flex;
+      gap: 16px;
+      width: max-content;
+      padding: 8px 32px 12px;
+      animation: reviews-scroll 65s linear infinite;
+    }
+    .rv-track:hover { animation-play-state: paused; }
+    .rv-card {
+      width: 290px;
+      height: 198px;
+      flex-shrink: 0;
+      background: var(--snow-white);
+      border: 2px solid transparent;
+      border-radius: 20px;
+      padding: 20px 22px;
+      box-sizing: border-box;
+      cursor: pointer;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+      text-decoration: none;
+      display: block;
+      overflow: hidden;
+    }
+    .rv-card:hover {
+      box-shadow: 0 8px 28px rgba(30,58,138,0.15);
+      border-color: var(--accent-orange);
+    }
+    .rv-head { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+    .rv-avatar {
+      width: 36px; height: 36px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; color: #fff; font-size: 0.9rem; flex-shrink: 0;
+    }
+    .rv-meta { flex: 1; min-width: 0; }
+    .rv-name { font-weight: 700; color: var(--primary-blue); font-size: 0.88rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .rv-date { color: var(--warm-gray); font-size: 0.72rem; margin-top: 1px; }
+    .rv-stars { color: var(--accent-orange); font-size: 0.78rem; letter-spacing: 2px; margin-bottom: 8px; }
+    .rv-text {
+      color: var(--dark-gray);
+      font-size: 0.83rem;
+      line-height: 1.6;
+      margin: 0;
+      display: -webkit-box;
+      -webkit-line-clamp: 4;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      word-break: break-word !important;
+      white-space: normal !important;
+    }
+    .rv-gico { width: 14px; height: 14px; flex-shrink: 0; opacity: 0.8; }
+  </style>
+
+  <!-- hidden SVG symbol -->
+  <svg style="display:none;" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <symbol id="g-icon" viewBox="0 0 48 48">
+        <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.1 17.74 9.5 24 9.5z"/>
+        <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
+        <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
+        <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-3.59-13.46-8.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
+      </symbol>
+    </defs>
+  </svg>
+
+  <section style="padding: 64px 0 52px; background: var(--ice-blue);">
+    <!-- 标题 -->
+    <div class="container" style="text-align:center; margin-bottom:48px;">
+      <div style="display:inline-flex; align-items:center; gap:8px; margin-bottom:12px;">
+        <svg width="20" height="20"><use href="#g-icon"/></svg>
+        <span style="font-size:0.85rem; font-weight:600; color:var(--warm-gray); letter-spacing:0.12em; text-transform:uppercase;">Google 用户评价</span>
+      </div>
+      <h2 style="font-size:2.5rem; font-weight:900; color:var(--primary-blue); margin-bottom:0.6rem; letter-spacing:-0.02em;">真实学员好评</h2>
+      <p style="font-size:1.15rem; color:var(--warm-gray); margin:0;">
+        <span style="color:var(--accent-orange); font-size:1rem;">★★★★★</span>
+        &nbsp;5.0 分 &nbsp;·&nbsp; 18 条真实评价
+      </p>
+    </div>
+
+    <!-- 滚动区域 -->
+    <div style="position:relative; overflow: hidden;">
+      <div style="position:absolute;left:0;top:0;bottom:0;width:100px;background:linear-gradient(to right,#f1f5f9,transparent);z-index:2;pointer-events:none;"></div>
+      <div style="position:absolute;right:0;top:0;bottom:0;width:100px;background:linear-gradient(to left,#f1f5f9,transparent);z-index:2;pointer-events:none;"></div>
+
+      <div class="rv-track">
+
+        <!-- Shuai -->
+        <div class="rv-card">
+          <div class="rv-head">
+            <div class="rv-avatar" style="background:#3b82f6;">S</div>
+            <div class="rv-meta"><div class="rv-name">Shuai</div><div class="rv-date">3个月前</div></div>
+            <svg class="rv-gico"><use href="#g-icon"/></svg>
+          </div>
+          <div class="rv-stars">★★★★★</div>
+          <p class="rv-text">给5岁孩子约了教练的1:1一天的课程，教练热情周到，还帮忙联系雪具租赁事宜，省去了不少烦恼👍 教练教学仔细有耐心，一天的教学孩子进步很大。也十分喜欢教练，100% 推荐！</p>
+        </div>
+
+        <!-- 尹雨梦 -->
+        <div class="rv-card">
+          <div class="rv-head">
+            <div class="rv-avatar" style="background:#8b5cf6;">尹</div>
+            <div class="rv-meta"><div class="rv-name">尹雨梦</div><div class="rv-date">3个月前</div></div>
+            <svg class="rv-gico"><use href="#g-icon"/></svg>
+          </div>
+          <div class="rv-stars">★★★★★</div>
+          <p class="rv-text">教练很细心负责 四个小时换刃就学会了 回头去雪场再练习一下</p>
+        </div>
+
+        <!-- charlie z -->
+        <div class="rv-card">
+          <div class="rv-head">
+            <div class="rv-avatar" style="background:#10b981;">C</div>
+            <div class="rv-meta"><div class="rv-name">charlie z</div><div class="rv-date">4个月前</div></div>
+            <svg class="rv-gico"><use href="#g-icon"/></svg>
+          </div>
+          <div class="rv-stars">★★★★★</div>
+          <p class="rv-text">跟教练上了两天滑行进阶班，学到了很多之前从来没有任何教练提到过，甚至网上也都没看到过的细节要点，比如做某些动作的时机，姿态等等。仅仅两天课感觉进步飞速。已经和教练约好下个雪季再见啦！</p>
+        </div>
+
+        <!-- qiuyan wang -->
+        <div class="rv-card">
+          <div class="rv-head">
+            <div class="rv-avatar" style="background:#f59e0b;">Q</div>
+            <div class="rv-meta"><div class="rv-name">qiuyan wang</div><div class="rv-date">3个月前</div></div>
+            <svg class="rv-gico"><use href="#g-icon"/></svg>
+          </div>
+          <div class="rv-stars">★★★★★</div>
+          <p class="rv-text">我跟朋友在这边学校报名考的等级考试，教练细心有耐心，课内鉴定学到了很多滑行方面的东西，非常感谢🙏</p>
+        </div>
+
+        <!-- 王悦 -->
+        <div class="rv-card">
+          <div class="rv-head">
+            <div class="rv-avatar" style="background:#ec4899;">王</div>
+            <div class="rv-meta"><div class="rv-name">王悦</div><div class="rv-date">3个月前</div></div>
+            <svg class="rv-gico"><use href="#g-icon"/></svg>
+          </div>
+          <div class="rv-stars">★★★★★</div>
+          <p class="rv-text">我参加了这里的jsba课内选考，教官和翻译员都友好又负责。考试重点解释的很清楚，气氛也很融洽！我愿称之为最佳！</p>
+        </div>
+
+        <!-- MINGENG LI -->
+        <div class="rv-card">
+          <div class="rv-head">
+            <div class="rv-avatar" style="background:#6366f1;">M</div>
+            <div class="rv-meta"><div class="rv-name">MINGENG LI</div><div class="rv-date">3个月前</div></div>
+            <svg class="rv-gico"><use href="#g-icon"/></svg>
+          </div>
+          <div class="rv-stars">★★★★★</div>
+          <p class="rv-text">本次参加了GX组织的JSBA检定会，负责课内考的平冈老师很专业也很细心，在检定会中还学到了很多知识，很受用</p>
+        </div>
+
+        <!-- ヨウス -->
+        <div class="rv-card">
+          <div class="rv-head">
+            <div class="rv-avatar" style="background:#14b8a6;">ヨ</div>
+            <div class="rv-meta"><div class="rv-name">ヨウス</div><div class="rv-date">3个月前</div></div>
+            <svg class="rv-gico"><use href="#g-icon"/></svg>
+          </div>
+          <div class="rv-stars">★★★★★</div>
+          <p class="rv-text">教练特别耐心，而且你提问就耐心给你回答，上课效果也特别好，翻译小哥也特别专业，特别棒的一次体验</p>
+        </div>
+
+        <!-- ZZZ -->
+        <div class="rv-card">
+          <div class="rv-head">
+            <div class="rv-avatar" style="background:#f97316;">Z</div>
+            <div class="rv-meta"><div class="rv-name">ZZZ</div><div class="rv-date">4个月前</div></div>
+            <svg class="rv-gico"><use href="#g-icon"/></svg>
+          </div>
+          <div class="rv-stars">★★★★★</div>
+          <p class="rv-text">报了双板1对1，教练很细心，教了很多新的东西。学校的对接工作做的也很好，很方便，下次还会再报的。</p>
+        </div>
+
+        <!-- 沈凡溪 -->
+        <div class="rv-card">
+          <div class="rv-head">
+            <div class="rv-avatar" style="background:#84cc16;">沈</div>
+            <div class="rv-meta"><div class="rv-name">沈凡溪</div><div class="rv-date">3个月前</div></div>
+            <svg class="rv-gico"><use href="#g-icon"/></svg>
+          </div>
+          <div class="rv-stars">★★★★★</div>
+          <p class="rv-text">教的很好！前刃总是不稳练了三个小时找到感觉啦！下次进阶还来～</p>
+        </div>
+
+        <!-- しゅうぺいや -->
+        <div class="rv-card">
+          <div class="rv-head">
+            <div class="rv-avatar" style="background:#a855f7;">し</div>
+            <div class="rv-meta"><div class="rv-name">しゅうぺいや</div><div class="rv-date">4个月前</div></div>
+            <svg class="rv-gico"><use href="#g-icon"/></svg>
+          </div>
+          <div class="rv-stars">★★★★★</div>
+          <p class="rv-text">报了1v1课程教练很耐心沟通也很及时☺️</p>
+        </div>
+
+        <!-- YX Eng -->
+        <div class="rv-card">
+          <div class="rv-head">
+            <div class="rv-avatar" style="background:#0ea5e9;">Y</div>
+            <div class="rv-meta"><div class="rv-name">YX Eng</div><div class="rv-date">2个月前</div></div>
+            <svg class="rv-gico"><use href="#g-icon"/></svg>
+          </div>
+          <div class="rv-stars">★★★★★</div>
+          <p class="rv-text">滑雪学校给我们安排了Aaron教练，带我们上了1.5天的滑雪课。我们和他相处得非常愉快。他超级有耐心、细致周到、乐于助人、开朗热情，而且行动迅速。他的沟通能力也很强！我们从他身上学到了很多东西:)</p>
+        </div>
+
+        <!-- Melissa Ang -->
+        <div class="rv-card">
+          <div class="rv-head">
+            <div class="rv-avatar" style="background:#ef4444;">M</div>
+            <div class="rv-meta"><div class="rv-name">Melissa Ang</div><div class="rv-date">4个月前</div></div>
+            <svg class="rv-gico"><use href="#g-icon"/></svg>
+          </div>
+          <div class="rv-stars">★★★★★</div>
+          <p class="rv-text">我临时报名参加了GlideX的课程，联系他们非常方便，而且回复也很及时。教练Emily非常有耐心、冷静且善解人意。她能够指出我需要改进的小细节，以及我需要做哪些动作才能顺利转弯。</p>
+        </div>
+
+        <!-- David C -->
+        <div class="rv-card">
+          <div class="rv-head">
+            <div class="rv-avatar" style="background:#22c55e;">D</div>
+            <div class="rv-meta"><div class="rv-name">David C</div><div class="rv-date">4个月前</div></div>
+            <svg class="rv-gico"><use href="#g-icon"/></svg>
+          </div>
+          <div class="rv-stars">★★★★★</div>
+          <p class="rv-text">上官 教练教学非常认真 对于细节一讲马上就可以改善。而且非常关心学生。强力推荐大家来上他的课</p>
+        </div>
+
+        <!-- Jean Pan -->
+        <div class="rv-card">
+          <div class="rv-head">
+            <div class="rv-avatar" style="background:#d946ef;">J</div>
+            <div class="rv-meta"><div class="rv-name">Jean Pan</div><div class="rv-date">4个月前</div></div>
+            <svg class="rv-gico"><use href="#g-icon"/></svg>
+          </div>
+          <div class="rv-stars">★★★★★</div>
+          <p class="rv-text">服务很好，教练也很专业！</p>
+        </div>
+
+        <!-- U X -->
+        <div class="rv-card">
+          <div class="rv-head">
+            <div class="rv-avatar" style="background:#06b6d4;">U</div>
+            <div class="rv-meta"><div class="rv-name">U X</div><div class="rv-date">2周前</div></div>
+            <svg class="rv-gico"><use href="#g-icon"/></svg>
+          </div>
+          <div class="rv-stars">★★★★★</div>
+          <p class="rv-text">教练上课非常用心、有耐心，也好聊天！</p>
+        </div>
+
+        <!-- Esther Wan -->
+        <div class="rv-card">
+          <div class="rv-head">
+            <div class="rv-avatar" style="background:#f43f5e;">E</div>
+            <div class="rv-meta"><div class="rv-name">Esther Wan</div><div class="rv-date">3周前</div></div>
+            <svg class="rv-gico"><use href="#g-icon"/></svg>
+          </div>
+          <div class="rv-stars">★★★★★</div>
+          <p class="rv-text">教练都十分用心教导而且经验丰富👍</p>
+        </div>
+
+        <!-- ── 第二组（无缝循环复制）── -->
+
+        <!-- Shuai -->
+        <div class="rv-card">
+          <div class="rv-head">
+            <div class="rv-avatar" style="background:#3b82f6;">S</div>
+            <div class="rv-meta"><div class="rv-name">Shuai</div><div class="rv-date">3个月前</div></div>
+            <svg class="rv-gico"><use href="#g-icon"/></svg>
+          </div>
+          <div class="rv-stars">★★★★★</div>
+          <p class="rv-text">给5岁孩子约了教练的1:1一天的课程，教练热情周到，还帮忙联系雪具租赁事宜，省去了不少烦恼👍 教练教学仔细有耐心，一天的教学孩子进步很大。也十分喜欢教练，100% 推荐！</p>
+        </div>
+
+        <!-- 尹雨梦 -->
+        <div class="rv-card">
+          <div class="rv-head">
+            <div class="rv-avatar" style="background:#8b5cf6;">尹</div>
+            <div class="rv-meta"><div class="rv-name">尹雨梦</div><div class="rv-date">3个月前</div></div>
+            <svg class="rv-gico"><use href="#g-icon"/></svg>
+          </div>
+          <div class="rv-stars">★★★★★</div>
+          <p class="rv-text">教练很细心负责 四个小时换刃就学会了 回头去雪场再练习一下</p>
+        </div>
+
+        <!-- charlie z -->
+        <div class="rv-card">
+          <div class="rv-head">
+            <div class="rv-avatar" style="background:#10b981;">C</div>
+            <div class="rv-meta"><div class="rv-name">charlie z</div><div class="rv-date">4个月前</div></div>
+            <svg class="rv-gico"><use href="#g-icon"/></svg>
+          </div>
+          <div class="rv-stars">★★★★★</div>
+          <p class="rv-text">跟教练上了两天滑行进阶班，学到了很多之前从来没有任何教练提到过，甚至网上也都没看到过的细节要点，比如做某些动作的时机，姿态等等。仅仅两天课感觉进步飞速。已经和教练约好下个雪季再见啦！</p>
+        </div>
+
+        <!-- qiuyan wang -->
+        <div class="rv-card">
+          <div class="rv-head">
+            <div class="rv-avatar" style="background:#f59e0b;">Q</div>
+            <div class="rv-meta"><div class="rv-name">qiuyan wang</div><div class="rv-date">3个月前</div></div>
+            <svg class="rv-gico"><use href="#g-icon"/></svg>
+          </div>
+          <div class="rv-stars">★★★★★</div>
+          <p class="rv-text">我跟朋友在这边学校报名考的等级考试，教练细心有耐心，课内鉴定学到了很多滑行方面的东西，非常感谢🙏</p>
+        </div>
+
+        <!-- 王悦 -->
+        <div class="rv-card">
+          <div class="rv-head">
+            <div class="rv-avatar" style="background:#ec4899;">王</div>
+            <div class="rv-meta"><div class="rv-name">王悦</div><div class="rv-date">3个月前</div></div>
+            <svg class="rv-gico"><use href="#g-icon"/></svg>
+          </div>
+          <div class="rv-stars">★★★★★</div>
+          <p class="rv-text">我参加了这里的jsba课内选考，教官和翻译员都友好又负责。考试重点解释的很清楚，气氛也很融洽！我愿称之为最佳！</p>
+        </div>
+
+        <!-- MINGENG LI -->
+        <div class="rv-card">
+          <div class="rv-head">
+            <div class="rv-avatar" style="background:#6366f1;">M</div>
+            <div class="rv-meta"><div class="rv-name">MINGENG LI</div><div class="rv-date">3个月前</div></div>
+            <svg class="rv-gico"><use href="#g-icon"/></svg>
+          </div>
+          <div class="rv-stars">★★★★★</div>
+          <p class="rv-text">本次参加了GX组织的JSBA检定会，负责课内考的平冈老师很专业也很细心，在检定会中还学到了很多知识，很受用</p>
+        </div>
+
+        <!-- ヨウス -->
+        <div class="rv-card">
+          <div class="rv-head">
+            <div class="rv-avatar" style="background:#14b8a6;">ヨ</div>
+            <div class="rv-meta"><div class="rv-name">ヨウス</div><div class="rv-date">3个月前</div></div>
+            <svg class="rv-gico"><use href="#g-icon"/></svg>
+          </div>
+          <div class="rv-stars">★★★★★</div>
+          <p class="rv-text">教练特别耐心，而且你提问就耐心给你回答，上课效果也特别好，翻译小哥也特别专业，特别棒的一次体验</p>
+        </div>
+
+        <!-- ZZZ -->
+        <div class="rv-card">
+          <div class="rv-head">
+            <div class="rv-avatar" style="background:#f97316;">Z</div>
+            <div class="rv-meta"><div class="rv-name">ZZZ</div><div class="rv-date">4个月前</div></div>
+            <svg class="rv-gico"><use href="#g-icon"/></svg>
+          </div>
+          <div class="rv-stars">★★★★★</div>
+          <p class="rv-text">报了双板1对1，教练很细心，教了很多新的东西。学校的对接工作做的也很好，很方便，下次还会再报的。</p>
+        </div>
+
+        <!-- 沈凡溪 -->
+        <div class="rv-card">
+          <div class="rv-head">
+            <div class="rv-avatar" style="background:#84cc16;">沈</div>
+            <div class="rv-meta"><div class="rv-name">沈凡溪</div><div class="rv-date">3个月前</div></div>
+            <svg class="rv-gico"><use href="#g-icon"/></svg>
+          </div>
+          <div class="rv-stars">★★★★★</div>
+          <p class="rv-text">教的很好！前刃总是不稳练了三个小时找到感觉啦！下次进阶还来～</p>
+        </div>
+
+        <!-- しゅうぺいや -->
+        <div class="rv-card">
+          <div class="rv-head">
+            <div class="rv-avatar" style="background:#a855f7;">し</div>
+            <div class="rv-meta"><div class="rv-name">しゅうぺいや</div><div class="rv-date">4个月前</div></div>
+            <svg class="rv-gico"><use href="#g-icon"/></svg>
+          </div>
+          <div class="rv-stars">★★★★★</div>
+          <p class="rv-text">报了1v1课程教练很耐心沟通也很及时☺️</p>
+        </div>
+
+        <!-- YX Eng -->
+        <div class="rv-card">
+          <div class="rv-head">
+            <div class="rv-avatar" style="background:#0ea5e9;">Y</div>
+            <div class="rv-meta"><div class="rv-name">YX Eng</div><div class="rv-date">2个月前</div></div>
+            <svg class="rv-gico"><use href="#g-icon"/></svg>
+          </div>
+          <div class="rv-stars">★★★★★</div>
+          <p class="rv-text">滑雪学校给我们安排了Aaron教练，带我们上了1.5天的滑雪课。我们和他相处得非常愉快。他超级有耐心、细致周到、乐于助人、开朗热情，而且行动迅速。他的沟通能力也很强！我们从他身上学到了很多东西:)</p>
+        </div>
+
+        <!-- Melissa Ang -->
+        <div class="rv-card">
+          <div class="rv-head">
+            <div class="rv-avatar" style="background:#ef4444;">M</div>
+            <div class="rv-meta"><div class="rv-name">Melissa Ang</div><div class="rv-date">4个月前</div></div>
+            <svg class="rv-gico"><use href="#g-icon"/></svg>
+          </div>
+          <div class="rv-stars">★★★★★</div>
+          <p class="rv-text">我临时报名参加了GlideX的课程，联系他们非常方便，而且回复也很及时。教练Emily非常有耐心、冷静且善解人意。她能够指出我需要改进的小细节，以及我需要做哪些动作才能顺利转弯。</p>
+        </div>
+
+        <!-- David C -->
+        <div class="rv-card">
+          <div class="rv-head">
+            <div class="rv-avatar" style="background:#22c55e;">D</div>
+            <div class="rv-meta"><div class="rv-name">David C</div><div class="rv-date">4个月前</div></div>
+            <svg class="rv-gico"><use href="#g-icon"/></svg>
+          </div>
+          <div class="rv-stars">★★★★★</div>
+          <p class="rv-text">上官 教练教学非常认真 对于细节一讲马上就可以改善。而且非常关心学生。强力推荐大家来上他的课</p>
+        </div>
+
+        <!-- Jean Pan -->
+        <div class="rv-card">
+          <div class="rv-head">
+            <div class="rv-avatar" style="background:#d946ef;">J</div>
+            <div class="rv-meta"><div class="rv-name">Jean Pan</div><div class="rv-date">4个月前</div></div>
+            <svg class="rv-gico"><use href="#g-icon"/></svg>
+          </div>
+          <div class="rv-stars">★★★★★</div>
+          <p class="rv-text">服务很好，教练也很专业！</p>
+        </div>
+
+        <!-- U X -->
+        <div class="rv-card">
+          <div class="rv-head">
+            <div class="rv-avatar" style="background:#06b6d4;">U</div>
+            <div class="rv-meta"><div class="rv-name">U X</div><div class="rv-date">2周前</div></div>
+            <svg class="rv-gico"><use href="#g-icon"/></svg>
+          </div>
+          <div class="rv-stars">★★★★★</div>
+          <p class="rv-text">教练上课非常用心、有耐心，也好聊天！</p>
+        </div>
+
+        <!-- Esther Wan -->
+        <div class="rv-card">
+          <div class="rv-head">
+            <div class="rv-avatar" style="background:#f43f5e;">E</div>
+            <div class="rv-meta"><div class="rv-name">Esther Wan</div><div class="rv-date">3周前</div></div>
+            <svg class="rv-gico"><use href="#g-icon"/></svg>
+          </div>
+          <div class="rv-stars">★★★★★</div>
+          <p class="rv-text">教练都十分用心教导而且经验丰富👍</p>
+        </div>
+
+      </div><!-- /.rv-track -->
+    </div><!-- /滚动区域 -->
+
+    <!-- 查看全部 -->
+    <div style="text-align:center; margin-top:40px;">
+      <a href="https://maps.app.goo.gl/kisyeFMdDnqonN8a6" target="_blank" rel="noopener"
+        style="display:inline-flex;align-items:center;gap:8px;color:var(--primary-blue);text-decoration:none;font-size:0.88rem;font-weight:600;border:2px solid var(--primary-blue);padding:11px 32px;border-radius:40px;transition:all 0.25s;background:transparent;"
+        onmouseenter="this.style.background='var(--primary-blue)';this.style.color='#fff';"
+        onmouseleave="this.style.background='transparent';this.style.color='var(--primary-blue)';">
+        <svg width="16" height="16"><use href="#g-icon"/></svg>
+        在 Google 上查看全部评价
+      </a>
+    </div>
+
+    <!-- 点击卡片跳转 Google Maps -->
+    <script>
+      document.querySelectorAll('.rv-card').forEach(function(c) {
+        c.addEventListener('click', function() {
+          window.open('https://maps.app.goo.gl/kisyeFMdDnqonN8a6', '_blank', 'noopener');
+        });
+      });
+    </script>
+  </section>
+
+  <!-- Google 地图 -->
+  <section style="padding: 0; margin: 0; line-height: 0;">
+    <div style="position:relative;">
+      <!-- 标题浮层 -->
+      <div style="
+        position:absolute; top:20px; left:50%; transform:translateX(-50%);
+        background:rgba(30,58,138,0.88); backdrop-filter:blur(8px);
+        color:#fff; padding:10px 28px; border-radius:40px;
+        font-size:0.95rem; font-weight:600; letter-spacing:0.05em;
+        z-index:2; white-space:nowrap; box-shadow:0 4px 16px rgba(0,0,0,0.2);
+        display:flex; align-items:center; gap:8px;
+      ">
+        <span>📍</span>
+        <span>GlideX 中文国際滑雪学校</span>
+        <a href="https://maps.app.goo.gl/kisyeFMdDnqonN8a6" target="_blank" rel="noopener"
+          style="color:#fbbf24; font-size:0.82rem; margin-left:6px; text-decoration:none; font-weight:500;">
+          Google 地图 ↗
+        </a>
+      </div>
+      <!-- 地图 iframe -->
+      <iframe
+        src="https://maps.google.com/maps?q=36.9342651,138.8387578&z=16&output=embed&hl=zh-CN"
+        width="100%" height="420"
+        style="display:block; border:none;"
+        allowfullscreen
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="GlideX 中文国際滑雪学校 地图">
+      </iframe>
+    </div>
+  </section>
+
   <!-- 页脚 -->
   <footer class="footer">
     <div class="container">
