@@ -379,13 +379,11 @@ p, h1, h2, h3, h4, h5, h6, span, a, li, td, th, label, input, textarea {
   
   /* 优化图片加载 */
   img {
-    loading: lazy;
   }
   
   /* 关键图片立即加载 */
   .hero-bg,
   .logo img {
-    loading: eager;
   }
 }
 

@@ -26,22 +26,6 @@
   <link rel="stylesheet" href="qr-modal.css">
   <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
   <style>
-    :root {
-      --primary-blue: #1e3a8a;
-      --secondary-blue: #3b82f6;
-      --accent-orange: #ea580c;
-      --snow-white: #ffffff;
-      --deep-green: #166534;
-      --warm-gray: #6b7280;
-      --dark-gray: #374151;
-      --ice-blue: #f1f5f9;
-      --powder-blue: #e0e7ff;
-      --mountain-gray: #1f2937;
-      --success-green: #059669;
-      --warning-amber: #d97706;
-      --light-gray: #f9fafb;
-      --border-gray: #e5e7eb;
-    }
     
     /* 跨平台字体渲染优化 */
     * {
@@ -321,19 +305,19 @@
     <h2 class="qr-section-title">扫码联系我们</h2>
     <div class="qr-codes-container">
       <div class="qr-item">
-        <img src="image/qrcode/1.PNG" alt="微信二维码">
+        <img loading="lazy" src="image/qrcode/1.PNG" alt="微信二维码">
         <p>微信</p>
       </div>
       <div class="qr-item">
-        <img src="image/qrcode/2.JPG" alt="QQ二维码">
+        <img loading="lazy" src="image/qrcode/2.JPG" alt="QQ二维码">
         <p>LINE</p>
       </div>
       <div class="qr-item">
-        <img src="image/qrcode/3.PNG" alt="电话二维码">
+        <img loading="lazy" src="image/qrcode/3.PNG" alt="电话二维码">
         <p>WhatsApp</p>
       </div>
       <div class="qr-item">
-        <img src="image/qrcode/4.jpeg" alt="邮箱二维码">
+        <img loading="lazy" src="image/qrcode/4.jpeg" alt="邮箱二维码">
         <p>小红书</p>
       </div>
     </div>
@@ -366,6 +350,7 @@
             
             <li><a href="news.html">最新消息</a></li>
             <li><a href="contact.html">联系我们</a></li>
+        <li><a href="booking.html" style="color:#ea580c;font-weight:700">📅 立即预约</a></li>
           </ul>
         </div>
         
@@ -518,7 +503,7 @@
             <button class="qr-modal-close" onclick="closeQRModal()">&times;</button>
           </div>
           <div class="qr-modal-body">
-            <img src="${imageSrc}" alt="${title} QR Code" class="qr-image">
+            <img loading="lazy" src="${imageSrc}" alt="${title} QR Code" class="qr-image">
             <p class="qr-tip">请使用手机扫描二维码</p>
           </div>
         </div>

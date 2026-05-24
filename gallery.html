@@ -25,22 +25,6 @@
   <link rel="stylesheet" href="mobile-override.css">
   <link rel="stylesheet" href="qr-modal.css">
   <style>
-    :root {
-      --primary-blue: #1e3a8a;
-      --secondary-blue: #3b82f6;
-      --accent-orange: #ea580c;
-      --snow-white: #ffffff;
-      --deep-green: #166534;
-      --warm-gray: #6b7280;
-      --dark-gray: #374151;
-      --ice-blue: #f1f5f9;
-      --powder-blue: #e0e7ff;
-      --mountain-gray: #1f2937;
-      --success-green: #059669;
-      --warning-amber: #d97706;
-      --light-gray: #f9fafb;
-      --border-gray: #e5e7eb;
-    }
     
     /* 跨平台字体渲染优化 */
     * {
@@ -239,6 +223,7 @@
                 <li><a href="courses.html">课程介绍</a></li>
         <li><a href="news.html">最新消息</a></li>
         <li><a href="contact.html">联系我们</a></li>
+        <li><a href="booking.html" style="color:#ea580c;font-weight:700">📅 立即预约</a></li>
       </ul>
       <button class="btn btn-reservation" onclick="showAllQR()">预约</button>
     </div>
@@ -277,6 +262,7 @@
             
             <li><a href="news.html">最新消息</a></li>
             <li><a href="contact.html">联系我们</a></li>
+        <li><a href="booking.html" style="color:#ea580c;font-weight:700">📅 立即预约</a></li>
           </ul>
         </div>
         
@@ -459,7 +445,7 @@
             <button class="qr-modal-close" onclick="closeQRModal()">&times;</button>
           </div>
           <div class="qr-modal-body">
-            <img src="${imageSrc}" alt="${title} QR Code" class="qr-image">
+            <img loading="lazy" src="${imageSrc}" alt="${title} QR Code" class="qr-image">
             <p class="qr-tip">请使用手机扫描二维码</p>
           </div>
         </div>

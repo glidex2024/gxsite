@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>课程预约 - GX Glide.X | 日本滑雪课程在线报名</title>
+  <meta name="description" content="在线预约GX Glide.X滑雪课程：私教、团课、训练营一键报名。支持微信联系，专业中文客服快速响应，日本各大雪场均可预约。">
+  <meta name="keywords" content="日本滑雪预约,滑雪课程报名,GX滑雪预约,在线预约滑雪课">
+  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="课程预约 - GX Glide.X 日本滑雪学校">
+  <meta property="og:description" content="在线预约日本滑雪课程，支持微信，专业中文客服快速响应。">
+  <meta property="og:url" content="https://glidex.net/booking.html">
+  <meta property="og:image" content="https://glidex.net/image/hero/hero-slide-03-ski-lesson.jpg">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:site_name" content="GX Glide.X 中文国际滑雪学校">
+  <link rel="icon" type="image/png" href="image/logo/logo.png">
+  <link rel="canonical" href="https://glidex.net/booking.html">
+  <!-- 与全站相同的 CSS -->
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="mobile-optimization.css">
+  <link rel="stylesheet" href="mobile-override.css">
+  <link rel="stylesheet" href="qr-modal.css">
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <!-- Google tag -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-B3XF10TFX1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-B3XF10TFX1');
+  </script>
+  <style>
+    /* ── 预约页专用样式（与全站色系完全统一）── */
+
+    /* Hero */
+    .booking-hero {
+      position: relative;
+      padding: 140px 0 70px;
+      text-align: center;
+      color: #fff;
+      overflow: hidden;
+      background: linear-gradient(135deg, var(--primary-blue) 0%, #1e40af 60%, var(--accent-orange) 100%);
+    }
+    .booking-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('image/hero/hero-slide-03-ski-lesson.jpg') center/cover no-repeat;
+      opacity: 0.18;
+    }
+    .booking-hero .container { position: relative; z-index: 1; }
+    .booking-hero h1 {
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-weight: 800;
+      margin-bottom: 0.6rem;
+      letter-spacing: -0.5px;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.3);
+    }
+    .booking-hero p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+      max-width: 520px;
+      margin: 0 auto 24px;
+      line-height: 1.7;
+    }
+    .booking-hero-badges {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .hero-badge {
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 20px;
+      padding: 6px 16px;
+      font-size: 0.85rem;
+      backdrop-filter: blur(4px);
+    }
+
+    /* 主内容区 */
+    .booking-section {
+      padding: 60px 0 80px;
+      background: var(--ice-blue);
+      min-height: 60vh;
+    }
+    .booking-layout {
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 28px;
+      align-items: start;
+    }
+
+    /* 课程选择 */
+    .course-select-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+    .course-option {
+      border: 2px solid var(--border-gray);
+      border-radius: 14px;
+      padding: 18px 12px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.25s;
+      background: #fff;
+      position: relative;
+    }
+    .course-option:hover {
+      border-color: var(--secondary-blue);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(30,58,138,0.12);
+    }
+    .course-option.selected {
+      border-color: var(--primary-blue);
+      background: #eff6ff;
+      box-shadow: 0 6px 20px rgba(30,58,138,0.18);
+    }
+    .co-check {
+      position: absolute; top: 8px; right: 8px;
+      width: 20px; height: 20px;
+      border-radius: 50%;
+      background: var(--primary-blue);
+      color: #fff;
+      font-size: 11px;
+      display: none;
+      align-items: center; justify-content: center;
+    }
+    .course-option.selected .co-check { display: flex; }
+    .co-emoji { font-size: 1.8rem; margin-bottom: 6px; }
+    .co-name { font-size: 0.88rem; font-weight: 700; color: var(--mountain-gray); }
+    .co-desc { font-size: 0.75rem; color: var(--warm-gray); margin-top: 3px; line-height: 1.4; }
+
+    /* 表单卡片 */
+    .booking-form-card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 36px;
+      box-shadow: 0 4px 30px rgba(0,0,0,0.08);
+    }
+    .form-sec-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--primary-blue);
+      margin: 0 0 16px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--powder-blue);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .form-sec-title + .form-sec-title,
+    .form-sec-title:not(:first-child) { margin-top: 28px; }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+    .form-row.full { grid-template-columns: 1fr; }
+    .form-group { display: flex; flex-direction: column; gap: 5px; }
+    .form-group label {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--dark-gray);
+    }
+    .form-group label .req { color: #ef4444; }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      border: 1.5px solid var(--border-gray);
+      border-radius: 10px;
+      padding: 11px 14px;
+      font-size: 0.95rem;
+      color: var(--dark-gray);
+      background: var(--light-gray);
+      transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+      font-family: inherit;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--secondary-blue);
+      box-shadow: 0 0 0 3px rgba(59,130,246,0.1);
+      background: #fff;
+    }
+    .form-group textarea { resize: vertical; min-height: 88px; }
+
+    /* 雪场标签 */
+    .tags-wrap {
+      display: flex; flex-wrap: wrap; gap: 8px;
+      margin-bottom: 14px;
+    }
+    .tag-chip {
+      border: 1.5px solid var(--border-gray);
+      border-radius: 20px;
+      padding: 6px 14px;
+      font-size: 0.82rem;
+      color: var(--warm-gray);
+      cursor: pointer;
+      transition: all 0.2s;
+      background: #fff;
+      user-select: none;
+    }
+    .tag-chip:hover { border-color: var(--secondary-blue); color: var(--primary-blue); }
+    .tag-chip.on {
+      border-color: var(--primary-blue);
+      background: var(--powder-blue);
+      color: var(--primary-blue);
+      font-weight: 600;
+    }
+
+    /* 联系方式选择 */
+    .contact-chips {
+      display: flex; flex-wrap: wrap; gap: 8px;
+      margin-bottom: 14px;
+    }
+    .contact-chip {
+      border: 1.5px solid var(--border-gray);
+      border-radius: 10px;
+      padding: 8px 16px;
+      font-size: 0.85rem;
+      color: var(--warm-gray);
+      cursor: pointer;
+      transition: all 0.2s;
+      background: #fff;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .contact-chip:hover { border-color: var(--secondary-blue); }
+    .contact-chip.on {
+      border-color: #07c160;
+      background: #f0fdf4;
+      color: #166534;
+      font-weight: 600;
+    }
+
+    /* 提交按钮 */
+    .btn-book {
+      width: 100%;
+      background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      padding: 16px;
+      font-size: 1.05rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.25s;
+      letter-spacing: 0.3px;
+      box-shadow: 0 4px 16px rgba(30,58,138,0.3);
+      margin-top: 24px;
+      font-family: inherit;
+    }
+    .btn-book:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(30,58,138,0.4);
+    }
+    .btn-book:active { transform: scale(0.99); }
+    .submit-note {
+      text-align: center;
+      margin-top: 10px;
+      font-size: 0.78rem;
+      color: var(--warm-gray);
+    }
+
+    /* 成功页 */
+    .success-panel {
+      display: none;
+      text-align: center;
+      padding: 48px 24px;
+    }
+    .success-panel .s-icon { font-size: 4rem; margin-bottom: 16px; }
+    .success-panel h2 { font-size: 1.6rem; color: var(--primary-blue); margin-bottom: 10px; }
+    .success-panel p { color: var(--warm-gray); line-height: 1.8; font-size: 0.95rem; }
+
+    /* 侧边栏 */
+    .booking-sidebar { position: sticky; top: 90px; }
+    .sidebar-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 22px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+      margin-bottom: 16px;
+    }
+    .sidebar-card h3 {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--primary-blue);
+      margin: 0 0 14px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--powder-blue);
+    }
+    .sb-item {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 11px;
+      font-size: 0.83rem;
+      color: var(--warm-gray);
+      line-height: 1.5;
+      align-items: flex-start;
+    }
+    .sb-item .ic { font-size: 1rem; flex-shrink: 0; margin-top: 1px; }
+
+    /* 微信卡片 */
+    .wechat-card {
+      background: linear-gradient(135deg, #07c160, #06ad56);
+      border-radius: 16px;
+      padding: 20px;
+      text-align: center;
+      color: #fff;
+    }
+    .wechat-card strong { display: block; font-size: 1rem; margin-bottom: 6px; }
+    .wechat-card p { font-size: 0.82rem; opacity: 0.9; line-height: 1.5; margin-bottom: 14px; }
+    .btn-wechat {
+      background: rgba(255,255,255,0.2);
+      border: 1.5px solid rgba(255,255,255,0.5);
+      color: #fff;
+      border-radius: 8px;
+      padding: 9px 20px;
+      cursor: pointer;
+      font-size: 0.88rem;
+      font-family: inherit;
+      transition: background 0.2s;
+    }
+    .btn-wechat:hover { background: rgba(255,255,255,0.3); }
+
+    /* 响应式 */
+    @media (max-width: 900px) {
+      .booking-layout { grid-template-columns: 1fr; }
+      .booking-sidebar { position: static; }
+      .course-select-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 600px) {
+      .booking-form-card { padding: 20px 16px; }
+      .form-row { grid-template-columns: 1fr; }
+      .course-select-grid { grid-template-columns: repeat(2, 1fr); }
+      .booking-hero { padding: 110px 0 50px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- ── 导航栏（与全站一致）── -->
+  <nav id="navbar" class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="logo">
+        <img src="image/logo/logo2.png" alt="GX 中文国际滑雪学校" class="logo-img">
+      </a>
+      <button class="menu-toggle" aria-controls="primary-nav" aria-expanded="false" aria-label="打开菜单"></button>
+      <ul id="primary-nav" class="nav-links" role="navigation">
+        <li><a href="index.html">首页</a></li>
+        <li><a href="about.html">关于GX</a></li>
+        <li><a href="courses.html">课程介绍</a></li>
+        <li><a href="news.html">最新消息</a></li>
+        <li><a href="contact.html">联系我们</a></li>
+        <li><a href="booking.html" class="active" style="color:#ea580c;font-weight:700">📅 立即预约</a></li>
+      </ul>
+      <button class="btn btn-reservation" onclick="showAllQR()">预约</button>
+    </div>
+  </nav>
+  <div class="nav-backdrop" hidden></div>
+
+  <!-- ── Hero ── -->
+  <div class="booking-hero">
+    <div class="container">
+      <h1 data-aos="fade-up">🎿 在线预约课程</h1>
+      <p data-aos="fade-up" data-aos-delay="100">填写信息后，我们将在 24小时内 通过您选择的方式确认课程安排</p>
+      <div class="booking-hero-badges" data-aos="fade-up" data-aos-delay="200">
+        <span class="hero-badge">✅ 中文全程服务</span>
+        <span class="hero-badge">🏔 新潟·长野·群马·山梨</span>
+        <span class="hero-badge">🏆 JSBA认证教练</span>
+        <span class="hero-badge">💚 微信快速响应</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 主内容 ── -->
+  <section class="booking-section">
+    <div class="container">
+      <div class="booking-layout">
+
+        <!-- 左侧表单 -->
+        <div data-aos="fade-up">
+          <!-- 课程选择 -->
+          <div style="margin-bottom:28px">
+            <div class="form-sec-title">🏂 选择课程类型</div>
+            <div class="course-select-grid">
+              <div class="course-option" onclick="selectCourse(this,'private')">
+                <div class="co-check">✓</div>
+                <div class="co-emoji">👤</div>
+                <div class="co-name">私教课</div>
+                <div class="co-desc">一对一专属指导</div>
+              </div>
+              <div class="course-option" onclick="selectCourse(this,'group')">
+                <div class="co-check">✓</div>
+                <div class="co-emoji">👥</div>
+                <div class="co-name">团体课</div>
+                <div class="co-desc">小班 2-6 人</div>
+              </div>
+              <div class="course-option" onclick="selectCourse(this,'jsba')">
+                <div class="co-check">✓</div>
+                <div class="co-emoji">🏆</div>
+                <div class="co-name">JSBA考级</div>
+                <div class="co-desc">官方认证考试</div>
+              </div>
+              <div class="course-option" onclick="selectCourse(this,'camp')">
+                <div class="co-check">✓</div>
+                <div class="co-emoji">⛺</div>
+                <div class="co-name">训练营</div>
+                <div class="co-desc">多日集训</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ▶ Formspree 表单：action 填你的 Formspree 表单地址 -->
+          <div class="booking-form-card">
+            <form id="booking-form"
+                  action="https://formspree.io/f/YOUR_FORM_ID"
+                  method="POST"
+                  onsubmit="return handleSubmit(event)">
+
+              <!-- Formspree 隐藏字段 -->
+              <input type="hidden" name="_subject" value="【GX滑雪】新预约申请">
+              <input type="hidden" name="_language" value="zh">
+              <input type="hidden" name="course_type" id="h-course" value="未选择">
+
+              <!-- 个人信息 -->
+              <div class="form-sec-title">👤 个人信息</div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label>姓名 <span class="req">*</span></label>
+                  <input type="text" name="name" placeholder="您的姓名" required>
+                </div>
+                <div class="form-group">
+                  <label>人数 <span class="req">*</span></label>
+                  <select name="people" required>
+                    <option value="">请选择</option>
+                    <option>1人</option>
+                    <option>2人</option>
+                    <option>3人</option>
+                    <option>4人</option>
+                    <option>5人及以上</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label>滑雪水平 <span class="req">*</span></label>
+                  <select name="level" required>
+                    <option value="">请选择</option>
+                    <option>完全零基础</option>
+                    <option>初学者（能保持平衡）</option>
+                    <option>中级（能滑缓坡）</option>
+                    <option>进阶（能滑中级道）</option>
+                    <option>高级（挑战黑道）</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>课程类型</label>
+                  <select name="ski_type">
+                    <option value="">请选择</option>
+                    <option>双板 Ski</option>
+                    <option>单板 Snowboard</option>
+                    <option>都可以</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- 时间与地点 -->
+              <div class="form-sec-title">📅 时间与地点</div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label>计划出发日期 <span class="req">*</span></label>
+                  <input type="date" name="date" required>
+                </div>
+                <div class="form-group">
+                  <label>课程天数</label>
+                  <select name="days">
+                    <option value="">请选择</option>
+                    <option>1天</option>
+                    <option>2天</option>
+                    <option>3天</option>
+                    <option>4-5天</option>
+                    <option>6天及以上</option>
+                  </select>
+                </div>
+              </div>
+
+              <div style="margin-bottom:14px">
+                <div style="font-size:0.82rem;font-weight:600;color:var(--dark-gray);margin-bottom:8px">
+                  目标雪场 <span style="color:var(--warm-gray);font-weight:400">（可多选）</span>
+                </div>
+                <div class="tags-wrap" id="resort-tags">
+                  <div class="tag-chip" onclick="toggleTag(this)">新潟</div>
+                  <div class="tag-chip" onclick="toggleTag(this)">長野</div>
+                  <div class="tag-chip" onclick="toggleTag(this)">群馬</div>
+                  <div class="tag-chip" onclick="toggleTag(this)">山梨</div>
+                  <div class="tag-chip" onclick="toggleTag(this)">横浜周辺</div>
+                  <div class="tag-chip" onclick="toggleTag(this)">未定</div>
+                </div>
+                <input type="hidden" name="resorts" id="h-resorts">
+              </div>
+
+              <!-- 联系方式 -->
+              <div class="form-sec-title">💬 联系方式</div>
+              <div style="font-size:0.82rem;font-weight:600;color:var(--dark-gray);margin-bottom:8px">
+                偏好联系方式 <span class="req">*</span>
+              </div>
+              <div class="contact-chips" id="contact-chips">
+                <div class="contact-chip" onclick="selectContact(this,'微信 WeChat')">💚 微信</div>
+                <div class="contact-chip" onclick="selectContact(this,'LINE')">💚 LINE</div>
+                <div class="contact-chip" onclick="selectContact(this,'WhatsApp')">💚 WhatsApp</div>
+                <div class="contact-chip" onclick="selectContact(this,'小红书')">📕 小红书</div>
+              </div>
+              <input type="hidden" name="contact_method" id="h-contact">
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label>联系账号 / ID <span class="req">*</span></label>
+                  <input type="text" name="contact_id" placeholder="微信号 / LINE ID / 手机号" required>
+                </div>
+                <div class="form-group">
+                  <label>邮箱（可选）</label>
+                  <input type="email" name="email" placeholder="收取确认邮件">
+                </div>
+              </div>
+
+              <!-- 备注 -->
+              <div class="form-row full">
+                <div class="form-group">
+                  <label>备注 / 特殊需求</label>
+                  <textarea name="notes" placeholder="如：有小朋友同行、需要租借装备、指定教练、其他要求..."></textarea>
+                </div>
+              </div>
+
+              <!-- 提交 -->
+              <button type="submit" class="btn-book">📩 提交预约申请</button>
+              <p class="submit-note">提交后我们将在 24小时内 通过您选择的方式与您联系确认</p>
+            </form>
+
+            <!-- 成功提示 -->
+            <div class="success-panel" id="success-panel">
+              <div class="s-icon">🎉</div>
+              <h2>预约申请已收到！</h2>
+              <p>
+                感谢您的信任，我们已收到您的预约申请。<br>
+                将在 <strong>24小时内</strong> 通过您留下的联系方式确认详情。<br><br>
+                如需加急咨询，欢迎直接扫码添加微信。
+              </p>
+              <button class="btn-book" onclick="showAllQR()" style="margin-top:20px;max-width:240px;margin-left:auto;margin-right:auto">
+                💚 扫码添加微信咨询
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 右侧边栏 -->
+        <div class="booking-sidebar" data-aos="fade-left" data-aos-delay="150">
+          <div class="sidebar-card">
+            <h3>📋 预约须知</h3>
+            <div class="sb-item"><span class="ic">⏰</span><span>建议提前 <strong>7天以上</strong> 预约，旺季请提前 2-4 周</span></div>
+            <div class="sb-item"><span class="ic">💰</span><span>预约成功后由教练报价，<strong>无需预付款</strong></span></div>
+            <div class="sb-item"><span class="ic">🎿</span><span>可协助安排装备租借，请在备注说明</span></div>
+            <div class="sb-item"><span class="ic">🌏</span><span>新潟・長野・群馬・山梨・横浜等各大雪场均可</span></div>
+            <div class="sb-item"><span class="ic">📱</span><span>全程 <strong>中文服务</strong>，无语言障碍</span></div>
+            <div class="sb-item"><span class="ic">✉️</span><span>咨询邮件：<a href="mailto:info@glidex.net" style="color:var(--secondary-blue)">info@glidex.net</a></span></div>
+          </div>
+
+          <div class="wechat-card">
+            <strong>💚 微信直接咨询更快</strong>
+            <p>扫码添加，实时解答<br>预约问题与行程规划</p>
+            <button class="btn-wechat" onclick="showAllQR()">扫码添加微信</button>
+          </div>
+
+          <div class="sidebar-card" style="margin-top:16px">
+            <h3>🏔 覆盖雪场</h3>
+            <div style="display:flex;flex-wrap:wrap;gap:6px">
+              <span class="tag-chip on" style="cursor:default">新潟</span>
+              <span class="tag-chip on" style="cursor:default">長野</span>
+              <span class="tag-chip on" style="cursor:default">群馬</span>
+              <span class="tag-chip on" style="cursor:default">山梨</span>
+              <span class="tag-chip on" style="cursor:default">横浜周辺</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Footer（与全站一致）── -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-company">
+          <div class="footer-logo">
+            <img loading="lazy" src="image/logo/logo2.png" alt="GX 中文国际滑雪学校" class="logo-img">
+          </div>
+          <div class="company-info">
+            <p>GlideX中文国際滑雪学校</p>
+            <p>GlideX合同会社</p>
+            <p>〒新潟県南魚沼郡湯沢町土樽6303-1</p>
+            <p>info@glidex.net</p>
+          </div>
+        </div>
+        <div class="footer-links">
+          <h3>快速链接</h3>
+          <ul>
+            <li><a href="index.html">首页</a></li>
+            <li><a href="about.html">关于GX</a></li>
+            <li><a href="courses.html">课程介绍</a></li>
+            <li><a href="news.html">最新消息</a></li>
+            <li><a href="contact.html">联系我们</a></li>
+            <li><a href="booking.html" style="color:#ea580c;font-weight:700">📅 立即预约</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2024 GlideX中文国際滑雪学校. 保留所有权利.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ── 右下角联系浮钮（与全站一致）── -->
+  <div class="contact-float">
+    <div class="contact-main-btn" id="contactMainBtn">
+      <span class="contact-icon">💬</span>
+      <span class="contact-text">Contact</span>
+    </div>
+    <div class="contact-options" id="contactOptions">
+      <div class="contact-option wechat" data-tooltip="微信联系" data-action="wechat">
+        <span class="option-icon">💬</span><span class="option-text">WeChat</span>
+      </div>
+      <div class="contact-option line" data-tooltip="LINE联系" data-action="line">
+        <span class="option-icon">📱</span><span class="option-text">LINE</span>
+      </div>
+      <div class="contact-option whatsapp" data-tooltip="WhatsApp" data-action="whatsapp">
+        <span class="option-icon">💬</span><span class="option-text">WhatsApp</span>
+      </div>
+      <div class="contact-option xhs" data-tooltip="小红书" data-action="xhs">
+        <span class="option-icon">📕</span><span class="option-text">小红书</span>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 800, once: true, offset: 60 });
+
+    // 导航栏滚动
+    window.addEventListener('scroll', () => {
+      document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // 课程选择
+    function selectCourse(el, val) {
+      document.querySelectorAll('.course-option').forEach(c => c.classList.remove('selected'));
+      el.classList.add('selected');
+      document.getElementById('h-course').value = val;
+    }
+
+    // 联系方式
+    function selectContact(el, val) {
+      document.querySelectorAll('.contact-chip').forEach(c => c.classList.remove('on'));
+      el.classList.add('on');
+      document.getElementById('h-contact').value = val;
+    }
+
+    // 雪场标签
+    const resorts = new Set();
+    function toggleTag(el) {
+      const v = el.textContent.trim();
+      if (resorts.has(v)) { resorts.delete(v); el.classList.remove('on'); }
+      else { resorts.add(v); el.classList.add('on'); }
+      document.getElementById('h-resorts').value = [...resorts].join('、');
+    }
+
+    // 表单提交
+    function handleSubmit(e) {
+      const contact = document.getElementById('h-contact').value;
+      if (!contact) {
+        e.preventDefault();
+        alert('请选择偏好联系方式（微信 / LINE / WhatsApp / 小红书）');
+        return false;
+      }
+      // GA4 追踪
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'booking_submit', {
+          course_type: document.getElementById('h-course').value,
+          contact_method: contact
+        });
+      }
+      // 显示成功页（Formspree 会跳转，若用 AJAX 模式则手动显示）
+      setTimeout(() => {
+        document.getElementById('booking-form').style.display = 'none';
+        document.getElementById('success-panel').style.display = 'block';
+      }, 300);
+      return true;
+    }
+
+    // 菜单开合（与全站脚本一致）
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks   = document.getElementById('primary-nav');
+    const backdrop   = document.querySelector('.nav-backdrop');
+    if (menuToggle) {
+      menuToggle.addEventListener('click', () => {
+        const open = navLinks.classList.toggle('open');
+        menuToggle.setAttribute('aria-expanded', open);
+        if (backdrop) backdrop.hidden = !open;
+      });
+    }
+    if (backdrop) backdrop.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      menuToggle.setAttribute('aria-expanded', false);
+      backdrop.hidden = true;
+    });
+  </script>
+</body>
+</html>
