@@ -675,117 +675,205 @@ li:has(> a[href="booking.html"]) {
   }
 }
 
-/* ── 移动端导航：默认只显示汉堡按钮，点击后在导航栏下方展开一条可横向滑动的 tab 栏 ── */
+/* ── 移动端导航：默认只显示汉堡按钮，点击后从右侧滑出一个抽屉菜单
+   （参考常见新闻站的右侧菜单形式，颜色沿用站内原有的深蓝/橙色配色） ── */
 @media (max-width: 991px) {
   .menu-toggle {
     display: block !important;
   }
-  /* 用下方轻量展开代替全屏遮罩 */
+
+  /* 找到真正的原因了：前面"性能优化"那条规则给 .navbar 加了
+     transform:translateZ(0)（为了硬件加速），而抽屉菜单 .nav-links
+     是嵌套在 .navbar 里面的。只要祖先元素有 transform，它就会变成
+     所有 position:fixed 子元素的定位参照物（不再是整个屏幕），于是
+     抽屉的 top/right/bottom/height:100% 全部是相对 .navbar 那个只有
+     70多px 高的小盒子计算的——抽屉被压扁成了贴在导航栏底下的一小条，
+     这才是"看起来被遮挡"的真正原因。这里把 .navbar 的 transform 去掉，
+     让抽屉重新以整个屏幕为定位参照。 */
+  .navbar {
+    transform: none !important;
+    will-change: auto !important;
+    /* .navbar 自带的 backdrop-filter:blur(20px) 同样会让它变成
+       fixed 定位子元素的参照物，必须一起去掉，否则抽屉还是会被压扁 */
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+  }
+
+  /* 抽屉不是全屏宽度，右侧留白部分用半透明黑色遮罩
+     注意：z-index 必须小于 .navbar 的 1000——.nav-backdrop 在 DOM 里是
+     <nav> 的兄弟节点，而抽屉本身嵌套在 .navbar 内部（.navbar 因为
+     position:fixed 自成一个层叠上下文），如果遮罩的 z-index 比 .navbar
+     还高，就会整个盖在 .navbar 上面，把里面的抽屉菜单也一起挡住 */
   .nav-backdrop {
-    display: none !important;
+    display: block !important;
+    position: fixed !important;
+    inset: 0 !important;
+    background: rgba(8, 14, 26, .55) !important;
+    z-index: 998 !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    transition: opacity .25s ease !important;
+  }
+  .nav-links.show + .nav-backdrop,
+  .nav-backdrop:not([hidden]) {
+    opacity: 1 !important;
+    visibility: visible !important;
   }
 
-  .navbar,
-  .nav-container {
-    overflow-x: visible !important;
-  }
-
-  /* 默认收起 */
+  /* 抽屉本体：从右侧滑入，宽度不铺满全屏，露出左侧一部分页面 */
   .nav-links {
     position: fixed !important;
-    top: 70px !important;
-    left: 0 !important;
+    top: 0 !important;
     right: 0 !important;
-    width: 100% !important;
-    height: auto !important;
-    max-height: 0 !important;
+    bottom: 0 !important;
+    left: auto !important;
+    width: min(86vw, 400px) !important;
+    height: 100% !important;
+    max-height: none !important;
     margin: 0 !important;
     background: rgba(30, 58, 138, .98) !important;
-    -webkit-backdrop-filter: blur(14px) !important;
-    backdrop-filter: blur(14px) !important;
-    border-bottom: 1px solid rgba(255, 255, 255, .12) !important;
-    border-radius: 0 0 18px 18px !important;
-    -webkit-transform: none !important;
-    transform: none !important;
-    transition: max-height .28s cubic-bezier(0.4, 0, 0.2, 1), opacity .2s ease !important;
-    z-index: 999 !important;
-    box-shadow: 0 12px 28px rgba(0, 0, 0, .22) !important;
-    opacity: 0 !important;
+    -webkit-backdrop-filter: blur(16px) !important;
+    backdrop-filter: blur(16px) !important;
+    box-shadow: -16px 0 40px rgba(0, 0, 0, .35) !important;
+    border-radius: 0 !important;
+    border: none !important;
 
-    /* 展开时是一条横向可滑动的 tab 栏 */
     display: flex !important;
-    flex-direction: row !important;
-    flex-wrap: nowrap !important;
-    align-items: center !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
     justify-content: flex-start !important;
-    padding: 0 14px !important;
-    gap: 0.5rem !important;
-    overflow: hidden !important;
+    flex-wrap: nowrap !important;
+    padding: 0 !important;
+    gap: 0 !important;
+
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
     -webkit-overflow-scrolling: touch !important;
-    scrollbar-width: none !important;
-    -ms-overflow-style: none !important;
-    pointer-events: none !important;
-  }
-  /* 点击汉堡按钮后展开 */
-  .nav-links.show {
-    max-height: 76px !important;
-    padding-top: 14px !important;
-    padding-bottom: 14px !important;
+
+    -webkit-transform: translateX(100%) !important;
+    transform: translateX(100%) !important;
+    transition: transform .32s cubic-bezier(0.4, 0, 0.2, 1) !important;
     opacity: 1 !important;
-    overflow-x: auto !important;
-    overflow-y: hidden !important;
-    pointer-events: auto !important;
+    z-index: 1100 !important;
   }
-  .nav-links::-webkit-scrollbar {
-    display: none !important;
-    height: 0 !important;
+  .nav-links.show {
+    -webkit-transform: translateX(0) !important;
+    transform: translateX(0) !important;
   }
 
-  /* tab 统一做成胶囊按钮，不再用底部下划线的桌面样式 */
-  .nav-links a {
-    flex: 0 0 auto !important;
-    white-space: nowrap !important;
-    display: inline-flex !important;
+  /* 抽屉顶部：MENU 标题 + 关闭按钮 */
+  .nav-drawer-head {
+    display: flex !important;
     align-items: center !important;
-    font-size: 0.92rem !important;
-    font-weight: 600 !important;
+    justify-content: space-between !important;
+    padding: 28px 22px 18px !important;
+    border-bottom: 1px solid rgba(255, 255, 255, .14) !important;
+    flex: 0 0 auto !important;
+  }
+  .nav-drawer-title {
+    font-size: 13px !important;
+    font-weight: 800 !important;
+    letter-spacing: .24em !important;
+    color: rgba(255, 255, 255, .78) !important;
+    text-transform: uppercase !important;
+    background: none !important;
+  }
+  /* 之前漏了 !important，站内 button 通用样式（白底+边框）把这个关闭
+     按钮的默认外观盖了回去，看起来像个普通的白色方按钮 */
+  .nav-close {
+    -webkit-appearance: none !important;
+    appearance: none !important;
+    width: 38px !important;
+    height: 38px !important;
+    min-height: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background: none !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    color: rgba(255, 255, 255, .8) !important;
+    font-size: 28px !important;
+    font-weight: 400 !important;
     line-height: 1 !important;
-    padding: 11px 18px !important;
-    border-radius: 999px !important;
-    background: rgba(255, 255, 255, .08) !important;
-    border: 1px solid rgba(255, 255, 255, .16) !important;
+    padding: 0 !important;
+  }
+  .nav-close:active {
+    color: #fff !important;
+    background: none !important;
+    transform: none !important;
+  }
+
+  /* 每个 tab 一行，大字号、左对齐，不再是胶囊按钮 */
+  .nav-links li {
+    flex: 0 0 auto !important;
+    width: 100% !important;
+    border-bottom: 1px solid rgba(255, 255, 255, .08) !important;
+  }
+  .nav-links li:last-child {
+    border-bottom: none !important;
+  }
+  .nav-links li.nav-drawer-head {
+    border-bottom: none !important;
+  }
+  .nav-links a {
+    display: block !important;
+    width: 100% !important;
+    white-space: normal !important;
+    background: none !important;
+    border: none !important;
+    border-radius: 0 !important;
+    text-align: left !important;
+    padding: 18px 22px !important;
+    font-size: 21px !important;
+    font-weight: 800 !important;
     color: #fff !important;
     text-shadow: none !important;
-    transition: background-color .18s ease, border-color .18s ease, transform .12s ease !important;
   }
   .nav-links a::after {
     display: none !important;
   }
   .nav-links a:active {
-    transform: scale(.95) !important;
-    background: rgba(255, 255, 255, .16) !important;
+    background: rgba(255, 255, 255, .06) !important;
   }
   .nav-links a.active {
-    background: rgba(255, 102, 0, .92) !important;
-    border-color: rgba(255, 102, 0, .92) !important;
-    font-weight: 700 !important;
+    color: #ff9143 !important;
   }
 
-  /* 子菜单（如"课程介绍"）：展开时位于 tab 栏下方的通栏面板 */
+  /* 子菜单（如"课程介绍"）：在抽屉内正常展开为缩进的子项，不再是浮层 */
   .nav-links .dropdown-menu {
-    position: fixed !important;
-    top: 146px !important;
-    left: 0 !important;
-    right: 0 !important;
+    position: static !important;
+    display: none !important;
     width: 100% !important;
     max-width: 100% !important;
     min-width: 0 !important;
     margin: 0 !important;
-    border-radius: 0 0 18px 18px !important;
-    transform: translateY(-8px) !important;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, .25) !important;
+    padding: 0 !important;
+    background: rgba(0, 0, 0, .16) !important;
+    box-shadow: none !important;
+    border: none !important;
+    border-radius: 0 !important;
+    transform: none !important;
   }
   .nav-links .dropdown.open > .dropdown-menu {
-    transform: translateY(0) !important;
+    display: block !important;
+  }
+  .nav-links .dropdown-menu li {
+    border-bottom: 1px solid rgba(255, 255, 255, .06) !important;
+  }
+  .nav-links .dropdown-menu li a {
+    padding: 14px 22px 14px 40px !important;
+    font-size: 17px !important;
+    font-weight: 600 !important;
+  }
+}
+
+/* "MENU" 标题 + ✕ 关闭按钮那一行，只是移动端抽屉菜单头部用的，
+   之前没有限定只在移动端显示，导致桌面端导航栏里也冒出来一个多余的
+   "MENU" 项——这里明确在桌面宽度下把它隐藏掉 */
+@media (min-width: 992px) {
+  .nav-drawer-head {
+    display: none !important;
   }
 }

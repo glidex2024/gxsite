@@ -60,3 +60,19 @@
     setupMobileDropdowns(document);
   }
 })();
+
+
+// 移动端抽屉菜单头部的关闭按钮（✕）
+(function () {
+  document.addEventListener('click', function (e) {
+    var closeBtn = e.target.closest && e.target.closest('.nav-close');
+    if (!closeBtn) return;
+    var nav = document.getElementById('primary-nav');
+    var toggle = document.querySelector('.menu-toggle');
+    var backdrop = document.querySelector('.nav-backdrop');
+    if (nav) nav.classList.remove('show');
+    if (toggle) toggle.setAttribute('aria-expanded', 'false');
+    if (backdrop) backdrop.hidden = true;
+    document.body.classList.remove('body--nav-open');
+  });
+})();
