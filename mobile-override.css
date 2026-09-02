@@ -674,3 +674,118 @@ li:has(> a[href="booking.html"]) {
     overflow: hidden !important;
   }
 }
+
+/* ── 移动端导航：默认只显示汉堡按钮，点击后在导航栏下方展开一条可横向滑动的 tab 栏 ── */
+@media (max-width: 991px) {
+  .menu-toggle {
+    display: block !important;
+  }
+  /* 用下方轻量展开代替全屏遮罩 */
+  .nav-backdrop {
+    display: none !important;
+  }
+
+  .navbar,
+  .nav-container {
+    overflow-x: visible !important;
+  }
+
+  /* 默认收起 */
+  .nav-links {
+    position: fixed !important;
+    top: 70px !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    height: auto !important;
+    max-height: 0 !important;
+    margin: 0 !important;
+    background: rgba(30, 58, 138, .98) !important;
+    -webkit-backdrop-filter: blur(14px) !important;
+    backdrop-filter: blur(14px) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, .12) !important;
+    border-radius: 0 0 18px 18px !important;
+    -webkit-transform: none !important;
+    transform: none !important;
+    transition: max-height .28s cubic-bezier(0.4, 0, 0.2, 1), opacity .2s ease !important;
+    z-index: 999 !important;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, .22) !important;
+    opacity: 0 !important;
+
+    /* 展开时是一条横向可滑动的 tab 栏 */
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    padding: 0 14px !important;
+    gap: 0.5rem !important;
+    overflow: hidden !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+    pointer-events: none !important;
+  }
+  /* 点击汉堡按钮后展开 */
+  .nav-links.show {
+    max-height: 76px !important;
+    padding-top: 14px !important;
+    padding-bottom: 14px !important;
+    opacity: 1 !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    pointer-events: auto !important;
+  }
+  .nav-links::-webkit-scrollbar {
+    display: none !important;
+    height: 0 !important;
+  }
+
+  /* tab 统一做成胶囊按钮，不再用底部下划线的桌面样式 */
+  .nav-links a {
+    flex: 0 0 auto !important;
+    white-space: nowrap !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    font-size: 0.92rem !important;
+    font-weight: 600 !important;
+    line-height: 1 !important;
+    padding: 11px 18px !important;
+    border-radius: 999px !important;
+    background: rgba(255, 255, 255, .08) !important;
+    border: 1px solid rgba(255, 255, 255, .16) !important;
+    color: #fff !important;
+    text-shadow: none !important;
+    transition: background-color .18s ease, border-color .18s ease, transform .12s ease !important;
+  }
+  .nav-links a::after {
+    display: none !important;
+  }
+  .nav-links a:active {
+    transform: scale(.95) !important;
+    background: rgba(255, 255, 255, .16) !important;
+  }
+  .nav-links a.active {
+    background: rgba(255, 102, 0, .92) !important;
+    border-color: rgba(255, 102, 0, .92) !important;
+    font-weight: 700 !important;
+  }
+
+  /* 子菜单（如"课程介绍"）：展开时位于 tab 栏下方的通栏面板 */
+  .nav-links .dropdown-menu {
+    position: fixed !important;
+    top: 146px !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    border-radius: 0 0 18px 18px !important;
+    transform: translateY(-8px) !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, .25) !important;
+  }
+  .nav-links .dropdown.open > .dropdown-menu {
+    transform: translateY(0) !important;
+  }
+}

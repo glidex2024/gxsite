@@ -360,6 +360,7 @@
         <li><a href="about.html">关于GX</a></li>
         <li><a href="courses.html">课程介绍</a></li>
         <li><a href="news.html">最新消息</a></li>
+        <li><a href="recruitment.html">加入我们</a></li>
         <li><a href="contact.html">联系我们</a></li>
       </ul>
       <button class="btn btn-reservation" onclick="showAllQR()">预约</button>
@@ -617,6 +618,7 @@
             <li><a href="about.html">关于GX</a></li>
             <li><a href="courses.html">课程介绍</a></li>
             <li><a href="news.html">最新消息</a></li>
+            <li><a href="recruitment.html">加入我们</a></li>
             <li><a href="contact.html">联系我们</a></li>
           </ul>
         </div>
@@ -705,21 +707,20 @@
     }
 
     // 菜单开合（与全站脚本一致）
-    const menuToggle = document.querySelector('.menu-toggle');
-    const navLinks   = document.getElementById('primary-nav');
-    const backdrop   = document.querySelector('.nav-backdrop');
-    if (menuToggle) {
-      menuToggle.addEventListener('click', () => {
-        const open = navLinks.classList.toggle('open');
-        menuToggle.setAttribute('aria-expanded', open);
-        if (backdrop) backdrop.hidden = !open;
-      });
-    }
-    if (backdrop) backdrop.addEventListener('click', () => {
-      navLinks.classList.remove('open');
-      menuToggle.setAttribute('aria-expanded', false);
-      backdrop.hidden = true;
-    });
+    (function(){
+      var toggle = document.querySelector('.menu-toggle');
+      var nav = document.getElementById('primary-nav');
+      var backdrop = document.querySelector('.nav-backdrop');
+      if (!toggle || !nav || !backdrop) return;
+      function openNav(){ nav.classList.add('show'); toggle.setAttribute('aria-expanded','true'); backdrop.hidden = false; document.body.classList.add('body--nav-open'); }
+      function closeNav(){ nav.classList.remove('show'); toggle.setAttribute('aria-expanded','false'); backdrop.hidden = true; document.body.classList.remove('body--nav-open'); }
+      toggle.addEventListener('click', function(){ var exp = toggle.getAttribute('aria-expanded')==='true'; exp?closeNav():openNav(); });
+      backdrop.addEventListener('click', closeNav);
+      window.addEventListener('keydown', function(e){ if(e.key==='Escape') closeNav(); });
+      var mql = window.matchMedia('(min-width: 992px)');
+      function handle(e){ if(e.matches) closeNav(); }
+      if(mql.addEventListener){ mql.addEventListener('change', handle); } else if(mql.addListener){ mql.addListener(handle); }
+    })();
   </script>
 </body>
 </html>
