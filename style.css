@@ -38,26 +38,69 @@ p, .description, .content-text {
   }
 }
 :root {
-  --main-blue: #003366;
-  --main-orange: #ff6600;
-  --main-white: #f5f5f5;
-  --main-dark: #222;
+  /* ============================================================
+     统一设计系统 Design Tokens v3（2026-09，参考 Snowminds 视觉气质）
+     方向：白/冰蓝为主背景，深蓝替代原墨黑作为品牌重色，
+     珊瑚橙作为唯一强调色，严格限制只用于 CTA / 关键按钮 / 关键数字。
+     ============================================================ */
+  --color-primary: #14344f;       /* 深蓝，替代原墨黑，导航/footer 深色底 */
+  --color-primary-dark: #0b2338;  /* 更深场景 / hover，替代原纯黑 */
+  --color-secondary: #2e86c1;     /* 天蓝，链接/次按钮/激活态 */
+  --color-accent: #e4703a;        /* 珊瑚橙，仅用于 CTA/关键按钮/关键数字 */
+  --color-accent-hover: #c85a28;
+  --color-bg: #ffffff;
+  --color-surface: #eaf2f7;       /* 冰蓝调次背景，替代原中性灰 */
+  --color-text: #1b2733;          /* 冷灰蓝，替代原纯黑正文 */
+  --color-text-muted: #64748b;    /* 冷灰 */
+  --color-border: #d7e3ec;        /* 冰蓝调描边 */
+  --color-success: #1a7f4b;
+  --color-warning: #b45309;
+  --color-error: #c0392b;
+
+  --font-family: Inter, -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', 'Noto Sans SC', sans-serif;
+
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 32px;
+  --space-5: 48px;
+  --space-6: 64px;
+  --space-7: 96px;
+
+  --radius-sm: 6px;
+  --radius-none: 0;
+
+  --shadow-float: 0 8px 30px rgba(20, 52, 79, .16);
+
+  --main-blue: var(--color-primary);
+  --main-orange: var(--color-accent);
+  --main-white: var(--color-bg);
+  --main-dark: var(--color-text);
   --main-red: #e60012;
-  /* 首页配色变量 */
-  --primary-blue: #1e3a8a;
-  --secondary-blue: #3b82f6;
-  --accent-orange: #ea580c;
-  --snow-white: #ffffff;
-  --deep-green: #166534;
-  --warm-gray: #6b7280;
-  --dark-gray: #374151;
-  --ice-blue: #f1f5f9;
-  --powder-blue: #e0e7ff;
-  --mountain-gray: #1f2937;
-  --success-green: #059669;
-  --warning-amber: #d97706;
-  --light-gray: #f9fafb;
-  --border-gray: #e5e7eb;
+  --primary-blue: var(--color-secondary);
+  --secondary-blue: var(--color-secondary);
+  --accent-orange: var(--color-accent);
+  --snow-white: var(--color-bg);
+  --deep-green: var(--color-success);
+  --warm-gray: var(--color-text-muted);
+  --dark-gray: var(--color-text-muted);
+  --ice-blue: var(--color-surface);
+  --powder-blue: var(--color-surface);
+  --mountain-gray: var(--color-primary);
+  --success-green: var(--color-success);
+  --warning-amber: var(--color-warning);
+  --light-gray: var(--color-surface);
+  --border-gray: var(--color-border);
+
+  --ink: var(--color-primary);
+  --blue: var(--color-secondary);
+  --lime: var(--color-accent);
+  --ice: var(--color-surface);
+  --line: var(--color-border);
+  --muted: var(--color-text-muted);
+
+  --font-body: var(--font-family);
+  --font-nav: var(--font-family);
 }
 /* CSS Reset for Cross-Browser Consistency */
 * {
@@ -76,7 +119,7 @@ html {
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Arial, sans-serif;
+  font-family: var(--font-family);
   background: var(--main-white);
   color: var(--main-dark);
   line-height: 1.6;
@@ -107,7 +150,7 @@ body {
   position: fixed;
   top: 0; left: 0; right: 0;
   z-index: 1000;
-  background: rgba(30, 58, 138, 0.95);
+  background: rgba(20, 52, 79, 0.95);
   -webkit-backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   backdrop-filter: blur(20px);
@@ -117,10 +160,10 @@ body {
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .navbar.scrolled {
-  background: rgba(30, 58, 138, 0.98);
-  -webkit-box-shadow: 0 4px 20px rgba(30, 58, 138, 0.3);
-  -moz-box-shadow: 0 4px 20px rgba(30, 58, 138, 0.3);
-  box-shadow: 0 4px 20px rgba(30, 58, 138, 0.3);
+  background: rgba(20, 52, 79, 0.98);
+  -webkit-box-shadow: 0 4px 20px rgba(20, 52, 79, 0.3);
+  -moz-box-shadow: 0 4px 20px rgba(20, 52, 79, 0.3);
+  box-shadow: 0 4px 20px rgba(20, 52, 79, 0.3);
 }
 .nav-container {
   display: -webkit-box;
@@ -287,13 +330,13 @@ body {
   position: absolute;
   top: 100%;
   left: 0;
-  background: rgba(30, 58, 138, 0.98);
+  background: rgba(20, 52, 79, 0.98);
   -webkit-backdrop-filter: blur(20px);
   backdrop-filter: blur(20px);
   min-width: 160px;
-  -webkit-box-shadow: 0 8px 24px rgba(30, 58, 138, 0.3);
-  -moz-box-shadow: 0 8px 24px rgba(30, 58, 138, 0.3);
-  box-shadow: 0 8px 24px rgba(30, 58, 138, 0.3);
+  -webkit-box-shadow: 0 8px 24px rgba(20, 52, 79, 0.3);
+  -moz-box-shadow: 0 8px 24px rgba(20, 52, 79, 0.3);
+  box-shadow: 0 8px 24px rgba(20, 52, 79, 0.3);
   border-radius: 0 0 12px 12px;
   z-index: 999;
   flex-direction: column;
@@ -466,7 +509,7 @@ body {
   display: inline-block;
   text-transform: none;
   letter-spacing: 0.2px;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: var(--font-family);
 }
 .btn-reservation:hover {
   background: #dc2626;
@@ -1379,7 +1422,7 @@ main {
   .nav-links {
     position: fixed;
     top: 0; right: 0; bottom: 0; left: 0;
-    background: rgba(30,58,138,.98);
+    background: rgba(20,52,79,.98);
     -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
@@ -1455,9 +1498,9 @@ main {
 
 /* ===== 全站菜单样式统一（覆盖页面内联差异） ===== */
 .navbar {
-  background: rgba(30, 58, 138, 0.95) !important;
+  background: rgba(20, 52, 79, 0.95) !important;
 }
-.navbar.scrolled { background: rgba(30, 58, 138, 0.98) !important; }
+.navbar.scrolled { background: rgba(20, 52, 79, 0.98) !important; }
 .nav-container {
   padding: 1rem 2rem !important;
   max-width: 1200px !important;
@@ -1508,7 +1551,7 @@ main {
     left: 50% !important;
     transform: translateX(-50%);
     min-width: 160px; text-align: center;
-    background: rgba(30, 58, 138, 0.98) !important;
+    background: rgba(20, 52, 79, 0.98) !important;
     -webkit-backdrop-filter: blur(20px);
   backdrop-filter: blur(20px);
     border: 1px solid rgba(255,255,255,.1);
@@ -1530,7 +1573,7 @@ main {
   .nav-links .dropdown-menu {
     position: static !important;
     display: none !important;
-    background: rgba(30,58,138,.98) !important;
+    background: rgba(20,52,79,.98) !important;
     -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
@@ -2398,7 +2441,7 @@ main {
   justify-content: center;
   min-width: 60px;
   height: 50px;
-  box-shadow: 0 4px 15px rgba(30, 58, 138, 0.3);
+  box-shadow: 0 4px 15px rgba(20, 52, 79, 0.3);
 }
 
 .footer-logo .logo-text {
