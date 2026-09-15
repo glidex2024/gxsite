@@ -1,0 +1,418 @@
+/* ==========================================================================
+   GX Glide.X · Design System
+   ------------------------------------------------------------------------
+   统一设计令牌（颜色 / 字号 / 间距 / 圆角 / 阴影）与核心公共组件样式
+   （导航栏 / 按钮 / 卡片 / 表单 / 页脚 / 悬浮联系按钮）。
+
+   加载顺序：本文件应在每个页面 <head> 的最后引入（在 style.css /
+   mobile-optimization.css / mobile-override.css / qr-modal.css 及页面内联
+   <style> 之后），以便作为统一的"最终视觉层"生效，而不需要改动业务逻辑
+   或删除大量历史样式。旧文件中在移动端大量使用了 !important，因此本文件
+   在需要覆盖同一属性时也保留必要的 !important —— 这是与历史代码共存的
+   务实选择，而非推荐写法；后续如做彻底重构，可移除历史 !important 后一并精简本文件。
+
+   不修改任何 JS 行为依赖的类名（.scrolled / .show / .open / .active /
+   body--nav-open 等），只调整视觉表现。
+   ========================================================================== */
+
+:root {
+  /* ---------- 核心色板 ---------- */
+  --color-primary: #16336b;      /* 深蓝——品牌主色，导航/页脚 */
+  --color-primary-2: #1e3a8a;    /* 主蓝（原 --primary-blue），用于渐变/强调块 */
+  --color-primary-dark: #0f2450;
+  --color-accent: #ea580c;       /* 品牌橙——按钮/强调 */
+  --color-accent-hover: #dc2626;
+  --color-ink: #1a2233;          /* 标题文字 */
+  --color-body: #3f4a5c;         /* 正文文字 */
+  --color-muted: #6b7280;        /* 次要文字 */
+  --color-line: #e7e9ef;         /* 分隔线/描边 */
+  --color-surface: #ffffff;
+  --color-surface-alt: #f7f8fb;
+  --color-bg: #f5f6f8;
+  --color-success: #059669;
+
+  /* ---------- 兼容旧变量名（保持所有既有引用不失效） ---------- */
+  --main-blue: var(--color-primary);
+  --main-orange: var(--color-accent);
+  --main-white: var(--color-bg);
+  --main-dark: var(--color-ink);
+  --main-red: #e60012;
+  --primary-blue: var(--color-primary-2);
+  --secondary-blue: #3b82f6;
+  --accent-orange: var(--color-accent);
+  --snow-white: #ffffff;
+  --deep-green: #166534;
+  --warm-gray: var(--color-muted);
+  --dark-gray: var(--color-body);
+  --ice-blue: #f1f5f9;
+  --powder-blue: #e0e7ff;
+  --mountain-gray: #1f2937;
+  --success-green: var(--color-success);
+  --warning-amber: #d97706;
+  --light-gray: var(--color-surface-alt);
+  --border-gray: var(--color-line);
+
+  /* ---------- 字体 & 字号级 ---------- */
+  --font-base: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Hiragino Sans GB',
+    'Microsoft YaHei', 'Segoe UI', Roboto, Arial, sans-serif;
+  --fs-h1: clamp(1.9rem, 1.4rem + 2.1vw, 2.85rem);
+  --fs-h2: clamp(1.55rem, 1.28rem + 1.2vw, 2.1rem);
+  --fs-h3: clamp(1.2rem, 1.06rem + 0.55vw, 1.42rem);
+  --fs-h4: 1.08rem;
+  --fs-body: 1rem;
+  --fs-sm: 0.92rem;
+  --fs-xs: 0.82rem;
+  --lh-tight: 1.28;
+  --lh-normal: 1.7;
+
+  /* ---------- 间距级（4px 基准） ---------- */
+  --sp-1: 4px; --sp-2: 8px; --sp-3: 12px; --sp-4: 16px; --sp-5: 24px;
+  --sp-6: 32px; --sp-7: 48px; --sp-8: 64px; --sp-9: 96px;
+  --section-pad: clamp(48px, 6vw, 88px);
+  --card-pad: clamp(22px, 2.6vw, 32px);
+
+  /* ---------- 圆角级 ---------- */
+  --radius-sm: 8px; --radius-md: 12px; --radius-lg: 16px; --radius-xl: 22px; --radius-pill: 999px;
+
+  /* ---------- 阴影级 ---------- */
+  --shadow-xs: 0 1px 2px rgba(17,24,39,.06);
+  --shadow-sm: 0 2px 10px rgba(17,24,39,.07);
+  --shadow-md: 0 10px 28px rgba(17,24,39,.10);
+  --shadow-lg: 0 20px 44px rgba(17,24,39,.15);
+  --ease: cubic-bezier(.4,0,.2,1);
+}
+
+/* ==========================================================================
+   基础排版
+   ========================================================================== */
+body {
+  font-family: var(--font-base);
+  color: var(--color-body);
+  background: var(--color-bg);
+  line-height: var(--lh-normal);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--color-ink);
+  line-height: var(--lh-tight);
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+/* 修正历史遗留的桌面端强制单行省略（曾导致标题/正文在桌面端被裁切） */
+@media (min-width: 769px) {
+  body, div, p, h1, h2, h3, h4, h5, h6, span, a, li, td, th, label, input, textarea, button {
+    white-space: normal;
+    text-overflow: clip;
+  }
+}
+
+p { color: var(--color-body); }
+.description, .content-text, .subtitle { line-height: var(--lh-normal); }
+
+::selection { background: rgba(234,88,12,.22); color: var(--color-ink); }
+
+/* 统一可访问性焦点样式 */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+.card:focus-visible,
+.coach-card:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* ==========================================================================
+   Layout / Container
+   ========================================================================== */
+.container {
+  max-width: 1200px;
+  padding-left: clamp(16px, 4vw, 32px);
+  padding-right: clamp(16px, 4vw, 32px);
+}
+
+/* ==========================================================================
+   导航栏
+   ========================================================================== */
+.navbar {
+  background: rgba(22, 51, 107, 0.92) !important;
+  -webkit-backdrop-filter: saturate(160%) blur(18px);
+  backdrop-filter: saturate(160%) blur(18px);
+  border-bottom: 1px solid rgba(255,255,255,.08);
+}
+.navbar.scrolled {
+  background: rgba(22, 51, 107, 0.97) !important;
+  box-shadow: var(--shadow-md);
+}
+.nav-container {
+  padding-top: var(--sp-3) !important;
+  padding-bottom: var(--sp-3) !important;
+  /* 修复真实 bug：.nav-container 继承自 .container 的 overflow-x:hidden，
+     会被浏览器强制把 overflow-y 隐式变成 auto，从而裁切住课程介绍的
+     悬浮下拉子菜单，导致桌面端下拉菜单几乎不可见。 */
+  overflow: visible !important;
+}
+.logo-img { height: clamp(30px, 4vw, 42px) !important; }
+
+.nav-links a {
+  font-size: var(--fs-sm) !important;
+  font-weight: 600 !important;
+  letter-spacing: .01em;
+}
+.nav-links a.active,
+.nav-links a:hover { color: var(--color-accent) !important; }
+
+.btn-reservation {
+  border-radius: var(--radius-pill) !important;
+  font-weight: 700 !important;
+  box-shadow: var(--shadow-sm);
+}
+.btn-reservation:hover { box-shadow: var(--shadow-md); }
+
+/* 修复真实 bug：抽屉导航（.nav-links 的 position:fixed 版本）实际在
+   max-width:991px 范围内生效（见 mobile-override.css），但汉堡按钮
+   .menu-toggle 的 48x48 图标样式只写在了 max-width:768px 里 —— 导致
+   769px~991px（常见平板宽度）下，导航栏既不显示横向菜单，汉堡按钮
+   也缩成了不可见的几像素小点，整个导航在平板宽度下完全不可用。 */
+@media (max-width: 991px) {
+  .menu-toggle {
+    display: block !important;
+    width: 44px !important;
+    height: 44px !important;
+    min-width: 44px !important;
+    min-height: 44px !important;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23fff'%3E%3Cpath d='M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z'/%3E%3C/svg%3E") center/55% no-repeat !important;
+    border: none !important;
+    outline: none !important;
+    flex: 0 0 auto !important;
+  }
+}
+
+@media (max-width: 768px) {
+  /* 注：.nav-links 展开时是有意设计成右侧局部宽度抽屉（min(86vw,400px)，
+     见 mobile-override.css 注释），非全屏——这里只统一渐变背景，不改动尺寸/定位。 */
+  .nav-links {
+    background: linear-gradient(180deg, rgba(22,51,107,.99), rgba(15,36,80,.99)) !important;
+  }
+  .nav-links a {
+    background: rgba(255,255,255,.06) !important;
+    border-color: rgba(255,255,255,.12) !important;
+    border-radius: var(--radius-md) !important;
+  }
+  .nav-links a:hover,
+  .nav-links a:active {
+    background-color: rgba(234,88,12,.85) !important;
+  }
+  /* 移动端抽屉中，当前页背景已经是橙色填充，文字需保持白色以保证对比度
+     （否则会与我们全局的 active=橙色文字规则叠加，变成橙字橙底不可读） */
+  .nav-links a.active {
+    color: #fff !important;
+  }
+  .nav-links .dropdown-menu {
+    border-radius: var(--radius-md) !important;
+  }
+}
+
+/* ==========================================================================
+   按钮系统 —— .btn 系为主按钮（品牌橙 · 药丸形），.prev-btn / 次要动作为描边按钮
+   ========================================================================== */
+.btn,
+.btn-primary,
+.learn-more-btn,
+.about-btn, .coach-btn,
+.course-card .btn,
+.coach-card .btn,
+.booking-steps .submit-btn,
+.news-btn-modern,
+.location-btn-modern,
+.book-btn,
+.coach-book-btn,
+.btn-book {
+  background: var(--color-accent) !important;
+  color: #fff !important;
+  border: none;
+  border-radius: var(--radius-pill) !important;
+  font-weight: 700 !important;
+  letter-spacing: .01em;
+  box-shadow: var(--shadow-sm) !important;
+  transition: transform .2s var(--ease), box-shadow .2s var(--ease), background-color .2s var(--ease) !important;
+}
+.btn:hover,
+.btn-primary:hover,
+.learn-more-btn:hover,
+.about-btn:hover, .coach-btn:hover,
+.course-card .btn:hover,
+.coach-card .btn:hover,
+.booking-steps .submit-btn:hover,
+.news-btn-modern:hover,
+.location-btn-modern:hover,
+.book-btn:hover,
+.coach-book-btn:hover,
+.btn-book:hover {
+  background: var(--color-accent-hover) !important;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md) !important;
+}
+.btn:active { transform: translateY(0) scale(.99); }
+
+.btn-secondary,
+.booking-steps .prev-btn {
+  background: transparent !important;
+  color: var(--color-primary) !important;
+  border: 1.5px solid var(--color-line) !important;
+  border-radius: var(--radius-pill) !important;
+  font-weight: 700 !important;
+  box-shadow: none !important;
+}
+.btn-secondary:hover,
+.booking-steps .prev-btn:hover {
+  background: var(--color-surface-alt) !important;
+  border-color: var(--color-primary) !important;
+  color: var(--color-primary) !important;
+}
+
+.pagination button.active { background: var(--color-primary) !important; border-color: var(--color-primary) !important; }
+.pagination button:hover { background: var(--color-accent) !important; border-color: var(--color-accent) !important; }
+
+/* ==========================================================================
+   卡片系统 —— 统一圆角/阴影，去掉逐个卡片的粗色描边（是造成"模板感"的主因之一），
+   改为极简描边 + 悬浮阴影，色彩通过顶部细条或图标呼应品牌色。
+   ========================================================================== */
+.card,
+.coach-card,
+.course-card,
+.qr-item,
+.news-item,
+.course-image-card,
+.coaches-filter-section {
+  border-radius: var(--radius-lg) !important;
+  border: 1px solid var(--color-line) !important;
+  box-shadow: var(--shadow-sm) !important;
+  transition: transform .25s var(--ease), box-shadow .25s var(--ease), border-color .25s var(--ease) !important;
+}
+.card:hover,
+.coach-card:hover,
+.course-card:hover,
+.qr-item:hover,
+.news-item:hover {
+  border-color: rgba(234,88,12,.35) !important;
+  box-shadow: var(--shadow-lg) !important;
+  transform: translateY(-6px);
+}
+.card.selected, .course-card.selected, .course-card:focus-within {
+  border-color: var(--color-accent) !important;
+  box-shadow: var(--shadow-lg) !important;
+}
+.card { padding: var(--card-pad) !important; }
+
+/* 修复真实对齐 bug：同一排卡片内文字长度不一样时（如课程卡片的"推荐人群"
+   列表条数不同），底部按钮会跟着内容高低不齐，导致整排按钮没有对齐。
+   让卡片纵向 flex 排列，按钮用 margin-top:auto 始终贴底。 */
+.course-card,
+.coach-card,
+.qr-item {
+  display: flex;
+  flex-direction: column;
+}
+.course-card > .btn,
+.course-card > button,
+.coach-card > .btn,
+.coach-card > button {
+  margin-top: auto;
+}
+.card h3, .coach-card h3, .course-card h3 { color: var(--color-primary); font-size: var(--fs-h4); }
+.card p, .coach-card p, .course-card p { color: var(--color-body); font-size: var(--fs-sm); }
+
+/* ==========================================================================
+   表单
+   ========================================================================== */
+.form-input,
+input[type="text"], input[type="email"], input[type="tel"], input[type="date"],
+textarea, select {
+  border-radius: var(--radius-sm) !important;
+  border: 1.5px solid var(--color-line) !important;
+  background: var(--color-surface-alt) !important;
+}
+.form-input:focus,
+input:focus, textarea:focus, select:focus {
+  border-color: var(--color-accent) !important;
+  box-shadow: 0 0 0 3px rgba(234,88,12,.15) !important;
+  outline: none;
+}
+.radio-group label { border-radius: var(--radius-sm) !important; }
+
+/* ==========================================================================
+   页脚
+   ========================================================================== */
+.footer {
+  background: linear-gradient(160deg, #17233a 0%, #101a2c 100%) !important;
+}
+.footer-links h3 { color: var(--color-accent); }
+.footer-bottom p { opacity: .7; }
+
+/* ==========================================================================
+   右下角悬浮联系按钮
+   ========================================================================== */
+.contact-main-btn { box-shadow: var(--shadow-md) !important; }
+.contact-main-btn:hover { box-shadow: var(--shadow-lg) !important; }
+.contact-options { border-radius: var(--radius-xl) !important; box-shadow: var(--shadow-lg) !important; }
+.contact-option { border-radius: var(--radius-md) !important; }
+
+/* ==========================================================================
+   Hero / Section 标题通用节奏（首页与内页共用类名）
+   ========================================================================== */
+.hero-content h1,
+.coaches-hero h1,
+.school-intro-content h2,
+.news-section h2,
+.swiper-section h2,
+.qr-section h2 {
+  font-size: var(--fs-h1);
+}
+/* 统一各页 Hero 大标题颜色为品牌橙（原为红色 #e60012，与品牌色板无关，各页不一致） */
+.hero-content h1 { color: var(--color-accent); }
+.school-intro-content h3, .school-intro-content h4,
+.ski-snowboard-content h2, .ski-snowboard-content h3 {
+  font-size: var(--fs-h2);
+}
+
+section, .school-intro-section, .ski-snowboard-section, .testimonials-section {
+  padding-top: var(--section-pad);
+  padding-bottom: var(--section-pad);
+}
+
+/* ==========================================================================
+   触摸设备：保留点按反馈，去除悬浮位移，避免"抖动感"
+   ========================================================================== */
+@media (hover: none) and (pointer: coarse) {
+  .card:hover, .coach-card:hover, .course-card:hover, .qr-item:hover, .news-item:hover {
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card, .coach-card, .course-card, .btn, .qr-item, .news-item {
+    transition: none !important;
+  }
+}
+
+/* 分类筛选 chip（非主操作按钮，采用轻量描边样式，避免与主 CTA 混淆） */
+.category-btn-modern {
+  border-radius: var(--radius-pill) !important;
+  border: 1.5px solid var(--color-line) !important;
+  background: var(--color-surface) !important;
+  color: var(--color-primary) !important;
+  font-weight: 600 !important;
+  transition: all .2s var(--ease) !important;
+}
+.category-btn-modern:hover {
+  border-color: var(--color-accent) !important;
+  color: var(--color-accent) !important;
+}
+.category-btn-modern.active {
+  background: var(--color-accent) !important;
+  border-color: var(--color-accent) !important;
+  color: #fff !important;
+}

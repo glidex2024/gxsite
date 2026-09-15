@@ -5,13 +5,7 @@
   box-sizing: border-box;
 }
 
-/* 全局文字换行控制 - 桌面端优先一行显示，移动端允许换行 */
-@media (min-width: 769px) {
-  body, div, p, h1, h2, h3, h4, h5, h6, span, a, li, td, th, label, input, textarea, button {
-    white-space: nowrap;
-    text-overflow: ellipsis;
-  }
-}
+/* [design-system.css 已统一处理桌面端文字换行，移除历史强制单行省略规则] */
 
 /* 确保页面可以正常滚动 */
 html, body {
@@ -28,15 +22,13 @@ p, .description, .content-text {
   word-break: keep-all;
 }
 
-/* 标题和导航文字强制一行显示 - 仅限桌面端 */
-@media (min-width: 769px) {
-  h1, h2, h3, h4, h5, h6, .nav-links a, .logo, .hero-content h1, .hero-content p {
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    max-width: 100%;
-  }
+/* 全站防横向溢出（原分散在 4 个断点内的重复规则已合并于此，统一维护） */
+*, h1, h2, h3, h4, h5, h6, p, span, div, li, ul, ol {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
+img, video, iframe { max-width: 100%; height: auto; }
+
 :root {
   --main-blue: #003366;
   --main-orange: #ff6600;
@@ -1279,12 +1271,7 @@ main {
   background: #0e3a5a;
 } 
 
-/* 首页主视觉轮播区高度铺满视口 */
-.hero, .swiper, .swiper-slide {
-  height: 100vh !important;
-  min-height: 100vh !important;
-  max-height: 100vh !important;
-}
+/* 首页主视觉轮播区高度铺满视口（.hero/.swiper/.swiper-slide 的高度规则已在上方定义，这里只补充 .hero-bg） */
 .hero-bg {
   height: 100vh !important;
   min-height: 100vh !important;
@@ -1743,40 +1730,7 @@ main {
     max-width: 100%;
     box-sizing: border-box;
   }
-  
-/* 防止所有元素横向溢出 */
-      * {
-        max-width: 100% !important;
-        box-sizing: border-box !important;
-        word-wrap: break-word !important;
-        overflow-wrap: break-word !important;
-        overflow-x: hidden !important;
-      }
-      
-      h1, h2, h3, h4, h5, h6 {
-        word-wrap: break-word !important;
-        overflow-wrap: break-word !important;
-        max-width: 100% !important;
-        overflow: hidden !important;
-      }
-      
-      p, span, div, li, ul, ol {
-        word-wrap: break-word !important;
-        overflow-wrap: break-word !important;
-        max-width: 100% !important;
-        overflow-x: hidden !important;
-      }
-      
-      img, video, iframe {
-        max-width: 100% !important;
-        height: auto !important;
-      }
-      
-      img, video, iframe {
-        max-width: 100% !important;
-        height: auto !important;
-      }
-  
+
   .hero-content h1 {
     font-size: 2.5rem;
   }
@@ -1826,40 +1780,7 @@ main {
     padding: 0 15px;
     box-sizing: border-box;
   }
-  
-/* 防止所有元素横向溢出 */
-      * {
-        max-width: 100% !important;
-        box-sizing: border-box !important;
-        word-wrap: break-word !important;
-        overflow-wrap: break-word !important;
-        overflow-x: hidden !important;
-      }
-      
-      h1, h2, h3, h4, h5, h6 {
-        word-wrap: break-word !important;
-        overflow-wrap: break-word !important;
-        max-width: 100% !important;
-        overflow: hidden !important;
-      }
-      
-      p, span, div, li, ul, ol {
-        word-wrap: break-word !important;
-        overflow-wrap: break-word !important;
-        max-width: 100% !important;
-        overflow-x: hidden !important;
-      }
-      
-      img, video, iframe {
-        max-width: 100% !important;
-        height: auto !important;
-      }
-      
-      img, video, iframe {
-        max-width: 100% !important;
-        height: auto !important;
-      }
-  
+
   .navbar {
     padding: 0 15px;
   }
@@ -1954,40 +1875,7 @@ main {
     padding: 0 10px;
     box-sizing: border-box;
   }
-  
-/* 防止所有元素横向溢出 */
-      * {
-        max-width: 100% !important;
-        box-sizing: border-box !important;
-        word-wrap: break-word !important;
-        overflow-wrap: break-word !important;
-        overflow-x: hidden !important;
-      }
-      
-      h1, h2, h3, h4, h5, h6 {
-        word-wrap: break-word !important;
-        overflow-wrap: break-word !important;
-        max-width: 100% !important;
-        overflow: hidden !important;
-      }
-      
-      p, span, div, li, ul, ol {
-        word-wrap: break-word !important;
-        overflow-wrap: break-word !important;
-        max-width: 100% !important;
-        overflow-x: hidden !important;
-      }
-      
-      img, video, iframe {
-        max-width: 100% !important;
-        height: auto !important;
-      }
-      
-      img, video, iframe {
-        max-width: 100% !important;
-        height: auto !important;
-      }
-  
+
   .navbar {
     padding: 0 10px;
   }
@@ -2144,35 +2032,10 @@ main {
     box-sizing: border-box;
   }
   
-  /* 防止所有元素横向溢出 */
-  * {
-    max-width: 100% !important;
-    box-sizing: border-box !important;
-    word-wrap: break-word !important;
-    overflow-wrap: break-word !important;
-    overflow-x: hidden !important;
-  }
-  
   h1, h2, h3, h4, h5, h6 {
     font-size: 1.2rem !important;
-    word-wrap: break-word !important;
-    overflow-wrap: break-word !important;
-    max-width: 100% !important;
-    overflow: hidden !important;
   }
-  
-  p, span, div, li, ul, ol {
-    word-wrap: break-word !important;
-    overflow-wrap: break-word !important;
-    max-width: 100% !important;
-    overflow-x: hidden !important;
-  }
-  
-  img, video, iframe {
-    max-width: 100% !important;
-    height: auto !important;
-  }
-  
+
   .navbar {
     padding: 0 8px;
   }
@@ -2297,32 +2160,7 @@ main {
 }
 
 /* 深色模式支持 */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --main-white: #1a1a1a;
-    --main-dark: #f5f5f5;
-  }
-  
-  body {
-    background: var(--main-white);
-    color: var(--main-dark);
-  }
-  
-  .card,
-  .coach-card,
-  .coaches-filter-section {
-    background: #2a2a2a;
-    color: #f5f5f5;
-  }
-  
-  .news-content h3 {
-    color: var(--main-orange);
-  }
-  
-  .news-content p {
-    color: #e0e0e0;
-  }
-}
+/* [移除了不完整的深色模式规则块：原规则只覆盖了少数组件，其余元素仍为浅色，导致系统深色模式下视觉不一致] */
 
 /* 减少动画（用户偏好） */
 @media (prefers-reduced-motion: reduce) {
