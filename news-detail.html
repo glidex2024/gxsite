@@ -106,9 +106,10 @@
       width: 100% !important;
       height: auto !important;
       max-height: 520px;          /* 桌面端上限，避免过高 */
-      object-fit: cover;          /* 填满容器，保持观感 */
+      object-fit: contain;        /* 完整显示图片，不裁切 */
       object-position: center;
       border-radius: 16px;
+      background: var(--color-surface-alt, #f7f8fb);
       display: block;
     }
 
@@ -121,9 +122,8 @@
       body { padding-bottom: 40px !important; }
       section.container { padding-bottom: 40px !important; }
       footer { padding-bottom: 40px !important; }
-      /* 图片必须完整显示：使用 contain，并基于视口限制高度 */
+      /* 图片必须完整显示：基础规则已用 contain，这里只按视口收紧高度 */
       #news-img {
-        object-fit: contain !important;  /* 确保整图显示，不裁切 */
         max-height: 60vh !important;     /* 随视口缩放 */
       }
     }
