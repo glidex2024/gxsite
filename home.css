@@ -266,10 +266,11 @@
     
     .hero-content .subtitle {
       font-size: 1.2rem; /* 增大副标题字体 */
-      font-weight: 700;
+      font-weight: 500; /* 与 .description/.mission-text 统一，不再用粗体强调 */
       margin-bottom: 1rem; /* 增加副标题下方间距 */
       text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
-      color: var(--accent-orange);
+      color: var(--snow-white); /* 与其他正文文字统一为灰白色，不再用橙色 */
+      opacity: 0.95;
       line-height: 1.4; /* 增加行高 */
       word-wrap: break-word;
       overflow-wrap: break-word;
