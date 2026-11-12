@@ -611,3 +611,92 @@ section, .school-intro-section, .ski-snowboard-section, .testimonials-section {
     font-size: .82rem !important;
   }
 }
+
+/* ==========================================================================
+   Header foundation — final cross-page override
+   Every page includes legacy local navigation rules. Keep the visible header
+   controls in one stable arrangement regardless of page-specific CSS.
+   ========================================================================== */
+.navbar .nav-container {
+  display: flex !important;
+  align-items: center !important;
+  min-height: 68px !important;
+}
+.navbar .language-switch {
+  display: inline-flex !important;
+  align-items: center !important;
+  flex: 0 0 auto !important;
+  color: #fff !important;
+  line-height: 1 !important;
+  white-space: nowrap !important;
+}
+.navbar .language-switch a,
+.navbar .language-switch .lang-current {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  color: #fff !important;
+  text-decoration: none !important;
+  white-space: nowrap !important;
+  word-break: keep-all !important;
+}
+.navbar .language-switch .lang-current {
+  font-weight: 700 !important;
+}
+
+@media (min-width: 992px) {
+  .navbar .language-switch {
+    gap: 0 !important;
+    margin-left: 20px !important;
+    padding: 3px !important;
+    border: 1px solid rgba(255,255,255,.45) !important;
+    border-radius: 999px !important;
+    background: rgba(8,24,62,.22) !important;
+  }
+  .navbar .language-switch span[aria-hidden="true"] { display: none !important; }
+  .navbar .language-switch a,
+  .navbar .language-switch .lang-current {
+    min-height: 36px !important;
+    padding: 0 10px !important;
+    border: 0 !important;
+    border-radius: 999px !important;
+  }
+  .navbar .language-switch .lang-current { background: rgba(255,255,255,.18) !important; }
+}
+
+@media (max-width: 991px) {
+  .navbar .nav-container {
+    min-height: 64px !important;
+    height: 64px !important;
+    padding: 0 12px !important;
+    gap: 8px !important;
+    flex-wrap: nowrap !important;
+  }
+  .navbar .language-switch {
+    gap: 0 !important;
+    margin-left: 12px !important;
+    padding: 3px !important;
+    border: 1px solid rgba(255,255,255,.45) !important;
+    border-radius: 999px !important;
+    background: rgba(8,24,62,.22) !important;
+    font-size: .78rem !important;
+  }
+  .navbar .language-switch span[aria-hidden="true"] { display: none !important; }
+  .navbar .language-switch a,
+  .navbar .language-switch .lang-current {
+    min-height: 36px !important;
+    padding: 0 9px !important;
+    border: 0 !important;
+    border-radius: 999px !important;
+  }
+  .navbar .language-switch .lang-current { background: rgba(255,255,255,.18) !important; }
+}
+
+@media (max-width: 480px) {
+  .navbar .language-switch { font-size: .72rem !important; }
+  .navbar .language-switch a,
+  .navbar .language-switch .lang-current {
+    min-height: 34px !important;
+    padding: 0 7px !important;
+  }
+}
