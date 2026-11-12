@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>消息详情 - Glide.X滑雪学校</title>
   <link rel="canonical" href="https://glidex.net/news-detail.html">
   <link rel="stylesheet" href="/style.css">
@@ -67,14 +67,15 @@
     
     /* 修复滚动问题 */
     html, body {
-      overflow-x: auto !important;
+      overflow-x: hidden !important;
       overflow-y: auto !important;
       height: auto !important;
     }
     
     body {
       position: relative !important;
-      overflow: auto !important;
+      overflow-x: hidden !important;
+      overflow-y: auto !important;
     }
     
     .container {
@@ -90,12 +91,12 @@
 
     /* 文本换行与防溢出 */
     #news-title, #news-content {
-      word-break: break-word;
-      overflow-wrap: anywhere;
+      word-break: normal;
+      overflow-wrap: break-word;
       white-space: normal;
     }
     #news-content {
-      white-space: pre-line; /* 保留换行 */
+      white-space: pre-line !important; /* 保留换行 */
       font-size: 1rem;
       line-height: 1.8;
     }
@@ -118,9 +119,12 @@
     }
 
     @media (max-width: 768px) {
-      /* 手机端整体与页尾下内边距 40px */
-      body { padding-bottom: 40px !important; }
-      section.container { padding-bottom: 40px !important; }
+      /* 手机端正文保持段落层级，并避免横向滚动 */
+      body { padding-top: 82px !important; padding-bottom: 40px !important; }
+      #news-detail-hero { height: 38svh !important; min-height: 250px !important; }
+      #news-title { font-size: clamp(1.5rem, 7vw, 2rem) !important; line-height: 1.25 !important; letter-spacing: 0 !important; max-width: 100%; }
+      #news-detail-main { padding: 32px 18px 48px !important; }
+      #news-content { white-space: pre-line !important; font-size: 1rem !important; line-height: 1.85 !important; overflow-wrap: break-word !important; word-break: normal !important; }
       footer { padding-bottom: 40px !important; }
       /* 图片必须完整显示：基础规则已用 contain，这里只按视口收紧高度 */
       #news-img {
@@ -293,14 +297,14 @@
   </nav>
   <div class="nav-backdrop" hidden></div>
   <!-- 统一hero区 -->
-  <header class="" style="height: 50vh; min-height: 120px;">
+  <header id="news-detail-hero" class="" style="height: 50vh; min-height: 120px;">
     <div class="" id="news-hero-bg" style="background:linear-gradient(rgba(17,17,17,0.7),rgba(17,17,17,0.7)),url('https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;"></div>
     <div class="hero-content" data-aos="fade-up">
       <h1 id="news-title" style="font-size:2.2rem;font-weight:900;background:linear-gradient(90deg,#003366,#ff6600 80%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:2px;padding-bottom:0.2em;border-bottom:3px solid #ff6600;display:inline-block;">消息详情</h1>
       <p id="news-date" style="color:#666;font-size:1.08em;font-weight:600;margin-top:0.7em;"></p>
     </div>
   </header>
-  <section class="container" style="max-width:800px;padding:48px 0 64px 0;">
+  <section id="news-detail-main" class="container" style="max-width:800px;padding:48px 0 64px 0;">
     <img loading="lazy" id="news-img" src="" alt="消息图片" style="width:100%;border-radius:16px;margin-bottom:2rem;display:none;" onerror="this.onerror=null;this.src='/image/hero1.jpg';">
     <div data-aos="fade-up">
       <div id="news-content" style="font-size:1.1rem;line-height:2;"></div>
