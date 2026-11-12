@@ -18,14 +18,14 @@
   <meta name="twitter:title" content="最新消息 - GX Glide.X 滑雪学校">
   <meta name="twitter:description" content="GX滑雪学校最新动态：雪场资讯、训练营招募、课程更新。">
   <meta name="twitter:image" content="https://glidex.net/image/news/new1.jpg">
-  <link rel="icon" type="image/png" sizes="32x32" href="image/logo/favicon-32.png">
-  <link rel="icon" type="image/png" sizes="64x64" href="image/logo/favicon-64.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/image/logo/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="/image/logo/favicon-64.png">
   
   <link rel="canonical" href="https://glidex.net/news.html">
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="mobile-optimization.css">
-  <link rel="stylesheet" href="mobile-override.css">
-  <link rel="stylesheet" href="qr-modal.css">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/mobile-optimization.css">
+  <link rel="stylesheet" href="/mobile-override.css">
+  <link rel="stylesheet" href="/qr-modal.css">
   <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
   <style>
     
@@ -343,25 +343,31 @@
     gtag('js', new Date());
     gtag('config', 'G-B3XF10TFX1');
   </script>
-  <link rel="stylesheet" href="design-system.css">
+  <link rel="stylesheet" href="/design-system.css">
+  <link rel="alternate" hreflang="zh-CN" href="https://glidex.net/news">
+  <link rel="alternate" hreflang="zh-TW" href="https://glidex.net/zh-tw/news">
+  <link rel="alternate" hreflang="x-default" href="https://glidex.net/news">
 </head>
 <body>
   <!-- 顶部导航栏 -->
   <nav id="navbar" class="navbar">
     <div class="container nav-container">
-      <a href="index.html" class="logo">
-        <img src="image/logo/logo2.png" alt="GX 中文国际滑雪学校" class="logo-img">
+      <a href="/" class="logo">
+        <img src="/image/logo/logo2.png" alt="GX 中文国际滑雪学校" class="logo-img">
       </a>
       <button class="menu-toggle" aria-controls="primary-nav" aria-expanded="false" aria-label="打开菜单"></button>
       <ul id="primary-nav" class="nav-links" role="navigation">
         <li class="nav-drawer-head" role="presentation"><span class="nav-drawer-title">MENU</span><button type="button" class="nav-close" aria-label="关闭菜单">&times;</button></li>
-        <li><a href="index.html">首页</a></li>
-        <li><a href="about.html">关于GX</a></li>
-                <li><a href="courses.html">课程介绍</a></li>
-        <li><a href="news.html" class="active">最新消息</a></li>
-        <li><a href="recruitment.html">加入我们</a></li>
-        <li><a href="contact.html">联系我们</a></li>
+        <li><a href="/">首页</a></li>
+        <li><a href="/about">关于GX</a></li>
+                <li><a href="/courses">课程介绍</a></li>
+        <li><a href="/news" class="active">最新消息</a></li>
+        <li><a href="/recruitment">加入我们</a></li>
+        <li><a href="/contact">联系我们</a></li>
       </ul>
+      <div class="language-switch" aria-label="语言切换">
+        <span class="lang-current">简体</span><span aria-hidden="true">/</span><a href="/zh-tw/news" lang="zh-TW">繁體</a>
+      </div>
       <button class="btn btn-reservation" onclick="showAllQR()">预约</button>
     </div>
   </nav>
@@ -391,7 +397,7 @@
         <!-- 左侧：公司信息 -->
         <div class="footer-company">
           <div class="footer-logo">
-            <img src="image/logo/logo2.png" alt="GX 中文国际滑雪学校" class="logo-img">
+            <img src="/image/logo/logo2.png" alt="GX 中文国际滑雪学校" class="logo-img">
           </div>
           <div class="company-info">
             <p>GlideX中文国際滑雪学校</p>
@@ -405,13 +411,13 @@
         <div class="footer-links">
           <h3>快速链接</h3>
           <ul>
-            <li><a href="index.html">首页</a></li>
-            <li><a href="about.html">关于GX</a></li>
-            <li><a href="courses.html">课程介绍</a></li>
+            <li><a href="/">首页</a></li>
+            <li><a href="/about">关于GX</a></li>
+            <li><a href="/courses">课程介绍</a></li>
             
-            <li><a href="news.html">最新消息</a></li>
-            <li><a href="recruitment.html">加入我们</a></li>
-            <li><a href="contact.html">联系我们</a></li>
+            <li><a href="/news">最新消息</a></li>
+            <li><a href="/recruitment">加入我们</a></li>
+            <li><a href="/contact">联系我们</a></li>
           </ul>
         </div>
         
@@ -453,8 +459,8 @@
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-  <script src="mobile-menu.js"></script>
-  <script src="qr-functions.js"></script>
+  <script src="/mobile-menu.js"></script>
+  <script src="/qr-functions.js"></script>
   <script>
     (function(){
       var toggle = document.querySelector('.menu-toggle');
@@ -484,7 +490,7 @@
     });
 
     // 静态json分页渲染
-    fetch('news.json')
+    fetch('/news.json')
       .then(res => res.json())
       .then(newsData => {
         // 按日期倒序排序
@@ -522,7 +528,7 @@
             item.setAttribute('data-aos', 'fade-up');
             item.setAttribute('data-aos-delay', 100 + (i - start) * 100);
             item.innerHTML = `
-              <a href="news-detail.html?id=${n.id}" style="display:flex;text-decoration:none;color:inherit;">
+              <a href="/news-detail?id=${n.id}" style="display:flex;text-decoration:none;color:inherit;">
                 <img loading="lazy" src="${imgUrl}" alt="${n.title}">
                 <div class="news-content">
                   <div class="news-date">${n.date}</div>

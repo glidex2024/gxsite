@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>聯絡我們 - GX Glide.X | 報名諮詢·課程預約</title>
+  <meta name="description" content="聯絡GX Glide.X中文滑雪學校：課程報名、價格諮詢、客製私教方案。專業客服中文接待，微信/LINE均可聯絡，快速響應您的滑雪需求。">
+  <meta name="keywords" content="日本滑雪報名,GX滑雪聯絡方式,滑雪課程諮詢,中文滑雪預約,滑雪學校微信">
+  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="聯絡我們 - GX Glide.X 中文滑雪學校">
+  <meta property="og:description" content="報名諮詢、價格查詢、客製私教，中文客服快速響應，微信/LINE均可聯絡。">
+  <meta property="og:url" content="https://glidex.net/zh-tw/contact">
+  <meta property="og:image" content="https://glidex.net/image/gallery/contact.jpg">
+  <meta property="og:locale" content="zh_TW">
+  <meta property="og:site_name" content="GX Glide.X 中文國際滑雪學校">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="聯絡我們 - GX Glide.X">
+  <meta name="twitter:description" content="報名諮詢、價格查詢、客製私教，中文客服快速響應。">
+  <meta name="twitter:image" content="https://glidex.net/image/gallery/contact.jpg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/image/logo/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="/image/logo/favicon-64.png">
+  
+  <link rel="canonical" href="https://glidex.net/zh-tw/contact">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/mobile-optimization.css">
+  <link rel="stylesheet" href="/mobile-override.css">
+  <link rel="stylesheet" href="/qr-modal.css">
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <style>
+    
+    /* 跨平臺字型渲染最佳化 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+    }
+    
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.6;
+      color: var(--dark-gray);
+      background-color: var(--snow-white);
+      overflow-x: hidden;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+    
+    /* 頂部導航欄 - 完全按照Pinnacle設計 */
+    .navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: rgba(30, 58, 138, 0.95);
+      backdrop-filter: blur(20px);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .navbar.scrolled {
+      background: rgba(30, 58, 138, 0.98);
+      box-shadow: 0 4px 20px rgba(30, 58, 138, 0.3);
+    }
+    
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    /* 二維碼彈窗樣式 */
+    .qr-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10000;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+    
+    .qr-modal.show {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    .qr-modal-content {
+      background: var(--snow-white);
+      border-radius: 20px;
+      padding: 2rem;
+      max-width: 500px;
+      width: 90%;
+      text-align: center;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      transform: scale(0.8);
+      transition: all 0.3s ease;
+    }
+    
+    .qr-modal.show .qr-modal-content {
+      transform: scale(1);
+    }
+    
+    .qr-modal-header {
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+    
+    .qr-modal-header h3 {
+      color: var(--primary-blue);
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    
+    .qr-modal-header p {
+      color: var(--warm-gray);
+      font-size: 1rem;
+      margin: 0;
+    }
+    
+    .qr-section,.qr-codes-container{
+      padding: 30px;
+    }
+    .qr-section-title{
+      padding: 30px;
+    }
+
+    .qr-modal-close {
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: var(--accent-orange);
+      color: var(--snow-white);
+      border: none;
+      font-size: 1.2rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+    .hero-bg {
+      margin-top: 65px;
+      padding-top: 0px;
+      height: 300px;
+      background-size: auto 100%;
+      background-position: top center;
+      /* 背景圖和漸變 */
+      background-image: 
+        linear-gradient(rgba(17,17,17,0.7), rgba(17,17,17,0.7)),
+        url('./image/gallery/contact.jpeg');
+      background-repeat: no-repeat;
+    }
+    
+    /* 確保跨平臺一致性 */
+    .hero {
+      margin-top: 0 !important;
+      padding-top: 0 !important;
+    }
+    .qr-modal-close:hover {
+      background: #c2410c;
+      transform: scale(1.1);
+    }
+    
+    .qr-modal-body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+    
+    .qr-image {
+      width: 200px;
+      height: 200px;
+      border-radius: 12px;
+      border: 2px solid var(--primary-blue);
+      object-fit: cover;
+    }
+    
+    .qr-tip {
+      color: var(--warm-gray);
+      font-size: 0.9rem;
+      margin: 0;
+    }
+    
+    .qr-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    
+    .qr-item {
+      text-align: center;
+    }
+    
+    .qr-item .qr-image {
+      width: 120px;
+      height: 120px;
+      border-radius: 8px;
+      margin-bottom: 0.5rem;
+    }
+    
+    .qr-label {
+      font-size: 0.9rem;
+      color: #333;
+      margin: 0;
+      font-weight: 500;
+    }
+    
+    .qr-image {
+      width: 200px;
+      height: 200px;
+      border-radius: 12px;
+      border: 2px solid var(--primary-blue);
+      object-fit: cover;
+    }
+    
+    .qr-tip {
+      color: var(--warm-gray);
+      font-size: 0.9rem;
+      margin: 0;
+    }
+    
+    /* 移動端二維碼彈窗樣式 */
+    @media (max-width: 768px) {
+      .qr-modal-content {
+        padding: 1.5rem;
+        max-width: 350px;
+      }
+      
+      .qr-image {
+        width: 180px;
+        height: 180px;
+      }
+      
+      .qr-modal-header h3 {
+        font-size: 1.3rem;
+      }
+      
+      .hero {
+        margin-top: 0 !important;
+        padding-top: 0 !important;
+      }
+    }
+  </style>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-B3XF10TFX1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-B3XF10TFX1');
+  </script>
+  <link rel="stylesheet" href="/design-system.css">
+  <link rel="alternate" hreflang="zh-CN" href="https://glidex.net/contact">
+  <link rel="alternate" hreflang="zh-TW" href="https://glidex.net/zh-tw/contact">
+  <link rel="alternate" hreflang="x-default" href="https://glidex.net/contact">
+</head>
+<body>
+  <!-- 頂部導航欄 -->
+  <nav id="navbar" class="navbar">
+    <div class="container nav-container">
+      <a href="/zh-tw/" class="logo">
+        <img src="/image/logo/logo2.png" alt="GX 中文國際滑雪學校" class="logo-img">
+      </a>
+      <button class="menu-toggle" aria-controls="primary-nav" aria-expanded="false" aria-label="開啟選單"></button>
+      <ul id="primary-nav" class="nav-links" role="navigation">
+        <li class="nav-drawer-head" role="presentation"><span class="nav-drawer-title">MENU</span><button type="button" class="nav-close" aria-label="關閉選單">&times;</button></li>
+        <li><a href="/zh-tw/">首頁</a></li>
+        <li><a href="/about">關於GX</a></li>
+                <li><a href="/zh-tw/courses">課程介紹</a></li>
+        <li><a href="/news">最新訊息</a></li>
+        <li><a href="/recruitment">加入我們</a></li>
+        <li><a href="/zh-tw/contact" class="active">聯絡我們</a></li>
+      </ul>
+      <div class="language-switch" aria-label="语言切换">
+        <a href="/contact" lang="zh-CN">簡體</a><span aria-hidden="true">/</span><span class="lang-current">繁體</span>
+      </div>
+      <button class="btn btn-reservation" onclick="showAllQR()">預約</button>
+    </div>
+  </nav>
+  <div class="nav-backdrop" hidden></div>
+
+  <!-- 主視覺區域 -->
+  <header class="hero" style="height: 60vh; min-height: 300px;">
+    <div class="hero-bg"></div>
+    <div class="hero-content" data-aos="fade-up">
+      <h1>聯絡我們</h1>
+      <p>歡迎聯絡GX — 我們隨時為您提供協助與支援！</p>
+    </div>
+  </header>
+
+
+  <!-- 二維碼聯絡區域 -->
+  <section class="qr-section container" data-aos="fade-up">
+    <h2 class="qr-section-title">掃碼聯絡我們</h2>
+    <div class="qr-codes-container">
+      <div class="qr-item">
+        <img loading="lazy" src="/image/qrcode/1.PNG" alt="微信二維碼">
+        <p>微信</p>
+      </div>
+      <div class="qr-item">
+        <img loading="lazy" src="/image/qrcode/2.JPG" alt="QQ二維碼">
+        <p>LINE</p>
+      </div>
+      <div class="qr-item">
+        <img loading="lazy" src="/image/qrcode/3.PNG" alt="電話二維碼">
+        <p>WhatsApp</p>
+      </div>
+      <div class="qr-item">
+        <img loading="lazy" src="/image/qrcode/4.jpeg" alt="郵箱二維碼">
+        <p>小紅書</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 頁尾 -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <!-- 左側：公司資訊 -->
+        <div class="footer-company">
+          <div class="footer-logo">
+            <img src="/image/logo/logo2.png" alt="GX 中文國際滑雪學校" class="logo-img">
+          </div>
+          <div class="company-info">
+            <p>GlideX中文國際滑雪學校</p>
+            <p>GlideX合同會社</p>
+            <p>〒新潟県南魚沼郡湯沢町土樽6303-1</p>
+            <p>info@glidex.net</p>
+          </div>
+        </div>
+        
+        <!-- 中間：快速連結 -->
+        <div class="footer-links">
+          <h3>快速連結</h3>
+          <ul>
+            <li><a href="/zh-tw/">首頁</a></li>
+            <li><a href="/about">關於GX</a></li>
+            <li><a href="/zh-tw/courses">課程介紹</a></li>
+            
+            <li><a href="/news">最新訊息</a></li>
+            <li><a href="/recruitment">加入我們</a></li>
+            <li><a href="/zh-tw/contact">聯絡我們</a></li>
+          </ul>
+        </div>
+        
+      </div>
+      
+      <div class="footer-bottom">
+        <p>© 2024 GlideX中文國際滑雪學校. 保留所有權利.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 右下角固定聯絡按鈕 -->
+  <div class="contact-float">
+    <!-- 主按鈕 -->
+    <div class="contact-main-btn" id="contactMainBtn">
+      <span class="contact-icon">💬</span>
+      <span class="contact-text">Contact</span>
+    </div>
+    
+    <!-- 聯絡選項 -->
+    <div class="contact-options" id="contactOptions">
+      <div class="contact-option wechat" data-tooltip="微信聯絡" onclick="openWeChat()">
+        <span class="option-icon">💬</span>
+        <span class="option-text">WeChat</span>
+      </div>
+      <div class="contact-option line" data-tooltip="LINE聯絡" onclick="openLine()">
+        <span class="option-icon">📱</span>
+        <span class="option-text">LINE</span>
+      </div>
+      <div class="contact-option whatsapp" data-tooltip="WhatsApp聯絡" onclick="openWhatsApp()">
+        <span class="option-icon">💬</span>
+        <span class="option-text">WhatsApp</span>
+      </div>
+      <div class="contact-option xhs" data-tooltip="小紅書" onclick="openXHS()">
+        <span class="option-icon">📕</span>
+        <span class="option-text">小紅書</span>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script src="/mobile-menu.js"></script>
+  <script src="/qr-functions.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <script>
+    (function(){
+      var toggle = document.querySelector('.menu-toggle');
+      var nav = document.getElementById('primary-nav');
+      var backdrop = document.querySelector('.nav-backdrop');
+      if (!toggle || !nav || !backdrop) return;
+      function openNav(){ nav.classList.add('show'); toggle.setAttribute('aria-expanded','true'); backdrop.hidden = false; document.body.classList.add('body--nav-open'); }
+      function closeNav(){ nav.classList.remove('show'); toggle.setAttribute('aria-expanded','false'); backdrop.hidden = true; document.body.classList.remove('body--nav-open'); }
+      toggle.addEventListener('click', function(){ var exp = toggle.getAttribute('aria-expanded')==='true'; exp?closeNav():openNav(); });
+      backdrop.addEventListener('click', closeNav);
+      window.addEventListener('keydown', function(e){ if(e.key==='Escape') closeNav(); });
+      var mql = window.matchMedia('(min-width: 992px)');
+      function handle(e){ if(e.matches) closeNav(); }
+      if(mql.addEventListener){ mql.addEventListener('change', handle); } else if(mql.addListener){ mql.addListener(handle); }
+    })();
+  </script>
+  <script>
+    AOS.init({ duration: 800, once: true });
+    // 滾動變色
+    window.addEventListener('scroll', function() {
+      const navbar = document.getElementById('navbar');
+      if (window.scrollY > 60) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+    
+    // 聯絡按鈕互動
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log('正在初始化聯絡按鈕...');
+      
+      const contactMainBtn = document.querySelector('.contact-main-btn');
+      const contactOptions = document.querySelector('.contact-options');
+      
+      console.log('找到的聯絡按鈕元素:', { contactMainBtn, contactOptions });
+      
+      if (contactMainBtn && contactOptions) {
+        // 定義點選處理函式
+        contactMainBtn.clickHandler = function(e) {
+          e.stopPropagation();
+          console.log('聯絡按鈕被點選');
+          
+          // 切換顯示狀態
+          if (contactOptions.classList.contains('show')) {
+            contactOptions.classList.remove('show');
+            console.log('隱藏聯絡選項');
+          } else {
+            contactOptions.classList.add('show');
+            console.log('顯示聯絡選項');
+          }
+        };
+        
+        // 繫結點選事件
+        contactMainBtn.addEventListener('click', contactMainBtn.clickHandler);
+        
+        // 點選外部關閉
+        document.addEventListener('click', function(e) {
+          if (!e.target.closest('.contact-float')) {
+            contactOptions.classList.remove('show');
+            console.log('點選外部，關閉聯絡選項');
+          }
+        });
+        
+        console.log('聯絡按鈕初始化完成');
+      } else {
+        console.error('聯絡按鈕元素未找到:', { contactMainBtn, contactOptions });
+      }
+    });
+    
+    // 聯絡方式開啟函式
+    function openWeChat() {
+      console.log('開啟微信聯絡');
+      showQRCode('image/qrcode/1.PNG', 'WeChat', '微信聯絡');
+    }
+    
+    function openLine() {
+      console.log('開啟LINE聯絡');
+      showQRCode('image/qrcode/2.JPG', 'LINE', 'LINE聯絡');
+    }
+    
+    function openWhatsApp() {
+      console.log('開啟WhatsApp聯絡');
+      showQRCode('image/qrcode/3.PNG', 'WhatsApp', 'WhatsApp聯絡');
+    }
+    function openXHS() {
+      console.log('開啟小紅書');
+      showQRCode('image/qrcode/4.jpeg', '小紅書', '小紅書賬號');
+    }
+    
+    // 顯示預約微信二維碼彈窗
+    function showWeChatQR() {
+      showQRCode('image/qrcode/1.PNG', '微信預約', '請掃描二維碼新增微信進行課程預約');
+    }
+    
+    // 顯示二維碼彈窗
+    function showQRCode(imageSrc, title, subtitle) {
+      // 建立彈窗容器
+      const modal = document.createElement('div');
+      modal.className = 'qr-modal';
+      modal.innerHTML = `
+        <div class="qr-modal-content">
+          <div class="qr-modal-header">
+            <h3>${title}</h3>
+            <p>${subtitle}</p>
+            <button class="qr-modal-close" onclick="closeQRModal()">&times;</button>
+          </div>
+          <div class="qr-modal-body">
+            <img loading="lazy" src="${imageSrc}" alt="${title} QR Code" class="qr-image">
+            <p class="qr-tip">請使用手機掃描二維碼</p>
+          </div>
+        </div>
+      `;
+      
+      // 新增到頁面
+      document.body.appendChild(modal);
+      
+      // 顯示彈窗
+      setTimeout(() => modal.classList.add('show'), 10);
+      
+      // 點選背景關閉
+      modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+          closeQRModal();
+        }
+      });
+    }
+    
+    // 關閉二維碼彈窗
+    function closeQRModal() {
+      const modal = document.querySelector('.qr-modal');
+      if (modal) {
+        modal.classList.remove('show');
+        setTimeout(() => modal.remove(), 300);
+      }
+    }
+  </script>
+</body>
+</html> 

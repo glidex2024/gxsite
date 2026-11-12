@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>精彩瞬間 - GX Glide.X | 滑雪學員照片·雪場實拍</title>
+  <meta name="description" content="GX Glide.X 滑雪學校學員精彩瞬間：雪場實拍、課程現場、訓練營集錦。感受日本雪場的美景與滑雪的樂趣。">
+  <meta name="keywords" content="日本滑雪照片,滑雪學校相冊,北海道雪場,滑雪訓練營照片,GX滑雪">
+  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="精彩瞬間 - GX Glide.X 滑雪學校">
+  <meta property="og:description" content="學員雪場精彩瞬間，感受日本滑雪的樂趣與美景。">
+  <meta property="og:url" content="https://glidex.net/zh-tw/gallery">
+  <meta property="og:image" content="https://glidex.net/image/gallery/aaa.jpg">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:site_name" content="GX Glide.X 中文國際滑雪學校">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="精彩瞬間 - GX Glide.X 滑雪學校">
+  <meta name="twitter:description" content="學員雪場精彩瞬間，感受日本滑雪的樂趣與美景。">
+  <meta name="twitter:image" content="https://glidex.net/image/gallery/aaa.jpg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/image/logo/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="/image/logo/favicon-64.png">
+  
+  <link rel="canonical" href="https://glidex.net/zh-tw/gallery">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/mobile-optimization.css">
+  <link rel="stylesheet" href="/mobile-override.css">
+  <link rel="stylesheet" href="/qr-modal.css">
+  <style>
+    
+    /* 跨平台字體渲染優化 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+    }
+    
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.6;
+      color: var(--dark-gray);
+      background-color: var(--snow-white);
+      overflow-x: hidden;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+    
+    /* 頂部導航欄 - 完全按照Pinnacle設計 */
+    .navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: rgba(30, 58, 138, 0.95);
+      backdrop-filter: blur(20px);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .navbar.scrolled {
+      background: rgba(30, 58, 138, 0.98);
+      box-shadow: 0 4px 20px rgba(30, 58, 138, 0.3);
+    }
+    
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .gallery-hero {text-align:center;padding:4em 0 2em 0;}
+    .gallery-hero h1 {font-size:2.2rem;color:var(--main-blue);font-weight:800;margin-bottom:0.5em;}
+    .gallery-hero p {color:#555;font-size:1.1rem;letter-spacing:0.08em;}
+    .masonry-gallery {column-count: 4; column-gap: 1.5em; margin: 2em auto; max-width: 1200px;}
+    .masonry-gallery img {width:100%;margin-bottom:1.5em;border-radius:18px;box-shadow:0 4px 24px rgba(0,0,0,0.13);display:block;transition:transform 0.4s cubic-bezier(.4,2,.6,1),box-shadow 0.3s;break-inside:avoid;cursor:pointer;}
+    .masonry-gallery img:hover {transform:scale(1.08) rotate(-2deg) translateY(-8px);box-shadow:0 12px 36px rgba(255,102,0,0.18);z-index:2;}
+    @media (max-width: 1000px) {.masonry-gallery{column-count:2;}}
+    @media (max-width: 600px) {.masonry-gallery{column-count:1;}}
+    
+    /* 二維碼彈窗樣式 */
+    .qr-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10000;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+    
+    .qr-modal.show {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    .qr-modal-content {
+      background: var(--snow-white);
+      border-radius: 20px;
+      padding: 2rem;
+      max-width: 400px;
+      width: 90%;
+      text-align: center;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      transform: scale(0.8);
+      transition: all 0.3s ease;
+    }
+    
+    .qr-modal.show .qr-modal-content {
+      transform: scale(1);
+    }
+    
+    .qr-modal-header {
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+    
+    .qr-modal-header h3 {
+      color: var(--primary-blue);
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    
+    .qr-modal-header p {
+      color: var(--warm-gray);
+      font-size: 1rem;
+      margin: 0;
+    }
+    
+    .qr-modal-close {
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: var(--accent-orange);
+      color: var(--snow-white);
+      border: none;
+      font-size: 1.2rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+    
+    .qr-modal-close:hover {
+      background: #c2410c;
+      transform: scale(1.1);
+    }
+    
+    .qr-modal-body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+    
+    .qr-image {
+      width: 200px;
+      height: 200px;
+      border-radius: 12px;
+      border: 2px solid var(--primary-blue);
+      object-fit: cover;
+    }
+    
+    .qr-tip {
+      color: var(--warm-gray);
+      font-size: 0.9rem;
+      margin: 0;
+    }
+    
+    /* 移動端二維碼彈窗樣式 */
+    @media (max-width: 768px) {
+      .qr-modal-content {
+        padding: 1.5rem;
+        max-width: 350px;
+      }
+      
+      .qr-image {
+        width: 180px;
+        height: 180px;
+      }
+      
+      .qr-modal-header h3 {
+        font-size: 1.3rem;
+      }
+    }
+  </style>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-B3XF10TFX1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-B3XF10TFX1');
+  </script>
+  <link rel="stylesheet" href="/design-system.css">
+  <link rel="alternate" hreflang="zh-CN" href="https://glidex.net/gallery">
+  <link rel="alternate" hreflang="zh-TW" href="https://glidex.net/zh-tw/gallery">
+  <link rel="alternate" hreflang="x-default" href="https://glidex.net/gallery">
+</head>
+<body>
+  <nav id="navbar" class="navbar">
+    <div class="container nav-container">
+      <a href="/zh-tw/" class="logo">
+        <img src="/image/logo/logo2.png" alt="GX 中文國際滑雪學校" class="logo-img">
+      </a>
+      <button class="menu-toggle" aria-controls="primary-nav" aria-expanded="false" aria-label="打開菜單"></button>
+      <ul id="primary-nav" class="nav-links" role="navigation">
+        <li class="nav-drawer-head" role="presentation"><span class="nav-drawer-title">MENU</span><button type="button" class="nav-close" aria-label="關閉菜單">&times;</button></li>
+        <li><a href="/zh-tw/">首頁</a></li>
+        <li><a href="/zh-tw/about">關於GX</a></li>
+                <li><a href="/zh-tw/courses">課程介紹</a></li>
+        <li><a href="/zh-tw/news">最新消息</a></li>
+        <li><a href="/zh-tw/recruitment">加入我們</a></li>
+        <li><a href="/zh-tw/contact">聯繫我們</a></li>
+      </ul>
+      <div class="language-switch" aria-label="語言切換">
+        <a href="/gallery" lang="zh-CN">簡體</a><span aria-hidden="true">/</span><span class="lang-current">繁體</span>
+      </div>
+      <button class="btn btn-reservation" onclick="showAllQR()">預約</button>
+    </div>
+  </nav>
+  <div class="nav-backdrop" hidden></div>
+  <main>
+    <section class="gallery-hero">
+      <h1>精彩瞬間</h1>
+      <p>記錄Glide.X滑雪學校學員與教練的高光時刻</p>
+    </section>
+    <div class="masonry-gallery" id="masonry-gallery"></div>
+  </main>
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <!-- 左側：公司信息 -->
+        <div class="footer-company">
+          <div class="footer-logo">
+            <img src="/image/logo/logo2.png" alt="GX 中文國際滑雪學校" class="logo-img">
+          </div>
+          <div class="company-info">
+            <p>GlideX中文國際滑雪學校</p>
+            <p>GlideX合同會社</p>
+            <p>〒新潟県南魚沼郡湯沢町土樽6303-1</p>
+            <p>info@glidex.net</p>
+          </div>
+        </div>
+        
+        <!-- 中間：快速鏈接 -->
+        <div class="footer-links">
+          <h3>快速鏈接</h3>
+          <ul>
+            <li><a href="/zh-tw/">首頁</a></li>
+            <li><a href="/zh-tw/about">關於GX</a></li>
+            <li><a href="/zh-tw/courses">課程介紹</a></li>
+            
+            <li><a href="/zh-tw/news">最新消息</a></li>
+            <li><a href="/zh-tw/recruitment">加入我們</a></li>
+            <li><a href="/zh-tw/contact">聯繫我們</a></li>
+          </ul>
+        </div>
+        
+      </div>
+      
+      <div class="footer-bottom">
+        <p>© 2024 GlideX中文國際滑雪學校. 保留所有權利.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 右下角固定聯繫按鈕 -->
+  <div class="contact-float">
+    <!-- 主按鈕 -->
+    <div class="contact-main-btn" id="contactMainBtn">
+      <span class="contact-icon">💬</span>
+      <span class="contact-text">Contact</span>
+    </div>
+    
+    <!-- 聯繫選項 -->
+    <div class="contact-options" id="contactOptions">
+      <div class="contact-option wechat" data-tooltip="微信聯繫" onclick="openWeChat()">
+        <span class="option-icon">💬</span>
+        <span class="option-text">WeChat</span>
+      </div>
+      <div class="contact-option line" data-tooltip="LINE聯繫" onclick="openLine()">
+        <span class="option-icon">📱</span>
+        <span class="option-text">LINE</span>
+      </div>
+      <div class="contact-option whatsapp" data-tooltip="WhatsApp聯繫" onclick="openWhatsApp()">
+        <span class="option-icon">💬</span>
+        <span class="option-text">WhatsApp</span>
+      </div>
+      <div class="contact-option xhs" data-tooltip="小紅書" onclick="openXHS()">
+        <span class="option-icon">📕</span>
+        <span class="option-text">小紅書</span>
+      </div>
+    </div>
+  </div>
+  <script src="/mobile-menu.js"></script>
+  <script src="/qr-functions.js"></script>
+  <script>
+    (function(){
+      var toggle = document.querySelector('.menu-toggle');
+      var nav = document.getElementById('primary-nav');
+      var backdrop = document.querySelector('.nav-backdrop');
+      if (!toggle || !nav || !backdrop) return;
+      function openNav(){ nav.classList.add('show'); toggle.setAttribute('aria-expanded','true'); backdrop.hidden = false; document.body.classList.add('body--nav-open'); }
+      function closeNav(){ nav.classList.remove('show'); toggle.setAttribute('aria-expanded','false'); backdrop.hidden = true; document.body.classList.remove('body--nav-open'); }
+      toggle.addEventListener('click', function(){ var exp = toggle.getAttribute('aria-expanded')==='true'; exp?closeNav():openNav(); });
+      backdrop.addEventListener('click', closeNav);
+      window.addEventListener('keydown', function(e){ if(e.key==='Escape') closeNav(); });
+      var mql = window.matchMedia('(min-width: 992px)');
+      function handle(e){ if(e.matches) closeNav(); }
+      if(mql.addEventListener){ mql.addEventListener('change', handle); } else if(mql.addListener){ mql.addListener(handle); }
+    })();
+    // 動態生成圖片、視頻、動圖牆
+    const imgs = [
+      // 圖片
+      'https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=600&q=80',
+      'https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=600&q=80',
+      'https://images.unsplash.com/photo-1515524738708-327f6b0037a7?auto=format&fit=crop&w=600&q=80',
+      'https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=600&q=80',
+      'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80',
+      'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=600&q=80',
+      // 動圖
+      'https://media.giphy.com/media/3o6Zt481isNVuQI1l6/giphy.gif',
+      'https://media.giphy.com/media/26ufdipQqU2lhNA4g/giphy.gif',
+      'https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif',
+      // 視頻（YouTube縮略圖+播放按鈕，點擊彈窗播放）
+      {type:'video',thumb:'https://img.youtube.com/vi/1w8Z0UOXVaY/hqdefault.jpg',src:'https://www.youtube.com/embed/1w8Z0UOXVaY'},
+      {type:'video',thumb:'https://img.youtube.com/vi/2Vv-BfVoq4g/hqdefault.jpg',src:'https://www.youtube.com/embed/2Vv-BfVoq4g'},
+      {type:'video',thumb:'https://img.youtube.com/vi/3AtDnEC4zak/hqdefault.jpg',src:'https://www.youtube.com/embed/3AtDnEC4zak'},
+    ];
+    // 填充到60個
+    while(imgs.length<60){
+      const base = imgs.length%6;
+      if(base<3){
+        imgs.push(imgs[base]); //圖片
+      }else if(base===3||base===4){
+        imgs.push('https://media.giphy.com/media/3o6Zt481isNVuQI1l6/giphy.gif'); //動圖
+      }else{
+        imgs.push({type:'video',thumb:'https://img.youtube.com/vi/1w8Z0UOXVaY/hqdefault.jpg',src:'https://www.youtube.com/embed/1w8Z0UOXVaY'});
+      }
+    }
+    const gallery = document.getElementById('masonry-gallery');
+    imgs.forEach((item, i) => {
+      if(typeof item==='string'){
+        // 普通圖片或gif
+        const img = document.createElement('img');
+        img.src = item;
+        img.alt = '精彩瞬間'+(i+1);
+        img.setAttribute('data-aos','zoom-in-up');
+        img.setAttribute('data-aos-delay', 100 + (i%6)*60);
+        gallery.appendChild(img);
+      }else if(item.type==='video'){
+        // 視頻縮略圖
+        const wrap = document.createElement('div');
+        wrap.style.position='relative';wrap.style.display='block';wrap.style.marginBottom='1.5em';wrap.style.borderRadius='18px';wrap.style.overflow='hidden';wrap.style.boxShadow='0 4px 24px rgba(0,0,0,0.13)';
+        wrap.setAttribute('data-aos','zoom-in-up');
+        wrap.setAttribute('data-aos-delay', 100 + (i%6)*60);
+        const img = document.createElement('img');
+        img.src = item.thumb;
+        img.alt = '精彩瞬間視頻'+(i+1);
+        img.style.width='100%';img.style.display='block';
+        const play = document.createElement('div');
+        play.innerHTML = '&#9658;';
+        play.style.position='absolute';play.style.left='50%';play.style.top='50%';play.style.transform='translate(-50%,-50%)';play.style.fontSize='3em';play.style.color='#fff';play.style.textShadow='0 2px 8px #000';play.style.pointerEvents='none';
+        wrap.appendChild(img);wrap.appendChild(play);
+        wrap.style.cursor='pointer';
+        wrap.onclick = function(){
+          const modal = document.createElement('div');
+          modal.style.position='fixed';modal.style.left=0;modal.style.top=0;modal.style.width='100vw';modal.style.height='100vh';modal.style.background='rgba(0,0,0,0.85)';modal.style.zIndex=99999;modal.style.display='flex';modal.style.alignItems='center';modal.style.justifyContent='center';
+          modal.innerHTML = `<iframe src='${item.src}' frameborder='0' allowfullscreen style='width:80vw;max-width:700px;height:45vw;max-height:400px;border-radius:18px;background:#000;'></iframe>`;
+          modal.onclick = ()=>document.body.removeChild(modal);
+          document.body.appendChild(modal);
+        };
+        gallery.appendChild(wrap);
+      }
+    });
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 900, once: true });
+
+    // 聯繫按鈕交互
+    document.addEventListener('DOMContentLoaded', function() {
+      const contactMainBtn = document.getElementById('contactMainBtn');
+      const contactOptions = document.getElementById('contactOptions');
+      
+      if (contactMainBtn && contactOptions) {
+        contactMainBtn.addEventListener('click', function() {
+          contactOptions.classList.toggle('show');
+        });
+        
+        // 點擊外部關閉
+        document.addEventListener('click', function(e) {
+          if (!contactMainBtn.contains(e.target) && !contactOptions.contains(e.target)) {
+            contactOptions.classList.remove('show');
+          }
+        });
+      }
+    });
+
+    // 聯繫方式打開函數
+    function openWeChat() {
+      console.log('打開微信聯繫');
+      showQRCode('image/qrcode/1.PNG', 'WeChat', '微信聯繫');
+    }
+    
+    function openLine() {
+      console.log('打開LINE聯繫');
+      showQRCode('image/qrcode/2.JPG', 'LINE', 'LINE聯繫');
+    }
+    
+    function openWhatsApp() {
+      console.log('打開WhatsApp聯繫');
+      showQRCode('image/qrcode/3.PNG', 'WhatsApp', 'WhatsApp聯繫');
+    }
+    function openXHS() {
+      console.log('打開小紅書');
+      showQRCode('image/qrcode/4.jpeg', '小紅書', '小紅書賬號');
+    }
+    
+    // 顯示預約微信二維碼彈窗
+    function showWeChatQR() {
+      showQRCode('image/qrcode/1.PNG', '微信預約', '請掃描二維碼添加微信進行課程預約');
+    }
+    
+    // 顯示二維碼彈窗
+    function showQRCode(imageSrc, title, subtitle) {
+      // 創建彈窗容器
+      const modal = document.createElement('div');
+      modal.className = 'qr-modal';
+      modal.innerHTML = `
+        <div class="qr-modal-content">
+          <div class="qr-modal-header">
+            <h3>${title}</h3>
+            <p>${subtitle}</p>
+            <button class="qr-modal-close" onclick="closeQRModal()">&times;</button>
+          </div>
+          <div class="qr-modal-body">
+            <img loading="lazy" src="${imageSrc}" alt="${title} QR Code" class="qr-image">
+            <p class="qr-tip">請使用手機掃描二維碼</p>
+          </div>
+        </div>
+      `;
+      
+      // 添加到頁面
+      document.body.appendChild(modal);
+      
+      // 顯示彈窗
+      setTimeout(() => modal.classList.add('show'), 10);
+      
+      // 點擊背景關閉
+      modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+          closeQRModal();
+        }
+      });
+    }
+    
+    // 關閉二維碼彈窗
+    function closeQRModal() {
+      const modal = document.querySelector('.qr-modal');
+      if (modal) {
+        modal.classList.remove('show');
+        setTimeout(() => modal.remove(), 300);
+      }
+    }
+
+    // 錯誤處理
+    window.addEventListener('error', function(e) {
+      console.log('頁面加載錯誤:', e.message);
+    });
+
+    // 確保內容可見
+    window.addEventListener('load', function() {
+      document.body.style.opacity = '1';
+      // 確保所有內容都可見
+      const hiddenElements = document.querySelectorAll('[style*="opacity: 0"]');
+      hiddenElements.forEach(el => {
+        el.style.opacity = '1';
+      });
+    });
+  </script>
+</body>
+</html> 
+

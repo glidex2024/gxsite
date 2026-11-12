@@ -416,3 +416,38 @@ section, .school-intro-section, .ski-snowboard-section, .testimonials-section {
   border-color: var(--color-accent) !important;
   color: #fff !important;
 }
+
+/* 简繁版本切换：保持在主导航中的轻量级入口 */
+.language-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+  margin-left: .7rem;
+  color: var(--snow-white);
+  font-size: .82rem;
+  line-height: 1;
+  white-space: nowrap;
+}
+.language-switch a,
+.language-switch .lang-current {
+  color: var(--snow-white) !important;
+  text-decoration: none !important;
+}
+.language-switch a {
+  border: 1px solid rgba(255,255,255,.65);
+  border-radius: 999px;
+  padding: .32rem .5rem;
+}
+.language-switch a:hover,
+.language-switch a:focus-visible {
+  background: rgba(255,255,255,.16);
+}
+.language-switch .lang-current {
+  font-weight: 700;
+}
+@media (max-width: 991px) {
+  .language-switch {
+    margin-left: auto;
+    margin-right: .55rem;
+  }
+}

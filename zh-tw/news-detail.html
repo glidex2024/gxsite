@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>消息詳情 - Glide.X滑雪學校</title>
+  <link rel="canonical" href="https://glidex.net/zh-tw/news-detail">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/mobile-optimization.css">
+  <link rel="stylesheet" href="/mobile-override.css">
+  <link rel="stylesheet" href="/qr-modal.css">
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <style>
+    
+    /* 跨平台字體渲染優化 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+    }
+    
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.6;
+      color: var(--dark-gray);
+      background-color: var(--snow-white);
+      overflow-x: hidden;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      padding-top: 150px;
+      padding-bottom: 60px;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+    
+    /* 頂部導航欄 - 完全按照Pinnacle設計 */
+    .navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: rgba(30, 58, 138, 0.95);
+      backdrop-filter: blur(20px);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .navbar.scrolled {
+      background: rgba(30, 58, 138, 0.98);
+      box-shadow: 0 4px 20px rgba(30, 58, 138, 0.3);
+    }
+    
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    /* 修復滾動問題 */
+    html, body {
+      overflow-x: auto !important;
+      overflow-y: auto !important;
+      height: auto !important;
+    }
+    
+    body {
+      position: relative !important;
+      overflow: auto !important;
+    }
+    
+    .container {
+      position: relative !important;
+      overflow: visible !important;
+    }
+    
+    /* 確保內容可以正常滾動 */
+    section {
+      position: relative !important;
+      overflow: visible !important;
+    }
+
+    /* 文本換行與防溢出 */
+    #news-title, #news-content {
+      word-break: break-word;
+      overflow-wrap: anywhere;
+      white-space: normal;
+    }
+    #news-content {
+      white-space: pre-line; /* 保留換行 */
+      font-size: 1rem;
+      line-height: 1.8;
+    }
+    .container { box-sizing: border-box; }
+
+    /* 詳情頁圖片響應式約束 */
+    #news-img {
+      width: 100% !important;
+      height: auto !important;
+      max-height: 520px;          /* 桌面端上限，避免過高 */
+      object-fit: contain;        /* 完整顯示圖片，不裁切 */
+      object-position: center;
+      border-radius: 16px;
+      background: var(--color-surface-alt, #f7f8fb);
+      display: block;
+    }
+
+    @media (max-width: 992px) {
+      #news-img { max-height: 420px; }
+    }
+
+    @media (max-width: 768px) {
+      /* 手機端整體與頁尾下內邊距 40px */
+      body { padding-bottom: 40px !important; }
+      section.container { padding-bottom: 40px !important; }
+      footer { padding-bottom: 40px !important; }
+      /* 圖片必須完整顯示：基礎規則已用 contain，這裡只按視口收緊高度 */
+      #news-img {
+        max-height: 60vh !important;     /* 隨視口縮放 */
+      }
+    }
+
+    @media (max-width: 480px) {
+      #news-img { max-height: 50vh !important; }
+    }
+    
+    /* 二維碼彈窗樣式 */
+    .qr-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10000;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+    
+    .qr-modal.show {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    .qr-modal-content {
+      background: var(--snow-white);
+      border-radius: 20px;
+      padding: 2rem;
+      max-width: 400px;
+      width: 90%;
+      text-align: center;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      transform: scale(0.8);
+      transition: all 0.3s ease;
+    }
+    
+    .qr-modal.show .qr-modal-content {
+      transform: scale(1);
+    }
+    
+    .qr-modal-header {
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+    
+    .qr-modal-header h3 {
+      color: var(--primary-blue);
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    
+    .qr-modal-header p {
+      color: var(--warm-gray);
+      font-size: 1rem;
+      margin: 0;
+    }
+    
+    .qr-modal-close {
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: var(--accent-orange);
+      color: var(--snow-white);
+      border: none;
+      font-size: 1.2rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+    
+    .qr-modal-close:hover {
+      background: #c2410c;
+      transform: scale(1.1);
+    }
+    
+    .qr-modal-body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+    
+    .qr-image {
+      width: 200px;
+      height: 200px;
+      border-radius: 12px;
+      border: 2px solid var(--primary-blue);
+      object-fit: cover;
+    }
+    
+    .qr-tip {
+      color: var(--warm-gray);
+      font-size: 0.9rem;
+      margin: 0;
+    }
+    
+    /* 移動端二維碼彈窗樣式 */
+    @media (max-width: 768px) {
+      body {
+        padding-top: 150px;
+        padding-bottom: 60px;
+        -webkit-overflow-scrolling: touch;
+        touch-action: pan-y;
+      }
+      
+      .qr-modal-content {
+        padding: 1.5rem;
+        max-width: 350px;
+      }
+      
+      .qr-image {
+        width: 180px;
+        height: 180px;
+      }
+      
+      .qr-modal-header h3 {
+        font-size: 1.3rem;
+      }
+    }
+  </style>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-B3XF10TFX1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-B3XF10TFX1');
+  </script>
+  <link rel="stylesheet" href="/design-system.css">
+  <link rel="alternate" hreflang="zh-CN" href="https://glidex.net/news-detail">
+  <link rel="alternate" hreflang="zh-TW" href="https://glidex.net/zh-tw/news-detail">
+  <link rel="alternate" hreflang="x-default" href="https://glidex.net/news-detail">
+</head>
+<body>
+  <nav id="navbar" class="navbar">
+    <div class="container nav-container">
+      <a href="/zh-tw/" class="logo">
+        <img src="/image/logo/logo2.png" alt="GX 中文國際滑雪學校" class="logo-img">
+      </a>
+      <button class="menu-toggle" aria-controls="primary-nav" aria-expanded="false" aria-label="打開菜單"></button>
+      <ul id="primary-nav" class="nav-links" role="navigation">
+        <li class="nav-drawer-head" role="presentation"><span class="nav-drawer-title">MENU</span><button type="button" class="nav-close" aria-label="關閉菜單">&times;</button></li>
+        <li><a href="/zh-tw/">首頁</a></li>
+        <li><a href="/zh-tw/about">關於GX</a></li>
+        <li><a href="/zh-tw/courses">課程介紹</a></li>
+        <li><a href="/zh-tw/news" class="active">最新消息</a></li>
+        <li><a href="/zh-tw/recruitment">加入我們</a></li>
+        <li><a href="/zh-tw/contact">聯繫我們</a></li>
+      </ul>
+      <div class="language-switch" aria-label="語言切換">
+        <a href="/news-detail" lang="zh-CN">簡體</a><span aria-hidden="true">/</span><span class="lang-current">繁體</span>
+      </div>
+      <button class="btn btn-reservation" onclick="showAllQR()">預約</button>
+    </div>
+  </nav>
+  <div class="nav-backdrop" hidden></div>
+  <!-- 統一hero區 -->
+  <header class="" style="height: 50vh; min-height: 120px;">
+    <div class="" id="news-hero-bg" style="background:linear-gradient(rgba(17,17,17,0.7),rgba(17,17,17,0.7)),url('https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;"></div>
+    <div class="hero-content" data-aos="fade-up">
+      <h1 id="news-title" style="font-size:2.2rem;font-weight:900;background:linear-gradient(90deg,#003366,#ff6600 80%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:2px;padding-bottom:0.2em;border-bottom:3px solid #ff6600;display:inline-block;">消息詳情</h1>
+      <p id="news-date" style="color:#666;font-size:1.08em;font-weight:600;margin-top:0.7em;"></p>
+    </div>
+  </header>
+  <section class="container" style="max-width:800px;padding:48px 0 64px 0;">
+    <img loading="lazy" id="news-img" src="" alt="消息圖片" style="width:100%;border-radius:16px;margin-bottom:2rem;display:none;" onerror="this.onerror=null;this.src='/image/hero1.jpg';">
+    <div data-aos="fade-up">
+      <div id="news-content" style="font-size:1.1rem;line-height:2;"></div>
+      <a href="/zh-tw/news" class="btn" style="margin-top:2rem;">返回最新消息</a>
+    </div>
+  </section>
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <!-- 左側：公司信息 -->
+        <div class="footer-company">
+          <div class="footer-logo">
+            <img src="/image/logo/logo2.png" alt="GX 中文國際滑雪學校" class="logo-img">
+          </div>
+          <div class="company-info">
+            <p>GlideX中文國際滑雪學校</p>
+            <p>GlideX合同會社</p>
+            <p>〒新潟県南魚沼郡湯沢町土樽6303-1</p>
+            <p>info@glidex.net</p>
+          </div>
+        </div>
+        
+        <!-- 中間：快速鏈接 -->
+        <div class="footer-links">
+          <h3>快速鏈接</h3>
+          <ul>
+            <li><a href="/zh-tw/">首頁</a></li>
+            <li><a href="/zh-tw/about">關於GX</a></li>
+            <li><a href="/zh-tw/courses">課程介紹</a></li>
+            
+            <li><a href="/zh-tw/news">最新消息</a></li>
+            <li><a href="/zh-tw/recruitment">加入我們</a></li>
+            <li><a href="/zh-tw/contact">聯繫我們</a></li>
+          </ul>
+        </div>
+        
+      </div>
+      
+      <div class="footer-bottom">
+        <p>© 2024 GlideX中文國際滑雪學校. 保留所有權利.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 右下角固定聯繫按鈕 -->
+  <div class="contact-float">
+    <!-- 主按鈕 -->
+    <div class="contact-main-btn" id="contactMainBtn">
+      <span class="contact-icon">💬</span>
+      <span class="contact-text">Contact</span>
+    </div>
+    
+    <!-- 聯繫選項 -->
+    <div class="contact-options" id="contactOptions">
+      <div class="contact-option wechat" data-tooltip="微信聯繫" onclick="openWeChat()">
+        <span class="option-icon">💬</span>
+        <span class="option-text">WeChat</span>
+      </div>
+      <div class="contact-option line" data-tooltip="LINE聯繫" onclick="openLine()">
+        <span class="option-icon">📱</span>
+        <span class="option-text">LINE</span>
+      </div>
+      <div class="contact-option whatsapp" data-tooltip="WhatsApp聯繫" onclick="openWhatsApp()">
+        <span class="option-icon">💬</span>
+        <span class="option-text">WhatsApp</span>
+      </div>
+      <div class="contact-option xhs" data-tooltip="小紅書" onclick="openXHS()">
+        <span class="option-icon">📕</span>
+        <span class="option-text">小紅書</span>
+      </div>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script src="/mobile-menu.js"></script>
+  <script src="/qr-functions.js"></script>
+  <script>
+    (function(){
+      var toggle = document.querySelector('.menu-toggle');
+      var nav = document.getElementById('primary-nav');
+      var backdrop = document.querySelector('.nav-backdrop');
+      if (!toggle || !nav || !backdrop) return;
+      function openNav(){ nav.classList.add('show'); toggle.setAttribute('aria-expanded','true'); backdrop.hidden = false; document.body.classList.add('body--nav-open'); }
+      function closeNav(){ nav.classList.remove('show'); toggle.setAttribute('aria-expanded','false'); backdrop.hidden = true; document.body.classList.remove('body--nav-open'); }
+      toggle.addEventListener('click', function(){ var exp = toggle.getAttribute('aria-expanded')==='true'; exp?closeNav():openNav(); });
+      backdrop.addEventListener('click', closeNav);
+      window.addEventListener('keydown', function(e){ if(e.key==='Escape') closeNav(); });
+      var mql = window.matchMedia('(min-width: 992px)');
+      function handle(e){ if(e.matches) closeNav(); }
+      if(mql.addEventListener){ mql.addEventListener('change', handle); } else if(mql.addListener){ mql.addListener(handle); }
+    })();
+  </script>
+  <script>
+    // 修復滾動問題
+    document.addEventListener('DOMContentLoaded', function() {
+      // 強制啓用滾動
+      document.body.style.overflow = 'auto';
+      document.documentElement.style.overflow = 'auto';
+      
+      // 確保頁面可以正常滾動
+      document.body.style.height = 'auto';
+      document.documentElement.style.height = 'auto';
+      
+      // 添加鍵盤滾動支持
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'ArrowDown' || e.key === 'PageDown') {
+          e.preventDefault();
+          window.scrollBy(0, 100);
+        } else if (e.key === 'ArrowUp' || e.key === 'PageUp') {
+          e.preventDefault();
+          window.scrollBy(0, -100);
+        }
+      });
+      
+      // 移除阻止默認滾動的代碼，讓瀏覽器自然處理滾動
+    });
+    
+    AOS.init({ duration: 800, once: true });
+    window.addEventListener('scroll', function() {
+      const navbar = document.getElementById('navbar');
+      if (window.scrollY > 60) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+    // 動態加載消息詳情（靜態json版）
+    function getQueryParam(name) {
+      const url = new URL(window.location.href);
+      return url.searchParams.get(name);
+    }
+    const id = getQueryParam('id');
+    fetch('/news.json')
+      .then(res => res.json())
+      .then(newsList => {
+        const data = newsList.find(n => String(n.id) === String(id));
+        if (!data) {
+          document.getElementById('news-title').textContent = '消息不存在';
+          document.getElementById('news-content').textContent = '';
+          document.getElementById('news-img').style.display = 'none';
+          document.getElementById('news-hero-bg').style.background = '';
+          document.getElementById('news-date').textContent = '';
+        } else {
+          document.getElementById('news-title').textContent = data.title;
+          document.getElementById('news-date').textContent = data.date;
+          // 自動分配Unsplash圖片
+          const unsplashImgs = [
+            'https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=800&q=80',
+            'https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=800&q=80',
+            'https://images.unsplash.com/photo-1515524738708-327f6b0037a7?auto=format&fit=crop&w=800&q=80',
+            'https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=800&q=80',
+            'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80',
+            'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=800&q=80'
+          ];
+          let imgUrl = data.img;
+          if (imgUrl && imgUrl.startsWith('/image/news')) {
+            const idx = (parseInt(data.id, 10) - 1) % unsplashImgs.length;
+            imgUrl = unsplashImgs[idx];
+          }
+          document.getElementById('news-img').src = imgUrl;
+          document.getElementById('news-img').alt = data.title;
+          document.getElementById('news-img').style.display = 'block';
+          document.getElementById('news-hero-bg').style.background = `linear-gradient(rgba(17,17,17,0.7), rgba(17,17,17,0.7)), url('${imgUrl}') center/cover no-repeat`;
+          // 使用文本+保留換行
+          document.getElementById('news-content').textContent = '';
+          const contentEl = document.getElementById('news-content');
+          contentEl.textContent = data.content;
+        }
+      });
+
+    // 聯繫按鈕交互
+    document.addEventListener('DOMContentLoaded', function() {
+      const contactMainBtn = document.getElementById('contactMainBtn');
+      const contactOptions = document.getElementById('contactOptions');
+      
+      if (contactMainBtn && contactOptions) {
+        contactMainBtn.addEventListener('click', function() {
+          contactOptions.classList.toggle('show');
+        });
+        
+        // 點擊外部關閉
+        document.addEventListener('click', function(e) {
+          if (!contactMainBtn.contains(e.target) && !contactOptions.contains(e.target)) {
+            contactOptions.classList.remove('show');
+          }
+        });
+      }
+    });
+
+    // 聯繫方式打開函數
+    function openWeChat() {
+      console.log('打開微信聯繫');
+      showQRCode('image/qrcode/1.PNG', 'WeChat', '微信聯繫');
+    }
+    
+    function openLine() {
+      console.log('打開LINE聯繫');
+      showQRCode('image/qrcode/2.JPG', 'LINE', 'LINE聯繫');
+    }
+    
+    function openWhatsApp() {
+      console.log('打開WhatsApp聯繫');
+      showQRCode('image/qrcode/3.PNG', 'WhatsApp', 'WhatsApp聯繫');
+    }
+    function openXHS() {
+      console.log('打開小紅書');
+      showQRCode('image/qrcode/4.jpeg', '小紅書', '小紅書賬號');
+    }
+    
+    // 顯示預約微信二維碼彈窗
+    function showWeChatQR() {
+      showQRCode('image/qrcode/1.PNG', '微信預約', '請掃描二維碼添加微信進行課程預約');
+    }
+    
+    // 顯示二維碼彈窗
+    function showQRCode(imageSrc, title, subtitle) {
+      // 創建彈窗容器
+      const modal = document.createElement('div');
+      modal.className = 'qr-modal';
+      modal.innerHTML = `
+        <div class="qr-modal-content">
+          <div class="qr-modal-header">
+            <h3>${title}</h3>
+            <p>${subtitle}</p>
+            <button class="qr-modal-close" onclick="closeQRModal()">&times;</button>
+          </div>
+          <div class="qr-modal-body">
+            <img loading="lazy" src="${imageSrc}" alt="${title} QR Code" class="qr-image">
+            <p class="qr-tip">請使用手機掃描二維碼</p>
+          </div>
+        </div>
+      `;
+      
+      // 添加到頁面
+      document.body.appendChild(modal);
+      
+      // 顯示彈窗
+      setTimeout(() => modal.classList.add('show'), 10);
+      
+      // 點擊背景關閉
+      modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+          closeQRModal();
+        }
+      });
+    }
+    
+    // 關閉二維碼彈窗
+    function closeQRModal() {
+      const modal = document.querySelector('.qr-modal');
+      if (modal) {
+        modal.classList.remove('show');
+        setTimeout(() => modal.remove(), 300);
+      }
+    }
+
+    // 錯誤處理
+    window.addEventListener('error', function(e) {
+      console.log('頁面加載錯誤:', e.message);
+    });
+
+    // 確保內容可見
+    window.addEventListener('load', function() {
+      document.body.style.opacity = '1';
+      // 確保所有內容都可見
+      const hiddenElements = document.querySelectorAll('[style*="opacity: 0"]');
+      hiddenElements.forEach(el => {
+        el.style.opacity = '1';
+      });
+    });
+  </script>
+</body>
+</html> 
+

@@ -18,19 +18,19 @@ modal.innerHTML = `
     <div class="qr-modal-body">
       <div class="qr-grid">
         <div class="qr-item">
-          <img src="image/qrcode/1.PNG" alt="微信" class="qr-image">
+          <img src="/image/qrcode/1.PNG" alt="微信" class="qr-image">
           <p class="qr-label">微信</p>
         </div>
         <div class="qr-item">
-          <img src="image/qrcode/2.JPG" alt="LINE" class="qr-image">
+          <img src="/image/qrcode/2.JPG" alt="LINE" class="qr-image">
           <p class="qr-label">LINE</p>
         </div>
         <div class="qr-item">
-          <img src="image/qrcode/3.PNG" alt="WhatsApp" class="qr-image">
+          <img src="/image/qrcode/3.PNG" alt="WhatsApp" class="qr-image">
           <p class="qr-label">WhatsApp</p>
         </div>
         <div class="qr-item">
-          <img src="image/qrcode/4.jpeg" alt="小红书" class="qr-image">
+          <img src="/image/qrcode/4.jpeg" alt="小红书" class="qr-image">
           <p class="qr-label">小红书</p>
         </div>
       </div>

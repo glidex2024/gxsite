@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>課程介紹 - GX Glide.X 中文滑雪學校 | 私教·團課·JSBA檢定</title>
+  <meta name="description" content="GX滑雪學校全套課程：一對一私教、團體滑雪課、JSBA單板認證檢定、高階技巧訓練。專業中文教練，適合零基礎到進階學員，日本多大雪場均可上課。">
+  <meta name="keywords" content="日本滑雪課程,滑雪私教,JSBA檢定,單板培訓,滑雪團課,中文滑雪教練,北海道滑雪課">
+  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="課程介紹 - GX Glide.X 中文滑雪學校">
+  <meta property="og:description" content="私教、團課、JSBA認證檢定，適合零基礎到進階，日本各大雪場均可報名。">
+  <meta property="og:url" content="https://glidex.net/zh-tw/courses">
+  <meta property="og:image" content="https://glidex.net/image/courses/course-ski-basic.jpg">
+  <meta property="og:locale" content="zh_TW">
+  <meta property="og:site_name" content="GX Glide.X 中文國際滑雪學校">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="課程介紹 - GX Glide.X 中文滑雪學校">
+  <meta name="twitter:description" content="私教、團課、JSBA認證檢定，適合零基礎到進階，日本各大雪場均可報名。">
+  <meta name="twitter:image" content="https://glidex.net/image/courses/course-ski-basic.jpg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/image/logo/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="/image/logo/favicon-64.png">
+  
+  <link rel="canonical" href="https://glidex.net/zh-tw/courses">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/mobile-optimization.css">
+  <link rel="stylesheet" href="/mobile-override.css">
+  <link rel="stylesheet" href="/qr-modal.css">
+  <style>
+    /* 課程卡片樣式 */
+    .course-booking-section {
+      padding: 6rem 0;
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .course-booking-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="snow" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="rgba(0,123,191,0.05)"/></pattern></defs><rect width="100" height="100" fill="url(%23snow)"/></svg>');
+      opacity: 0.3;
+    }
+    
+    .course-booking-section .container {
+      position: relative;
+      z-index: 2;
+    }
+    
+    .section-title {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+    
+    .section-title h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      color: #2c3e50;
+      margin-bottom: 1rem;
+      position: relative;
+    }
+    
+    .section-title h1::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(90deg, #007bff, #ff6b35);
+      border-radius: 2px;
+    }
+    
+    .section-title p {
+      font-size: 1.2rem;
+      color: #6c757d;
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+    
+    .booking-cards-list {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    
+    .course-card {
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .course-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #007bff, #ff6b35);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .course-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+    }
+    
+    .course-card:hover::before {
+      opacity: 1;
+    }
+    
+    .course-card h3 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #2c3e50;
+      margin: 0;
+      padding: 1.5rem 0.5rem 1rem;
+      text-align: center;
+      position: relative;
+    }
+    
+    .course-image {
+      width: 100%;
+      height: 180px; /* 恢復網頁端原始高度 */
+      overflow: hidden;
+      position: relative;
+      background: #f8f9fa; /* 圖片未填滿時的背景色 */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .course-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain; /* 顯示完整圖片，不裁剪 */
+      object-position: center center; /* 圖片居中顯示 */
+      transition: transform 0.4s ease;
+    }
+    
+    .course-card:hover .course-image img {
+      transform: scale(1.1);
+    }
+    
+    .course-content {
+      padding: 1rem 0.5rem;
+    }
+    
+    .course-content h4 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #007bff;
+      margin: 0 0 1rem 0;
+      text-align: center;
+    }
+    
+    
+    .course-content ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 1.5rem 0;
+      text-align: left;
+    }
+    
+    .course-content li {
+      padding: 0.3rem 0;
+      color: #555;
+      font-size: 0.9rem;
+      position: relative;
+      padding-left: 1.5rem;
+      line-height: 1.4;
+    }
+    
+    .course-content li::before {
+      content: '•';
+      color: #007bff;
+      position: absolute;
+      left: 0;
+      font-weight: bold;
+      font-size: 1rem;
+    }
+    
+    .book-btn {
+      width: 100%;
+      background: var(--accent-orange);
+      color: var(--snow-white);
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      letter-spacing: 0.2px;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+    
+    .book-btn:hover {
+      background: #dc2626;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(234, 88, 12, 0.4);
+    }
+    
+    /* 響應式設計 */
+    @media (max-width: 1200px) {
+      .booking-cards-list {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+      }
+      
+      .section-title h1 {
+        font-size: 2.5rem;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .course-booking-section {
+        padding: 4rem 0;
+      }
+      
+      .section-title h1 {
+        font-size: 2rem;
+      }
+      
+      .section-title p {
+        font-size: 1rem;
+      }
+      
+      .booking-cards-list {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+      
+      .course-card h3 {
+        font-size: 1.4rem;
+        padding: 1rem 0.5rem 0.5rem;
+      }
+      
+      /* 移動端圖片最佳化 - 確保完整顯示圖片且不超出邊界 */
+      .course-image {
+        height: 220px; /* 進一步縮小手機端圖片高度 */
+        background: #f8f9fa;
+        overflow: hidden; /* 防止圖片超出邊界 */
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      
+      .course-image img {
+        max-width: 100%; /* 確保圖片不超出容器寬度 */
+        max-height: 100%; /* 確保圖片不超出容器高度 */
+        width: auto; /* 自動寬度 */
+        height: auto; /* 自動高度 */
+        object-fit: contain !important; /* 確保完整顯示圖片 */
+        object-position: center center !important; /* 居中顯示 */
+      }
+      
+      .course-card:hover .course-image img {
+        transform: scale(1.05); /* 移動端減少縮放幅度 */
+      }
+      
+      /* 防止所有元素橫向溢位 */
+      * {
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
+      }
+      
+      h1, h2, h3, h4, h5, h6 {
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
+      }
+      
+      p, span, div {
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
+      }
+      
+      .course-content {
+        padding: 1rem 0.5rem;
+      }
+      
+      .course-content h4 {
+        font-size: 1.1rem;
+      }
+      
+      .book-btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.8rem;
+      }
+    }
+    
+    /* 二維碼彈窗樣式 */
+    .qr-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10000;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+    
+    .qr-modal.show {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    .qr-modal-content {
+      background: var(--snow-white);
+      border-radius: 20px;
+      padding: 2rem;
+      max-width: 500px;
+      width: 90%;
+      text-align: center;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      transform: scale(0.8);
+      transition: all 0.3s ease;
+    }
+    
+    .qr-modal.show .qr-modal-content {
+      transform: scale(1);
+    }
+    
+    .qr-modal-header {
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+    
+    .qr-modal-header h3 {
+      color: var(--primary-blue);
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    
+    .qr-modal-header p {
+      color: var(--warm-gray);
+      font-size: 1rem;
+      margin: 0;
+    }
+    
+    .qr-modal-close {
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: var(--accent-orange);
+      color: var(--snow-white);
+      border: none;
+      font-size: 1.2rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+    
+    .qr-modal-close:hover {
+      background: #c2410c;
+      transform: scale(1.1);
+    }
+    
+    .qr-modal-body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+    
+    .qr-image {
+      width: 200px;
+      height: 200px;
+      border-radius: 12px;
+      border: 2px solid var(--primary-blue);
+      object-fit: contain; /* 二維碼完整顯示 */
+      object-position: center center; /* 居中顯示 */
+      background: white; /* 背景色 */
+      padding: 10px; /* 新增內邊距，避免二維碼貼邊 */
+    }
+    
+    .qr-tip {
+      color: var(--warm-gray);
+      font-size: 0.9rem;
+      margin: 0;
+    }
+    
+    .qr-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    
+    .qr-item {
+      text-align: center;
+    }
+    
+    .qr-item .qr-image {
+      width: 120px;
+      height: 120px;
+      border-radius: 8px;
+      margin-bottom: 0.5rem;
+    }
+    
+    .qr-label {
+      font-size: 0.9rem;
+      color: #333;
+      margin: 0;
+      font-weight: 500;
+    }
+    
+    /* 移動端二維碼彈窗樣式 */
+    @media (max-width: 768px) {
+      .qr-modal-content {
+        padding: 1.5rem;
+        max-width: 400px;
+      }
+      
+      .qr-item .qr-image {
+        width: 100px;
+        height: 100px;
+      }
+      
+      .qr-modal-header h3 {
+        font-size: 1.3rem;
+      }
+      
+      /* 防止所有元素橫向溢位 */
+      * {
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
+      }
+      
+      h1, h2, h3, h4, h5, h6 {
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
+      }
+      
+      p, span, div {
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
+      }
+    }
+  </style>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-B3XF10TFX1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-B3XF10TFX1');
+  </script>
+  <link rel="stylesheet" href="/design-system.css">
+  <link rel="alternate" hreflang="zh-CN" href="https://glidex.net/courses">
+  <link rel="alternate" hreflang="zh-TW" href="https://glidex.net/zh-tw/courses">
+  <link rel="alternate" hreflang="x-default" href="https://glidex.net/courses">
+</head>
+<body>
+  <nav id="navbar" class="navbar">
+    <div class="container nav-container">
+      <a href="/zh-tw/" class="logo">
+        <img src="/image/logo/logo2.png" alt="GX 中文國際滑雪學校" class="logo-img">
+      </a>
+      <button class="menu-toggle" aria-controls="primary-nav" aria-expanded="false" aria-label="開啟選單"></button>
+      <ul id="primary-nav" class="nav-links" role="navigation">
+        <li class="nav-drawer-head" role="presentation"><span class="nav-drawer-title">MENU</span><button type="button" class="nav-close" aria-label="關閉選單">&times;</button></li>
+        <li><a href="/zh-tw/">首頁</a></li>
+        <li><a href="/about">關於GX</a></li>
+        <li><a href="/zh-tw/courses" class="active">課程介紹</a></li>
+        <li><a href="/news">最新訊息</a></li>
+        <li><a href="/recruitment">加入我們</a></li>
+        <li><a href="/zh-tw/contact">聯絡我們</a></li>
+      </ul>
+      <div class="language-switch" aria-label="语言切换">
+        <a href="/courses" lang="zh-CN">簡體</a><span aria-hidden="true">/</span><span class="lang-current">繁體</span>
+      </div>
+      <button class="btn btn-reservation" onclick="showAllQR()">預約</button>
+    </div>
+  </nav>
+  <div class="nav-backdrop" hidden></div>
+  <main>
+    <section class="course-booking-section">
+      <div class="container">
+        <div class="section-title">
+          <h1>課程介紹</h1>
+          <p>選擇適合您的滑雪課程，開啟精彩的滑雪之旅</p>
+        </div>
+        <div class="booking-cards-list">
+        <div class="course-card" data-course="0">
+          <h3>私教課程</h3>
+          <div class="course-image">
+            <img loading="lazy" src="/image/other/a.jpeg" alt="私教課程">
+          </div>
+          <div class="course-content">
+            <h4>內容&特點</h4>
+            <ul>
+              <li>可選單板/雙板</li>
+              <li>1人專屬或1團體專屬</li>
+              <li>客製化教學,效率最高</li>
+              <li>支援最多4人同組</li>
+            </ul>
+            <h4>推薦人群</h4>
+            <ul>
+              <li>0基礎學員</li>
+              <li>追求快速突破</li>
+              <li>準備考JSBA的學員</li>
+            </ul>
+          </div>
+          <button class="btn book-btn" onclick="showAllQR()">立即預約</button>
+        </div>
+        
+        <div class="course-card" data-course="1">
+          <h3>小班團體課程</h3>
+          <div class="course-image">
+            <img loading="lazy" src="/image/other/b.jpeg" alt="小班團體課程">
+          </div>
+          <div class="course-content">
+            <h4>內容&特點</h4>
+            <ul>
+              <li>可選單板/雙板</li>
+              <li>實惠靈活,1人也能報名</li>
+              <li>按水平分班授課</li>
+              <li>支援最多4人同組</li>
+            </ul>
+            <h4>推薦人群</h4>
+            <ul>
+              <li>想結交新雪友</li>
+              <li>與同水平雪友一起進步</li>
+              <li>喜歡氛圍與互動</li>
+            </ul>
+          </div>
+          <button class="btn book-btn" onclick="showAllQR()">立即預約</button>
+        </div>
+        
+        <div class="course-card" data-course="2">
+          <h3 style="text-align: center;">JSBA檢定課程</h3>
+          <div class="course-image">
+              <img loading="lazy" src="/image/other/c.jpeg" alt="JSBA檢定課程">
+          </div>
+          <div class="course-content">
+            <h4>內容&特點</h4>
+            <ul>
+              <li>日本最早、最系統的單板體系</li>
+              <li>檢定5級→1級逐步遞進</li>
+              <li>小班或私教形式,針對性強</li>
+              <li>可選中國/日本考官授課</li>
+            </ul>
+            <h4>推薦人群</h4>
+            <ul>
+              <li>有一定滑行基礎</li>
+              <li>想系統學習JSBA體系</li>
+              <li>希望技術進一步突破</li>
+            </ul>
+          </div>
+          <button class="btn book-btn" onclick="showAllQR()">立即預約</button>
+        </div>
+        
+        <div class="course-card" data-course="3">
+          <h3>進階課程</h3>
+          <div class="course-image">
+            <img loading="lazy" src="/image/other/d.jpeg" alt="進階課程">
+          </div>
+          <div class="course-content">
+            <h4>內容&特點</h4>
+            <ul>
+              <li>可選單板平花/刻滑入門</li>
+              <li>平花: Nollie、180、360</li>
+              <li>刻滑:高立刃、一順、八字</li>
+              <li>注重要領,打牢基礎</li>
+            </ul>
+            <h4>推薦人群</h4>
+            <ul>
+              <li>想挑戰平花或刻滑</li>
+              <li>已能獨立滑中級雪道</li>
+              <li>追求個人風格提升</li>
+            </ul>
+          </div>
+          <button class="btn book-btn" onclick="showAllQR()">立即預約</button>
+        </div>
+      </div>
+    </section>
+  
+<section class="gx-faq">
+  <style>
+    .gx-faq { max-width: 900px; margin: 48px auto; padding: 0 20px; }
+    .gx-faq h2 { font-size: 26px; margin: 0 0 20px; text-align: center; }
+    .gx-faq details { border: 1px solid #dde4ea; border-radius: 10px; padding: 14px 18px; margin-bottom: 10px; background: #fff; }
+    .gx-faq summary { font-weight: 700; cursor: pointer; font-size: 16px; }
+    .gx-faq details p { margin: 10px 0 2px; line-height: 1.7; color: #3c4a57; }
+  </style>
+  <h2>常見問題</h2>
+  <details><summary>有中文教練嗎？</summary><p>有。GlideX 是中文滑雪學校，教練中文授課，全程中文服務，沒有語言障礙。</p></details>
+  <details><summary>有哪些課程？零基礎可以學嗎？</summary><p>有私教課程、小班團體課程、JSBA 檢定課程和進階課程（平花 / 刻滑），單板和雙板都可以選。零基礎可以報名，私教和按水平分班的小班團課都適合初學者。</p></details>
+  <details><summary>課程價格是多少？</summary><p>官網不標價。提交預約後，教練會根據課程型別、時長和人數報價，確認課程前無需預付款。</p></details>
+  <details><summary>怎麼預約？多久能確認？</summary><p>在本頁或預約頁面填寫資訊即可，我們會在 24 小時內透過你選擇的方式（微信 / LINE / WhatsApp 等）確認。建議提前 7 天以上預約，旺季請提前 2-4 周。</p></details>
+  <details><summary>可以在哪些雪場上課？</summary><p>教學地點覆蓋北海道、東北、長野、湯澤、群馬、神奈川、關西等地區，具體雪場在預約時確認。</p></details>
+  <details><summary>能考 JSBA 證書嗎？</summary><p>可以。學校提供 JSBA 單板 5 級至 1 級的檢定課程，教練團隊持有 JSBA 教練與考官資格，可選中國或日本考官授課。</p></details>
+</section>
+</main>
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <!-- 左側：公司資訊 -->
+        <div class="footer-company">
+          <div class="footer-logo">
+            <img src="/image/logo/logo2.png" alt="GX 中文國際滑雪學校" class="logo-img">
+          </div>
+          <div class="company-info">
+            <p>GlideX中文國際滑雪學校</p>
+            <p>GlideX合同會社</p>
+            <p>〒新潟県南魚沼郡湯沢町土樽6303-1</p>
+            <p>info@glidex.net</p>
+          </div>
+        </div>
+        
+        <!-- 中間：快速連結 -->
+        <div class="footer-links">
+          <h3>快速連結</h3>
+          <ul>
+            <li><a href="/zh-tw/">首頁</a></li>
+            <li><a href="/about">關於GX</a></li>
+            <li><a href="/zh-tw/courses">課程介紹</a></li>
+            
+            <li><a href="/news">最新訊息</a></li>
+            <li><a href="/recruitment">加入我們</a></li>
+            <li><a href="/zh-tw/contact">聯絡我們</a></li>
+          </ul>
+        </div>
+        
+      </div>
+      
+      <div class="footer-bottom">
+        <p>© 2024 GlideX中文國際滑雪學校. 保留所有權利.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 右下角固定聯絡按鈕 -->
+  <div class="contact-float">
+    <!-- 主按鈕 -->
+    <div class="contact-main-btn" id="contactMainBtn">
+      <span class="contact-icon">💬</span>
+      <span class="contact-text">Contact</span>
+    </div>
+    
+    <!-- 聯絡選項 -->
+    <div class="contact-options" id="contactOptions">
+      <div class="contact-option wechat" data-tooltip="微信聯絡" onclick="openWeChat()">
+        <span class="option-icon">💬</span>
+        <span class="option-text">WeChat</span>
+      </div>
+      <div class="contact-option line" data-tooltip="LINE聯絡" onclick="openLine()">
+        <span class="option-icon">📱</span>
+        <span class="option-text">LINE</span>
+      </div>
+      <div class="contact-option whatsapp" data-tooltip="WhatsApp聯絡" onclick="openWhatsApp()">
+        <span class="option-icon">💬</span>
+        <span class="option-text">WhatsApp</span>
+      </div>
+      <div class="contact-option xhs" data-tooltip="小紅書" onclick="openXHS()">
+        <span class="option-icon">📕</span>
+        <span class="option-text">小紅書</span>
+      </div>
+    </div>
+  </div>
+
+  <script src="/snow.js"></script>
+  <script src="/booking-step.js"></script>
+  <script src="/mobile-menu.js"></script>
+  <script src="/qr-functions.js"></script>
+  <script>
+    (function(){
+      var toggle = document.querySelector('.menu-toggle');
+      var nav = document.getElementById('primary-nav');
+      var backdrop = document.querySelector('.nav-backdrop');
+      if (!toggle || !nav || !backdrop) return;
+      function openNav(){ nav.classList.add('show'); toggle.setAttribute('aria-expanded','true'); backdrop.hidden = false; document.body.classList.add('body--nav-open'); }
+      function closeNav(){ nav.classList.remove('show'); toggle.setAttribute('aria-expanded','false'); backdrop.hidden = true; document.body.classList.remove('body--nav-open'); }
+      toggle.addEventListener('click', function(){ var exp = toggle.getAttribute('aria-expanded')==='true'; exp?closeNav():openNav(); });
+      backdrop.addEventListener('click', closeNav);
+      window.addEventListener('keydown', function(e){ if(e.key==='Escape') closeNav(); });
+      var mql = window.matchMedia('(min-width: 992px)');
+      function handle(e){ if(e.matches) closeNav(); }
+      if(mql.addEventListener){ mql.addEventListener('change', handle); } else if(mql.addListener){ mql.addListener(handle); }
+    })();
+  </script>
+  <script>
+    // 導航欄滾動效果
+    window.addEventListener('scroll', function() {
+      const navbar = document.getElementById('navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+    
+    // 聯絡按鈕互動
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log('正在初始化聯絡按鈕...');
+      
+      const contactMainBtn = document.querySelector('.contact-main-btn');
+      const contactOptions = document.querySelector('.contact-options');
+      
+      console.log('找到的聯絡按鈕元素:', { contactMainBtn, contactOptions });
+      
+      if (contactMainBtn && contactOptions) {
+        // 移除可能存在的舊事件監聽器
+        contactMainBtn.removeEventListener('click', contactMainBtn.clickHandler);
+        
+        // 新增新的點選事件監聽器
+        contactMainBtn.clickHandler = function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          
+          const isVisible = contactOptions.classList.contains('show');
+          if (isVisible) {
+            contactOptions.classList.remove('show');
+            console.log('隱藏聯絡選項');
+          } else {
+            contactOptions.classList.add('show');
+            console.log('顯示聯絡選項');
+          }
+        };
+        
+        contactMainBtn.addEventListener('click', contactMainBtn.clickHandler);
+        
+        // 點選外部關閉
+        document.addEventListener('click', function(e) {
+          if (!e.target.closest('.contact-float')) {
+            contactOptions.classList.remove('show');
+            console.log('點選外部，關閉聯絡選項');
+          }
+        });
+        
+        console.log('聯絡按鈕事件監聽器已新增');
+      } else {
+        console.error('聯絡按鈕元素未找到:', { contactMainBtn, contactOptions });
+      }
+    });
+    
+    // 聯絡方式開啟函式
+    function openWeChat() {
+      console.log('開啟微信聯絡');
+      showQRCode('image/qrcode/1.PNG', 'WeChat', '微信聯絡');
+    }
+    
+    function openLine() {
+      console.log('開啟LINE聯絡');
+      showQRCode('image/qrcode/2.JPG', 'LINE', 'LINE聯絡');
+    }
+    
+    function openWhatsApp() {
+      console.log('開啟WhatsApp聯絡');
+      showQRCode('image/qrcode/3.PNG', 'WhatsApp', 'WhatsApp聯絡');
+    }
+    function openXHS() {
+      console.log('開啟小紅書');
+      showQRCode('image/qrcode/4.jpeg', '小紅書', '小紅書賬號');
+    }
+    
+    // 顯示預約微信二維碼彈窗
+    function showWeChatQR() {
+      showQRCode('image/qrcode/1.PNG', '微信預約', '請掃描二維碼新增微信進行課程預約');
+    }
+    
+    // 顯示二維碼彈窗
+    function showQRCode(imageSrc, title, subtitle) {
+      // 建立彈窗容器
+      const modal = document.createElement('div');
+      modal.className = 'qr-modal';
+      modal.innerHTML = `
+        <div class="qr-modal-content">
+          <div class="qr-modal-header">
+            <h3>${title}</h3>
+            <p>${subtitle}</p>
+            <button class="qr-modal-close" onclick="closeQRModal()">&times;</button>
+          </div>
+          <div class="qr-modal-body">
+            <img loading="lazy" src="${imageSrc}" alt="${title} QR Code" class="qr-image">
+            <p class="qr-tip">請使用手機掃描二維碼</p>
+          </div>
+        </div>
+      `;
+      
+      // 新增到頁面
+      document.body.appendChild(modal);
+      
+      // 顯示彈窗
+      setTimeout(() => modal.classList.add('show'), 10);
+      
+      // 點選背景關閉
+      modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+          closeQRModal();
+        }
+      });
+    }
+    
+    // 關閉二維碼彈窗
+    function closeQRModal() {
+      const modal = document.querySelector('.qr-modal');
+      if (modal) {
+        modal.classList.remove('show');
+        setTimeout(() => modal.remove(), 300);
+      }
+    }
+  </script>
+</body>
+</html> 
