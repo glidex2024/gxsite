@@ -362,7 +362,7 @@
         <li><a href="/zh-tw/about">關於GX</a></li>
                 <li><a href="/zh-tw/courses">課程介紹</a></li>
         <li><a href="/zh-tw/news" class="active">最新消息</a></li>
-        <li><a href="/zh-tw/recruitment">加入我們</a></li>
+        <li><a href="/recruitment">加入我们</a></li>
         <li><a href="/zh-tw/contact">聯繫我們</a></li>
       </ul>
       <div class="language-switch" aria-label="語言切換">
@@ -416,7 +416,7 @@
             <li><a href="/zh-tw/courses">課程介紹</a></li>
             
             <li><a href="/zh-tw/news">最新消息</a></li>
-            <li><a href="/zh-tw/recruitment">加入我們</a></li>
+            <li><a href="/recruitment">加入我们</a></li>
             <li><a href="/zh-tw/contact">聯繫我們</a></li>
           </ul>
         </div>
@@ -490,7 +490,7 @@
     });
 
     // 靜態json分頁渲染
-    fetch('/news.json')
+    fetch('/zh-tw/news.json')
       .then(res => res.json())
       .then(newsData => {
         // 按日期倒序排序
@@ -528,7 +528,7 @@
             item.setAttribute('data-aos', 'fade-up');
             item.setAttribute('data-aos-delay', 100 + (i - start) * 100);
             item.innerHTML = `
-              <a href="/news-detail?id=${n.id}" style="display:flex;text-decoration:none;color:inherit;">
+              <a href="/zh-tw/news-detail?id=${n.id}" style="display:flex;text-decoration:none;color:inherit;">
                 <img loading="lazy" src="${imgUrl}" alt="${n.title}">
                 <div class="news-content">
                   <div class="news-date">${n.date}</div>

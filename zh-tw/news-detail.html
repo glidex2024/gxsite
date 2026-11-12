@@ -282,11 +282,11 @@
         <li><a href="/zh-tw/about">關於GX</a></li>
         <li><a href="/zh-tw/courses">課程介紹</a></li>
         <li><a href="/zh-tw/news" class="active">最新消息</a></li>
-        <li><a href="/zh-tw/recruitment">加入我們</a></li>
+        <li><a href="/recruitment">加入我们</a></li>
         <li><a href="/zh-tw/contact">聯繫我們</a></li>
       </ul>
       <div class="language-switch" aria-label="語言切換">
-        <a href="/news-detail" lang="zh-CN">簡體</a><span aria-hidden="true">/</span><span class="lang-current">繁體</span>
+        <a id="news-language-switch" href="/news-detail" lang="zh-CN">簡體</a><span aria-hidden="true">/</span><span class="lang-current">繁體</span>
       </div>
       <button class="btn btn-reservation" onclick="showAllQR()">預約</button>
     </div>
@@ -332,7 +332,7 @@
             <li><a href="/zh-tw/courses">課程介紹</a></li>
             
             <li><a href="/zh-tw/news">最新消息</a></li>
-            <li><a href="/zh-tw/recruitment">加入我們</a></li>
+            <li><a href="/recruitment">加入我们</a></li>
             <li><a href="/zh-tw/contact">聯繫我們</a></li>
           </ul>
         </div>
@@ -432,7 +432,9 @@
       return url.searchParams.get(name);
     }
     const id = getQueryParam('id');
-    fetch('/news.json')
+    const languageSwitchLink = document.getElementById('news-language-switch');
+    if (id && languageSwitchLink) languageSwitchLink.href = `/news-detail?id=${encodeURIComponent(id)}`;
+    fetch('/zh-tw/news.json')
       .then(res => res.json())
       .then(newsList => {
         const data = newsList.find(n => String(n.id) === String(id));
@@ -445,20 +447,7 @@
         } else {
           document.getElementById('news-title').textContent = data.title;
           document.getElementById('news-date').textContent = data.date;
-          // 自動分配Unsplash圖片
-          const unsplashImgs = [
-            'https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=800&q=80',
-            'https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=800&q=80',
-            'https://images.unsplash.com/photo-1515524738708-327f6b0037a7?auto=format&fit=crop&w=800&q=80',
-            'https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=800&q=80',
-            'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80',
-            'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=800&q=80'
-          ];
           let imgUrl = data.img;
-          if (imgUrl && imgUrl.startsWith('/image/news')) {
-            const idx = (parseInt(data.id, 10) - 1) % unsplashImgs.length;
-            imgUrl = unsplashImgs[idx];
-          }
           document.getElementById('news-img').src = imgUrl;
           document.getElementById('news-img').alt = data.title;
           document.getElementById('news-img').style.display = 'block';

@@ -445,9 +445,169 @@ section, .school-intro-section, .ski-snowboard-section, .testimonials-section {
 .language-switch .lang-current {
   font-weight: 700;
 }
-@media (max-width: 991px) {
+
+/* 桌面端：将主导航、语言和预约收拢为一个连续操作组，避免最后一个链接后留出大面积空白。 */
+@media (min-width: 992px) {
+  .nav-links {
+    justify-content: center;
+  }
   .language-switch {
-    margin-left: auto;
-    margin-right: .55rem;
+    flex: 0 0 auto;
+    gap: 0;
+    margin-left: 20px;
+    padding: 3px;
+    border: 1px solid rgba(255,255,255,.45);
+    border-radius: 999px;
+    background: rgba(8,24,62,.22);
+  }
+  .language-switch span[aria-hidden="true"] {
+    display: none;
+  }
+  .language-switch a,
+  .language-switch .lang-current {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 36px;
+    padding: 0 10px;
+    border: 0;
+    border-radius: 999px;
+  }
+  .language-switch .lang-current {
+    background: rgba(255,255,255,.18);
+  }
+  .btn-reservation {
+    min-height: 44px;
+    height: 44px;
+    margin-left: 12px;
+    padding: 0 18px;
+  }
+}
+
+/* 小笔电与横向平板：仍显示完整导航，但先压缩字号和间距，避免在断点附近拥挤。 */
+@media (min-width: 992px) and (max-width: 1199px) {
+  .nav-container {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+  .logo-img {
+    height: 34px !important;
+  }
+  .nav-links {
+    gap: 1rem;
+  }
+  .nav-links a {
+    font-size: .88rem !important;
+  }
+  .language-switch {
+    font-size: .8rem;
+  }
+  .btn-reservation {
+    padding: .65rem 1.1rem;
+    font-size: .85rem;
+  }
+}
+
+@media (max-width: 991px) {
+  .nav-container {
+    height: 64px !important;
+    min-height: 64px !important;
+    padding: 0 12px !important;
+    gap: 8px;
+    flex-wrap: nowrap !important;
+    justify-content: flex-start !important;
+  }
+  .language-switch {
+    display: inline-flex !important;
+    flex: 0 0 auto;
+    gap: 0;
+    margin-left: 12px;
+    margin-right: 0;
+    padding: 3px;
+    border: 1px solid rgba(255,255,255,.45);
+    border-radius: 999px;
+    background: rgba(8,24,62,.22);
+    font-size: .78rem;
+  }
+  .language-switch,
+  .language-switch * {
+    white-space: nowrap !important;
+    word-break: keep-all !important;
+  }
+  .language-switch span[aria-hidden="true"] {
+    display: none;
+  }
+  .language-switch a,
+  .language-switch .lang-current {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 36px;
+    padding: 0 9px !important;
+    border: 0;
+    border-radius: 999px;
+  }
+  .language-switch .lang-current {
+    background: rgba(255,255,255,.18);
+  }
+  .btn-reservation {
+    flex: 0 0 auto;
+    min-height: 44px !important;
+    height: 44px !important;
+    margin-left: 0 !important;
+    padding: 0 16px !important;
+    border-radius: 999px !important;
+    font-size: .9rem !important;
+    line-height: 1 !important;
+  }
+}
+@media (max-width: 480px) {
+  .logo-img {
+    height: 30px !important;
+    max-width: 88px !important;
+  }
+  .language-switch {
+    font-size: .72rem;
+  }
+  .language-switch a,
+  .language-switch .lang-current {
+    min-height: 34px;
+    padding: 0 7px !important;
+  }
+  .btn-reservation {
+    min-height: 42px !important;
+    height: 42px !important;
+    padding: 0 12px !important;
+  }
+}
+@media (max-width: 360px) {
+  .nav-container {
+    padding: 0 8px !important;
+    gap: 5px;
+  }
+  .logo-img {
+    height: 26px !important;
+    max-width: 76px !important;
+  }
+  .menu-toggle {
+    width: 40px !important;
+    height: 40px !important;
+    min-width: 40px !important;
+  }
+  .language-switch {
+    margin-left: 6px;
+    padding: 2px;
+    font-size: .68rem;
+  }
+  .language-switch a,
+  .language-switch .lang-current {
+    min-height: 32px;
+    padding: 0 5px !important;
+  }
+  .btn-reservation {
+    min-height: 40px !important;
+    height: 40px !important;
+    padding: 0 10px !important;
+    font-size: .82rem !important;
   }
 }

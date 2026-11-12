@@ -286,7 +286,7 @@
         <li><a href="/contact">联系我们</a></li>
       </ul>
       <div class="language-switch" aria-label="语言切换">
-        <span class="lang-current">简体</span><span aria-hidden="true">/</span><a href="/zh-tw/news-detail" lang="zh-TW">繁體</a>
+        <span class="lang-current">简体</span><span aria-hidden="true">/</span><a id="news-language-switch" href="/zh-tw/news-detail" lang="zh-TW">繁體</a>
       </div>
       <button class="btn btn-reservation" onclick="showAllQR()">预约</button>
     </div>
@@ -432,6 +432,8 @@
       return url.searchParams.get(name);
     }
     const id = getQueryParam('id');
+    const languageSwitchLink = document.getElementById('news-language-switch');
+    if (id && languageSwitchLink) languageSwitchLink.href = `/zh-tw/news-detail?id=${encodeURIComponent(id)}`;
     fetch('/news.json')
       .then(res => res.json())
       .then(newsList => {
@@ -445,20 +447,7 @@
         } else {
           document.getElementById('news-title').textContent = data.title;
           document.getElementById('news-date').textContent = data.date;
-          // 自动分配Unsplash图片
-          const unsplashImgs = [
-            'https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=800&q=80',
-            'https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=800&q=80',
-            'https://images.unsplash.com/photo-1515524738708-327f6b0037a7?auto=format&fit=crop&w=800&q=80',
-            'https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=800&q=80',
-            'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80',
-            'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=800&q=80'
-          ];
           let imgUrl = data.img;
-          if (imgUrl && imgUrl.startsWith('/image/news')) {
-            const idx = (parseInt(data.id, 10) - 1) % unsplashImgs.length;
-            imgUrl = unsplashImgs[idx];
-          }
           document.getElementById('news-img').src = imgUrl;
           document.getElementById('news-img').alt = data.title;
           document.getElementById('news-img').style.display = 'block';

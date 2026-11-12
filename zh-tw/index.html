@@ -90,10 +90,10 @@
       <ul id="primary-nav" class="nav-links" role="navigation">
         <li class="nav-drawer-head" role="presentation"><span class="nav-drawer-title">MENU</span><button type="button" class="nav-close" aria-label="關閉選單">&times;</button></li>
         <li><a href="/zh-tw/" class="active">首頁</a></li>
-        <li><a href="/about">關於GX</a></li>
+        <li><a href="/zh-tw/about">關於GX</a></li>
                 <li><a href="/zh-tw/courses">課程介紹</a></li>
-        <li><a href="/news">最新訊息</a></li>
-        <li><a href="/recruitment">加入我們</a></li>
+        <li><a href="/zh-tw/news">最新訊息</a></li>
+        <li><a href="/recruitment">加入我们</a></li>
         <li><a href="/zh-tw/contact">聯絡我們</a></li>
       </ul>
       <div class="language-switch" aria-label="语言切换">
@@ -163,7 +163,7 @@
         </div>
         <p class="description"><strong>2026-2027 滑雪課程火爆預約中</strong></p>
         <div class="hero-buttons">
-          <a href="/about" class="hero-link">→關於我們</a>
+          <a href="/zh-tw/about" class="hero-link">→關於我們</a>
 
           <a href="/zh-tw/contact" class="hero-link">→聯絡我們</a>
         </div>
@@ -254,7 +254,7 @@
             <p>這裡不僅是一間滑雪課堂，更是一段攜手前行的成長旅程。</p>
           </div>
           <div class="action-buttons">
-            <a href="/about" class="about-btn">關於我們</a>
+            <a href="/zh-tw/about" class="about-btn">關於我們</a>
             <a href="/zh-tw/courses" class="coach-btn">課程介紹</a>
           </div>
         </div>
@@ -1153,11 +1153,11 @@
           <h3>快速連結</h3>
           <ul>
             <li><a href="/zh-tw/">首頁</a></li>
-            <li><a href="/about">關於GX</a></li>
+            <li><a href="/zh-tw/about">關於GX</a></li>
             <li><a href="/zh-tw/courses">課程介紹</a></li>
             
-            <li><a href="/news">最新訊息</a></li>
-            <li><a href="/recruitment">加入我們</a></li>
+            <li><a href="/zh-tw/news">最新訊息</a></li>
+            <li><a href="/recruitment">加入我们</a></li>
             <li><a href="/zh-tw/contact">聯絡我們</a></li>
           </ul>
         </div>
@@ -1590,7 +1590,7 @@
     // 從JSON檔案載入最新新聞
     async function loadLatestNews() {
       try {
-        const response = await fetch('/news.json');
+        const response = await fetch('/zh-tw/news.json');
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -1628,14 +1628,14 @@
             </div>
             <h3 class="news-title-modern">${news.title}</h3>
             <p class="news-summary-modern">${news.summary}</p>
-            <a href="/news-detail?id=${news.id}" class="news-btn-modern">閱讀全文</a>
+            <a href="/zh-tw/news-detail?id=${news.id}" class="news-btn-modern">閱讀全文</a>
           </div>
         `;
       }).join('');
       
       newsGrid.innerHTML = newsHTML + `
         <div class="news-more">
-          <a class="news-more-link" href="/news">顯示更多 »</a>
+          <a class="news-more-link" href="/zh-tw/news">顯示更多 »</a>
         </div>
       `;
     }
