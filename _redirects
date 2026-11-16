@@ -1,0 +1,9 @@
+# Preserve historical URLs that Google still crawls after the legacy feed and
+# Chinese news routes were removed from the static site.
+/feed/              /news 301
+/feed/index.html    /news 301
+/feed/courses.html  /courses 301
+/%E6%9C%80%E6%96%B0%E6%B6%88%E6%81%AF/  /news 301
+
+# The coach directory was consolidated into the school introduction page.
+/coaches.html       /about 301
